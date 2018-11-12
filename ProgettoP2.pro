@@ -2,6 +2,10 @@ QT += core
 CONFIG += c++11
 CONFIG+=sdk_no_version_check
 QT += widgets
+<<<<<<< HEAD
+=======
+QT += qml
+>>>>>>> fe6294d336eaaf5cc1efbc4d90fb170585e45495
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
@@ -42,3 +46,5 @@ HEADERS += \
     video.h \
     film.h \
     episodio.h
+
+

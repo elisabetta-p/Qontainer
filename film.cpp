@@ -12,7 +12,9 @@ void film::pausa() const {
 }
 
 
-
+bool film::operator==(const film& file) const {
+    return (video::operator==(file) && saga == file.saga);
+}
 
 film::film(QString titol, unsigned short int dur, QString gen, double dim, unsigned short int val, QString aut, QString data, unsigned int risol, QString sag) : video(titol, dur, gen, dim, val, aut, data, risol), saga(sag) {}
 
@@ -22,4 +24,12 @@ film& film::operator=(const film& file) {
     if (this != &file)
         *this = file;
     return *this;
+}
+
+void film::setSaga(QString s) {
+    saga = s;
+}
+
+QString film::getSaga() const {
+    return saga;
 }

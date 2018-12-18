@@ -19,7 +19,8 @@ SOURCES += \
     contenutomultimediale.cpp \
     audio.cpp \
     video.cpp \
-    film.cpp
+    film.cpp \
+    episodio.cpp
 
 RESOURCES += qml.qrc
 
@@ -39,4 +40,5 @@ HEADERS += \
     contenutomultimediale.h \
     audio.h \
     video.h \
-    film.h
+    film.h \
+    episodio.h

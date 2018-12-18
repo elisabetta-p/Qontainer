@@ -14,8 +14,12 @@ public:
     film(QString, unsigned short int, QString, double, unsigned short int, QString, QString, unsigned int, QString ="nessuna");
     film(const film&);
     film& operator=(const film&);
+    bool operator==(const film&) const;
     void riproduci() const;
     void pausa() const;
+
+    void setSaga(QString);
+    QString getSaga() const;
 };
 
 #endif // FILM_H

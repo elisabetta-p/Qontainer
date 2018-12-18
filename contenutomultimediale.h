@@ -20,7 +20,7 @@ public:
     //il costruttore di copia ridefinito non serve
     virtual void riproduci() const =0;
     virtual void pausa() const =0;
-    virtual bool operator==(const ContenutoMultimediale&) const;
+    virtual bool operator==(const ContenutoMultimediale&) const =0;
     //virtual ContenutoMultimediale* clone() const =0;
 
     //METODI SET E GET

@@ -174,6 +174,32 @@ public:
         return (const_it.punt)->info;
     }
 
+    // METODI DA SPECIFICA
+
+    void insert(const ContenutoMultimediale& cont) { //aggiunge un contenuto multimediale in testa alla lista di contenuti multimediali salvati sotto forma di nodi
+        first = new nodo(cont, first);
+    }
+
+    void remove(const ContenutoMultimediale& cont) {
+        nodo* n = first, * prec = 0;
+        while (n && !(n->info == cont)) {
+            prec = n;
+            n = n->next;
+        }
+        if (n) {
+            if (!prec)
+                first = n -> next;
+            else {
+                prec -> next = n -> next;
+            }
+            delete[] n;
+        }
+    }
+
+    ContenutoMultimediale* search(QString) const {
+
+    }
+
     // ALTRI METODI UTILI
 
     unsigned int size() const { //ritorna il numero di elementi nel container

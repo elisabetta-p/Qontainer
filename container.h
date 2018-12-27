@@ -1,6 +1,8 @@
 #ifndef CONTAINER_H
 #define CONTAINER_H
 #include <iostream>
+using std::cout;
+using std::endl;
 
 
 #include "contenutomultimediale.h"
@@ -123,7 +125,7 @@ public:
     };                          // !!!!!!!!! fine classe CONST_ITERATOR !!!!!!!!!
 
 
-
+    //                              !!!!!!! dentro CONTAINER !!!!!!!!
     container(nodo* n=0) : first(n) {}
     ~container();
     container (const container&);
@@ -131,9 +133,9 @@ public:
         first = copia(c.first);
         return *this;
     }
-    bool vuota() const;
-    void aggiungi(ContenutoMultimediale&);
-    void togli(ContenutoMultimediale&);
+    bool vuota() const {
+        return first==0;
+    }
 
 
     //metodi del contenitore invocati su iteratori costanti
@@ -162,25 +164,26 @@ public:
 
     // Overloading di * e []
 
-    ContenutoMultimediale& operator*() const {
+    T& operator*() const {
         return *this->info;
     }
 
-    ContenutoMultimediale& operator[] (const iterator& it) const {
+    T& operator[] (const iterator& it) const {
         return (it.punt)->info;
     }
 
-    ContenutoMultimediale& operator[] (const const_iterator& const_it) const {
+    T& operator[] (const const_iterator& const_it) const {
         return (const_it.punt)->info;
     }
 
     // METODI DA SPECIFICA
 
-    void insert(const ContenutoMultimediale& cont) { //aggiunge un contenuto multimediale in testa alla lista di contenuti multimediali salvati sotto forma di nodi
+    void insert(const T& cont) { //aggiunge un contenuto multimediale in testa alla lista di contenuti multimediali salvati sotto forma di nodi
+        cout << "Il contenuto e' stato inserito!";
         first = new nodo(cont, first);
     }
 
-    void remove(const ContenutoMultimediale& cont) {
+    void remove(const T& cont) {
         nodo* n = first, * prec = 0;
         while (n && !(n->info == cont)) {
             prec = n;
@@ -192,12 +195,26 @@ public:
             else {
                 prec -> next = n -> next;
             }
+            cout << "Il contenuto e' stato eliminato!";
             delete[] n;
         }
     }
 
-    ContenutoMultimediale* search(QString) const {
-
+    T& search(const T& parametro) const {
+        nodo *n = new nodo ;
+        n = first;
+        unsigned int i=0;
+        for (i ; n->info != parametro; ++i) {
+            if (n->next)
+                n = n->next;
+        }
+        if (n->info == parametro) {
+            cout << "Ecco il contenuto che stavi cercando: " << n->info << endl;
+            return n->info;
+        }
+        else {
+            cout << "Contenuto non trovato." << endl;
+        }
     }
 
     // ALTRI METODI UTILI

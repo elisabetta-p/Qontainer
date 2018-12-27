@@ -202,18 +202,14 @@ public:
 
     T& search(const T& parametro) const {
         nodo* n = first;
-        unsigned int i=0;
-        for (i ; n->info != parametro; ++i) {
-            if (n->next)
-                n = n->next;
+        while (n->next != nullptr) {
+            n = n->next;
+            if (n->info == parametro)
+                cout << "Ecco il contenuto che stavi cercando: " << n->info << endl;
+                return n->info;
         }
-        if (n->info == parametro) {
-            cout << "Ecco il contenuto che stavi cercando: " << n->info << endl;
-            return n->info;
-        }
-        else {
-            cout << "Contenuto non trovato." << endl;
-        }
+        cout << "Contenuto non trovato." << endl;
+        return nullptr;
     }
 
     // ALTRI METODI UTILI

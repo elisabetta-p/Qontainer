@@ -29,4 +29,7 @@ Per farlo, la classe templatizzata \texttt{container} a sua volta fa uso di altr
 \end{enumerate}
 %Le classi \texttt{const\_iterator} ed  \texttt{iterator} al loro interno contengono l'overloading dei seguenti operatori:  \texttt{operator==, operator!=, %operator++} (postfisso e prefisso) \texttt{operator---}(postfisso e prefisso) \texttt{}
 
+\section{Descrizione della gerarchia di classi}
+La classe base astratta da cui deriva tutta la gerarchia è 	\texttt{contenutomultimediale}, 
+
 \end{document}

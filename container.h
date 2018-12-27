@@ -196,13 +196,12 @@ public:
                 prec -> next = n -> next;
             }
             cout << "Il contenuto e' stato eliminato!";
-            delete[] n;
+            delete n;
         }
     }
 
     T& search(const T& parametro) const {
-        nodo *n = new nodo ;
-        n = first;
+        nodo* n = first;
         unsigned int i=0;
         for (i ; n->info != parametro; ++i) {
             if (n->next)
@@ -221,9 +220,9 @@ public:
 
     unsigned int size() const { //ritorna il numero di elementi nel container
         if (first) {
-            nodo aux = new nodo* (first);
+            nodo* aux = first;
             unsigned int contatore=0;
-            while (aux->next) {
+            while (aux) {
                 contatore++;
                 aux = aux->next;
             }

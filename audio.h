@@ -8,6 +8,7 @@ private:
 public:
     audio (QString, unsigned short int, QString, double, unsigned short int, QString, QString, unsigned short int =0);
     bool operator==(const audio&) const;
+    virtual ~audio() = default;
 };
 
 #endif // AUDIO_H

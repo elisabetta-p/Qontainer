@@ -2,6 +2,20 @@
 #define CONTENUTOMULTIMEDIALE_H
 #include <QString>
 #include <iostream>
+#include <cstddef> // NULL
+#include <iomanip>
+#include <fstream>
+#include <string>
+
+#include <boost/archive/tmpdir.hpp>
+
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/archive/text_oarchive.hpp>
+
+#include <boost/serialization/base_object.hpp>
+#include <boost/serialization/utility.hpp>
+#include <boost/serialization/list.hpp>
+#include <boost/serialization/assume_abstract.hpp>
 using std::cout;
 using std::endl;
 
@@ -20,7 +34,7 @@ public:
     //il costruttore di copia ridefinito non serve
     virtual void riproduci() const =0;
     virtual void pausa() const =0;
-    virtual bool operator==(const ContenutoMultimediale&) const =0;
+    virtual bool operator==(const ContenutoMultimediale&) const;
     //virtual ContenutoMultimediale* clone() const =0;
 
     //METODI SET E GET

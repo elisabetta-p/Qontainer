@@ -200,16 +200,14 @@ public:
         }
     }
 
-    T& search(const T& parametro) const {
+    bool search(const T& parametro) const {
         nodo* n = first;
         while (n->next != nullptr) {
             n = n->next;
             if (n->info == parametro)
-                cout << "Ecco il contenuto che stavi cercando: " << n->info << endl;
-                return n->info;
+                return true;
         }
-        cout << "Contenuto non trovato." << endl;
-        return nullptr;
+        return false;
     }
 
     // ALTRI METODI UTILI

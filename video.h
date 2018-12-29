@@ -14,6 +14,10 @@ public:
     //metodi set e get
     void setRisoluzione(unsigned int);
     unsigned int getRisoluzione() const;
+
+    //serializzazione
+    virtual void serialize(std::ostream) const =0;
+    virtual video* create(std::istream) const =0;
 };
 
 #endif // VIDEO_H

@@ -33,3 +33,7 @@ void film::setSaga(QString s) {
 QString film::getSaga() const {
     return saga;
 }
+
+void film::serialize(std::ostream stream) const {
+
+}

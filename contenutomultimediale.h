@@ -38,6 +38,10 @@ public:
     QString getAutore() const;
     void setDataUscita(QString);
     QString getDataUscita() const;
+
+    //serializzazione/deserializzazione
+    virtual void serialize(std::ostream) const =0;
+    virtual ContenutoMultimediale* create(std::istream) const =0;
 };
 
 #endif // CONTENUTOMULTIMEDIALE_H

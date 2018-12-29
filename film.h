@@ -20,6 +20,9 @@ public:
 
     void setSaga(QString);
     QString getSaga() const;
+
+    virtual void serialize(std::ostream) const;
+    virtual film* create(std::istream) const;
 };
 
 #endif // FILM_H

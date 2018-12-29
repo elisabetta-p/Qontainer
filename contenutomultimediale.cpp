@@ -1,5 +1,6 @@
 #include "contenutomultimediale.h"
 
+
 ContenutoMultimediale::ContenutoMultimediale(QString titolo, unsigned short int dur, QString gen, double dim, unsigned short int val, QString aut, QString data) : titolo(titolo), durata(dur), genere(gen), dimensione(dim), valutazione(val), autore(aut), dataUscita(data) {}
 /*ContenutoMultimediale::~ContenutoMultimediale() {}*/
 

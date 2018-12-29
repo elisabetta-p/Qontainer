@@ -3,9 +3,6 @@ CONFIG += c++11
 CONFIG+=sdk_no_version_check
 QT += widgets
 
-INCLUDEPATH += /Users/elisabetta/boost_1_67_0
-LIBS += "-L/Users/elisabetta/boost_1_67_0/libs/"
-
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the

@@ -2,7 +2,7 @@ QT += core
 CONFIG += c++11
 CONFIG+=sdk_no_version_check
 QT += widgets
-QT += qml
+#QT += qml
 
 INCLUDEPATH += /Users/elisabetta/boost_1_67_0
 LIBS += "-L/Users/elisabetta/boost_1_67_0/libs/"

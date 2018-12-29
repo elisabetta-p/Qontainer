@@ -1,5 +1,6 @@
 #include <QGuiApplication>
 #include <QWidget>
+#include <boost/archive/tmpdir.hpp>
 
 int main(int argc, char *argv[])
 {

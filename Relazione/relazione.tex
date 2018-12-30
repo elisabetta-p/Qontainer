@@ -28,10 +28,9 @@ Per farlo, la classe templatizzata \texttt{container} a sua volta fa uso di altr
 \item \texttt{iterator}: inserita nella parte pubblica di \texttt{container}, è la classe che permette l'implementazione di iteratori non costanti.
 \end{enumerate}
 Vista l'assenza di puntatori ad altre classi nella gerarchia, è stata ritenuta superflua l'implementazione di una classe per un eventuale \textit{smart pointer}.
-%Le classi \texttt{const\_iterator} ed  \texttt{iterator} al loro interno contengono l'overloading dei seguenti operatori:  \texttt{operator==, operator!=, %operator++} (postfisso e prefisso) \texttt{operator---}(postfisso e prefisso) \texttt{}
 
 \section{Descrizione della gerarchia di classi}
-La classe base astratta da cui deriva tutta la gerarchia è \texttt{contenutomultimediale}, che verrà poi concretizzata tramite sue classi derivate. I metodi virtuali sono \texttt{riproduci()}, \texttt{pausa()}, \texttt{operator==} e il relativo distruttore; \texttt{riproduci()} e \texttt{pausa()} sono anche puri, poiché la loro implementazione è assegnata alle classi derivate. \\
+La classe base astratta da cui deriva tutta la gerarchia è \texttt{ContenutoMultimediale}, che verrà poi concretizzata tramite sue classi derivate. I metodi virtuali sono \texttt{riproduci()}, \texttt{pausa()}, \texttt{operator==} e il relativo distruttore; \texttt{riproduci()} e \texttt{pausa()} sono anche puri, poiché la loro implementazione è assegnata alle classi derivate. \\
 Da \texttt{contenutomultimediale} derivano immediatamente altre due classi: \texttt{audio} e \texttt{video}, che sono le due macrocategorie di appartenenza dei file che vengono memorizzati nella libreria. \\
 Da \texttt{video} derivano due classi: \texttt{film} e \texttt{episodio}, mentre da \texttt{audio} derivano altre due classi, \texttt{podcast} e \texttt{canzone}. \\
 Non si verifica la situazione di ereditarità multipla. 

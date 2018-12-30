@@ -1,7 +1,7 @@
 #include "contenutomultimediale.h"
 
 
-ContenutoMultimediale::ContenutoMultimediale(QString titolo, unsigned short int dur, QString gen, double dim, unsigned short int val, QString aut, QString data) : titolo(titolo), durata(dur), genere(gen), dimensione(dim), valutazione(val), autore(aut), dataUscita(data) {}
+ContenutoMultimediale::ContenutoMultimediale(string titolo, unsigned short int dur, string gen, double dim, unsigned short int val, string aut, string data) : titolo(titolo), durata(dur), genere(gen), dimensione(dim), valutazione(val), autore(aut), dataUscita(data) {}
 /*ContenutoMultimediale::~ContenutoMultimediale() {}*/
 
 bool ContenutoMultimediale::operator==(const ContenutoMultimediale& cont) const {
@@ -9,7 +9,7 @@ bool ContenutoMultimediale::operator==(const ContenutoMultimediale& cont) const 
 }
 
 // METODI SET
-void ContenutoMultimediale::setTitolo(QString titol) {
+void ContenutoMultimediale::setTitolo(string titol) {
     titolo = titol;
 }
 
@@ -17,21 +17,21 @@ void ContenutoMultimediale::setDurata(unsigned short int dur) {
     durata = dur;
 }
 
-void ContenutoMultimediale::setGenere(QString gen) {
+void ContenutoMultimediale::setGenere(string gen) {
     genere = gen;
 }
 
-void ContenutoMultimediale::setAutore(QString aut) {
+void ContenutoMultimediale::setAutore(string aut) {
     autore = aut;
 }
 
-void ContenutoMultimediale::setDataUscita(QString data) {
+void ContenutoMultimediale::setDataUscita(string data) {
     dataUscita = data;
 }
 
 // METODI GET
 
-QString ContenutoMultimediale::getTitolo() const {
+string ContenutoMultimediale::getTitolo() const {
     return titolo;
 }
 
@@ -39,7 +39,7 @@ unsigned short int ContenutoMultimediale::getDurata() const {
     return durata;
 }
 
-QString ContenutoMultimediale::getGenere() const {
+string ContenutoMultimediale::getGenere() const {
     return genere;
 }
 
@@ -47,10 +47,10 @@ unsigned short int ContenutoMultimediale::getValutazione() const {
     return valutazione;
 }
 
-QString ContenutoMultimediale::getAutore() const {
+string ContenutoMultimediale::getAutore() const {
     return autore;
 }
 
-QString ContenutoMultimediale::getDataUscita() const {
+string ContenutoMultimediale::getDataUscita() const {
     return dataUscita;
 }

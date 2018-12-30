@@ -1,14 +1,14 @@
 #include "film.h"
 #include <string>
-#include<QString>
+#include<string>
 using std::string;
 
 void film::riproduci() const {
-    cout << "Stai riproducendo il film: " << getTitolo().toLocal8Bit().constData() << endl;
+    cout << "Stai riproducendo il film: " << getTitolo() << endl;
 }
 
 void film::pausa() const {
-    cout <<"Hai messo in pausa il film: " << getTitolo().toLocal8Bit().constData()<< endl;
+    cout <<"Hai messo in pausa il film: " << getTitolo() << endl;
 }
 
 
@@ -16,7 +16,7 @@ bool film::operator==(const film& file) const {
     return (video::operator==(file) && saga == file.saga);
 }
 
-film::film(QString titol, unsigned short int dur, QString gen, double dim, unsigned short int val, QString aut, QString data, unsigned int risol, QString sag) : video(titol, dur, gen, dim, val, aut, data, risol), saga(sag) {}
+film::film(string titol, unsigned short int dur, string gen, double dim, unsigned short int val, string aut, string data, unsigned int risol, string sag) : video(titol, dur, gen, dim, val, aut, data, risol), saga(sag) {}
 
 film::film(const film& file) : video(file), saga(file.saga) {}
 
@@ -26,11 +26,11 @@ film& film::operator=(const film& file) {
     return *this;
 }
 
-void film::setSaga(QString s) {
+void film::setSaga(string s) {
     saga = s;
 }
 
-QString film::getSaga() const {
+string film::getSaga() const {
     return saga;
 }
 

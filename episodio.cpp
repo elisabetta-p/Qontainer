@@ -1,6 +1,6 @@
 #include "episodio.h"
 
-episodio::episodio(QString titol, unsigned short int dur, QString gen, double dim, unsigned short int val, QString aut, QString data, unsigned int risol, QString ser, QString can) : video(titol, dur, gen, dim, val, aut, data, risol), serie(ser), canale(can) {}
+episodio::episodio(string titol, unsigned short int dur, string gen, double dim, unsigned short int val, string aut, string data, unsigned int risol, string ser, string can) : video(titol, dur, gen, dim, val, aut, data, risol), serie(ser), canale(can) {}
 
 episodio::episodio(const episodio& e) : video(e), serie(e.serie), canale(e.canale) {};
 
@@ -16,10 +16,10 @@ bool episodio::operator==(const episodio& file) const {
 
 void episodio::riproduci() const {
     if (serie != "nd") {
-        cout << "Stai riproducendo l'episodio: " << getTitolo().toLocal8Bit().constData()  << " della serie " << getSerie().toLocal8Bit().constData()  << endl;
+        cout << "Stai riproducendo l'episodio: " << getTitolo()  << " della serie " << getSerie()<< endl;
     }
     else {
-        cout << "Stai riproducendo l'episodio: " << getTitolo().toLocal8Bit().constData()  << endl;
+        cout << "Stai riproducendo l'episodio: " << getTitolo()  << endl;
     }
 }
 
@@ -27,19 +27,19 @@ void episodio::pausa() const {
     cout << "Hai messo in pausa l'episodio!" << endl;
 }
 
-void episodio::setSerie(QString s) {
+void episodio::setSerie(string s) {
     serie = s;
 }
 
-void episodio::setCanale(QString c) {
+void episodio::setCanale(string c) {
     canale = c;
 }
 
-QString episodio::getSerie() const {
+string episodio::getSerie() const {
     return serie;
 }
 
-QString episodio::getCanale() const {
+string episodio::getCanale() const {
     return canale;
 }
 

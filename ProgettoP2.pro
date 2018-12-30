@@ -20,7 +20,9 @@ SOURCES += \
     audio.cpp \
     video.cpp \
     film.cpp \
-    episodio.cpp
+    episodio.cpp \
+    canzone.cpp \
+    podcast.cpp
 
 RESOURCES += qml.qrc
 
@@ -41,6 +43,8 @@ HEADERS += \
     audio.h \
     video.h \
     film.h \
-    episodio.h
+    episodio.h \
+    canzone.h \
+    podcast.h
 
 

@@ -7,7 +7,7 @@ class video: public ContenutoMultimediale {
 private:
     unsigned int risoluzione;
 public:
-    video(QString, unsigned short int, QString, double, unsigned short int, QString, QString, unsigned int =0);
+    video(string, unsigned short int, string, double, unsigned short int, string, string, unsigned int =0);
     virtual bool operator==(const video&) const;
     virtual ~video() = default;
 

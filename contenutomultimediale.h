@@ -1,23 +1,26 @@
 #ifndef CONTENUTOMULTIMEDIALE_H
 #define CONTENUTOMULTIMEDIALE_H
-#include <QString>
+#include <string>
 #include <iostream>
 #include <fstream>
+#include <string>
+
+using std::string;
 
 using std::cout;
 using std::endl;
 
 class ContenutoMultimediale {
 private:
-    QString titolo;
+    string titolo;
     unsigned short int durata;
-    QString genere;
+    string genere;
     double dimensione;
     unsigned short int valutazione;
-    QString autore;
-    QString dataUscita;
+    string autore;
+    string dataUscita;
 public:
-    ContenutoMultimediale(QString ="0", unsigned short int =0, QString ="0", double =0.0, unsigned short int=0, QString ="0", QString="0");
+    ContenutoMultimediale(string ="0", unsigned short int =0, string ="0", double =0.0, unsigned short int=0, string ="0", string="0");
     virtual ~ContenutoMultimediale() = default;
     //il costruttore di copia ridefinito non serve
     virtual void riproduci() const =0;
@@ -26,18 +29,18 @@ public:
     //virtual ContenutoMultimediale* clone() const =0;
 
     //METODI SET E GET
-    void setTitolo(QString);
-    QString getTitolo() const;
+    void setTitolo(string);
+    string getTitolo() const;
     void setDurata(unsigned short int);
     unsigned short int getDurata() const;
-    void setGenere(QString);
-    QString getGenere() const;
+    void setGenere(string);
+    string getGenere() const;
     void setValutazione(unsigned short int);
     unsigned short int getValutazione() const;
-    void setAutore(QString);
-    QString getAutore() const;
-    void setDataUscita(QString);
-    QString getDataUscita() const;
+    void setAutore(string);
+    string getAutore() const;
+    void setDataUscita(string);
+    string getDataUscita() const;
 
     //serializzazione/deserializzazione
     virtual void serialize(std::ostream) const =0;

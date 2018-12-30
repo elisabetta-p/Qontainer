@@ -4,21 +4,21 @@
 
 class episodio: public video {
 private:
-    QString serie;
-    QString canale;
+    string serie;
+    string canale;
 public:
     ~episodio() = default;
-    episodio(QString, unsigned short int, QString, double, unsigned short int, QString, QString, unsigned int, QString ="nd", QString ="nd");
+    episodio(string, unsigned short int, string, double, unsigned short int, string, string, unsigned int, string ="nd", string ="nd");
     episodio(const episodio&);
     episodio& operator=(const episodio&);
     bool operator==(const episodio&) const;
     void riproduci() const;
     void pausa() const;
 
-    void setSerie(QString);
-    QString getSerie() const;
-    void setCanale(QString);
-    QString getCanale() const;
+    void setSerie(string);
+    string getSerie() const;
+    void setCanale(string);
+    string getCanale() const;
 };
 
 #endif // EPISODIO_H

@@ -1,6 +1,5 @@
 #include "podcast.h"
 
-podcast::podcast()
-{
+podcast::podcast() {
 
 }

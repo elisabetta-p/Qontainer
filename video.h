@@ -7,7 +7,7 @@ class video: public ContenutoMultimediale {
 private:
     unsigned int risoluzione;
 public:
-    video(string, unsigned short int, string, double, unsigned short int, string, string, unsigned int =0);
+    video(string, unsigned short int, string, double, unsigned short int, string, string, unsigned int);
     virtual bool operator==(const video&) const;
     virtual ~video() = default;
 

@@ -21,7 +21,7 @@ private:
     string autore;
     string dataUscita;
 public:
-    ContenutoMultimediale(string ="0", unsigned short int =0, string ="0", double =0.0, unsigned short int=0, string ="0", string="0");
+    ContenutoMultimediale(string, unsigned short int, string, double, unsigned short int, string , string);
     virtual ~ContenutoMultimediale() = default;
     virtual void riproduci() const =0;
     virtual void pausa() const =0;

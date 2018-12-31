@@ -1,6 +1,9 @@
 #include <QGuiApplication>
 #include <QWidget>
 #include "database.h"
+#include "film.h"
+
+#include <string>
 
 int main(int argc, char *argv[])
 {
@@ -11,6 +14,8 @@ int main(int argc, char *argv[])
 
    return app.exec();*/
 
-    database d = database("/Users/elisabetta/Desktop/ProgettoP2/inserimento_dati.txt");
-    d.load();
+    //database d = database("/Users/elisabetta/Desktop/ProgettoP2/inserimento_dati.txt");
+    //d.load();
+    film ciao;
+    film::deserializza("/Users/elisabetta/Desktop/ProgettoP2/inserimento_dati.txt");
 }

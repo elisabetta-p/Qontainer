@@ -1,6 +1,6 @@
 #include "film.h"
 #include <string>
-#include<string>
+#include <fstream>
 using std::ifstream;
 using std::string;
 
@@ -35,7 +35,17 @@ string film::getSaga() const {
     return saga;
 }
 
-/*static container<film*> deserializza(std::istream& istr) {
-    container<film*> contenitore;
+static container<film*>* deserializza(std::string path) {
+    container<film*>* contenitore;
+    std::ifstream file;
+    file.open(path, std::ios::in);
 
-}*/
+    if (file.is_open()) {
+        while (!file.eof()){
+            string riga="";
+            getline(file, riga, ';');
+            cout << riga;
+        }
+    }
+    return contenitore;
+}

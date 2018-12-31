@@ -15,7 +15,7 @@ private:
     string regista, saga;
 public:
     ~film() = default;
-    film(string, unsigned short int, string, double, unsigned short int, string, string, unsigned int, string="nd", string ="nessuna");
+    film(string ="nd", unsigned short int =0, string ="nd", double =0.4, unsigned short int =3, string="nd", string="nd", unsigned int= 5, string="nd", string ="nessuna");
     film(const film&);
     film& operator=(const film&);
     bool operator==(const film&) const;
@@ -27,7 +27,7 @@ public:
 
     //virtual void serialize(std::ostream) const;
     //virtual film* create(std::istream) const;
-    static container<film*> deserializza(std::istream);
+    static container<film*> deserializza(std::string);
 
     friend std::istream& operator>>(std::istream&, film&);
 

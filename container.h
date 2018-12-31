@@ -127,7 +127,7 @@ public:
 
     //                              !!!!!!! dentro CONTAINER !!!!!!!!
     container(nodo* n=0) : first(n) {}
-    ~container() {if(first) distruggi(first);}
+    ~container() {/*if(first) distruggi(first);*/}
     container (const container&);
     container& operator=(const container& c) {
         first = copia(c.first);

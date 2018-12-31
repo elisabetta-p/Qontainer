@@ -14,8 +14,7 @@ int main(int argc, char *argv[])
 
    return app.exec();*/
 
-    //database d = database("/Users/elisabetta/Desktop/ProgettoP2/inserimento_dati.txt");
-    //d.load();
-    film ciao;
-    film::deserializza("/Users/elisabetta/Desktop/ProgettoP2/inserimento_dati.txt");
+    database d = database("/Users/elisabetta/Desktop/ProgettoP2/inserimento_dati.txt");
+    d.load();
+    //film::deserializza("/Users/elisabetta/Desktop/ProgettoP2/inserimento_dati.txt");
 }

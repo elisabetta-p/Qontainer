@@ -35,10 +35,10 @@ string film::getSaga() const {
     return saga;
 }
 
-static container<film*>* deserializza(std::string path) {
-    container<film*>* contenitore;
-    std::ifstream file;
-    file.open(path, std::ios::in);
+container<film*> film::deserializza(std::ifstream& file) {
+    container<film*> contenitore;
+    //std::ifstream file;
+    //file.open(path, std::ios::in);
 
     if (file.is_open()) {
         while (!file.eof()){

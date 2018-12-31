@@ -44,7 +44,7 @@ public:
     //serializzazione/deserializzazione
      void serialize(std::ostream&) const; //questa scrive su file
      ContenutoMultimediale* create(std::istream) const; //questa crea l'oggetto
-    static container<ContenutoMultimediale*> deserializza(std::istream&); //questa legge dal file?
+    //static container<ContenutoMultimediale*> deserializza(std::istream&); //questa legge dal file?
 };
 
 #endif // CONTENUTOMULTIMEDIALE_H

@@ -3,10 +3,11 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <string>
+
+#include "container.h"
+
 
 using std::string;
-
 using std::cout;
 using std::endl;
 
@@ -41,9 +42,9 @@ public:
     string getDataUscita() const;
 
     //serializzazione/deserializzazione
-    virtual void serialize(std::ostream&) const =0; //questa scrive su file
-    virtual ContenutoMultimediale* create(std::istream) const =0; //questa crea l'oggetto
-    static ContenutoMultimediale* unserialize (std::istream& istr); //questa legge dal file?
+     void serialize(std::ostream&) const; //questa scrive su file
+     ContenutoMultimediale* create(std::istream) const; //questa crea l'oggetto
+    static container<ContenutoMultimediale*> deserializza(std::istream&); //questa legge dal file?
 };
 
 #endif // CONTENUTOMULTIMEDIALE_H

@@ -23,7 +23,8 @@ SOURCES += \
     episodio.cpp \
     canzone.cpp \
     podcast.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    database.cpp
 
 RESOURCES += qml.qrc
 
@@ -47,7 +48,8 @@ HEADERS += \
     episodio.h \
     canzone.h \
     podcast.h \
-    mainwindow.h
+    mainwindow.h \
+    database.h
 
 FORMS += \
     mainwindow.ui

@@ -3,6 +3,10 @@
 
 #include "video.h"
 #include <iostream>
+#include <string>
+#include <istream>
+#include <fstream>
+
 using std::cout;
 using std::endl;
 
@@ -21,8 +25,14 @@ public:
     void setSaga(string);
     string getSaga() const;
 
-    virtual void serialize(std::ostream) const;
-    virtual film* create(std::istream) const;
+    //virtual void serialize(std::ostream) const;
+    //virtual film* create(std::istream) const;
+    static container<film*> deserializza(std::istream);
+
+    friend std::istream& operator>>(std::istream&, film&);
+
 };
+
+
 
 #endif // FILM_H

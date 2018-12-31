@@ -1,6 +1,7 @@
 #include "film.h"
 #include <string>
 #include<string>
+using std::ifstream;
 using std::string;
 
 void film::riproduci() const {
@@ -34,6 +35,7 @@ string film::getSaga() const {
     return saga;
 }
 
-void film::serialize(std::ostream stream) const {
+/*static container<film*> deserializza(std::istream& istr) {
+    container<film*> contenitore;
 
-}
+}*/

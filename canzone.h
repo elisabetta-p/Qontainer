@@ -12,17 +12,17 @@ public:
     canzone (const canzone&);
     canzone& operator=(const canzone&);
 
-    void riproduci() const;
-    void pausa() const;
+    virtual void riproduci() const;
+    virtual void pausa() const;
 
     void setAlbum();
     string getAlbum() const;
     void setProduttore();
     string getProduttore() const;
 
-    void serialize(std::ostream&) const;
+    /*void serialize(std::ostream&) const;
     canzone* create(std::istream) const;
-    canzone* unserialize(std::istream) const;
+    canzone* unserialize(std::istream) const; */
 };
 
 #endif // CANZONE_H

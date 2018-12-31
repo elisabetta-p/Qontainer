@@ -6,7 +6,7 @@ class canzone: public audio {
 private:
     string album, produttore;
 public:
-    canzone(string, unsigned short int, string, double, unsigned short int, string, string, unsigned short int, string, string);
+    canzone(string, unsigned short int, string, double, unsigned short int, string, unsigned short int, unsigned short int, string, string);
     bool operator==(const canzone&) const;
     ~canzone() = default;
     canzone (const canzone&);

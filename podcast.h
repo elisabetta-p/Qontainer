@@ -6,7 +6,7 @@ class podcast: public audio{
 private:
     string raccolta, ospite;
 public:
-    podcast(string, unsigned short int, string, double, unsigned short int, string, string, unsigned short int, string, string);
+    podcast(string, unsigned short int, string, double, unsigned short int, string, unsigned short int, unsigned short int, string="nd", string="nd");
     ~podcast() = default;
     podcast(const podcast&);
     bool operator==(const podcast&) const;

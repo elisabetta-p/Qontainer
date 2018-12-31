@@ -8,7 +8,7 @@ private:
     string canale;
 public:
     ~episodio() = default;
-    episodio(string, unsigned short int, string, double, unsigned short int, string, string, unsigned int, string ="nd", string ="nd");
+    episodio(string, unsigned short int, string, double, unsigned short int, string, unsigned short int, unsigned int, string ="nd", string ="nd");
     episodio(const episodio&);
     episodio& operator=(const episodio&);
     bool operator==(const episodio&) const;

@@ -15,7 +15,7 @@ private:
     string regista, saga;
 public:
     ~film() = default;
-    film(string ="nd", unsigned short int =0, string ="nd", double =0.4, unsigned short int =3, string="nd", string="nd", unsigned int= 5, string="nd", string ="nessuna");
+    film(string ="nd", unsigned short int =0, string ="nd", double =0.4, unsigned short int =3, string="nd", unsigned short int=0, unsigned int= 5, string="nd", string ="nessuna");
     film(const film&);
     film& operator=(const film&);
     bool operator==(const film&) const;

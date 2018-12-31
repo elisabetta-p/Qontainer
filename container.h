@@ -152,7 +152,7 @@ public:
 
     //metodi del contenitore invocati su iteratori non costanti
     iterator begin() {
-        const_iterator aux;
+        iterator aux;
         aux.punt=first;
         return aux;
     }
@@ -178,9 +178,9 @@ public:
 
     // METODI DA SPECIFICA
 
-    void insert(const T& cont) { //aggiunge un contenuto multimediale in testa alla lista di contenuti multimediali salvati sotto forma di nodi
+    void insert(const T& contenuto) { //aggiunge un contenuto multimediale in testa alla lista di contenuti multimediali salvati sotto forma di nodi
         cout << "Il contenuto e' stato inserito!";
-        first = new nodo(cont, first);
+        first = new nodo(contenuto, first);
     }
 
     void remove(const T& cont) {

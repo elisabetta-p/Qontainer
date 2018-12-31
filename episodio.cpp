@@ -1,6 +1,6 @@
 #include "episodio.h"
 
-episodio::episodio(string titol, unsigned short int dur, string gen, double dim, unsigned short int val, string aut, string data, unsigned int risol, string ser, string can) : video(titol, dur, gen, dim, val, aut, data, risol), serie(ser), canale(can) {}
+episodio::episodio(string titol, unsigned short int dur, string gen, double dim, unsigned short int val, string aut, unsigned short int data, unsigned int risol, string ser, string can) : video(titol, dur, gen, dim, val, aut, data, risol), serie(ser), canale(can) {}
 
 episodio::episodio(const episodio& e) : video(e), serie(e.serie), canale(e.canale) {};
 

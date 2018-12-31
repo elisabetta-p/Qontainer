@@ -1,6 +1,9 @@
 #include "film.h"
 #include <string>
 #include <fstream>
+#include <vector>
+
+
 using std::ifstream;
 using std::string;
 
@@ -17,7 +20,7 @@ bool film::operator==(const film& file) const {
     return (video::operator==(file) && saga == file.saga);
 }
 
-film::film(string titol, unsigned short int dur, string gen, double dim, unsigned short int val, string aut, string data, unsigned int risol, string reg, string sag) : video(titol, dur, gen, dim, val, aut, data, risol), regista (reg), saga(sag) {}
+film::film(string titol, unsigned short int dur, string gen, double dim, unsigned short int val, string aut, unsigned short int data, unsigned int risol, string reg, string sag) : video(titol, dur, gen, dim, val, aut, data, risol), regista (reg), saga(sag) {}
 
 film::film(const film& file) : video(file), saga(file.saga) {}
 
@@ -44,8 +47,38 @@ container<film*> film::deserializza(std::ifstream& file) {
         while (!file.eof()){
             string riga="";
             getline(file, riga, ';');
-            cout << riga;
+            std::vector<string> risultato;
+            int firstChar =0;
+
+            for (int pos=0; pos < riga.size() ; ++pos) {
+                if (riga[pos] == ',' || pos == riga.size()-1) {
+                    risultato.push_back(riga.substr(firstChar, pos-firstChar));
+                    firstChar = pos+1;
+
+                }
+
+            }
+
+            int p = 0;
+            for ( auto it = risultato.begin() ; it != risultato.end(); ++it) {
+                cout << p << " " << *it << std::endl; ++p;
+            }
+
+            try{
+            contenitore.insert(new film (risultato[0],
+                                        static_cast<unsigned short int> (std::stoul(risultato[1])),
+                                        risultato[2],
+                                        std::stod(risultato[3]),
+                                        static_cast<unsigned short int> (std::stoul(risultato[4])),
+                                        risultato[5],
+                                        static_cast<unsigned short int> (std::stoul(risultato[6])),
+                                        static_cast<unsigned int> (std::stoul(risultato[7])),
+                                        risultato[8],
+                                        risultato[9]));
+            }
+            catch(std::invalid_argument e){ std::cout << e.what();}
         }
+
     }
     return contenitore;
 }

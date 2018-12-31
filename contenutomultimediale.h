@@ -19,9 +19,9 @@ private:
     double dimensione;
     unsigned short int valutazione;
     string autore;
-    string dataUscita;
+    unsigned short int dataUscita;
 public:
-    ContenutoMultimediale(string, unsigned short int, string, double, unsigned short int, string , string);
+    ContenutoMultimediale(string, unsigned short int, string, double, unsigned short int, string , unsigned short int);
     virtual ~ContenutoMultimediale() = default;
     virtual void riproduci() const =0;
     virtual void pausa() const =0;
@@ -38,8 +38,8 @@ public:
     unsigned short int getValutazione() const;
     void setAutore(string);
     string getAutore() const;
-    void setDataUscita(string);
-    string getDataUscita() const;
+    void setDataUscita(unsigned short int);
+    unsigned short int getDataUscita() const;
 
     //serializzazione/deserializzazione
      void serialize(std::ostream&) const; //questa scrive su file

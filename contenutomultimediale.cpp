@@ -1,7 +1,7 @@
 #include "contenutomultimediale.h"
 
 
-ContenutoMultimediale::ContenutoMultimediale(string titolo, unsigned short int dur, string gen, double dim, unsigned short int val, string aut, string data) : titolo(titolo), durata(dur), genere(gen), dimensione(dim), valutazione(val), autore(aut), dataUscita(data) {}
+ContenutoMultimediale::ContenutoMultimediale(string titolo, unsigned short int dur, string gen, double dim, unsigned short int val, string aut, unsigned short int data) : titolo(titolo), durata(dur), genere(gen), dimensione(dim), valutazione(val), autore(aut), dataUscita(data) {}
 /*ContenutoMultimediale::~ContenutoMultimediale() {}*/
 
 bool ContenutoMultimediale::operator==(const ContenutoMultimediale& cont) const {
@@ -25,7 +25,7 @@ void ContenutoMultimediale::setAutore(string aut) {
     autore = aut;
 }
 
-void ContenutoMultimediale::setDataUscita(string data) {
+void ContenutoMultimediale::setDataUscita(unsigned short int data) {
     dataUscita = data;
 }
 
@@ -51,6 +51,6 @@ string ContenutoMultimediale::getAutore() const {
     return autore;
 }
 
-string ContenutoMultimediale::getDataUscita() const {
+unsigned short int ContenutoMultimediale::getDataUscita() const {
     return dataUscita;
 }

@@ -1,6 +1,7 @@
 #include "film.h"
 #include <string>
 #include <fstream>
+#include <sstream>
 #include <vector>
 
 
@@ -46,10 +47,15 @@ container<film*> film::deserializza(std::ifstream& file) {
     if (file.is_open()) {
         while (!file.eof()){
             string riga="";
-            getline(file, riga, ';');
+            //getline(file, riga, ';');
+
+            std::stringstream buffer;
+            buffer << file.rdbuf();
+            riga = buffer.str();
+
             std::vector<string> risultato;
             int firstChar =0;
-
+            //riga = "La compagnia dell'anello,228,Fantasy,2500,10,JRR Tolkien,2001,1080,Peter Jackson,Il Signore degli Anelli,";
             for (int pos=0; pos < riga.size() ; ++pos) {
                 if (riga[pos] == ',' || pos == riga.size()-1) {
                     risultato.push_back(riga.substr(firstChar, pos-firstChar));
@@ -64,7 +70,7 @@ container<film*> film::deserializza(std::ifstream& file) {
                 cout << p << " " << *it << std::endl; ++p;
             }
 
-            try{
+            //try{
             contenitore.insert(new film (risultato[0],
                                         static_cast<unsigned short int> (std::stoul(risultato[1])),
                                         risultato[2],
@@ -75,8 +81,9 @@ container<film*> film::deserializza(std::ifstream& file) {
                                         static_cast<unsigned int> (std::stoul(risultato[7])),
                                         risultato[8],
                                         risultato[9]));
-            }
-            catch(std::invalid_argument e){ std::cout << e.what();}
+            //}
+            //catch(std::invalid_argument e){ std::cout << e.what();}
+
         }
 
     }

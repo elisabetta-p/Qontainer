@@ -11,9 +11,10 @@ void database::load() {
     if (file.is_open()) {
         film::deserializza(file);
         std::cout << "true";
-
+        file.close();
     }
      else {
         std::cout << path;
     }
+
 }

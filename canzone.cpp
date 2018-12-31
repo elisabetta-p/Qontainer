@@ -5,3 +5,9 @@ canzone::canzone(string titol, unsigned short int dur, string gen, double dim, u
 bool canzone::operator==(const canzone & file) const {
     return (audio::operator==(file) && album == file.album && produttore == file.produttore);
 }
+
+
+
+canzone* canzone::create(std::istream istr) const {
+    return new canzone(istr);
+}

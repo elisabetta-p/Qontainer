@@ -19,6 +19,10 @@ public:
     string getAlbum() const;
     void setProduttore();
     string getProduttore() const;
+
+    void serialize(std::ostream&) const;
+    canzone* create(std::istream) const;
+    canzone* unserialize(std::istream) const;
 };
 
 #endif // CANZONE_H

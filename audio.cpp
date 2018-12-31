@@ -5,3 +5,7 @@ audio::audio(string titol, unsigned short int dur, string gen, double dim, unsig
 bool audio::operator==(const audio& file) const {
     return (ContenutoMultimediale::operator==(file) && qualita == file.qualita);
 }
+
+audio* audio::create(std::istream istr) const {
+    return new audio(istr);
+}

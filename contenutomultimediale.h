@@ -41,8 +41,9 @@ public:
     string getDataUscita() const;
 
     //serializzazione/deserializzazione
-    virtual void serialize(std::ostream) const =0;
-    virtual ContenutoMultimediale* create(std::istream) const =0;
+    virtual void serialize(std::ostream&) const =0; //questa scrive su file
+    virtual ContenutoMultimediale* create(std::istream) const =0; //questa crea l'oggetto
+    static ContenutoMultimediale* unserialize (std::istream& istr); //questa legge dal file?
 };
 
 #endif // CONTENUTOMULTIMEDIALE_H

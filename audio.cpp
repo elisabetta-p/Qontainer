@@ -6,6 +6,3 @@ bool audio::operator==(const audio& file) const {
     return (ContenutoMultimediale::operator==(file) && qualita == file.qualita);
 }
 
-audio* audio::create(std::istream istr) const {
-    return new audio(istr);
-}

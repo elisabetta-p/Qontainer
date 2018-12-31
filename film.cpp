@@ -16,7 +16,7 @@ bool film::operator==(const film& file) const {
     return (video::operator==(file) && saga == file.saga);
 }
 
-film::film(string titol, unsigned short int dur, string gen, double dim, unsigned short int val, string aut, string data, unsigned int risol, string sag) : video(titol, dur, gen, dim, val, aut, data, risol), saga(sag) {}
+film::film(string titol, unsigned short int dur, string gen, double dim, unsigned short int val, string aut, string data, unsigned int risol, string reg, string sag) : video(titol, dur, gen, dim, val, aut, data, risol), regista (reg), saga(sag) {}
 
 film::film(const film& file) : video(file), saga(file.saga) {}
 

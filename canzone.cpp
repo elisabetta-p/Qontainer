@@ -6,7 +6,13 @@ bool canzone::operator==(const canzone & file) const {
     return (audio::operator==(file) && album == file.album && produttore == file.produttore);
 }
 
+void canzone::serialize(std::ostream& os) const {
 
+}
+
+canzone* canzone::create(std::istream) const {
+
+}
 
 canzone* canzone::create(std::istream istr) const {
     return new canzone(istr);

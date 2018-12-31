@@ -8,10 +8,10 @@ using std::endl;
 
 class film: public video {
 private:
-    string saga;
+    string regista, saga;
 public:
     ~film() = default;
-    film(string, unsigned short int, string, double, unsigned short int, string, string, unsigned int, string ="nessuna");
+    film(string, unsigned short int, string, double, unsigned short int, string, string, unsigned int, string="nd", string ="nessuna");
     film(const film&);
     film& operator=(const film&);
     bool operator==(const film&) const;

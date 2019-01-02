@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 
    return app.exec();*/
 
-    database d = database("/home/studente/Desktop/ProgettoP2/inserimento_dati.txt");
+    database d = database("/Users/elisabetta/Desktop/ProgettoP2/inserimento_dati.txt");
     d.load();
     //std::string ciao = "44";
     //unsigned short int x = static_cast<unsigned short int>(std::stoul(ciao));

@@ -2,10 +2,8 @@
 #define FILM_H
 
 #include "video.h"
-#include <iostream>
-#include <string>
 #include <istream>
-#include <fstream>
+#include "container.h"
 
 using std::cout;
 using std::endl;

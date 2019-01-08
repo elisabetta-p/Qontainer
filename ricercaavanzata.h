@@ -17,9 +17,9 @@ public:
     ~ricercaavanzata();
 
 private slots:
-    void on_lineEditTitolo_textEdited(const QString &arg1);
+    //void on_lineEditTitolo_textEdited(const QString &arg1);
 
-    void on_lineEditTitolo_cursorPositionChanged(int arg1, int arg2);
+    //void on_lineEditTitolo_cursorPositionChanged(int arg1, int arg2);
 
 private:
     Ui::ricercaavanzata *ui;

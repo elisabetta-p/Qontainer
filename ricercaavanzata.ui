@@ -123,27 +123,39 @@
     <item>
      <widget class="QLineEdit" name="lineEditTitolo">
       <property name="text">
-       <string>Inserisci il titolo che stai cercando (obbligatorio!)</string>
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>Inserisci il titolo che stai cercando (obbligatorio)</string>
       </property>
      </widget>
     </item>
     <item>
      <widget class="QLineEdit" name="lineEditAutore">
       <property name="text">
-       <string>Inserisci l'autore (facoltativo)</string>
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>Inserisci l'autore che stai cercando (obbligatorio)</string>
       </property>
      </widget>
     </item>
     <item>
      <widget class="QLineEdit" name="lineEditDurata">
       <property name="text">
-       <string>Inserisci la durata (in minuti! facoltativo)</string>
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>Inserisci la durata del file in minuti (facoltativo)</string>
       </property>
      </widget>
     </item>
     <item>
      <widget class="QLineEdit" name="lineEditGenere">
       <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
        <string>Inserisci il genere (facoltativo)</string>
       </property>
      </widget>
@@ -151,7 +163,10 @@
     <item>
      <widget class="QLineEdit" name="lineEditAnno">
       <property name="text">
-       <string>Inserisci l'anno di uscita (facoltativo)</string>
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>Inserisci l'anno di produzione (facoltativo)</string>
       </property>
      </widget>
     </item>

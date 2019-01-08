@@ -8,7 +8,7 @@ ricercaavanzata::ricercaavanzata(QWidget *parent) :
 {
     ui->setupUi(this);
     /* QLineEdit* lineEditTitolo = new QLineEdit(this);*/
-    lineEditTitolo.setPlaceholderText("banana");
+    //lineEditAutore.setPlaceholderText(x);
 }
 
 ricercaavanzata::~ricercaavanzata()

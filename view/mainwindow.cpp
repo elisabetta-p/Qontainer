@@ -16,7 +16,7 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
     titoloFinestra->setScaledContents(true);
     titoloFinestra->setBackgroundRole(QPalette::Dark);
 
-    QPixmap logo("./view/logo1.png");
+    QPixmap logo("/home/studente/Desktop/ProgettoP2/view/logo1.png");
     titoloFinestra->setPixmap(logo);
     /*
     titoloFinestra->setMinimumSize(this->width(), 50);

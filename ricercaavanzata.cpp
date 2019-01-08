@@ -2,7 +2,7 @@
 #include "mainwindow.h"
 ricercaavanzata::ricercaavanzata() {
     setWindowTitle("Qontainer: Ricerca Avanzata - Elisabetta Piombin");
-    setFixedSize(700,650);
+    setFixedSize(530,530);
     setFocusPolicy(Qt::StrongFocus);
 
     //Creazione del titolo Ricerca Avanzata

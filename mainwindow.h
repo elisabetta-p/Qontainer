@@ -6,6 +6,9 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QFont>
+#include <QButtonGroup>
+#include <QGroupBox>
+#include <QHBoxLayout>
 
 
 class mainwindow: public QMainWindow {

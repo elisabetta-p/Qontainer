@@ -10,16 +10,14 @@
 #include <QGroupBox>
 #include <QHBoxLayout>
 #include <QSize>
+#include <QGridLayout>
 
 
 class mainwindow: public QMainWindow {
     Q_OBJECT
 private:
-    void creaTitolo();
-    void creaBottoni();
-    void creaListeContenuti();
-    QGroupBox gruppoBottoni;
-    QPushButton* bottoni[2];
+
+
     /*
     QLabel* titoloFinestra, *lib, *artisti, *film, *serie, *podcast;
     QPushButton *ricerca, *aggiungi;

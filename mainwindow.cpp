@@ -1,31 +1,27 @@
 #include "mainwindow.h"
 
-/*
-mainwindow::mainwindow(QLabel ti, QPushButton ric, QPushButton agg, QLabel li, QLabel art, QLabel fi ,QLabel ser, QLabel pod, QVBoxLayout lAr, QVBoxLayout lFi, QVBoxLayout lSe, QVBoxLayout lPo) :
-                        titoloFinestra(ti), ricerca(ric), aggiungi(agg), lib(li), artisti(art), film(fi), serie (ser), podcast(pod), layoutArtisti(lAr), layoutFilm(lFi), layoutSerie(lSe), layoutPodcast(lPo) {}
-
-*/
-
 mainwindow::mainwindow(QWidget* parent ) : QMainWindow (parent) {
     setWindowTitle("Qontainer - Elisabetta Piombin");
-    setFixedSize(700,500);
+    setFixedSize(700,650);
     setFocusPolicy(Qt::StrongFocus);
 
-    creaTitolo();
-    creaBottoni();
+     //Creazione del titolo Qontainer
+    QGroupBox* titoloGropuBox = new QGroupBox(this);
 
-}
-
-void mainwindow::creaTitolo() {
     QLabel* titolo = new QLabel(this);
-    titolo->setMinimumSize(200, 100);
+    titolo->setMinimumSize(this->width(), 100);
     titolo->setText(tr("Qontainer"));
-    QFont fontTitolo ("Times", 36, QFont::Bold);
-    titolo->setFont(fontTitolo);
-    titolo->setAlignment(Qt::AlignCenter);
-}
+    titolo->setFont(QFont("Times", 36, QFont::Bold));
 
-void mainwindow::creaBottoni() {
+    QHBoxLayout* boxTitolo = new QHBoxLayout;
+
+    boxTitolo->addWidget(titolo);
+
+    boxTitolo->setSizeConstraint(QLayout::SetMinimumSize);
+    titoloGropuBox->setLayout(boxTitolo);
+    titolo->setAlignment(Qt::AlignCenter);
+
+    //aggiunta dei due bottoni per la ricerca e per l'aggiunta di contenuto
     QGroupBox* gruppoBottoni = new QGroupBox(this);
 
     QPushButton* ricerca = new QPushButton(this);
@@ -41,5 +37,35 @@ void mainwindow::creaBottoni() {
 
     boxBottoni->setSizeConstraint(QLayout::SetMinimumSize);
     gruppoBottoni->setLayout(boxBottoni);
-    gruppoBottoni->setMinimumSize(QSize(this->width(),200));
+    gruppoBottoni->setGeometry(0, titolo->height()+26, this->width(), 0);
+    //gruppoBottoni->setMinimumSize(QSize(this->width(),100));
+
+    //etichetta "la tua libreria"
+    QLabel* lib = new QLabel(this);
+    lib->setText(tr("La tua libreria:"));
+    lib->setMinimumSize(QSize(this->width(), 400));
+    lib->setFont(QFont("Times", 24));
+
+    //creazione della griglia: nomi
+    QGroupBox* nomi = new QGroupBox(this);
+    QLabel* cantanti = new QLabel(this);
+    cantanti->setText("Cantanti");
+    QLabel* podcast = new QLabel(this);
+    podcast->setText("Podcast");
+    QLabel* serie = new QLabel(this);
+    serie->setText("Serie");
+    QLabel* film = new QLabel(this);
+    film->setText("Film");
+
+    QHBoxLayout* layoutNomi = new QHBoxLayout;
+    layoutNomi->addWidget(cantanti);
+    layoutNomi->addWidget(podcast);
+    layoutNomi->addWidget(serie);
+    layoutNomi->addWidget(film);
+
+    layoutNomi->setSizeConstraint(QLayout::SetMinimumSize);
+    nomi->setLayout(layoutNomi);
+    nomi->setMinimumSize(QSize(this->width(), 500));
+
 }
+

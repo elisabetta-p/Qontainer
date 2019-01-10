@@ -41,5 +41,5 @@ void mainwindow::creaBottoni() {
 
     boxBottoni->setSizeConstraint(QLayout::SetMinimumSize);
     gruppoBottoni->setLayout(boxBottoni);
-    gruppoBottoni->setMinimumSize(QSize(700,200));
+    gruppoBottoni->setMinimumSize(QSize(this->width(),200));
 }

@@ -67,5 +67,7 @@ mainwindow::mainwindow(QWidget* parent ) : QMainWindow (parent) {
     nomi->setLayout(layoutNomi);
     nomi->setMinimumSize(QSize(this->width(), 500));
 
+    //creazione della griglia: elenco dei file?????? how
+
 }
 

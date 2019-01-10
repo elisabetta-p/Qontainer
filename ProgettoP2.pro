@@ -2,7 +2,7 @@ QT += core
 CONFIG += c++11
 CONFIG+=sdk_no_version_check
 QT += widgets
-
+QT += gui
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -23,9 +23,8 @@ SOURCES += \
     episodio.cpp \
     canzone.cpp \
     podcast.cpp \
-    mainwindow.cpp \
     database.cpp \
-    ricercaavanzata.cpp
+    mainwindow.cpp
 
 RESOURCES += qml.qrc
 
@@ -49,12 +48,9 @@ HEADERS += \
     episodio.h \
     canzone.h \
     podcast.h \
-    mainwindow.h \
     database.h \
-    ricercaavanzata.h
+    mainwindow.h
 
-FORMS += \
-    mainwindow.ui \
-    ricercaavanzata.ui
+
 
 

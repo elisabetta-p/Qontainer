@@ -1,6 +1,6 @@
 #include <QGuiApplication>
-#include <QApplication>
 #include <QWidget>
+#include <QApplication>
 #include "database.h"
 #include "film.h"
 #include "mainwindow.h"
@@ -13,7 +13,8 @@ int main(int argc, char *argv[])
    //QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
    QApplication app(argc, argv);
-   MainWindow window;
+   mainwindow window;
+
    window.show();
 
 

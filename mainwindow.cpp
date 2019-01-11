@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ricercaavanzata.h"
+#include "aggiungi.h"
 
 mainwindow::mainwindow(QWidget* parent ) : QMainWindow (parent) {
 
@@ -93,6 +94,7 @@ mainwindow::mainwindow(QWidget* parent ) : QMainWindow (parent) {
     //gruppoBottoni->setMinimumSize(QSize(this->width(),100));
 
     connect (ricerca, SIGNAL(clicked()), this, SLOT(schiacciaRicerca()));
+    connect (aggiungi, SIGNAL(clicked()), this, SLOT(schiacciaAggiungi()));
 }
 
 void mainwindow::schiacciaRicerca() {
@@ -100,5 +102,11 @@ void mainwindow::schiacciaRicerca() {
     ricercaavanzata* newRicerca = new ricercaavanzata();
     newRicerca -> show();
 
+}
+
+void mainwindow::schiacciaAggiungi() {
+    this -> hide();
+    aggiungi* newAggiungi = new aggiungi();
+    newAggiungi -> show();
 }
 

@@ -32,31 +32,8 @@ mainwindow::mainwindow(QWidget* parent ) : QMainWindow (parent) {
     lib->setMinimumSize(QSize(this->width(), 400));
     lib->setFont(QFont("Times", 24));
 
-    /*
-    //creazione della griglia: nomi
-    QGroupBox* nomi = new QGroupBox(this);
-    QLabel* cantanti = new QLabel(this);
-    cantanti->setText("Cantanti");
-    QLabel* podcast = new QLabel(this);
-    podcast->setText("Podcast");
-    QLabel* serie = new QLabel(this);
-    serie->setText("Serie");
-    QLabel* film = new QLabel(this);
-    film->setText("Film");
 
-    QHBoxLayout* layoutNomi = new QHBoxLayout;
-    layoutNomi->addWidget(cantanti);
-    layoutNomi->addWidget(podcast);
-    layoutNomi->addWidget(serie);
-    layoutNomi->addWidget(film);
-
-    layoutNomi->setSizeConstraint(QLayout::SetMinimumSize);
-    nomi->setLayout(layoutNomi);
-    nomi->setMinimumSize(QSize(this->width(), 500));
-
-    */
-
-    //creazione della griglia: elenco dei file?????? how
+    //creazione della griglia:
     //quattro QLabel, per i titoli, e poi quattro QListBox per la lista di elementi
     //che verranno inseriti
 
@@ -114,6 +91,7 @@ mainwindow::mainwindow(QWidget* parent ) : QMainWindow (parent) {
     gruppoBottoni->setLayout(boxBottoni);
     gruppoBottoni->setGeometry(0, titolo->height()+26, this->width(), 0);
     //gruppoBottoni->setMinimumSize(QSize(this->width(),100));
+
     connect (ricerca, SIGNAL(QAbstractButton::clicked()), this, SLOT(mainwindow::schiacciaRicerca()));
 }
 

@@ -2,7 +2,7 @@
 #define RICERCAAVANZATA_H
 #include "mainwindow.h"
 
-class ricercaavanzata: public mainwindow {
+class ricercaavanzata: public QMainWindow {
     Q_OBJECT
 public:
     ricercaavanzata();

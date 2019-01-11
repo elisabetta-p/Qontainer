@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "ricercaavanzata.h"
 
 mainwindow::mainwindow(QWidget* parent ) : QMainWindow (parent) {
     setWindowTitle("Qontainer - Elisabetta Piombin");
@@ -21,24 +22,7 @@ mainwindow::mainwindow(QWidget* parent ) : QMainWindow (parent) {
     titoloGropuBox->setLayout(boxTitolo);
     titolo->setAlignment(Qt::AlignCenter);
 
-    //aggiunta dei due bottoni per la ricerca e per l'aggiunta di contenuto
-    QGroupBox* gruppoBottoni = new QGroupBox(this);
 
-    QPushButton* ricerca = new QPushButton(this);
-    ricerca->setText("Ricerca Avanzata");
-    QPushButton* aggiungi = new QPushButton(this);
-    aggiungi->setText("Aggiungi contenuto");
-
-
-    QHBoxLayout* boxBottoni = new QHBoxLayout;
-
-    boxBottoni->addWidget(ricerca);
-    boxBottoni->addWidget(aggiungi);
-
-    boxBottoni->setSizeConstraint(QLayout::SetMinimumSize);
-    gruppoBottoni->setLayout(boxBottoni);
-    gruppoBottoni->setGeometry(0, titolo->height()+26, this->width(), 0);
-    //gruppoBottoni->setMinimumSize(QSize(this->width(),100));
 
     //etichetta "la tua libreria"
     QLabel* lib = new QLabel(this);
@@ -111,5 +95,31 @@ mainwindow::mainwindow(QWidget* parent ) : QMainWindow (parent) {
     CICLO CHE CARICA I CONTENUTI DA FILE DENTRO LE VARIE LISTE VERTICALMENTE
     */
 
+    //aggiunta dei due bottoni per la ricerca e per l'aggiunta di contenuto
+    QGroupBox* gruppoBottoni = new QGroupBox(this);
+
+    QPushButton* ricerca = new QPushButton(this);
+    ricerca->setText("Ricerca Avanzata");
+    QPushButton* aggiungi = new QPushButton(this);
+    aggiungi->setText("Aggiungi contenuto");
+
+
+    QHBoxLayout* boxBottoni = new QHBoxLayout;
+
+    boxBottoni->addWidget(ricerca);
+    boxBottoni->addWidget(aggiungi);
+
+    boxBottoni->setSizeConstraint(QLayout::SetMinimumSize);
+    gruppoBottoni->setLayout(boxBottoni);
+    gruppoBottoni->setGeometry(0, titolo->height()+26, this->width(), 0);
+    //gruppoBottoni->setMinimumSize(QSize(this->width(),100));
+
+    connect (ricerca, SIGNAL(click()), this, SLOT(schiacciaRicerca()));
+}
+
+void mainwindow::schiacciaRicerca() {
+    ricercaavanzata* ra = new ricercaavanzata();
+    ra->show();
+    //this->hide();
 }
 

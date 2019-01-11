@@ -24,7 +24,8 @@ SOURCES += \
     canzone.cpp \
     podcast.cpp \
     database.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    ricercaavanzata.cpp
 
 RESOURCES += qml.qrc
 
@@ -49,7 +50,8 @@ HEADERS += \
     canzone.h \
     podcast.h \
     database.h \
-    mainwindow.h
+    mainwindow.h \
+    ricercaavanzata.h
 
 
 

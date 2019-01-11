@@ -13,14 +13,16 @@
 #include <QGridLayout>
 #include <QScrollBar>
 
-
 class mainwindow: public QMainWindow {
     Q_OBJECT
 private:
+    QPushButton* ricerca;
 
 public:
     mainwindow(QWidget* =nullptr);
     ~mainwindow() = default;
+public slots:
+    void schiacciaRicerca();
 };
 
 #endif // MAINWINDOW_H

@@ -9,9 +9,9 @@ aggiungi::aggiungi() {
    QGroupBox* titoloGropuBox = new QGroupBox(this);
 
    QLabel* titoloFinestra = new QLabel(this);
-   titoloFinestra->setMinimumSize(this->width(), 80);
+   titoloFinestra->setMinimumSize(this->width(), 30);
    titoloFinestra->setText(tr("Aggiungi Contenuti"));
-   titoloFinestra->setFont(QFont("Times", 36, QFont::Bold));
+   titoloFinestra->setFont(QFont("Times", 26, QFont::Bold));
 
    QHBoxLayout* boxTitolo = new QHBoxLayout;
 
@@ -82,7 +82,7 @@ aggiungi::aggiungi() {
    boxAggiungi->addWidget(goBack,1,0, Qt::AlignCenter);
    boxAggiungi->setSizeConstraint(QLayout::SetMinimumSize);
    gruppoAggiungi->setLayout(boxAggiungi);
-   gruppoAggiungi->setGeometry(0, this->height()-70, this->width(), 0);
+   gruppoAggiungi->setGeometry(0, this->height()-80, this->width(), 0);
 
    connect (goBack, SIGNAL(clicked()), this, SLOT(tornaAllaMainWindow()));
 }

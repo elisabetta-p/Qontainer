@@ -12,9 +12,9 @@ mainwindow::mainwindow(QWidget* parent ) : QMainWindow (parent) {
     QGroupBox* titoloGropuBox = new QGroupBox(this);
 
     QLabel* titolo = new QLabel(this);
-    titolo->setMinimumSize(this->width(), 100);
+    titolo->setMinimumSize(this->width(), 30);
     titolo->setText(tr("Qontainer"));
-    titolo->setFont(QFont("Times", 36, QFont::Bold));
+    titolo->setFont(QFont("Times", 26, QFont::Bold));
 
     QHBoxLayout* boxTitolo = new QHBoxLayout;
 

@@ -110,3 +110,4 @@ void mainwindow::schiacciaAggiungi() {
     newAggiungi -> show();
 }
 
+

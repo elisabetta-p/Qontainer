@@ -10,6 +10,9 @@ class aggiungi: public QMainWindow {
 public:
     aggiungi();
     ~aggiungi() = default;
+private slots:
+    void tornaAllaMainWindow();
+
 };
 
 #endif // AGGIUNGI_H

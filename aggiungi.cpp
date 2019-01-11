@@ -69,15 +69,26 @@ aggiungi::aggiungi() {
    boxAggiunta->setLayout(griglia);
    boxAggiunta->setMinimumSize(QSize(this->width(), this->height()));
 
-   //aggiunta del bottone aggiungi
+   //aggiunta del bottone aggiungi e del bottone torna indietro
    QGroupBox* gruppoAggiungi = new QGroupBox(this);
 
-   QPushButton * cercaA = new QPushButton(this);
-   cercaA->setText("Aggiungi");
+   QPushButton* agg = new QPushButton(this);
+   agg->setText("Aggiungi");
+   QPushButton* goBack = new QPushButton(this);
+   goBack->setText("Torna alla schermata principale");
 
-   QHBoxLayout* boxAggiungi = new QHBoxLayout;
-   boxAggiungi->addWidget(cercaA, Qt::AlignCenter);
+   QGridLayout* boxAggiungi = new QGridLayout;
+   boxAggiungi->addWidget(agg,0,0, Qt::AlignCenter);
+   boxAggiungi->addWidget(goBack,1,0, Qt::AlignCenter);
    boxAggiungi->setSizeConstraint(QLayout::SetMinimumSize);
    gruppoAggiungi->setLayout(boxAggiungi);
-   gruppoAggiungi->setGeometry(0, this->height()-40, this->width(), 0);
+   gruppoAggiungi->setGeometry(0, this->height()-70, this->width(), 0);
+
+   connect (goBack, SIGNAL(clicked()), this, SLOT(tornaAllaMainWindow()));
+}
+
+void aggiungi::tornaAllaMainWindow() {
+    this->hide();
+    mainwindow* newMainW = new mainwindow;
+    newMainW->show();
 }

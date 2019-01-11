@@ -9,6 +9,9 @@ class ricercaavanzata: public QMainWindow {
 public:
     ricercaavanzata();
     ~ricercaavanzata() = default;
+private slots:
+    void tornaAllaMainWindow();
+
 };
 
 #endif // RICERCAAVANZATA_H

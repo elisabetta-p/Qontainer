@@ -1,5 +1,5 @@
 #include "ricercaavanzata.h"
-
+#include "mainwindow.h"
 ricercaavanzata::ricercaavanzata() {
     setWindowTitle("Qontainer: Ricerca Avanzata - Elisabetta Piombin");
     setFixedSize(700,650);
@@ -76,11 +76,21 @@ ricercaavanzata::ricercaavanzata() {
 
    QPushButton * cercaB = new QPushButton(this);
    cercaB->setText("Cerca");
+   QPushButton* goBack = new QPushButton(this);
+   goBack->setText("Torna alla schermata principale");
 
-   QHBoxLayout* boxCerca = new QHBoxLayout;
-   boxCerca->addWidget(cercaB, Qt::AlignCenter);
+   QGridLayout* boxCerca = new QGridLayout;
+   boxCerca->addWidget(cercaB,0,0, Qt::AlignCenter);
+   boxCerca->addWidget(goBack,1,0, Qt::AlignCenter);
    boxCerca->setSizeConstraint(QLayout::SetMinimumSize);
    gruppoCerca->setLayout(boxCerca);
-   gruppoCerca->setGeometry(0, this->height()-40, this->width(), 0);
+   gruppoCerca->setGeometry(0, this->height()-70, this->width(), 0);
 
+   connect (goBack, SIGNAL(clicked()), this, SLOT(tornaAllaMainWindow()));
+}
+
+void ricercaavanzata::tornaAllaMainWindow() {
+    this->hide();
+    mainwindow* newMainW = new mainwindow;
+    newMainW->show();
 }

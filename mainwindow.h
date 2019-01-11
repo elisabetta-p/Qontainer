@@ -11,21 +11,15 @@
 #include <QHBoxLayout>
 #include <QSize>
 #include <QGridLayout>
+#include <QScrollBar>
 
 
 class mainwindow: public QMainWindow {
     Q_OBJECT
 private:
 
-
-    /*
-    QLabel* titoloFinestra, *lib, *artisti, *film, *serie, *podcast;
-    QPushButton *ricerca, *aggiungi;
-    QVBoxLayout *layoutArtisti, *layoutFilm, *layoutSerie, *layoutPodcast;
-    */
 public:
     mainwindow(QWidget* =nullptr);
-    // mainwindow(QLabel, QPushButton, QPushButton, QLabel, QLabel,QLabel,QLabel,QLabel, QVBoxLayout, QVBoxLayout, QVBoxLayout, QVBoxLayout);
     ~mainwindow() = default;
 };
 

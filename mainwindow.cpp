@@ -92,12 +92,12 @@ mainwindow::mainwindow(QWidget* parent ) : QMainWindow (parent) {
     gruppoBottoni->setGeometry(0, titolo->height()+26, this->width(), 0);
     //gruppoBottoni->setMinimumSize(QSize(this->width(),100));
 
-    connect (ricerca, SIGNAL(QAbstractButton::clicked()), this, SLOT(mainwindow::schiacciaRicerca()));
+    connect (ricerca, SIGNAL(clicked()), this, SLOT(schiacciaRicerca()));
 }
 
 void mainwindow::schiacciaRicerca() {
     ricercaavanzata* ra = new ricercaavanzata;
     ra->show();
-    hide();
+    this->hide();
 }
 

@@ -42,6 +42,7 @@ mainwindow::mainwindow(QWidget* parent ) : QMainWindow (parent) {
 
     //etichetta "la tua libreria"
     QLabel* lib = new QLabel(this);
+    lib->setMargin(10);
     lib->setText(tr("La tua libreria:"));
     lib->setMinimumSize(QSize(this->width(), 400));
     lib->setFont(QFont("Times", 24));

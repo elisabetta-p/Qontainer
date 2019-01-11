@@ -96,8 +96,9 @@ mainwindow::mainwindow(QWidget* parent ) : QMainWindow (parent) {
 }
 
 void mainwindow::schiacciaRicerca() {
-    ricercaavanzata* ra = new ricercaavanzata;
-    ra->show();
-    this->hide();
+    this -> hide();
+    ricercaavanzata* newRicerca = new ricercaavanzata();
+    newRicerca -> show();
+
 }
 

@@ -20,6 +20,4 @@ ricercaavanzata::ricercaavanzata() {
    boxTitolo->setSizeConstraint(QLayout::SetMinimumSize);
    titoloGropuBox->setLayout(boxTitolo);
    titolo->setAlignment(Qt::AlignCenter);
-
-   show();
 }

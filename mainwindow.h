@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include <QMainWindow>
+#include <QObject>
 #include <QWidget>
 #include <QLabel>
 #include <QPushButton>
@@ -17,11 +18,10 @@ class mainwindow: public QMainWindow {
     Q_OBJECT
 private:
     QPushButton* ricerca;
-
 public:
     mainwindow(QWidget* =nullptr);
     ~mainwindow() = default;
-public slots:
+private slots:
     void schiacciaRicerca();
 };
 

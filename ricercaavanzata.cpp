@@ -23,7 +23,7 @@ ricercaavanzata::ricercaavanzata() {
 
    //ora dovrei creare 1 GridLayout 2 colonne, 5 righe
 
-    //DESTRA
+    //SINISTRA
    QGroupBox *boxRicerca = new QGroupBox(this);
    QLabel* menuTendina = new QLabel(this);
    menuTendina->setText("Scegli il tipo di file: ");
@@ -44,20 +44,14 @@ ricercaavanzata::ricercaavanzata() {
    griglia->addWidget(anno, 4,0,Qt::AlignLeft);
 
 
-   //SINISTRA
+   //DESTRA
    //menu a tendina che andrà a sinistra
-   //QPushButton *scelta = new QPushButton(this);
    QComboBox *opzioni = new QComboBox(this);
    opzioni->insertItem(0, tr("Film"));
    opzioni->insertItem(1, tr("Episodio"));
    opzioni->insertItem(2, tr("Canzoni"));
    opzioni->insertItem(3, tr("Podcast"));
-   //scelta->setMenu(opzioni);
 
-   //scelta->menu();
-
-
-   connect(opzioni, SIGNAL(QComboBox::activated(int i)), this, SLOT(campiGiusti(i, boxRicerca, griglia)));
 
    QLineEdit* scriviAutore = new QLineEdit(this);
    //scriviAutore->placeholderText();
@@ -72,6 +66,8 @@ ricercaavanzata::ricercaavanzata() {
    griglia->addWidget(scriviTitolo, 2, 1, Qt::AlignLeft);
    griglia->addWidget(scriviGenere, 3, 1, Qt::AlignLeft);
    griglia->addWidget(scriviAnno, 4, 1, Qt::AlignLeft);
+
+   connect(opzioni, SIGNAL(QComboBox::activated(int i)), this, SLOT(campiGiusti(i, griglia)));
 
    griglia->setSizeConstraint(QLayout::SetMinimumSize);
    boxRicerca->setLayout(griglia);
@@ -101,25 +97,25 @@ void ricercaavanzata::tornaAllaMainWindow() {
     newMainW->show();
 }
 
-void ricercaavanzata::campiGiusti(int i, QGroupBox* gruppo, QGridLayout* griglia) {
+void ricercaavanzata::campiGiusti(int i, QGridLayout* griglia) {
     if (i==0) { //film
-        QLabel* saga = new QLabel(gruppo);
+        QLabel* saga = new QLabel;
         saga->setText("Inserisci la saga: ");
         griglia->addWidget(saga,5,0,Qt::AlignLeft);
 
     }
     if (i==1) { //serie
-        QLabel* serie = new QLabel(gruppo);
+        QLabel* serie = new QLabel;
         serie->setText("Inserisci la serie: ");
         griglia->addWidget(serie,5,0,Qt::AlignLeft);
     }
     if (i==2) { //canzoni
-        QLabel* album = new QLabel(gruppo);
+        QLabel* album = new QLabel;
         album->setText("Inserisci l'album: ");
         griglia->addWidget(album,5,0,Qt::AlignLeft);
     }
     if (i==3) { //podcast
-        QLabel* raccolta = new QLabel(gruppo);
+        QLabel* raccolta = new QLabel;
         raccolta->setText("Inserisci la serie: ");
         griglia->addWidget(raccolta,5,0,Qt::AlignLeft);
     }

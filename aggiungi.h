@@ -2,7 +2,7 @@
 #define AGGIUNGI_H
 #include "mainwindow.h"
 #include <QLineEdit>
-#include <QMenu>
+#include <QComboBox>
 
 
 class aggiungi: public QMainWindow {

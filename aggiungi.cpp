@@ -42,14 +42,11 @@ aggiungi::aggiungi() {
    griglia->addWidget(anno, 4,0,Qt::AlignLeft);
 
    //menu a tendina
-   QPushButton *scelta = new QPushButton(this);
-   QMenu *opzioni = new QMenu(this);
-   opzioni->addAction(tr("Film"));
-   opzioni->addAction(tr("Serie"));
-   opzioni->addAction(tr("Canzoni"));
-   opzioni->addAction(tr("Podcast"));
-   scelta->setMenu(opzioni);
-   scelta->menu();
+   QComboBox *opzioni = new QComboBox(this);
+   opzioni->insertItem(0, tr("Film"));
+   opzioni->insertItem(1, tr("Episodio"));
+   opzioni->insertItem(2, tr("Canzoni"));
+   opzioni->insertItem(3, tr("Podcast"));
 
    QLineEdit* scriviAutore = new QLineEdit(this);
    //scriviAutore->placeholderText();
@@ -59,7 +56,7 @@ aggiungi::aggiungi() {
    //scriviGenere->placeholderText("Scrivi il genere di quello che cerchi");
    QLineEdit* scriviAnno = new QLineEdit(this);
 
-   griglia->addWidget(scelta, 0, 1, Qt::AlignLeft);
+   griglia->addWidget(opzioni, 0, 1, Qt::AlignLeft);
    griglia->addWidget(scriviAutore, 1, 1, Qt::AlignLeft);
    griglia->addWidget(scriviTitolo, 2, 1, Qt::AlignLeft);
    griglia->addWidget(scriviGenere, 3, 1, Qt::AlignLeft);

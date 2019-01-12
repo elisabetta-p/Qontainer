@@ -6,15 +6,12 @@
 
 class ricercaavanzata: public QMainWindow {
     Q_OBJECT
-private:
-
 public:
     ricercaavanzata();
     ~ricercaavanzata() = default;
-    QMenu* opzioni;
 private slots:
     void tornaAllaMainWindow();
-    void campiGiusti(int, QGroupBox*, QGridLayout*);
+    void campiGiusti(int, QGridLayout*);
 
 };
 

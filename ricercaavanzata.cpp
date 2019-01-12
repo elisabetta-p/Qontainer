@@ -46,17 +46,18 @@ ricercaavanzata::ricercaavanzata() {
 
    //SINISTRA
    //menu a tendina che andrà a sinistra
-   QPushButton *scelta = new QPushButton(this);
-   QMenu *opzioni = new QMenu(this);
-   opzioni->addAction(tr("Film"));
-   opzioni->addAction(tr("Serie"));
-   opzioni->addAction(tr("Canzoni"));
-   opzioni->addAction(tr("Podcast"));
-   scelta->setMenu(opzioni);
+   //QPushButton *scelta = new QPushButton(this);
+   QComboBox *opzioni = new QComboBox(this);
+   opzioni->insertItem(0, tr("Film"));
+   opzioni->insertItem(1, tr("Episodio"));
+   opzioni->insertItem(2, tr("Canzoni"));
+   opzioni->insertItem(3, tr("Podcast"));
+   //scelta->setMenu(opzioni);
 
-   scelta->menu();
+   //scelta->menu();
 
-   connect(scelta, SIGNAL(triggered()), this, SLOT(campiGiusti(scelta, boxRicerca, griglia)));
+
+   connect(opzioni, SIGNAL(QComboBox::activated(int i)), this, SLOT(campiGiusti(i, boxRicerca, griglia)));
 
    QLineEdit* scriviAutore = new QLineEdit(this);
    //scriviAutore->placeholderText();
@@ -66,7 +67,7 @@ ricercaavanzata::ricercaavanzata() {
    //scriviGenere->placeholderText("Scrivi il genere di quello che cerchi");
    QLineEdit* scriviAnno = new QLineEdit(this);
 
-   griglia->addWidget(scelta, 0, 1, Qt::AlignLeft);
+   griglia->addWidget(opzioni, 0, 1, Qt::AlignLeft);
    griglia->addWidget(scriviAutore, 1, 1, Qt::AlignLeft);
    griglia->addWidget(scriviTitolo, 2, 1, Qt::AlignLeft);
    griglia->addWidget(scriviGenere, 3, 1, Qt::AlignLeft);
@@ -74,7 +75,7 @@ ricercaavanzata::ricercaavanzata() {
 
    griglia->setSizeConstraint(QLayout::SetMinimumSize);
    boxRicerca->setLayout(griglia);
-   boxRicerca->setMinimumSize(QSize(this->width(), this->height()));
+   boxRicerca->setMinimumSize(QSize(this->width(), this->height()-50));
 
    //aggiunta del bottone cerca
    QGroupBox* gruppoCerca = new QGroupBox(this);
@@ -100,24 +101,26 @@ void ricercaavanzata::tornaAllaMainWindow() {
     newMainW->show();
 }
 
-void campiGiusti(QPushButton* scelta, QGroupBox* gruppo, QGridLayout* griglia) {
-    if (scelta->text() == "Film") {
-        //sinistra
-        QLabel* saga = new QLabel();
-        saga->setText("Saga: ");
-        griglia->addWidget(saga, 5, 0, Qt::AlignLeft);
-
-        //destra
-        QLineEdit* scriviSaga = new QLineEdit();
-        griglia->addWidget(scriviSaga, 5, 1, Qt::AlignLeft);
-    }
-    if (scelta->text() == "Serie") {
+void ricercaavanzata::campiGiusti(int i, QGroupBox* gruppo, QGridLayout* griglia) {
+    if (i==0) { //film
+        QLabel* saga = new QLabel(gruppo);
+        saga->setText("Inserisci la saga: ");
+        griglia->addWidget(saga,5,0,Qt::AlignLeft);
 
     }
-    if (scelta->text() == "Canzoni") {
-
+    if (i==1) { //serie
+        QLabel* serie = new QLabel(gruppo);
+        serie->setText("Inserisci la serie: ");
+        griglia->addWidget(serie,5,0,Qt::AlignLeft);
     }
-    if (scelta->text() == "Podcast") {
-
+    if (i==2) { //canzoni
+        QLabel* album = new QLabel(gruppo);
+        album->setText("Inserisci l'album: ");
+        griglia->addWidget(album,5,0,Qt::AlignLeft);
+    }
+    if (i==3) { //podcast
+        QLabel* raccolta = new QLabel(gruppo);
+        raccolta->setText("Inserisci la serie: ");
+        griglia->addWidget(raccolta,5,0,Qt::AlignLeft);
     }
 }

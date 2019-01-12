@@ -13,6 +13,7 @@
 #include <QSize>
 #include <QGridLayout>
 #include <QScrollBar>
+#include <QAction>
 
 class mainwindow: public QMainWindow {
     Q_OBJECT

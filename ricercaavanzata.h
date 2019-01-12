@@ -1,7 +1,7 @@
 #ifndef RICERCAAVANZATA_H
 #define RICERCAAVANZATA_H
 #include "mainwindow.h"
-#include <QMenu>
+#include <QComboBox>
 #include <QLineEdit>
 
 class ricercaavanzata: public QMainWindow {
@@ -14,7 +14,7 @@ public:
     QMenu* opzioni;
 private slots:
     void tornaAllaMainWindow();
-    void campiGiusti(QPushButton*, QGroupBox*, QGridLayout*);
+    void campiGiusti(int, QGroupBox*, QGridLayout*);
 
 };
 

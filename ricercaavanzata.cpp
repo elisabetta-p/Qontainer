@@ -70,32 +70,81 @@ ricercaavanzata::ricercaavanzata() {
 
    connect(opzioni, QOverload<int>::of(&QComboBox::activated), [=](int i) {
        if (i==1) { //film
+           QLabel* risoluzione = new QLabel;
+           risoluzione->setText("Inserisci la risoluzione: ");
+           griglia->addWidget(risoluzione,5,0,Qt::AlignLeft);
+           QLineEdit* scriviRisoluzione = new QLineEdit;
+           griglia->addWidget(scriviRisoluzione, 5, 1, Qt::AlignLeft);
+
+           QLabel* regista = new QLabel;
+           regista->setText("Inserisci il regista: ");
+           griglia->addWidget(regista,6,0,Qt::AlignLeft);
+           QLineEdit* scriviRegista = new QLineEdit;
+           griglia->addWidget(scriviRegista, 6, 1, Qt::AlignLeft);
+
            QLabel* saga = new QLabel;
            saga->setText("Inserisci la saga: ");
-           griglia->addWidget(saga,5,0,Qt::AlignLeft);
+           griglia->addWidget(saga,7,0,Qt::AlignLeft);
            QLineEdit* scriviSaga = new QLineEdit;
-           griglia->addWidget(scriviSaga, 5, 1, Qt::AlignLeft);
+           griglia->addWidget(scriviSaga, 7, 1, Qt::AlignLeft);
        }
        if (i==2) { //serie
+           QLabel* risoluzione = new QLabel;
+           risoluzione->setText("Inserisci la risoluzione: ");
+           griglia->addWidget(risoluzione,5,0,Qt::AlignLeft);
+           QLineEdit* scriviRisoluzione = new QLineEdit;
+           griglia->addWidget(scriviRisoluzione, 5, 1, Qt::AlignLeft);
+
            QLabel* serie = new QLabel;
            serie->setText("Inserisci la serie: ");
-           griglia->addWidget(serie,5,0,Qt::AlignLeft);
+           griglia->addWidget(serie,6,0,Qt::AlignLeft);
            QLineEdit* scriviSerie = new QLineEdit;
-           griglia->addWidget(scriviSerie, 5, 1, Qt::AlignLeft);
+           griglia->addWidget(scriviSerie, 6, 1, Qt::AlignLeft);
+
+           QLabel* canale = new QLabel;
+           canale->setText("Inserisci il canale, o servizio di streaming: ");
+           griglia->addWidget(canale,7,0,Qt::AlignLeft);
+           QLineEdit* scriviCanale = new QLineEdit;
+           griglia->addWidget(scriviCanale, 7, 1, Qt::AlignLeft);
        }
        if (i==3) { //canzoni
+
+           QLabel* qualita = new QLabel;
+           qualita->setText("Inserisci la risoluzione: ");
+           griglia->addWidget(qualita,5,0,Qt::AlignLeft);
+           QLineEdit* scriviQualita = new QLineEdit;
+           griglia->addWidget(scriviQualita , 5, 1, Qt::AlignLeft);
+
            QLabel* album = new QLabel;
            album->setText("Inserisci l'album: ");
-           griglia->addWidget(album,5,0,Qt::AlignLeft);
+           griglia->addWidget(album,6,0,Qt::AlignLeft);
            QLineEdit* scriviAlbum = new QLineEdit;
-           griglia->addWidget(scriviAlbum, 5, 1, Qt::AlignLeft);
+           griglia->addWidget(scriviAlbum, 6, 1, Qt::AlignLeft);
+
+           QLabel* produttore = new QLabel;
+           produttore->setText("Inserisci il produttore: ");
+           griglia->addWidget(produttore,7,0,Qt::AlignLeft);
+           QLineEdit* scriviProduttore = new QLineEdit;
+           griglia->addWidget(scriviProduttore, 7, 1, Qt::AlignLeft);
        }
        if (i==4) { //podcast
+           QLabel* qualita = new QLabel;
+           qualita->setText("Inserisci la risoluzione: ");
+           griglia->addWidget(qualita,5,0,Qt::AlignLeft);
+           QLineEdit* scriviQualita = new QLineEdit;
+           griglia->addWidget(scriviQualita , 5, 1, Qt::AlignLeft);
+
            QLabel* raccolta = new QLabel;
-           raccolta->setText("Inserisci la serie: ");
-           griglia->addWidget(raccolta,5,0,Qt::AlignLeft);
+           raccolta->setText("Inserisci la raccolta: ");
+           griglia->addWidget(raccolta,6,0,Qt::AlignLeft);
            QLineEdit* scriviRaccolta = new QLineEdit;
-           griglia->addWidget(scriviRaccolta, 5, 1, Qt::AlignLeft);
+           griglia->addWidget(scriviRaccolta, 6, 1, Qt::AlignLeft);
+
+           QLabel* ospite = new QLabel;
+           ospite->setText("Inserisci l'ospite: ");
+           griglia->addWidget(ospite,7,0,Qt::AlignLeft);
+           QLineEdit* scriviOspite = new QLineEdit;
+           griglia->addWidget(scriviOspite , 7, 1, Qt::AlignLeft);
        }
     }
    );
@@ -127,30 +176,3 @@ void ricercaavanzata::tornaAllaMainWindow() {
     mainwindow* newMainW = new mainwindow;
     newMainW->show();
 }
-
-
-/*
-void ricercaavanzata::campiGiusti(int i, QGridLayout* griglia) {
-    if (i==0) { //film
-        QLabel* saga = new QLabel;
-        saga->setText("Inserisci la saga: ");
-        griglia->addWidget(saga,5,0,Qt::AlignLeft);
-
-    }
-    if (i==1) { //serie
-        QLabel* serie = new QLabel;
-        serie->setText("Inserisci la serie: ");
-        griglia->addWidget(serie,5,0,Qt::AlignLeft);
-    }
-    if (i==2) { //canzoni
-        QLabel* album = new QLabel;
-        album->setText("Inserisci l'album: ");
-        griglia->addWidget(album,5,0,Qt::AlignLeft);
-    }
-    if (i==3) { //podcast
-        QLabel* raccolta = new QLabel;
-        raccolta->setText("Inserisci la serie: ");
-        griglia->addWidget(raccolta,5,0,Qt::AlignLeft);
-    }
-}
-*/

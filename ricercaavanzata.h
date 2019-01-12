@@ -11,7 +11,6 @@ public:
     ~ricercaavanzata() = default;
 private slots:
     void tornaAllaMainWindow();
-    //void campiGiusti(int, QGridLayout*);
 
 };
 

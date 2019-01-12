@@ -20,8 +20,8 @@ int main(int argc, char *argv[])
 
    return app.exec();
 
-    //database d = database("/Users/elisabetta/Desktop/ProgettoP2/inserimento_dati.txt");
-    //d.load();
+    database d = database("/Users/elisabetta/Desktop/ProgettoP2/inserimento_dati.txt");
+    d.load();
     //std::string ciao = "44";
     //unsigned short int x = static_cast<unsigned short int>(std::stoul(ciao));
     //film::deserializza("/Users/elisabetta/Desktop/ProgettoP2/inserimento_dati.txt");

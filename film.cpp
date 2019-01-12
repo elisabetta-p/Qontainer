@@ -39,7 +39,7 @@ string film::getSaga() const {
     return saga;
 }
 
-container<film*> film::deserializza(std::ifstream& file) {
+container<film*> film::deserializza(const std::ifstream& file) {
     container<film*> contenitore;
     //std::ifstream file;
     //file.open(path, std::ios::in);

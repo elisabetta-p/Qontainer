@@ -62,9 +62,41 @@ aggiungi::aggiungi() {
    griglia->addWidget(scriviGenere, 3, 1, Qt::AlignLeft);
    griglia->addWidget(scriviAnno, 4, 1, Qt::AlignLeft);
 
+   connect(opzioni, QOverload<int>::of(&QComboBox::activated), [=](int i) {
+       if (i==1) { //film
+           QLabel* saga = new QLabel;
+           saga->setText("Inserisci la saga: ");
+           griglia->addWidget(saga,5,0,Qt::AlignLeft);
+           QLineEdit* scriviSaga = new QLineEdit;
+           griglia->addWidget(scriviSaga, 5, 1, Qt::AlignLeft);
+       }
+       if (i==2) { //serie
+           QLabel* serie = new QLabel;
+           serie->setText("Inserisci la serie: ");
+           griglia->addWidget(serie,5,0,Qt::AlignLeft);
+           QLineEdit* scriviSerie = new QLineEdit;
+           griglia->addWidget(scriviSerie, 5, 1, Qt::AlignLeft);
+       }
+       if (i==3) { //canzoni
+           QLabel* album = new QLabel;
+           album->setText("Inserisci l'album: ");
+           griglia->addWidget(album,5,0,Qt::AlignLeft);
+           QLineEdit* scriviAlbum = new QLineEdit;
+           griglia->addWidget(scriviAlbum, 5, 1, Qt::AlignLeft);
+       }
+       if (i==4) { //podcast
+           QLabel* raccolta = new QLabel;
+           raccolta->setText("Inserisci la serie: ");
+           griglia->addWidget(raccolta,5,0,Qt::AlignLeft);
+           QLineEdit* scriviRaccolta = new QLineEdit;
+           griglia->addWidget(scriviRaccolta, 5, 1, Qt::AlignLeft);
+       }
+    }
+   );
+
    griglia->setSizeConstraint(QLayout::SetMinimumSize);
    boxAggiunta->setLayout(griglia);
-   boxAggiunta->setMinimumSize(QSize(this->width(), this->height()));
+   boxAggiunta->setMinimumSize(QSize(this->width(), this->height()-50));
 
    //aggiunta del bottone aggiungi e del bottone torna indietro
    QGroupBox* gruppoAggiungi = new QGroupBox(this);
@@ -89,3 +121,4 @@ void aggiungi::tornaAllaMainWindow() {
     mainwindow* newMainW = new mainwindow;
     newMainW->show();
 }
+

@@ -47,10 +47,11 @@ ricercaavanzata::ricercaavanzata() {
    //DESTRA
    //menu a tendina che andrà a sinistra
    QComboBox *opzioni = new QComboBox(this);
-   opzioni->insertItem(0, tr("Film"));
-   opzioni->insertItem(1, tr("Episodio"));
-   opzioni->insertItem(2, tr("Canzoni"));
-   opzioni->insertItem(3, tr("Podcast"));
+   opzioni->insertItem(0, tr("Scegli:"));
+   opzioni->insertItem(1, tr("Film"));
+   opzioni->insertItem(2, tr("Episodio"));
+   opzioni->insertItem(3, tr("Canzoni"));
+   opzioni->insertItem(4, tr("Podcast"));
 
 
    QLineEdit* scriviAutore = new QLineEdit(this);
@@ -67,7 +68,37 @@ ricercaavanzata::ricercaavanzata() {
    griglia->addWidget(scriviGenere, 3, 1, Qt::AlignLeft);
    griglia->addWidget(scriviAnno, 4, 1, Qt::AlignLeft);
 
-   connect(opzioni, SIGNAL(QComboBox::activated(int i)), this, SLOT(campiGiusti(i, griglia)));
+   connect(opzioni, QOverload<int>::of(&QComboBox::activated), [=](int i) {
+       if (i==1) { //film
+           QLabel* saga = new QLabel;
+           saga->setText("Inserisci la saga: ");
+           griglia->addWidget(saga,5,0,Qt::AlignLeft);
+           QLineEdit* scriviSaga = new QLineEdit;
+           griglia->addWidget(scriviSaga, 5, 1, Qt::AlignLeft);
+       }
+       if (i==2) { //serie
+           QLabel* serie = new QLabel;
+           serie->setText("Inserisci la serie: ");
+           griglia->addWidget(serie,5,0,Qt::AlignLeft);
+           QLineEdit* scriviSerie = new QLineEdit;
+           griglia->addWidget(scriviSerie, 5, 1, Qt::AlignLeft);
+       }
+       if (i==3) { //canzoni
+           QLabel* album = new QLabel;
+           album->setText("Inserisci l'album: ");
+           griglia->addWidget(album,5,0,Qt::AlignLeft);
+           QLineEdit* scriviAlbum = new QLineEdit;
+           griglia->addWidget(scriviAlbum, 5, 1, Qt::AlignLeft);
+       }
+       if (i==4) { //podcast
+           QLabel* raccolta = new QLabel;
+           raccolta->setText("Inserisci la serie: ");
+           griglia->addWidget(raccolta,5,0,Qt::AlignLeft);
+           QLineEdit* scriviRaccolta = new QLineEdit;
+           griglia->addWidget(scriviRaccolta, 5, 1, Qt::AlignLeft);
+       }
+    }
+   );
 
    griglia->setSizeConstraint(QLayout::SetMinimumSize);
    boxRicerca->setLayout(griglia);
@@ -97,6 +128,8 @@ void ricercaavanzata::tornaAllaMainWindow() {
     newMainW->show();
 }
 
+
+/*
 void ricercaavanzata::campiGiusti(int i, QGridLayout* griglia) {
     if (i==0) { //film
         QLabel* saga = new QLabel;
@@ -120,3 +153,4 @@ void ricercaavanzata::campiGiusti(int i, QGridLayout* griglia) {
         griglia->addWidget(raccolta,5,0,Qt::AlignLeft);
     }
 }
+*/

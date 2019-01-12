@@ -23,7 +23,7 @@ ricercaavanzata::ricercaavanzata() {
 
    //ora dovrei creare 1 GridLayout 2 colonne, 5 righe
 
-
+    //DESTRA
    QGroupBox *boxRicerca = new QGroupBox(this);
    QLabel* menuTendina = new QLabel(this);
    menuTendina->setText("Scegli il tipo di file: ");
@@ -43,6 +43,8 @@ ricercaavanzata::ricercaavanzata() {
    griglia->addWidget(genere, 3,0,Qt::AlignLeft);
    griglia->addWidget(anno, 4,0,Qt::AlignLeft);
 
+
+   //SINISTRA
    //menu a tendina che andrà a sinistra
    QPushButton *scelta = new QPushButton(this);
    QMenu *opzioni = new QMenu(this);
@@ -51,7 +53,10 @@ ricercaavanzata::ricercaavanzata() {
    opzioni->addAction(tr("Canzoni"));
    opzioni->addAction(tr("Podcast"));
    scelta->setMenu(opzioni);
+
    scelta->menu();
+
+   connect(scelta, SIGNAL(triggered()), this, SLOT(campiGiusti(scelta, boxRicerca, griglia)));
 
    QLineEdit* scriviAutore = new QLineEdit(this);
    //scriviAutore->placeholderText();
@@ -93,4 +98,26 @@ void ricercaavanzata::tornaAllaMainWindow() {
     this->hide();
     mainwindow* newMainW = new mainwindow;
     newMainW->show();
+}
+
+void campiGiusti(QPushButton* scelta, QGroupBox* gruppo, QGridLayout* griglia) {
+    if (scelta->text() == "Film") {
+        //sinistra
+        QLabel* saga = new QLabel();
+        saga->setText("Saga: ");
+        griglia->addWidget(saga, 5, 0, Qt::AlignLeft);
+
+        //destra
+        QLineEdit* scriviSaga = new QLineEdit();
+        griglia->addWidget(scriviSaga, 5, 1, Qt::AlignLeft);
+    }
+    if (scelta->text() == "Serie") {
+
+    }
+    if (scelta->text() == "Canzoni") {
+
+    }
+    if (scelta->text() == "Podcast") {
+
+    }
 }

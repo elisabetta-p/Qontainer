@@ -7,6 +7,8 @@ mainwindow::mainwindow(QWidget* parent ) : QMainWindow (parent) {
     setWindowTitle("Qontainer - Elisabetta Piombin");
     setFixedSize(530,530);
     setFocusPolicy(Qt::StrongFocus);
+    setGeometry(0,0, 530,530);
+
 
      //Creazione del titolo Qontainer
     QGroupBox* titoloGropuBox = new QGroupBox(this);

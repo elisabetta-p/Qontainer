@@ -1,4 +1,4 @@
-#include <QGuiApplication>
+//#include <QGuiApplication>
 #include <QWidget>
 #include <QApplication>
 #include "database.h"

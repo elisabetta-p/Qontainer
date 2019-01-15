@@ -1,5 +1,6 @@
 QT += core
 CONFIG += c++11
+QMAKE_CXXFLAGS += -std=c++11
 CONFIG+=sdk_no_version_check
 QT += widgets
 QT += gui

@@ -4,6 +4,7 @@ ricercaavanzata::ricercaavanzata() {
     setWindowTitle("Qontainer: Ricerca Avanzata - Elisabetta Piombin");
     setFixedSize(530,530);
     setFocusPolicy(Qt::StrongFocus);
+    setGeometry(0,0, 530,530);
 
     //Creazione del titolo Ricerca Avanzata
    QGroupBox* titoloGropuBox = new QGroupBox(this);
@@ -68,7 +69,8 @@ ricercaavanzata::ricercaavanzata() {
    griglia->addWidget(scriviGenere, 3, 1, Qt::AlignLeft);
    griglia->addWidget(scriviAnno, 4, 1, Qt::AlignLeft);
 
-   connect(opzioni, QOverload<int>::of(&QComboBox::activated), [=](int i) {
+   /*
+   connect(opzioni, SIGNAL(&QComboBox::activated), [=](int i) {
        if (i==1) { //film
            QLabel* risoluzione = new QLabel;
            risoluzione->setText("Inserisci la risoluzione: ");
@@ -147,7 +149,7 @@ ricercaavanzata::ricercaavanzata() {
            griglia->addWidget(scriviOspite , 7, 1, Qt::AlignLeft);
        }
     }
-   );
+   ); */
 
    griglia->setSizeConstraint(QLayout::SetMinimumSize);
    boxRicerca->setLayout(griglia);

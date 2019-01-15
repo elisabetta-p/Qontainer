@@ -4,6 +4,7 @@ aggiungi::aggiungi() {
     setWindowTitle("Qontainer: Aggiungi Contenuti - Elisabetta Piombin");
     setFixedSize(530,530);
     setFocusPolicy(Qt::StrongFocus);
+    setGeometry(0,0, 530,530);
 
     //Creazione del titolo della pagina
    QGroupBox* titoloGropuBox = new QGroupBox(this);
@@ -62,6 +63,7 @@ aggiungi::aggiungi() {
    griglia->addWidget(scriviGenere, 3, 1, Qt::AlignLeft);
    griglia->addWidget(scriviAnno, 4, 1, Qt::AlignLeft);
 
+   /*
    connect(opzioni, QOverload<int>::of(&QComboBox::activated), [=](int i) {
        if (i==1) { //film
            QLabel* risoluzione = new QLabel;
@@ -142,6 +144,7 @@ aggiungi::aggiungi() {
        }
     }
    );
+   */
 
    griglia->setSizeConstraint(QLayout::SetMinimumSize);
    boxAggiunta->setLayout(griglia);

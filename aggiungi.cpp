@@ -2,15 +2,15 @@
 
 aggiungi::aggiungi() {
     setWindowTitle("Qontainer: Aggiungi Contenuti - Elisabetta Piombin");
-    setFixedSize(530,530);
+    setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);
-    setGeometry(0,0, 530,530);
+    setGeometry(0,0, 600,600);
 
     //Creazione del titolo della pagina
    QGroupBox* titoloGropuBox = new QGroupBox(this);
 
    QLabel* titoloFinestra = new QLabel(this);
-   titoloFinestra->setMinimumSize(this->width(), 30);
+   titoloFinestra->setMinimumSize(this->width(), 50);
    titoloFinestra->setText(tr("Aggiungi Contenuti"));
    titoloFinestra->setFont(QFont("Times", 26, QFont::Bold));
 

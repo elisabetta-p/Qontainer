@@ -5,16 +5,16 @@
 mainwindow::mainwindow(QWidget* parent ) : QMainWindow (parent) {
 
     setWindowTitle("Qontainer - Elisabetta Piombin");
-    setFixedSize(530,530);
+    setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);
-    setGeometry(0,0, 530,530);
+    setGeometry(0,0, 600,600);
 
 
      //Creazione del titolo Qontainer
     QGroupBox* titoloGropuBox = new QGroupBox(this);
 
     QLabel* titolo = new QLabel(this);
-    titolo->setMinimumSize(this->width(), 30);
+    titolo->setMinimumSize(this->width(), 50);
     titolo->setText(tr("Qontainer"));
     titolo->setFont(QFont("Times", 26, QFont::Bold));
 

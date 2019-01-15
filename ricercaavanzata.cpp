@@ -70,6 +70,7 @@ ricercaavanzata::ricercaavanzata() {
    connect(opzioni, SIGNAL(activated(int)), this, SLOT(aggiungiInput(int)));
 
    griglia->setSizeConstraint(QLayout::SetMinimumSize);
+   griglia->setHorizontalSpacing(1);
    boxRicerca->setLayout(griglia);
    boxRicerca->setMinimumSize(QSize(this->width(), this->height()-50));
 

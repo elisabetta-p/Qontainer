@@ -50,12 +50,13 @@ aggiungi::aggiungi() {
    opzioni->insertItem(3, tr("Podcast"));
 
    QLineEdit* scriviAutore = new QLineEdit(this);
-   //scriviAutore->placeholderText();
+   scriviAutore->setPlaceholderText("Scrivi l'autore");
    QLineEdit* scriviTitolo = new QLineEdit(this);
-   //scriviTitolo->placeholderText("Scrivi il titolo di quello che cerchi");
+   scriviTitolo->setPlaceholderText("Scrivi il titolo di quello che cerchi");
    QLineEdit* scriviGenere = new QLineEdit(this);
-   //scriviGenere->placeholderText("Scrivi il genere di quello che cerchi");
+   scriviGenere->setPlaceholderText("Scrivi il genere di quello che cerchi");
    QLineEdit* scriviAnno = new QLineEdit(this);
+   scriviAnno->setPlaceholderText("Scrivi l'anno di uscita");
 
    griglia->addWidget(opzioni, 0, 1, Qt::AlignLeft);
    griglia->addWidget(scriviAutore, 1, 1, Qt::AlignLeft);
@@ -66,8 +67,9 @@ aggiungi::aggiungi() {
    connect(opzioni, SIGNAL(activated(int)), this, SLOT(aggiungiInput(int)));
 
    griglia->setSizeConstraint(QLayout::SetMinimumSize);
+   griglia->setVerticalSpacing(1);
    boxAggiunta->setLayout(griglia);
-   boxAggiunta->setMinimumSize(QSize(this->width(), this->height()-50));
+   boxAggiunta->setMinimumSize(QSize(this->width(), this->height()-80));
 
    //aggiunta del bottone aggiungi e del bottone torna indietro
    QGroupBox* gruppoAggiungi = new QGroupBox(this);

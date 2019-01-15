@@ -22,8 +22,6 @@ ricercaavanzata::ricercaavanzata() {
    titoloGropuBox->setLayout(boxTitolo);
    titoloFinestra->setAlignment(Qt::AlignCenter);
 
-   //ora dovrei creare 1 GridLayout 2 colonne, 5 righe
-
     //SINISTRA
    QGroupBox *boxRicerca = new QGroupBox(this);
    QLabel* menuTendina = new QLabel(this);
@@ -177,6 +175,6 @@ void ricercaavanzata::aggiungiInput(int type) {
            QLineEdit* scriviOspite = new QLineEdit;
            griglia->addWidget(scriviOspite , 7, 1, Qt::AlignLeft);
        }
-    }
+
 }
 

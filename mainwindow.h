@@ -14,6 +14,7 @@
 #include <QGridLayout>
 #include <QScrollBar>
 #include <QAction>
+#include <QScrollArea>
 
 class mainwindow: public QMainWindow {
     Q_OBJECT

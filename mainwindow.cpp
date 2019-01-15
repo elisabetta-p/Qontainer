@@ -72,6 +72,16 @@ mainwindow::mainwindow(QWidget* parent ) : QMainWindow (parent) {
     boxListe->setLayout(griglia);
     boxListe->setMinimumSize(QSize(this->width(), this->height()));
 
+
+    /* aggiunta delle varie scroll bar nei 4 layout verticali*/
+
+    QScrollArea* scrollArea = new QScrollArea;
+    scrollArea->setBackgroundRole(QPalette::Light);
+    scrollArea->setLayout(listaCantanti);
+    scrollArea->setLayout(listaPodcast);
+    scrollArea->setLayout(listaSerie);
+    scrollArea->setLayout(listaFilm);
+
     /*
     CICLO CHE CARICA I CONTENUTI DA FILE DENTRO LE VARIE LISTE VERTICALMENTE
     */

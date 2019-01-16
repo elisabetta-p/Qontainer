@@ -76,16 +76,15 @@ void ricercaavanzata::tornaAllaMainWindow() {
 }
 
 void ricercaavanzata::aggiungiInput(int type) {
+
     QLayoutItem* item;
-    QLineEdit* t = new QLineEdit(this);
-    t->setText("ciao");
     //elimina tutti i qlabel e box di testo del tipo di dato precedente
-       t->setText(QString::number(vettoreOpzioni.size()));
     while((item = grigliaRicercaAvanzata->takeAt(0))) {
         if(dynamic_cast<QWidgetItem*>(item)) {
             QWidget* widgetCorrente = static_cast<QWidget*>(item->widget());
+            widgetCorrente->hide();
             grigliaRicercaAvanzata->removeWidget(widgetCorrente);
-
+            //se item è un QLineEdit lo devo rimuovere dal vettoreOpzioni e distruggerlo
             if(dynamic_cast<QLineEdit*>(item->widget())) {
                 QLineEdit* lineEditCorrente = static_cast<QLineEdit*>(item->widget());
                 for(auto it = vettoreOpzioni.begin(); it != vettoreOpzioni.end(); ++it) {
@@ -95,14 +94,12 @@ void ricercaavanzata::aggiungiInput(int type) {
                     }
                 }
             }
-            else {
+            else { //se non è un QLineEdit, item è un QLabel => lo distruggo manualmente
                 delete widgetCorrente;
             }
        }
     }
-       t->setText(t->text() + " " + QString::number(vettoreOpzioni.size()));
 
-    layout->addWidget(t);
 
        if (type==1) { //film
             creaOpzione("Risoluzione:", "Inserisci la risoluzione", 250, grigliaRicercaAvanzata, 0);
@@ -124,6 +121,7 @@ void ricercaavanzata::aggiungiInput(int type) {
            creaOpzione("Raccolta:", "Inserisci la raccolta", 250, grigliaRicercaAvanzata, 1);
            creaOpzione("Ospite:", "Inserisci l'ospite", 250, grigliaRicercaAvanzata, 2);
        }
+
 }
 
 void ricercaavanzata::creaOpzione(QString etichetta, QString placeholder, int lunghezza, QGridLayout* griglia, int riga) {
@@ -138,4 +136,5 @@ void ricercaavanzata::creaOpzione(QString etichetta, QString placeholder, int lu
     vettoreOpzioni.push_back(box);
     griglia->addWidget(label, riga, 0, Qt::AlignLeft);
     griglia->addWidget(box, riga, 1, Qt::AlignLeft);
+
 }

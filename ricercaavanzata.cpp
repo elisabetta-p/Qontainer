@@ -1,29 +1,32 @@
 #include "ricercaavanzata.h"
 #include "mainwindow.h"
-ricercaavanzata::ricercaavanzata() {
+ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
     setWindowTitle("Qontainer: Ricerca Avanzata - Elisabetta Piombin");
     setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);
     setGeometry(0,0, 600,600);
 
+
+    layout = new QVBoxLayout(this);
+
     //Creazione del titolo Ricerca Avanzata
-   QGroupBox* titoloGropuBox = new QGroupBox(this);
 
    QLabel* titoloFinestra = new QLabel(this);
    titoloFinestra->setMinimumSize(this->width(), 50);
    titoloFinestra->setText(tr("Ricerca Avanzata"));
    titoloFinestra->setFont(QFont("Times", 26, QFont::Bold));
+   titoloFinestra->setAlignment(Qt::AlignHCenter);
 
-   QHBoxLayout* boxTitolo = new QHBoxLayout;
 
-   boxTitolo->addWidget(titoloFinestra);
+   //QHBoxLayout* boxTitolo = new QHBoxLayout;
 
-   boxTitolo->setSizeConstraint(QLayout::SetMinimumSize);
-   titoloGropuBox->setLayout(boxTitolo);
-   titoloFinestra->setAlignment(Qt::AlignCenter);
+   //boxTitolo->addWidget(titoloFinestra);
+
+  // boxTitolo->setSizeConstraint(QLayout::SetMinimumSize);
+   layout->addWidget(titoloFinestra);
 
     //SINISTRA
-   QGroupBox *boxRicerca = new QGroupBox(this);
+   //QGroupBox *boxRicerca = new QGroupBox(this);
    QLabel* menuTendina = new QLabel(this);
    menuTendina->setText("Scegli il tipo di file: ");
    QLabel* autore = new QLabel(this);
@@ -71,11 +74,15 @@ ricercaavanzata::ricercaavanzata() {
 
    griglia->setSizeConstraint(QLayout::SetMinimumSize);
    griglia->setHorizontalSpacing(1);
-   boxRicerca->setLayout(griglia);
-   boxRicerca->setMinimumSize(QSize(this->width(), this->height()-50));
+   layout->addLayout(griglia);
+
+
+   grigliaRicercaAvanzata = new QGridLayout;
+   layout->addLayout(grigliaRicercaAvanzata);
+   //boxRicerca->setMinimumSize(QSize(this->width(), this->height()-50));
 
    //aggiunta del bottone cerca
-   QGroupBox* gruppoCerca = new QGroupBox(this);
+   //QGroupBox* gruppoCerca = new QGroupBox(this);
 
    QPushButton * cercaB = new QPushButton(this);
    cercaB->setText("Cerca");
@@ -86,10 +93,13 @@ ricercaavanzata::ricercaavanzata() {
    boxCerca->addWidget(cercaB,0,0, Qt::AlignCenter);
    boxCerca->addWidget(goBack,1,0, Qt::AlignCenter);
    boxCerca->setSizeConstraint(QLayout::SetMinimumSize);
-   gruppoCerca->setLayout(boxCerca);
-   gruppoCerca->setGeometry(0, this->height()-80, this->width(), 0);
+   layout->addLayout(boxCerca);
+   //gruppoCerca->setGeometry(0, this->height()-80, this->width(), 0);
 
    connect (goBack, SIGNAL(clicked()), this, SLOT(tornaAllaMainWindow()));
+
+   this->setLayout(layout);
+
 }
 
 void ricercaavanzata::tornaAllaMainWindow() {
@@ -99,83 +109,91 @@ void ricercaavanzata::tornaAllaMainWindow() {
 }
 
 void ricercaavanzata::aggiungiInput(int type) {
+    QLayoutItem* item;
+    //elimina tutti i qlabel e box di testo del tipo di dato precedente
+    while((item = grigliaRicercaAvanzata->takeAt(0))) {
+        if(dynamic_cast<QWidgetItem*>(item)) {
+            QWidget* widgetCorrente = static_cast<QWidget*>(item->widget());
+            grigliaRicercaAvanzata->removeWidget(widgetCorrente);
+            delete widgetCorrente;
+        }
+    }
        if (type==1) { //film
            QLabel* risoluzione = new QLabel;
            risoluzione->setText("Inserisci la risoluzione: ");
-           griglia->addWidget(risoluzione,5,0,Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(risoluzione,0,0,Qt::AlignLeft);
            QLineEdit* scriviRisoluzione = new QLineEdit;
-           griglia->addWidget(scriviRisoluzione, 5, 1, Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(scriviRisoluzione, 0, 1, Qt::AlignLeft);
 
            QLabel* regista = new QLabel;
            regista->setText("Inserisci il regista: ");
-           griglia->addWidget(regista,6,0,Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(regista,1,0,Qt::AlignLeft);
            QLineEdit* scriviRegista = new QLineEdit;
-           griglia->addWidget(scriviRegista, 6, 1, Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(scriviRegista, 1, 1, Qt::AlignLeft);
 
            QLabel* saga = new QLabel;
            saga->setText("Inserisci la saga: ");
-           griglia->addWidget(saga,7,0,Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(saga,2,0,Qt::AlignLeft);
            QLineEdit* scriviSaga = new QLineEdit;
-           griglia->addWidget(scriviSaga, 7, 1, Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(scriviSaga, 2, 1, Qt::AlignLeft);
        }
        if (type==2) { //serie
            QLabel* risoluzione = new QLabel;
            risoluzione->setText("Inserisci la risoluzione: ");
-           griglia->addWidget(risoluzione,5,0,Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(risoluzione,0,0,Qt::AlignLeft);
            QLineEdit* scriviRisoluzione = new QLineEdit;
-           griglia->addWidget(scriviRisoluzione, 5, 1, Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(scriviRisoluzione, 0, 1, Qt::AlignLeft);
 
            QLabel* serie = new QLabel;
            serie->setText("Inserisci la serie: ");
-           griglia->addWidget(serie,6,0,Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(serie,1,0,Qt::AlignLeft);
            QLineEdit* scriviSerie = new QLineEdit;
-           griglia->addWidget(scriviSerie, 6, 1, Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(scriviSerie, 1, 1, Qt::AlignLeft);
 
            QLabel* canale = new QLabel;
            canale->setText("Inserisci il canale, o servizio di streaming: ");
-           griglia->addWidget(canale,7,0,Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(canale,2,0,Qt::AlignLeft);
            QLineEdit* scriviCanale = new QLineEdit;
-           griglia->addWidget(scriviCanale, 7, 1, Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(scriviCanale, 2, 1, Qt::AlignLeft);
        }
        if (type==3) { //canzoni
 
            QLabel* qualita = new QLabel;
-           qualita->setText("Inserisci la risoluzione: ");
-           griglia->addWidget(qualita,5,0,Qt::AlignLeft);
+           qualita->setText("Inserisci la qualità: ");
+           grigliaRicercaAvanzata->addWidget(qualita,0,0,Qt::AlignLeft);
            QLineEdit* scriviQualita = new QLineEdit;
-           griglia->addWidget(scriviQualita , 5, 1, Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(scriviQualita , 0, 1, Qt::AlignLeft);
 
            QLabel* album = new QLabel;
            album->setText("Inserisci l'album: ");
-           griglia->addWidget(album,6,0,Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(album,1,0,Qt::AlignLeft);
            QLineEdit* scriviAlbum = new QLineEdit;
-           griglia->addWidget(scriviAlbum, 6, 1, Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(scriviAlbum, 1, 1, Qt::AlignLeft);
 
            QLabel* produttore = new QLabel;
            produttore->setText("Inserisci il produttore: ");
-           griglia->addWidget(produttore,7,0,Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(produttore,2,0,Qt::AlignLeft);
            QLineEdit* scriviProduttore = new QLineEdit;
-           griglia->addWidget(scriviProduttore, 7, 1, Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(scriviProduttore, 2, 1, Qt::AlignLeft);
        }
        if (type==4) { //podcast
            QLabel* qualita = new QLabel;
-           qualita->setText("Inserisci la risoluzione: ");
-           griglia->addWidget(qualita,5,0,Qt::AlignLeft);
+           qualita->setText("Inserisci la qualità: ");
+           grigliaRicercaAvanzata->addWidget(qualita,0,0,Qt::AlignLeft);
            QLineEdit* scriviQualita = new QLineEdit;
-           griglia->addWidget(scriviQualita , 5, 1, Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(scriviQualita , 0, 1, Qt::AlignLeft);
 
            QLabel* raccolta = new QLabel;
            raccolta->setText("Inserisci la raccolta: ");
-           griglia->addWidget(raccolta,6,0,Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(raccolta,1,0,Qt::AlignLeft);
            QLineEdit* scriviRaccolta = new QLineEdit;
-           griglia->addWidget(scriviRaccolta, 6, 1, Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(scriviRaccolta, 1, 1, Qt::AlignLeft);
 
            QLabel* ospite = new QLabel;
            ospite->setText("Inserisci l'ospite: ");
-           griglia->addWidget(ospite,7,0,Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(ospite,2,0,Qt::AlignLeft);
            QLineEdit* scriviOspite = new QLineEdit;
-           griglia->addWidget(scriviOspite , 7, 1, Qt::AlignLeft);
+           grigliaRicercaAvanzata->addWidget(scriviOspite , 2, 1, Qt::AlignLeft);
        }
-
 }
 

@@ -5,13 +5,14 @@
 #include <QLineEdit>
 #include <QGridLayout>
 
-class ricercaavanzata: public QMainWindow {
+class ricercaavanzata: public QWidget {
     Q_OBJECT
 private:
     QGridLayout* griglia;
-
+    QGridLayout* grigliaRicercaAvanzata;
+    QVBoxLayout* layout;
 public:
-    ricercaavanzata();
+    ricercaavanzata(QWidget* = nullptr);
     ~ricercaavanzata() = default;
 private slots:
     void tornaAllaMainWindow();

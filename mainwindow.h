@@ -26,9 +26,7 @@ private:
 public:
     mainwindow(QWidget* =nullptr);
     ~mainwindow() = default;
-private slots:
-//    void schiacciaRicerca();
-    void schiacciaAggiungi();
+
 };
 
 #endif // MAINWINDOW_H

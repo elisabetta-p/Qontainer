@@ -10,11 +10,14 @@ private:
     QVBoxLayout* layout;
     void eliminaContenutoAttuale();
 public:
-    qontainer(QWidget* = nullptr);
+    qontainer();
 
 public slots:
-    void schiacciaRicerca();
-    void tornaAllaMainWindow();
+    void mostraMainWindow();
+    void mostraRicerca();
+    void mostraAggiungi();
+
+
 };
 
 #endif // QONTAINER_H

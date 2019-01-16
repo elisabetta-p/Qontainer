@@ -100,24 +100,10 @@ mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
 
     //aggiunta dei due bottoni per la ricerca e per l'aggiunta di contenuto
 
-    connect (ricerca, SIGNAL(clicked()), parent, SLOT(schiacciaRicerca()));
-    connect (aggiungi, SIGNAL(clicked()), this, SLOT(schiacciaAggiungi()));
+    connect (ricerca, SIGNAL(clicked()), parent, SLOT(mostraRicerca()));
+    connect (aggiungi, SIGNAL(clicked()), parent, SLOT(mostraAggiungi()));
 
     this->setLayout(layout);
 
 }
-
-/*void mainwindow::schiacciaRicerca() {
-
-    ricercaavanzata* newRicerca = new ricercaavanzata();
-    layout->addWidget(newRicerca);
-
-}
-*/
-void mainwindow::schiacciaAggiungi() {
-    this -> hide();
-    aggiungi* newAggiungi = new aggiungi();
-    newAggiungi -> show();
-}
-
 

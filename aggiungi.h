@@ -5,12 +5,12 @@
 #include <QComboBox>
 
 
-class aggiungi: public QMainWindow {
+class aggiungi: public QWidget {
     Q_OBJECT
 private:
     QGridLayout* griglia;
 public:
-    aggiungi();
+    aggiungi(QWidget*);
     ~aggiungi() = default;
 private slots:
     void tornaAllaMainWindow();

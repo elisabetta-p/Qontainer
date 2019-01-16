@@ -63,7 +63,7 @@ ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
    boxCerca->setSizeConstraint(QLayout::SetMinimumSize);
    layout->addLayout(boxCerca);
 
-   connect (goBack, SIGNAL(clicked()), parent, SLOT(tornaAllaMainWindow()));
+   connect (goBack, SIGNAL(clicked()), parent, SLOT(mostraMainWindow()));
 
    this->setLayout(layout);
 
@@ -73,13 +73,16 @@ ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
 
 void ricercaavanzata::aggiungiInput(int type) {
 
-    QLayoutItem* item;
+
     //elimina tutti i qlabel e box di testo del tipo di dato precedente
+    QLayoutItem* item;
     while((item = grigliaRicercaAvanzata->takeAt(0))) {
+
         if(dynamic_cast<QWidgetItem*>(item)) {
             QWidget* widgetCorrente = static_cast<QWidget*>(item->widget());
             widgetCorrente->hide();
             grigliaRicercaAvanzata->removeWidget(widgetCorrente);
+
             //se item è un QLineEdit lo devo rimuovere dal vettoreOpzioni e distruggerlo
             if(dynamic_cast<QLineEdit*>(item->widget())) {
                 QLineEdit* lineEditCorrente = static_cast<QLineEdit*>(item->widget());

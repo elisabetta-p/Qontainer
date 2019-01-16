@@ -1,11 +1,13 @@
 #include "qontainer.h"
+#include <iostream>
 #include "ricercaavanzata.h"
+#include "aggiungi.h"
 
-qontainer::qontainer(QWidget* parent)  {
-    mainwindow* finestra = new mainwindow(this);
+qontainer::qontainer()  {
     layout = new QVBoxLayout;
-    layout->addWidget(finestra);
     this->setLayout(layout);
+
+    mostraMainWindow();
 }
 
 void qontainer::eliminaContenutoAttuale() {
@@ -14,23 +16,27 @@ void qontainer::eliminaContenutoAttuale() {
         while (item = layout->takeAt(0)) {
             if(dynamic_cast<QWidgetItem*>(item)) {
                 QWidget* widgetCorrente = static_cast<QWidget*>(item->widget());
-                widgetCorrente->hide();
                 delete widgetCorrente;
             }
         }
     }
 }
 
-void qontainer::schiacciaRicerca() {
 
+void qontainer::mostraMainWindow() {
+    eliminaContenutoAttuale();
+    mainwindow* newMainWindow = new mainwindow(this);
+    layout->addWidget(newMainWindow);
+}
+
+void qontainer::mostraRicerca() {
     eliminaContenutoAttuale();
     ricercaavanzata* newRicerca = new ricercaavanzata(this);
     layout->addWidget(newRicerca);
 }
 
-
-void qontainer::tornaAllaMainWindow() {
+void qontainer::mostraAggiungi() {
     eliminaContenutoAttuale();
-    mainwindow* newMainWindow = new mainwindow(this);
-    layout->addWidget(newMainWindow);
+    aggiungi* newAggiungi = new aggiungi(this);
+    layout->addWidget(newAggiungi);
 }

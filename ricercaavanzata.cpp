@@ -63,17 +63,13 @@ ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
    boxCerca->setSizeConstraint(QLayout::SetMinimumSize);
    layout->addLayout(boxCerca);
 
-   connect (goBack, SIGNAL(clicked()), this, SLOT(tornaAllaMainWindow()));
+   connect (goBack, SIGNAL(clicked()), parent, SLOT(tornaAllaMainWindow()));
 
    this->setLayout(layout);
 
 }
 
-void ricercaavanzata::tornaAllaMainWindow() {
-    this->hide();
-    mainwindow* newMainW = new mainwindow;
-    newMainW->show();
-}
+
 
 void ricercaavanzata::aggiungiInput(int type) {
 

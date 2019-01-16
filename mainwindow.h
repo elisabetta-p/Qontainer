@@ -16,15 +16,18 @@
 #include <QAction>
 #include <QScrollArea>
 
-class mainwindow: public QMainWindow {
+class mainwindow: public QWidget {
     Q_OBJECT
 private:
     QPushButton* ricerca;
+    QVBoxLayout* layout;
+    QHBoxLayout* boxBottoni;
+    QGridLayout* griglia;
 public:
     mainwindow(QWidget* =nullptr);
     ~mainwindow() = default;
 private slots:
-    void schiacciaRicerca();
+//    void schiacciaRicerca();
     void schiacciaAggiungi();
 };
 

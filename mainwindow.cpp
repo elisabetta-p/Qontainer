@@ -2,57 +2,69 @@
 #include "ricercaavanzata.h"
 #include "aggiungi.h"
 
-mainwindow::mainwindow(QWidget* parent ) : QMainWindow (parent) {
+mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
 
     setWindowTitle("Qontainer - Elisabetta Piombin");
     setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);
     setGeometry(0,0, 600,600);
 
+    layout = new QVBoxLayout(this);
 
      //Creazione del titolo Qontainer
-    QGroupBox* titoloGropuBox = new QGroupBox(this);
+    //QGroupBox* titoloGropuBox = new QGroupBox(this);
 
-    QLabel* titolo = new QLabel(this);
-    titolo->setMinimumSize(this->width(), 50);
-    titolo->setText(tr("Qontainer"));
-    titolo->setFont(QFont("Times", 26, QFont::Bold));
+    QLabel* titoloFinestra = new QLabel(this);
+    titoloFinestra->setMinimumSize(this->width(), 50);
+    titoloFinestra->setText(tr("Qontainer"));
+    titoloFinestra->setFont(QFont("Times", 26, QFont::Bold));
+    titoloFinestra->setAlignment((Qt::AlignHCenter));
 
-    QHBoxLayout* boxTitolo = new QHBoxLayout;
+    layout->addWidget(titoloFinestra);
 
-    boxTitolo->addWidget(titolo);
 
-    boxTitolo->setSizeConstraint(QLayout::SetMinimumSize);
-    titoloGropuBox->setLayout(boxTitolo);
-    titolo->setAlignment(Qt::AlignCenter);
+    QHBoxLayout* boxBottoni = new QHBoxLayout;
+    QPushButton* ricerca = new QPushButton(this);
+    ricerca->setText("Ricerca Avanzata");
+    QPushButton* aggiungi = new QPushButton(this);
+    aggiungi->setText("Aggiungi contenuto");
+
+    boxBottoni->addWidget(ricerca);
+    boxBottoni->addWidget(aggiungi);
+
+    layout->addLayout(boxBottoni);
+
+    //boxTitolo->setSizeConstraint(QLayout::SetMinimumSize);
+    //titoloGropuBox->setLayout(boxTitolo);
+    //titolo->setAlignment(Qt::AlignCenter);
 
 
 
     //etichetta "la tua libreria"
-    QLabel* lib = new QLabel(this);
+    QLabel* lib = new QLabel;
     lib->setMargin(10);
     lib->setText(tr("La tua libreria:"));
-    lib->setMinimumSize(QSize(this->width(), 400));
     lib->setFont(QFont("Times", 24));
+    layout->addWidget(lib);
 
 
     //creazione della griglia:
     //quattro QLabel, per i titoli, e poi quattro QListBox per la lista di elementi
     //che verranno inseriti
 
-    QGroupBox* boxListe = new QGroupBox(this);
-    QLabel* cantanti = new QLabel(this);
+    //QGroupBox* boxListe = new QGroupBox(this);
+    QLabel* cantanti = new QLabel;
     cantanti->setText("Cantanti");
-    QLabel* podcast = new QLabel(this);
+    QLabel* podcast = new QLabel;
     podcast->setText("Podcast");
-    QLabel* serie = new QLabel(this);
+    QLabel* serie = new QLabel;
     serie->setText("Serie");
-    QLabel* film = new QLabel(this);
+    QLabel* film = new QLabel;
     film->setText("Film");
 
 
 
-    QGridLayout* griglia = new QGridLayout;
+    griglia = new QGridLayout;
     griglia->addWidget(cantanti, 0, 0, Qt::AlignCenter);
     griglia->addWidget(podcast, 0, 1, Qt::AlignCenter);
     griglia->addWidget(film, 0, 2, Qt::AlignCenter);
@@ -68,9 +80,9 @@ mainwindow::mainwindow(QWidget* parent ) : QMainWindow (parent) {
     griglia->addLayout(listaSerie, 1, 3, Qt::AlignCenter);
     griglia->addLayout(listaFilm, 1, 4, Qt::AlignCenter);
 
-    griglia->setSizeConstraint(QLayout::SetMinimumSize);
-    boxListe->setLayout(griglia);
-    boxListe->setMinimumSize(QSize(this->width(), this->height()));
+
+    layout->addLayout(griglia);
+
 
 
     /* aggiunta delle varie scroll bar nei 4 layout verticali*/
@@ -87,35 +99,21 @@ mainwindow::mainwindow(QWidget* parent ) : QMainWindow (parent) {
     */
 
     //aggiunta dei due bottoni per la ricerca e per l'aggiunta di contenuto
-    QGroupBox* gruppoBottoni = new QGroupBox(this);
 
-    QPushButton* ricerca = new QPushButton(this);
-    ricerca->setText("Ricerca Avanzata");
-    QPushButton* aggiungi = new QPushButton(this);
-    aggiungi->setText("Aggiungi contenuto");
-
-
-    QHBoxLayout* boxBottoni = new QHBoxLayout;
-
-    boxBottoni->addWidget(ricerca);
-    boxBottoni->addWidget(aggiungi);
-
-    boxBottoni->setSizeConstraint(QLayout::SetMinimumSize);
-    gruppoBottoni->setLayout(boxBottoni);
-    gruppoBottoni->setGeometry(0, titolo->height()+26, this->width(), 0);
-    //gruppoBottoni->setMinimumSize(QSize(this->width(),100));
-
-    connect (ricerca, SIGNAL(clicked()), this, SLOT(schiacciaRicerca()));
+    connect (ricerca, SIGNAL(clicked()), parent, SLOT(schiacciaRicerca()));
     connect (aggiungi, SIGNAL(clicked()), this, SLOT(schiacciaAggiungi()));
+
+    this->setLayout(layout);
+
 }
 
-void mainwindow::schiacciaRicerca() {
-    this -> hide();
+/*void mainwindow::schiacciaRicerca() {
+
     ricercaavanzata* newRicerca = new ricercaavanzata();
-    newRicerca -> show();
+    layout->addWidget(newRicerca);
 
 }
-
+*/
 void mainwindow::schiacciaAggiungi() {
     this -> hide();
     aggiungi* newAggiungi = new aggiungi();

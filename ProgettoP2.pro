@@ -27,7 +27,8 @@ SOURCES += \
     database.cpp \
     mainwindow.cpp \
     ricercaavanzata.cpp \
-    aggiungi.cpp
+    aggiungi.cpp \
+    qontainer.cpp
 
 RESOURCES += qml.qrc
 
@@ -54,7 +55,8 @@ HEADERS += \
     database.h \
     mainwindow.h \
     ricercaavanzata.h \
-    aggiungi.h
+    aggiungi.h \
+    qontainer.h
 
 
 

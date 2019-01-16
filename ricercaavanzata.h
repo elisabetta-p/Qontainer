@@ -24,7 +24,6 @@ public:
     ricercaavanzata(QWidget* = nullptr);
     ~ricercaavanzata() = default;
 private slots:
-    void tornaAllaMainWindow();
     void aggiungiInput(int);
 
 };

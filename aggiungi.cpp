@@ -14,6 +14,7 @@ aggiungi::aggiungi(QWidget* parent) : QWidget(parent){
     titoloFinestra->setText(tr("Aggiungi Contenuti"));
     titoloFinestra->setFont(QFont("Times", 26, QFont::Bold));
     titoloFinestra->setAlignment(Qt::AlignHCenter);
+    titoloFinestra->setStyleSheet("QLabel {color : #cc0066; }");
 
 
     layout->addWidget(titoloFinestra);

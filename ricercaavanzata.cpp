@@ -11,7 +11,7 @@ ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
     //Creazione del titolo Ricerca Avanzata
    QLabel* titoloFinestra = new QLabel(this);
    titoloFinestra->setText(tr("Ricerca Avanzata"));
-   titoloFinestra->setFont(QFont("Times", 26, QFont::Bold));
+   titoloFinestra->setFont(QFont("Times", 36, QFont::Bold));
    titoloFinestra->setAlignment(Qt::AlignHCenter);
    titoloFinestra->setStyleSheet("QLabel {color : #cc0066; }");
 

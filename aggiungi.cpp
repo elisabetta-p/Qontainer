@@ -1,4 +1,5 @@
 #include "aggiungi.h"
+#include "mainwindow.h"
 
 aggiungi::aggiungi(QWidget* parent) : QWidget(parent){
     setWindowTitle("Qontainer: Aggiungi Contenuti - Elisabetta Piombin");
@@ -6,172 +7,130 @@ aggiungi::aggiungi(QWidget* parent) : QWidget(parent){
     setFocusPolicy(Qt::StrongFocus);
     setGeometry(0,0, 600,600);
 
+    layout = new QVBoxLayout(this);
+
     //Creazione del titolo della pagina
-   QGroupBox* titoloGropuBox = new QGroupBox(this);
+    QLabel* titoloFinestra = new QLabel(this);
+    titoloFinestra->setText(tr("Aggiungi Contenuti"));
+    titoloFinestra->setFont(QFont("Times", 26, QFont::Bold));
+    titoloFinestra->setAlignment(Qt::AlignHCenter);
 
-   QLabel* titoloFinestra = new QLabel(this);
-   titoloFinestra->setMinimumSize(this->width(), 50);
-   titoloFinestra->setText(tr("Aggiungi Contenuti"));
-   titoloFinestra->setFont(QFont("Times", 26, QFont::Bold));
 
-   QHBoxLayout* boxTitolo = new QHBoxLayout;
+    layout->addWidget(titoloFinestra);
 
-   boxTitolo->addWidget(titoloFinestra);
 
-   boxTitolo->setSizeConstraint(QLayout::SetMinimumSize);
-   titoloGropuBox->setLayout(boxTitolo);
-   titoloFinestra->setAlignment(Qt::AlignCenter);
+    //aggiunta del file
 
-   //aggiunta del file
-   QGroupBox *boxAggiunta = new QGroupBox(this);
-   QLabel* menuTendina = new QLabel(this);
-   menuTendina->setText("Scegli il tipo di file: ");
-   QLabel* autore = new QLabel(this);
-   autore->setText("Autore:");
-   QLabel* titolo = new QLabel(this);
-   titolo->setText("Titolo:");
-   QLabel* genere = new QLabel(this);
-   genere->setText("Genere:");
-   QLabel* anno = new QLabel(this);
-   anno->setText("Anno di uscita:");
+    griglia = new QGridLayout;
 
-   griglia = new QGridLayout;
-   griglia->addWidget(menuTendina, 0,0,Qt::AlignLeft);
-   griglia->addWidget(autore, 1,0,Qt::AlignLeft);
-   griglia->addWidget(titolo, 2,0,Qt::AlignLeft);
-   griglia->addWidget(genere, 3,0,Qt::AlignLeft);
-   griglia->addWidget(anno, 4,0,Qt::AlignLeft);
+    QLabel* menuTendina = new QLabel(this);
+    menuTendina->setText("Scegli il tipo di file che vuoi aggiungere:");
+    griglia->addWidget(menuTendina, 0, 0, Qt::AlignLeft);
 
-   //menu a tendina
-   QComboBox *opzioni = new QComboBox(this);
-   opzioni->insertItem(0, tr("Film"));
-   opzioni->insertItem(1, tr("Episodio"));
-   opzioni->insertItem(2, tr("Canzoni"));
-   opzioni->insertItem(3, tr("Podcast"));
 
-   QLineEdit* scriviAutore = new QLineEdit(this);
-   scriviAutore->setPlaceholderText("Scrivi l'autore");
-   QLineEdit* scriviTitolo = new QLineEdit(this);
-   scriviTitolo->setPlaceholderText("Scrivi il titolo di quello che cerchi");
-   QLineEdit* scriviGenere = new QLineEdit(this);
-   scriviGenere->setPlaceholderText("Scrivi il genere di quello che cerchi");
-   QLineEdit* scriviAnno = new QLineEdit(this);
-   scriviAnno->setPlaceholderText("Scrivi l'anno di uscita");
+    //menu a tendina
+    QComboBox *opzioni = new QComboBox(this);
+    opzioni->insertItem(0, tr("Scegli:"));
+    opzioni->insertItem(1, tr("Film"));
+    opzioni->insertItem(2, tr("Episodio"));
+    opzioni->insertItem(3, tr("Canzoni"));
+    opzioni->insertItem(4, tr("Podcast"));
 
-   griglia->addWidget(opzioni, 0, 1, Qt::AlignLeft);
-   griglia->addWidget(scriviAutore, 1, 1, Qt::AlignLeft);
-   griglia->addWidget(scriviTitolo, 2, 1, Qt::AlignLeft);
-   griglia->addWidget(scriviGenere, 3, 1, Qt::AlignLeft);
-   griglia->addWidget(scriviAnno, 4, 1, Qt::AlignLeft);
+    griglia->addWidget(opzioni, 0, 1, Qt::AlignLeft);
 
-   connect(opzioni, SIGNAL(activated(int)), this, SLOT(aggiungiInput(int)));
+    //creazione dei campi dati e delle relative text box
 
-   griglia->setSizeConstraint(QLayout::SetMinimumSize);
-   griglia->setVerticalSpacing(1);
-   boxAggiunta->setLayout(griglia);
-   boxAggiunta->setMinimumSize(QSize(this->width(), this->height()-80));
+    //Creazione dei vari campi e delle text box
+    creaOpzione("Autore:", "Inserisci l'autore", 250, griglia, 1);
+    creaOpzione("Titolo:", "Inserisci il titolo", 250, griglia, 2);
+    creaOpzione("Genere:", "Inserisci il genere", 250, griglia, 3);
+    creaOpzione("Anno di uscita:", "Inserisci l'anno", 250, griglia, 4);
 
-   //aggiunta del bottone aggiungi e del bottone torna indietro
-   QGroupBox* gruppoAggiungi = new QGroupBox(this);
+    connect(opzioni, SIGNAL(activated(int)), this, SLOT(aggiungiInput(int)));
 
-   QPushButton* agg = new QPushButton(this);
-   agg->setText("Aggiungi");
-   QPushButton* goBack = new QPushButton(this);
-   goBack->setText("Torna alla schermata principale");
+    layout->addLayout(griglia);
 
-   QGridLayout* boxAggiungi = new QGridLayout;
-   boxAggiungi->addWidget(agg,0,0, Qt::AlignCenter);
-   boxAggiungi->addWidget(goBack,1,0, Qt::AlignCenter);
-   boxAggiungi->setSizeConstraint(QLayout::SetMinimumSize);
-   gruppoAggiungi->setLayout(boxAggiungi);
-   gruppoAggiungi->setGeometry(0, this->height()-80, this->width(), 0);
+    grigliaAggiuntaAvanzata = new QGridLayout;
+    layout->addLayout(grigliaAggiuntaAvanzata);
 
-   connect (goBack, SIGNAL(clicked()), this, SLOT(tornaAllaMainWindow()));
-}
 
-void aggiungi::tornaAllaMainWindow() {
-    this->hide();
-    mainwindow* newMainW = new mainwindow;
-    newMainW->show();
+    //aggiunta del bottone aggiungi e del bottone torna indietro
+
+    QPushButton* agg = new QPushButton(this);
+    agg->setText("Aggiungi");
+    QPushButton* goBack = new QPushButton(this);
+    goBack->setText("Torna alla schermata principale");
+
+    QGridLayout* boxAggiungi = new QGridLayout;
+    boxAggiungi->addWidget(agg,0,0, Qt::AlignCenter);
+    boxAggiungi->addWidget(goBack,1,0, Qt::AlignCenter);
+    boxAggiungi->setSizeConstraint(QLayout::SetMinimumSize);
+    layout->addLayout(boxAggiungi);
+
+
+    connect (goBack, SIGNAL(clicked()), parent, SLOT(mostraMainWindow()));
+
+    this->setLayout(layout);
 }
 
 void aggiungi::aggiungiInput(int type) {
-       if (type==1) { //film
-           QLabel* risoluzione = new QLabel;
-           risoluzione->setText("Inserisci la risoluzione: ");
-           griglia->addWidget(risoluzione,5,0,Qt::AlignLeft);
-           QLineEdit* scriviRisoluzione = new QLineEdit;
-           griglia->addWidget(scriviRisoluzione, 5, 1, Qt::AlignLeft);
+     //elimina tutti i qlabel e box di testo del tipo di dato precedente
+     QLayoutItem* item;
+     while((item = grigliaAggiuntaAvanzata->takeAt(0))) {
 
-           QLabel* regista = new QLabel;
-           regista->setText("Inserisci il regista: ");
-           griglia->addWidget(regista,6,0,Qt::AlignLeft);
-           QLineEdit* scriviRegista = new QLineEdit;
-           griglia->addWidget(scriviRegista, 6, 1, Qt::AlignLeft);
+         if(dynamic_cast<QWidgetItem*>(item)) {
+             QWidget* widgetCorrente = static_cast<QWidget*>(item->widget());
+             widgetCorrente->hide();
+             grigliaAggiuntaAvanzata->removeWidget(widgetCorrente);
 
-           QLabel* saga = new QLabel;
-           saga->setText("Inserisci la saga: ");
-           griglia->addWidget(saga,7,0,Qt::AlignLeft);
-           QLineEdit* scriviSaga = new QLineEdit;
-           griglia->addWidget(scriviSaga, 7, 1, Qt::AlignLeft);
-       }
-       if (type==2) { //serie
-           QLabel* risoluzione = new QLabel;
-           risoluzione->setText("Inserisci la risoluzione: ");
-           griglia->addWidget(risoluzione,5,0,Qt::AlignLeft);
-           QLineEdit* scriviRisoluzione = new QLineEdit;
-           griglia->addWidget(scriviRisoluzione, 5, 1, Qt::AlignLeft);
-
-           QLabel* serie = new QLabel;
-           serie->setText("Inserisci la serie: ");
-           griglia->addWidget(serie,6,0,Qt::AlignLeft);
-           QLineEdit* scriviSerie = new QLineEdit;
-           griglia->addWidget(scriviSerie, 6, 1, Qt::AlignLeft);
-
-           QLabel* canale = new QLabel;
-           canale->setText("Inserisci il canale, o servizio di streaming: ");
-           griglia->addWidget(canale,7,0,Qt::AlignLeft);
-           QLineEdit* scriviCanale = new QLineEdit;
-           griglia->addWidget(scriviCanale, 7, 1, Qt::AlignLeft);
-       }
-       if (type==3) { //canzoni
-
-           QLabel* qualita = new QLabel;
-           qualita->setText("Inserisci la risoluzione: ");
-           griglia->addWidget(qualita,5,0,Qt::AlignLeft);
-           QLineEdit* scriviQualita = new QLineEdit;
-           griglia->addWidget(scriviQualita , 5, 1, Qt::AlignLeft);
-
-           QLabel* album = new QLabel;
-           album->setText("Inserisci l'album: ");
-           griglia->addWidget(album,6,0,Qt::AlignLeft);
-           QLineEdit* scriviAlbum = new QLineEdit;
-           griglia->addWidget(scriviAlbum, 6, 1, Qt::AlignLeft);
-
-           QLabel* produttore = new QLabel;
-           produttore->setText("Inserisci il produttore: ");
-           griglia->addWidget(produttore,7,0,Qt::AlignLeft);
-           QLineEdit* scriviProduttore = new QLineEdit;
-           griglia->addWidget(scriviProduttore, 7, 1, Qt::AlignLeft);
-       }
-       if (type==4) { //podcast
-           QLabel* qualita = new QLabel;
-           qualita->setText("Inserisci la risoluzione: ");
-           griglia->addWidget(qualita,5,0,Qt::AlignLeft);
-           QLineEdit* scriviQualita = new QLineEdit;
-           griglia->addWidget(scriviQualita , 5, 1, Qt::AlignLeft);
-
-           QLabel* raccolta = new QLabel;
-           raccolta->setText("Inserisci la raccolta: ");
-           griglia->addWidget(raccolta,6,0,Qt::AlignLeft);
-           QLineEdit* scriviRaccolta = new QLineEdit;
-           griglia->addWidget(scriviRaccolta, 6, 1, Qt::AlignLeft);
-
-           QLabel* ospite = new QLabel;
-           ospite->setText("Inserisci l'ospite: ");
-           griglia->addWidget(ospite,7,0,Qt::AlignLeft);
-           QLineEdit* scriviOspite = new QLineEdit;
-           griglia->addWidget(scriviOspite , 7, 1, Qt::AlignLeft);
-       }
+             //se item è un QLineEdit lo devo rimuovere dal vettoreOpzioni e distruggerlo
+             if(dynamic_cast<QLineEdit*>(item->widget())) {
+                 QLineEdit* lineEditCorrente = static_cast<QLineEdit*>(item->widget());
+                 for(auto it = vettoreOpzioni.begin(); it != vettoreOpzioni.end(); ++it) {
+                     if(*it == lineEditCorrente) {
+                         vettoreOpzioni.erase(it);
+                         --it;
+                     }
+                 }
+             }
+             else { //se non è un QLineEdit, item è un QLabel => lo distruggo manualmente
+                 delete widgetCorrente;
+             }
+        }
+     }
+     if (type==1) { //film
+          creaOpzione("Risoluzione:", "Inserisci la risoluzione", 250, grigliaAggiuntaAvanzata, 0);
+          creaOpzione("Regista:", "Inserisci il regista", 250, grigliaAggiuntaAvanzata, 1);
+          creaOpzione("Saga:", "Inserisci la saga", 250, grigliaAggiuntaAvanzata, 2);
+     }
+     if (type==2) { //serie
+         creaOpzione("Risoluzione:", "Inserisci la risoluzione", 250, grigliaAggiuntaAvanzata, 0);
+         creaOpzione("Serie:", "Inserisci la serie", 250, grigliaAggiuntaAvanzata, 1);
+         creaOpzione("Canale:", "Inserisci il canale o servizio di streaming", 250, grigliaAggiuntaAvanzata, 2);
+     }
+     if (type==3) { //canzoni
+         creaOpzione("Qualità:", "Inserisci la qualità", 250, grigliaAggiuntaAvanzata, 0);
+         creaOpzione("Album:", "Inserisci l'album", 250, grigliaAggiuntaAvanzata, 1);
+         creaOpzione("Produttore:", "Inserisci il produttore", 250, grigliaAggiuntaAvanzata, 2);
+     }
+     if (type==4) { //podcast
+         creaOpzione("Qualità:", "Inserisci la qualità", 250, grigliaAggiuntaAvanzata, 0);
+         creaOpzione("Raccolta:", "Inserisci la raccolta", 250, grigliaAggiuntaAvanzata, 1);
+         creaOpzione("Ospite:", "Inserisci l'ospite", 250, grigliaAggiuntaAvanzata, 2);
+     }
 }
 
+void aggiungi::creaOpzione(QString etichetta, QString placeholder, int lunghezza, QGridLayout* griglia, int riga) {
+
+    QLabel* label = new QLabel(this);
+    label->setText(etichetta);
+
+    QLineEdit* box = new QLineEdit(this);
+    box->setFixedWidth(lunghezza);
+    box->setPlaceholderText(placeholder);
+
+    vettoreOpzioni.push_back(box);
+    griglia->addWidget(label, riga, 0, Qt::AlignLeft);
+    griglia->addWidget(box, riga, 1, Qt::AlignLeft);
+
+}

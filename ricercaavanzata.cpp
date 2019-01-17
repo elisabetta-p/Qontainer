@@ -9,10 +9,7 @@ ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
 
     layout = new QVBoxLayout(this);
 
-
-
     //Creazione del titolo Ricerca Avanzata
-
    QLabel* titoloFinestra = new QLabel(this);
    titoloFinestra->setText(tr("Ricerca Avanzata"));
    titoloFinestra->setFont(QFont("Times", 26, QFont::Bold));
@@ -24,7 +21,7 @@ ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
    griglia = new QGridLayout;
 
    QLabel* menuTendina = new QLabel(this);
-   menuTendina->setText("Scegli il tipo di file: ");
+   menuTendina->setText("Scegli il tipo di file che vuoi cercare: ");
    griglia->addWidget(menuTendina, 0,0,Qt::AlignLeft);
 
    //menu a tendina che andrà a destra

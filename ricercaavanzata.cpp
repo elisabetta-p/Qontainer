@@ -1,7 +1,6 @@
 #include "ricercaavanzata.h"
 #include "mainwindow.h"
 ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
-    setWindowTitle("Qontainer: Ricerca Avanzata - Elisabetta Piombin");
     setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);
     setGeometry(0,0, 600,600);

@@ -2,7 +2,6 @@
 #include "mainwindow.h"
 
 aggiungi::aggiungi(QWidget* parent) : QWidget(parent){
-    setWindowTitle("Qontainer: Aggiungi Contenuti - Elisabetta Piombin");
     setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);
     setGeometry(0,0, 600,600);

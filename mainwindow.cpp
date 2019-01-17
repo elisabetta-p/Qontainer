@@ -3,8 +3,6 @@
 #include "aggiungi.h"
 
 mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
-
-    setWindowTitle("Qontainer - Elisabetta Piombin");
     setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);
     setGeometry(0,0, 600,600);

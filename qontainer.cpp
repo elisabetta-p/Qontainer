@@ -6,7 +6,7 @@
 qontainer::qontainer()  {
     layout = new QVBoxLayout;
     this->setLayout(layout);
-
+    this->setWindowTitle("Qontainer - Elisabetta Piombin");
     mostraMainWindow();
 }
 

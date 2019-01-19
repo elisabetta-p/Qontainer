@@ -23,14 +23,24 @@ risultatoricerca::risultatoricerca(QWidget* parent) : QWidget(parent) {
      * nella libreria
     */
 
-    //bottoni per tornare alla ricerca, oppure per tornare alla schermata principale
+    QLabel* risultati = new QLabel(this);
+    risultati->setText("Qua ci saranno i risultati");
+    risultati->setAlignment(Qt::AlignHCenter);
+    layout->addWidget(risultati);
 
+
+    //bottoni per tornare alla ricerca, oppure per tornare alla schermata principale
     QPushButton* tornaRicercaAvanzata = new QPushButton(this);
     tornaRicercaAvanzata->setText("Ritorna alla pagina di ricerca avanzata");
     QPushButton* tornaMainWindow = new QPushButton(this);
     tornaMainWindow->setText("Torna alla pagina principale");
 
-    connect(tornaMainWindow, SIGNAL(clicked()), this->parentWidget()->parentWidget(), SLOT(mostraMainWindow()));
+    griglia = new QGridLayout;
+    griglia->addWidget(tornaRicercaAvanzata, 0, 0, Qt::AlignCenter);
+    griglia->addWidget(tornaMainWindow, 1, 0, Qt::AlignCenter);
+    layout->addLayout(griglia);
 
+    connect(tornaMainWindow, SIGNAL(clicked()), parent, SLOT(mostraMainWindow()));
+    connect(tornaRicercaAvanzata, SIGNAL(clicked()), parent, SLOT(mostraRicerca()));
     this->setLayout(layout);
 }

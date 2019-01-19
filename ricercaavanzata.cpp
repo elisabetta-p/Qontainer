@@ -1,5 +1,8 @@
 #include "ricercaavanzata.h"
 #include "mainwindow.h"
+#include "risultatoricerca.h"
+
+
 ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
     setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);
@@ -49,7 +52,7 @@ ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
    grigliaRicercaAvanzata = new QGridLayout;
    layout->addLayout(grigliaRicercaAvanzata);
 
-   QPushButton * cercaB = new QPushButton(this);
+   QPushButton* cercaB = new QPushButton(this);
    cercaB->setText("Cerca");
    QPushButton* goBack = new QPushButton(this);
    goBack->setText("Torna alla schermata principale");
@@ -60,6 +63,7 @@ ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
    boxCerca->setSizeConstraint(QLayout::SetMinimumSize);
    layout->addLayout(boxCerca);
 
+   connect(cercaB, SIGNAL(clicked()), parent, SLOT(mostraRisultato()));
    connect (goBack, SIGNAL(clicked()), parent, SLOT(mostraMainWindow()));
 
    this->setLayout(layout);

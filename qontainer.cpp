@@ -3,6 +3,7 @@
 #include "ricercaavanzata.h"
 #include "aggiungi.h"
 #include "risultatoricerca.h"
+#include "risultatoaggiunta.h"
 
 qontainer::qontainer()  {
     layout = new QVBoxLayout;
@@ -46,4 +47,10 @@ void qontainer::mostraRisultato() {
     eliminaContenutoAttuale();
     risultatoricerca* newRisultato = new risultatoricerca(this);
     layout->addWidget(newRisultato);
+}
+
+void qontainer::mostraAggiuntaRiuscita() {
+    eliminaContenutoAttuale();
+    risultatoaggiunta* newAggiunta = new risultatoaggiunta(this);
+    layout->addWidget(newAggiunta);
 }

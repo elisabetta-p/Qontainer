@@ -69,6 +69,7 @@ aggiungi::aggiungi(QWidget* parent) : QWidget(parent){
 
 
     connect (goBack, SIGNAL(clicked()), parent, SLOT(mostraMainWindow()));
+    connect (agg, SIGNAL(clicked()), parent, SLOT(mostraAggiuntaRiuscita()));
 
     this->setLayout(layout);
 }

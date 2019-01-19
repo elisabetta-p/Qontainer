@@ -17,6 +17,7 @@ public slots:
     void mostraRicerca();
     void mostraAggiungi();
     void mostraRisultato();
+    void mostraAggiuntaRiuscita();
 };
 
 #endif // QONTAINER_H

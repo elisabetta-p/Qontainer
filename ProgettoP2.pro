@@ -29,7 +29,8 @@ SOURCES += \
     ricercaavanzata.cpp \
     aggiungi.cpp \
     qontainer.cpp \
-    risultatoricerca.cpp
+    risultatoricerca.cpp \
+    risultatoaggiunta.cpp
 
 RESOURCES += qml.qrc
 
@@ -58,7 +59,8 @@ HEADERS += \
     ricercaavanzata.h \
     aggiungi.h \
     qontainer.h \
-    risultatoricerca.h
+    risultatoricerca.h \
+    risultatoaggiunta.h
 
 
 

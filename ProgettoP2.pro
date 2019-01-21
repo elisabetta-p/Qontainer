@@ -17,20 +17,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-    contenutomultimediale.cpp \
-    audio.cpp \
-    video.cpp \
-    film.cpp \
-    episodio.cpp \
-    canzone.cpp \
-    podcast.cpp \
-    database.cpp \
-    mainwindow.cpp \
-    ricercaavanzata.cpp \
-    aggiungi.cpp \
-    qontainer.cpp \
-    risultatoricerca.cpp \
-    risultatoaggiunta.cpp
+    model/contenutomultimediale.cpp \
+    model/audio.cpp \
+    model/video.cpp \
+    model/film.cpp \
+    model/episodio.cpp \
+    model/canzone.cpp \
+    model/podcast.cpp \
+    model/database.cpp \
+    view/mainwindow.cpp \
+    view/ricercaavanzata.cpp \
+    view/aggiungi.cpp \
+    view/qontainer.cpp \
+    view/risultatoricerca.cpp \
+    view/risultatoaggiunta.cpp
 
 RESOURCES += qml.qrc
 
@@ -46,21 +46,21 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    container.h \
-    contenutomultimediale.h \
-    audio.h \
-    video.h \
-    film.h \
-    episodio.h \
-    canzone.h \
-    podcast.h \
-    database.h \
-    mainwindow.h \
-    ricercaavanzata.h \
-    aggiungi.h \
-    qontainer.h \
-    risultatoricerca.h \
-    risultatoaggiunta.h
+    model/container.h \
+    model/contenutomultimediale.h \
+    model/audio.h \
+    model/video.h \
+    model/film.h \
+    model/episodio.h \
+    model/canzone.h \
+    model/podcast.h \
+    model/database.h \
+    view/mainwindow.h \
+    view/ricercaavanzata.h \
+    view/aggiungi.h \
+    view/qontainer.h \
+    view/risultatoricerca.h \
+    view/risultatoaggiunta.h
 
 
 

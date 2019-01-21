@@ -19,11 +19,11 @@ private:
         T info;
         nodo* next;
         nodo (T contenuto, nodo* n=0) : info(contenuto), next(n) {}
-        ~nodo() {if (*this) delete[] *this;}
+        ~nodo() {if (this) delete[] this;}
     };                          // !!!!!!!!! fine classe NODO !!!!!!!!!
 
 
-
+    // dentro container
     nodo* first;
     static nodo* copia(nodo* n) {
         if (!n) return nullptr;
@@ -37,9 +37,9 @@ private:
             delete[] n;
         }
     }
+
+
 public:
-
-
 
     class iterator {           // !!!!!!!!! inizio classe ITERATOR !!!!!!!!!
         friend class container;
@@ -127,7 +127,7 @@ public:
 
     //                              !!!!!!! dentro CONTAINER !!!!!!!!
     container(nodo* n=0) : first(n) {}
-    ~container() {/*if(first) distruggi(first);*/}
+    ~container() {if(first) distruggi(first);}
     container (const container&);
     container& operator=(const container& c) {
         first = copia(c.first);

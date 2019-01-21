@@ -56,23 +56,23 @@ Per il caricamento dei file che compongono la libreria, e per il loro salvataggi
 \section{Tempistiche}
 
 \begin{center}
- \begin{tabular}{||c | c | c||} 
+ \begin{tabular}{||c | c ||} 
  \hline
- \textbf{Ore} & \textbf{Fase} & \textbf{Motivazione} \\ 
+ \textbf{Ore} & \textbf{Fase}  \\ 
  \hline\hline
- 1 & Analisi preliminare del problema & 87837 \\ 
+ 1 & Analisi preliminare del problema \\ 
  \hline
- 2 & Progettazione del modello & 78\\
+ 2 & Progettazione del modello \\
  \hline
- 3 & Progettazione della GUI & 778\\
+ 3 & Progettazione della GUI\\
  \hline
- 4 & Apprendimento libreria Qt & 18744\\
+ 4 & Apprendimento libreria Qt \\
  \hline
- 5 & Codifica modello e GUI & 788\\ 
+ 5 & Codifica modello e GUI\\ 
  \hline
- 4 & Debugging & 18744\\
+ 4 & Debugging \\
  \hline
- 4 & Testing & 18744\\
+ 4 & Testing\\
  \hline
 \end{tabular}
 \end{center}

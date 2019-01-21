@@ -42,13 +42,37 @@ Non si verifica la situazione di ereditarità multipla. \\
 
 
 \section{Descrizione delle chiamate polimorfe}
+Le chiamate polimorfe vengono pesantemente utilizzate nelle operazioni di modifica e di rimozione degli elementi del contenitore, in quanto il contenitore viene istanziato a \texttt{<ContenutoMultimediale*>}, e tramite \texttt{dynamic\_cast} effettuato al Tipo desiderato, si eseguono le operazioni sui tipi desiderati dall'utente. 
 
 \section{Descrizione del formato del file di salvataggio e caricamento del contenitore}
 Per il caricamento dei file che compongono la libreria, e per il loro salvataggio, mi appoggio ad una classe esterna alla gerarchia, che ho chiamato \texttt{database}. Questa classe contiene i metodi \texttt{load()} e \texttt{save()}: 
 \begin{enumerate}
-\item[-] \texttt{load()}, tramite un'operazione di deserializzazione implementata ad hoc in ogni classe derivata concreta della gerarchia, permette la lettura del contenuto in ogni file \texttt{.txt}. EEEE1È
+\item[-] \texttt{load()}, tramite un'operazione di deserializzazione implementata ad hoc in ogni classe derivata concreta della gerarchia, permette la lettura del contenuto in ogni file \texttt{.txt}. C'è un file \texttt{.txt} per ognuna delle classi \texttt{film}, \texttt{episodio}, \texttt{canzone} e \texttt{podcast}, con relativa funzione di deserializzazione, che trasforma ogni riga contenuta in quei file in oggetto della relativa classe. Database si occupa di caricare questi oggetti nella libreria, in modo che possano essere gestiti dal contenitore templetizzato.
+\item[-] \texttt{save()} invece si occupa del salvataggio di eventuali modifiche apportate tramite GUI ai file \texttt{.txt} sovramenzionati, tramite le relative operazioni di serializzazione, contenute nelle relative classi. 
 \end{enumerate}
 
 \section{Tempistiche}
+
+\begin{center}
+ \begin{tabular}{||c | c | c||} 
+ \hline
+ \textbf{Ore} & \textbf{Fase} & \textbf{Motivazione} \\ 
+ \hline\hline
+ 1 & Analisi preliminare del problema & 87837 \\ 
+ \hline
+ 2 & Progettazione del modello & 78\\
+ \hline
+ 3 & Progettazione della GUI & 778\\
+ \hline
+ 4 & Apprendimento libreria Qt & 18744\\
+ \hline
+ 5 & Codifica modello e GUI & 788\\ 
+ \hline
+ 4 & Debugging & 18744\\
+ \hline
+ 4 & Testing & 18744\\
+ \hline
+\end{tabular}
+\end{center}
 
 \end{document}

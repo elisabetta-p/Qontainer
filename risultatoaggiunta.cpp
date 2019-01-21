@@ -20,6 +20,7 @@ risultatoaggiunta::risultatoaggiunta(QWidget* parent) : QWidget(parent) {
     QLabel* messaggioDiConferma = new QLabel(this);
     messaggioDiConferma->setFont(QFont("Times", 28));
     messaggioDiConferma->setText("Il contenuto è stato aggiunto con successo!");
+    messaggioDiConferma->setStyleSheet("QLabel{color:#660029;}");
     messaggioDiConferma->setAlignment(Qt::AlignHCenter);
     layout->addWidget(messaggioDiConferma);
 

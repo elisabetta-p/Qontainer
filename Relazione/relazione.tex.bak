@@ -31,12 +31,24 @@ Per farlo, la classe templatizzata \texttt{container} a sua volta fa uso di altr
 \item \texttt{const\_iterator}: inserita nella parte pubblica di \texttt{container}, è la classe che permette l'implementazione di iteratori costanti.
 \item \texttt{iterator}: inserita nella parte pubblica di \texttt{container}, è la classe che permette l'implementazione di iteratori non costanti.
 \end{enumerate}
-Vista l'assenza di puntatori ad altre classi nella gerarchia, è stata ritenuta superflua l'implementazione di una classe per un eventuale \textit{smart pointer}.
+Vista l'assenza di puntatori ad altre classi nella gerarchia, è stata ritenuta superflua l'implementazione di una classe per un eventuale \textit{smart pointer}.\\
+Ho scelto di implementare il contenitore come una lista linkata composta da nodi perché offro la possibilità di rimuovere contenuti all'interno della libreria in posizioni arbitrarie, e questo mi porta alla necessità di scegliere l'implementazione sotto forma di lista, che rende tale operazione di rimozione più efficiente (viene operata in tempo costante) rispetto alla scelta di implementare tale contenitore come un vettore di elementi.
 
 \section{Descrizione della gerarchia di classi}
 La classe base astratta da cui deriva tutta la gerarchia è \texttt{ContenutoMultimediale}, che verrà poi concretizzata tramite sue classi derivate. I metodi virtuali sono \texttt{riproduci()}, \texttt{pausa()}, \texttt{operator==} e il relativo distruttore; \texttt{riproduci()} e \texttt{pausa()} sono anche puri, poiché la loro implementazione è assegnata alle classi derivate. \\
 Da \texttt{contenutomultimediale} derivano immediatamente altre due classi: \texttt{audio} e \texttt{video}, che sono le due macrocategorie di appartenenza dei file che vengono memorizzati nella libreria. \\
 Da \texttt{video} derivano due classi: \texttt{film} e \texttt{episodio}, mentre da \texttt{audio} derivano altre due classi, \texttt{podcast} e \texttt{canzone}. \\
-Non si verifica la situazione di ereditarità multipla. 
+Non si verifica la situazione di ereditarità multipla. \\
+
+
+\section{Descrizione delle chiamate polimorfe}
+
+\section{Descrizione del formato del file di salvataggio e caricamento del contenitore}
+Per il caricamento dei file che compongono la libreria, e per il loro salvataggio, mi appoggio ad una classe esterna alla gerarchia, che ho chiamato \texttt{database}. Questa classe contiene i metodi \texttt{load()} e \texttt{save()}: 
+\begin{enumerate}
+\item[-] \texttt{load()}, tramite un'operazione di deserializzazione implementata ad hoc in ogni classe derivata concreta della gerarchia, permette la lettura del contenuto in ogni file \texttt{.txt}. EEEE1È
+\end{enumerate}
+
+\section{Tempistiche}
 
 \end{document}

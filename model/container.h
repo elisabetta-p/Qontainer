@@ -4,9 +4,6 @@
 using std::cout;
 using std::endl;
 
-
-#include "contenutomultimediale.h"
-
 template <class T>
 class container {
     friend class iteratore;
@@ -19,7 +16,7 @@ private:
         T info;
         nodo* next;
         nodo (T contenuto, nodo* n=0) : info(contenuto), next(n) {}
-        ~nodo() {if (this) delete[] this;}
+        ~nodo() {if (this) delete this;}
     };                          // !!!!!!!!! fine classe NODO !!!!!!!!!
 
 
@@ -178,7 +175,7 @@ public:
 
     // METODI DA SPECIFICA
 
-    void insert(const T& contenuto) { //aggiunge un contenuto multimediale in testa alla lista di contenuti multimediali salvati sotto forma di nodi
+    void insert(const T& contenuto) {
         cout << "Il contenuto e' stato inserito!";
         first = new nodo(contenuto, first);
     }

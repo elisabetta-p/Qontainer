@@ -1,0 +1,15 @@
+TITOLO,DURATA,GENERE,DIMENSIONE,VALUTAZIONE,AUTORE,DATAUSCITA,RISOLUZIONE,REGISTA,SAGA
+
+
+La compagnia dell'anello,228,Fantasy,2500.0,10,JRR Tolkien,2001,1080,Peter Jackson,Il Signore degli Anelli
+Le due torri,223,Fantasy,2500.0,9,JRR Tolkien,2002,1080,Peter Jackson,Il Signore degli Anelli
+Il ritorno del re,252,Fantasy,2500.0,10,JRR Tolkien,2003,1080,Peter Jackson,Il Signore degli Anelli
+Monty Python e il Sacro Graal,91,Commedia,1200.0,8,Monty Python,1975,1080,Terry Gilliam Terry Jones,Nessuna
+Brian di Nazareth,94,Commedia,1200.0,8,Monty Python,1979,1080,Terry Jones,Nessuna
+Lego Batman,104,Animazione,1650.4,9,Dan Bob Kane Bill Finger,2017,1080,Chris McKay,Nessuna
+Il Diavolo veste Prada,109,1000.0,7,Lauren Weisberg,2006,1080,David Frankel,Nessuna
+Iron Man,126,Azione,1900.0,8,Marvel,2008,1080,Jon Favreau,MCU
+The Avengers,142,Azione,2600.7,10,Marvel,2012,1080,Joss Whedon,MCU
+
+
+

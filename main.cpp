@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
     ContenutoMultimediale* puntatoreFilm = new film("iron man", 126, "azione",1500.0,5,"Marvel", 2012,1080,"Joss Whedon","MCU");
     ContenutoMultimediale* puntatoreCanzone = new canzone("nd", 0, "nd", 0.0, 0, "nd", 0, 0, "nd", "nd");
     cout << puntatoreFilm->getAutore() << " " <<puntatoreCanzone->getGenere() << " ";
-    contenitore.insert(puntatoreFilm);
+    //contenitore.insert(puntatoreFilm);
 
     /*
     container<film> cfilm;

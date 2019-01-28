@@ -10,14 +10,14 @@ private:
     class nodo {                // !!!!!!!!! inizio classe NODO !!!!!!!!!
     public:
         T info;
-        nodo* next;
-        nodo (T, nodo*);
+        nodo* prev, *next;
+        nodo (T, nodo*, nodo*);
         ~nodo();
     };                          // !!!!!!!!! fine classe NODO !!!!!!!!!
 
 
     // dentro container
-    nodo* first;
+    nodo* first ;
 
 
     static nodo* copia(nodo*);
@@ -33,8 +33,8 @@ public:
         bool operator!= (iterator) const;
         iterator& operator++(); //operator++ prefisso
         iterator operator++(int); //operator++ postfisso
-        //iterator& operator--(); //operatore postfisso
-        //iterator operator--(int); //operatore prefisso
+        iterator& operator--(); //operatore postfisso
+        iterator operator--(int); //operatore prefisso
     };                          // !!!!!!!!! fine classe ITERATOR !!!!!!!!!
 
 
@@ -60,9 +60,9 @@ public:
     ~container();
     container (const container&);
     container& operator=(const container& c);
+    */
     bool vuota() const;
 
-*/
     //metodi del contenitore invocati su iteratori costanti
     const_iterator begin() const;
     const_iterator end() const;
@@ -91,7 +91,7 @@ public:
 
 //definizioni di nodo
 template <typename T>
-container<T>::nodo::nodo(T contenuto, nodo* n) : info(contenuto), next(n) {}
+container<T>::nodo::nodo(T contenuto, nodo* p, nodo* n) : info(contenuto), next(n), prev(p) {}
 
 template<typename T>
 container<T>::nodo::~nodo() {if (info) delete info;}
@@ -119,29 +119,27 @@ typename container<T>::iterator container<T>::iterator::operator++(int)  {
     if (punt) punt = punt->next;
     return aux;
 }
-/*
+
 template <typename T>
 typename container<T>::iterator& container<T>::iterator::operator--() {
-    if (punt){
-        iterator aux;
-        punt = punt -1;
-        return aux;
+    if (punt->prev){
+        punt = punt->prev;
+        return *this;
     }
-    else return *this;
+    else return nullptr;
 }
 
 template <typename T>
 typename container<T>::iterator container<T>::iterator::operator--(int) {
-    if (punt) {
+    if (punt->prev) {
         iterator aux;
-        aux = punt-1;
-        if (punt==nullptr)
-            return punt;
+        aux.punt = punt;
+        punt = punt->prev;
         return aux;
     }
-    else return *this;
+    else return nullptr;
 }
-*/
+
 //definizioni di const_iterator
 
 template <typename T>
@@ -192,8 +190,15 @@ typename container<T>::const_iterator container<T>::const_iterator::operator--(i
 //definizioni di container
 template <typename T>
 typename container<T>::nodo* container<T>::copia(nodo* n) {
-    if (!n)  return nullptr;
-    else return new nodo (n->info, copia (n->next));
+    if (!n)  {
+        return nullptr;
+    }
+    else {
+        nodo* aux = new nodo (n->info, nullptr, copia (n->next));
+        if (aux->next)
+            aux->next->prev = aux;
+        return aux;
+    }
 }
 
 template <typename T>
@@ -204,10 +209,10 @@ void container<T>::distruggi(nodo* n) {
     }
 }
 
-
+/*
 template <typename T>
 container<T>::container(nodo* n) : first(n) {}
-/*
+
 template <typename T>
 container<T>::~container<T>() {if (first) delete(first);}
 
@@ -219,10 +224,10 @@ container<T>& container<T>::operator=(const container& c) {
     first = copia(c.first);
     return *this;
 }
-
+*/
 template <typename T>
 bool container<T>::vuota() const {return first==0;}
-*/
+
 //definizione dei metodi da invocare sugli iteratori
 template <typename T>
 typename container<T>::iterator container<T>::begin() {
@@ -271,29 +276,38 @@ T container<T>::operator[](const const_iterator& const_it) const {
 //metodi da specifica
 template <typename T>
 void container<T>::insert(const T contenuto) {
-    first = new nodo(contenuto, container<T>::first);
+    first = new nodo(contenuto, nullptr, first);
+
+    if(first->next)
+        first->next->prev = first;
+
     std::cout << "Il contenuto e' stato inserito!";
 }
 
 
 template <typename T>
 void container<T>::remove(T contenuto) {
-    nodo* n = first, * prec = nullptr;
+    nodo* n = first;
     while (n && !(n->info == contenuto)) {
-        prec = n;
         n = n->next;
-
     }
 
     if (n) {
-        if (!prec)
+        if (!n->prev) {
             first = n -> next;
-        else {
-            prec -> next = n -> next;
+            first -> prev = nullptr;
         }
-        std::cout << "Il contenuto e' stato eliminato!";
+        else if(!n->next){
+            n -> prev -> next = nullptr;
+        }
+        else {
+            n -> prev -> next = n -> next;
+            n -> next -> prev = n -> prev;
+        }
         delete n;
+
     }
+
 }
 
 template <typename T>

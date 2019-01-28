@@ -19,23 +19,11 @@ int main(int argc, char *argv[])
     return app.exec();
     */
 
-
-
-    //film provaFilm("iron man", 126, "azione",1500.0,5,"Marvel", 2012,1080,"Joss Whedon","MCU");
-    //film provaFilm2("iron man", 126, "azione",1500.0,5,"Marvel", 2012,1080,"Joss Whedon","MCU");
-
     container<ContenutoMultimediale*> contenitore;
     ContenutoMultimediale* puntatoreFilm = new film("iron man", 126, "azione",1500.0,5,"Marvel", 2012,1080,"Joss Whedon","MCU");
     ContenutoMultimediale* puntatoreCanzone = new canzone("nd", 0, "nd", 0.0, 0, "nd", 0, 0, "nd", "nd");
     cout << puntatoreFilm->getAutore() << " " <<puntatoreCanzone->getGenere() << " ";
-    //contenitore.insert(puntatoreFilm);
-
-    /*
-    container<film> cfilm;
-    film provaFilm("iron man", 126, "azione",1500.0,5,"Marvel", 2012,1080,"Joss Whedon","MCU");
-    std::cout<< provaFilm.getSaga();
-    auto it = cfilm.getFirst();
-    */
+    contenitore.insert(puntatoreFilm);
 
     /*
     database d = database("/Users/elisabetta/Desktop/ProgettoP2/inserimento_dati.txt");

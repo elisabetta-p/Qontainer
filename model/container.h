@@ -1,8 +1,6 @@
 #ifndef CONTAINER_H
 #define CONTAINER_H
 #include <iostream>
-using std::cout;
-using std::endl;
 
 template <class T>
 class container {
@@ -268,8 +266,8 @@ T& container<T>::operator[](const const_iterator& const_it) const {
 //metodi da specifica
 template <typename T>
 void container<T>::insert(T contenuto) {
-    first = new nodo<T>(contenuto, first);
-    cout << "Il contenuto e' stato inserito!";
+    first = new nodo<T>(contenuto, container<T>::first);
+    std::cout << "Il contenuto e' stato inserito!";
 }
 
 template <typename T>
@@ -285,7 +283,7 @@ void remove(T contenuto) {
         else {
             prec -> next = n -> next;
         }
-        cout << "Il contenuto e' stato eliminato!";
+        std::cout << "Il contenuto e' stato eliminato!";
         delete n;
     }
 }

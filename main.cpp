@@ -46,6 +46,9 @@ int main(int argc, char *argv[])
         contenitore.remove(pf);
         std::cout << contenitore.size() << std::endl;
 
+        container<ContenutoMultimediale*> co = container<ContenutoMultimediale*>(contenitore);
+
+
     /*
     database d = database("/Users/elisabetta/Desktop/ProgettoP2/inserimento_dati.txt");
     d.load();

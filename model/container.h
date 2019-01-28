@@ -56,11 +56,11 @@ public:
 
     //                              !!!!!!! dentro CONTAINER !!!!!!!!
     container(nodo* = nullptr);
-    /*
+
     ~container();
     container (const container&);
-    container& operator=(const container& c);
-    */
+    //container& operator=(const container& c);
+
     bool vuota() const;
 
     //metodi del contenitore invocati su iteratori costanti
@@ -193,6 +193,7 @@ typename container<T>::nodo* container<T>::copia(nodo* n) {
     }
     else {
         nodo* aux = new nodo (n->info, nullptr, copia (n->next));
+        std::cout << "here";
         if (aux->next)
             aux->next->prev = aux;
         return aux;
@@ -211,16 +212,19 @@ void container<T>::distruggi(nodo* n) {
 template <typename T>
 container<T>::container(nodo* n) : first(n) {}
 
-/*
+
 template <typename T>
 container<T>::~container<T>() {if (first) delete(first);}
 
 template <typename T>
-container<T>::container(const container& c) : first(copia(c.first)) {}
-
+container<T>::container(const typename container<T>& c)/* : first(copia(c.first)) */{        std::cout << "here";}
+/*
 template <typename T>
 container<T>& container<T>::operator=(const container& c) {
-    first = copia(c.first);
+    if (c != *this) {
+        delete first;
+        first = copia(c.first);
+    }
     return *this;
 }
 */

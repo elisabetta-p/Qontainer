@@ -28,8 +28,16 @@ int main(int argc, char *argv[])
         contenitore.insert(puntatoreCanzone);
         contenitore.insert(pf);
 
-        /*container<ContenutoMultimediale*>::iterator it = contenitore.begin();
-
+        container<ContenutoMultimediale*>::iterator it = contenitore.begin();
+        ++it;
+        std::cout << "x " << (contenitore[it])->getAutore() << std::endl;
+                ++it;
+        std::cout << "x " << (contenitore[it])->getAutore() << std::endl;
+        --it;
+        std::cout << "x " << (contenitore[it])->getAutore() << std::endl;
+        --it;
+        std::cout << "x " << (contenitore[it])->getAutore() << std::endl;
+/*
         for(; it != contenitore.end(); it++) {
             std::cout << "x " << (contenitore[it])->getAutore() << std::endl;
         }

@@ -48,8 +48,8 @@ public:
         bool operator!= (const_iterator const_it) const;
         const_iterator& operator++() const; //operatore postfisso
         const_iterator operator++(int) const; //operatore prefisso
-        //const_iterator& operator--() const; //operatore postfisso
-        //const_iterator operator--(int) const;//operatore prefisso
+        const_iterator& operator--() const; //operatore postfisso
+        const_iterator operator--(int) const;//operatore prefisso
 
     };                          // !!!!!!!!! fine classe CONST_ITERATOR !!!!!!!!!
 
@@ -122,22 +122,22 @@ typename container<T>::iterator container<T>::iterator::operator++(int)  {
 
 template <typename T>
 typename container<T>::iterator& container<T>::iterator::operator--() {
-    if (punt->prev){
+    if (punt->prev)
         punt = punt->prev;
-        return *this;
-    }
-    else return nullptr;
+    else
+        punt = nullptr;
+    return *this;
 }
 
 template <typename T>
 typename container<T>::iterator container<T>::iterator::operator--(int) {
-    if (punt->prev) {
-        iterator aux;
-        aux.punt = punt;
+    iterator aux;
+    aux.punt = punt;
+    if (punt->prev)
         punt = punt->prev;
-        return aux;
-    }
-    else return nullptr;
+    else
+        punt = nullptr;
+    return aux;
 }
 
 //definizioni di const_iterator
@@ -164,29 +164,27 @@ typename container<T>::const_iterator container<T>::const_iterator::operator++(i
     if (punt) punt = punt->next;
     return aux;
 }
-/*
+
 template <typename T>
 typename container<T>::const_iterator& container<T>::const_iterator::operator--() const {
-    if (punt){
-        iterator aux;
-        punt = punt -1;
-        return aux;
-    }
-    else return *this;
+    if (punt->prev)
+        punt = punt->prev;
+    else
+        punt = nullptr;
+    return *this;
 }
 
 template <typename T>
 typename container<T>::const_iterator container<T>::const_iterator::operator--(int) const {
-    if (punt) {
-        iterator aux;
-        aux = punt-1;
-        if (punt==nullptr)
-            return punt;
-        return aux;
-    }
-    else return *this;
+    iterator aux;
+    aux.punt = punt;
+    if (punt->prev)
+        punt = punt->prev;
+    else
+        punt = nullptr;
+    return aux;
 }
-*/
+
 //definizioni di container
 template <typename T>
 typename container<T>::nodo* container<T>::copia(nodo* n) {
@@ -209,10 +207,11 @@ void container<T>::distruggi(nodo* n) {
     }
 }
 
-/*
+
 template <typename T>
 container<T>::container(nodo* n) : first(n) {}
 
+/*
 template <typename T>
 container<T>::~container<T>() {if (first) delete(first);}
 
@@ -226,7 +225,7 @@ container<T>& container<T>::operator=(const container& c) {
 }
 */
 template <typename T>
-bool container<T>::vuota() const {return first==0;}
+bool container<T>::vuota() const {return first==nullptr;}
 
 //definizione dei metodi da invocare sugli iteratori
 template <typename T>

@@ -82,7 +82,7 @@ public:
 
     void insert(const T);
     void remove(T);
-    //bool search(T parametro) const;
+    bool search(T parametro) const;
 
     // ALTRI METODI UTILI
 
@@ -295,18 +295,18 @@ void container<T>::remove(T contenuto) {
         delete n;
     }
 }
-/*
+
 template <typename T>
-bool container<T>::search(T parametro) const {
-    typename container<T>::nodo* n = container<T>::first;
-    while (n->next != nullptr) {
-        n = n->next;
-        if (n->info == parametro)
+bool container<T>::search(T contenuto) const {
+    nodo* n = first;
+    while (n) {
+        if (n->info == contenuto)
             return true;
+        n = n->next;
     }
     return false;
 }
-*/
+
 template <typename T>
 unsigned int container<T>::size() const {
     if (first) {

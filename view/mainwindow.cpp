@@ -69,10 +69,10 @@ mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
     griglia->addWidget(film, 0, 2, Qt::AlignCenter);
     griglia->addWidget(serie, 0, 3, Qt::AlignCenter);
 
-    QVBoxLayout* listaCantanti = new QVBoxLayout(this);
-    QVBoxLayout* listaPodcast = new QVBoxLayout(this);
-    QVBoxLayout* listaSerie = new QVBoxLayout(this);
-    QVBoxLayout* listaFilm = new QVBoxLayout(this);
+    listaCantanti = new QVBoxLayout(this);
+    listaPodcast = new QVBoxLayout(this);
+    listaSerie = new QVBoxLayout(this);
+    listaFilm = new QVBoxLayout(this);
 
     griglia->addLayout(listaCantanti, 1, 0, Qt::AlignCenter);
     griglia->addLayout(listaPodcast, 1, 1, Qt::AlignCenter);
@@ -106,3 +106,12 @@ mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
 
 }
 
+/*
+void mainwindow::caricaFilm(container<ContenutoMultimediale*> c) {
+    for (container<ContenutoMultimediale*>::iterator it = &(c.getFirst()); it->next != nullptr; ++it) {
+        if (dynamic_cast<film*>(*it)) {
+            listaFilm->addItem();
+        }
+    }
+}
+*/

@@ -65,7 +65,7 @@ public:
     const_iterator end() const;
 
     //metodi del contenitore invocati su iteratori non costanti
-    iterator begin();
+    iterator& begin();
     iterator end();
 
     // Overloading di * e []
@@ -83,6 +83,7 @@ public:
     // ALTRI METODI UTILI
 
     unsigned int size() const;
+    nodo<T>* getFirst() const;
 };
 
 //definizioni di nodo
@@ -220,10 +221,10 @@ bool container<T>::vuota() const {return first==0;}
 
 //definizione dei metodi da invocare sugli iteratori
 template <typename T>
-typename container<T>::iterator container<T>::begin() {
+typename container<T>::iterator& container<T>::begin() {
     iterator aux;
     aux.punt = first;
-    return aux;
+    return &aux;
 }
 
 template <typename T>
@@ -250,7 +251,7 @@ typename container<T>::const_iterator container<T>::end() const {
 //overloading di * e []
 template <typename T>
 T& container<T>::operator*() const {
-    return *this->info;
+    return this->info;
 }
 
 template <typename T>
@@ -311,6 +312,11 @@ unsigned int container<T>::size() const {
         return contatore;
     }
     else return 0;
+}
+
+template<typename T>
+typename container<T>::template nodo<T>* container<T>::getFirst() const {
+    return first;
 }
 
 #endif // CONTAINER_H

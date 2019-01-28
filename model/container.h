@@ -10,34 +10,39 @@ class container {
 private:
 
 
-
     class nodo {                // !!!!!!!!! inizio classe NODO !!!!!!!!!
     public:
         T info;
         nodo* next;
-        nodo (T contenuto, nodo* n=0) : info(contenuto), next(n) {}
-        ~nodo() {if (this) delete this;}
+        nodo (T, nodo*);
+        ~nodo();
     };                          // !!!!!!!!! fine classe NODO !!!!!!!!!
 
 
     // dentro container
     nodo* first;
-    static nodo* copia(nodo* n) {
+    static nodo* copia(nodo*);
+    /*
+    {
         if (!n) return nullptr;
         else {
             return new nodo (n->info, copia(n->next));
         }
     }
-    static void distruggi(nodo* n) {
+    */
+    static void distruggi(nodo*);
+    /*
+    {
         if (n) {
             distruggi(n->next);
             delete[] n;
         }
     }
+    */
 
 
 public:
-
+    nodo* getFirst() const {return first;}
     class iterator {           // !!!!!!!!! inizio classe ITERATOR !!!!!!!!!
         friend class container;
     private:
@@ -175,12 +180,12 @@ public:
 
     // METODI DA SPECIFICA
 
-    void insert(const T& contenuto) {
-        cout << "Il contenuto e' stato inserito!";
+    void insert(T contenuto) {
         first = new nodo(contenuto, first);
+        cout << "Il contenuto e' stato inserito!";
     }
 
-    void remove(const T& cont) {
+    void remove(T cont) {
         nodo* n = first, * prec = 0;
         while (n && !(n->info == cont)) {
             prec = n;
@@ -221,6 +226,41 @@ public:
         }
     }
 };
+
+template <typename T>
+container<T>::nodo::nodo(T contenuto, nodo* n) : info(contenuto), next(n) {}
+
+template<typename T>
+container<T>::nodo::~nodo() {if (this) delete this;}
+
+template<typename T>
+typename container<T>::nodo* container<T>::copia(nodo* n) {
+    if (!n)  return nullptr;
+    else return new nodo (n->info, copia (n->next));
+}
+
+template<typename T>
+void container<T>::distruggi(nodo* n) {
+    if (n) {
+        distruggi (n->next);
+        delete n;
+    }
+}
+
+/*
+template<typename T> template<typename T1>
+container<T>::template nodo<T1>::nodo(T1 contenuto, nodo* n) : info (contenuto), next(n) {}
+
+template <typename T> template <typename T1>
+container<T>::template nodo<T1>::~nodo() {if (this) delete this;}
+
+template <typename T> template <typename T1>
+typename container<T>::template nodo<T1>* container<T>::template nodo<T1>::copia(nodo<T1>* n) {
+    if (!n)  return nullptr;
+    else return new nodo<T> (n->info, copia (n->next));
+}
+*/
+
 
 #endif // CONTAINER_H
 

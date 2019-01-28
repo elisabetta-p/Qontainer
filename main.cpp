@@ -38,6 +38,7 @@ int main(int argc, char *argv[])
     contenitore.remove(puntatoreFilm);
         std::cout << contenitore.size() << std::endl;
 
+
     /*for(; it != contenitore.end(); it++) {
         std::cout << "y " << (contenitore[it])->getAutore() << std::endl;
     }

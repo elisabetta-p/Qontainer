@@ -292,7 +292,6 @@ void container<T>::remove(T contenuto) {
             prec -> next = n -> next;
         }
         std::cout << "Il contenuto e' stato eliminato!";
-                std::cout << n->info->getTitolo() << std::endl;
         delete n;
     }
 }

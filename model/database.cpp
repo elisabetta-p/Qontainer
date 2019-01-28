@@ -9,7 +9,7 @@ void database::load() {
     std::ifstream file;
     file.open(path, std::ios::in);
     if (file.is_open()) {
-        film::deserializza(file);
+        //film::deserializza(file);
         std::cout << "true";
         file.close();
     }

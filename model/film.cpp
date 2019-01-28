@@ -38,7 +38,7 @@ void film::setSaga(string s) {
 string film::getSaga() const {
     return saga;
 }
-
+/*
 container<film*> film::deserializza(const std::ifstream& file) {
     container<film*> contenitore;
     //std::ifstream file;
@@ -89,3 +89,4 @@ container<film*> film::deserializza(const std::ifstream& file) {
     }
     return contenitore;
 }
+*/

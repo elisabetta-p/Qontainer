@@ -35,7 +35,6 @@ private:
 public:
     mainwindow(QWidget* =nullptr);
     ~mainwindow() = default;
-    //void caricaFilm();
 };
 
 #endif // MAINWINDOW_H

@@ -81,32 +81,12 @@ mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
 
 
     /* aggiunta delle varie scroll bar nei 4 layout verticali*/
-    /*
-    QScrollArea* scrollAreaCantanti = new QScrollArea;
-    QScrollArea* scrollAreaPodcast = new QScrollArea;
-    QScrollArea* scrollAreaSerie = new QScrollArea;
-    QScrollArea* scrollAreaFilm = new QScrollArea;
-    //scrollAreaCantanti->setBackgroundRole(QPalette::Light);
-    scrollAreaCantanti->setLayout(listaCantanti);
-    scrollAreaPodcast->setLayout(listaPodcast);
-    scrollAreaSerie->setLayout(listaSerie);
-    scrollAreaFilm->setLayout(listaFilm);
 
-    griglia->addWidget(scrollAreaCantanti, 1, 0, Qt::AlignCenter);
-    griglia->addWidget(scrollAreaPodcast, 1, 1, Qt::AlignCenter);
-    griglia->addWidget(scrollAreaSerie, 1, 3, Qt::AlignCenter);
-    griglia->addWidget(scrollAreaFilm, 1, 2, Qt::AlignCenter);
-*/
     QTextBrowser* areaCantanti = new QTextBrowser;
     QTextBrowser* areaPodcast = new QTextBrowser;
     QTextBrowser* areaSerie = new QTextBrowser;
     QTextBrowser* areaFilm = new QTextBrowser;
-/*
-    areaCantanti->setLayout(listaCantanti);
-    areaPodcast->setLayout(listaPodcast);
-    areaSerie->setLayout(listaSerie);
-    areaFilm->setLayout(listaFilm);
-*/
+
     griglia->addWidget(areaCantanti, 1,0,Qt::AlignCenter);
     griglia->addWidget(areaPodcast, 1,1,Qt::AlignCenter);
     griglia->addWidget(areaFilm, 1,2,Qt::AlignCenter);
@@ -141,13 +121,19 @@ mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
 
 
     caricaFilm();
+
+    //areaFilm->append("banana");
 }
 
 
 void mainwindow::caricaFilm() {
     for (auto it = contenitore.begin(); it != contenitore.end(); ++it) {
-        if (dynamic_cast<film*>(contenitore[it])) {
-            areaFilm->append(QString("banana"));
+        int i=0;
+        if (contenitore[it] && dynamic_cast<film*>(contenitore[it])) {
+            QString titolo = QString::fromStdString(contenitore[it]->getTitolo());
+            QString* ptr = &titolo;
+            listaFilm->addWidget(ptr);
+            ++i;
         }
     }
 }

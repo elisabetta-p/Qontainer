@@ -115,26 +115,35 @@ mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
     ContenutoMultimediale* f1 = new film ("iron man", 126, "azione",1500.0,5,"Marvel", 2012,1080,"Joss Whedon","MCU");
     ContenutoMultimediale* f2 = new film ("iron man 3", 127, "azione", 4585.5, 9, "Marvel", 1013, 1080, "Tizio", "MCU");
     ContenutoMultimediale* c1 = new canzone ("Organs",3, "Indie", 3.5,8,"Of Monsters and Men", 2016, 125, "Beneath the skin", "nd");
+    ContenutoMultimediale* f3 = new film ("iron man 2", 127, "azione", 4585.5, 9, "Marvel", 1013, 1080, "Tizio", "MCU");
+    ContenutoMultimediale* f4 = new film ("iron man 4", 127, "azione", 4585.5, 9, "Marvel", 1013, 1080, "Tizio", "MCU");
+
     contenitore.insert(f1);
     contenitore.insert(f2);
     contenitore.insert(c1);
+    contenitore.insert(f3);
+    contenitore.insert(f4);
 
-
-    caricaFilm();
-
-    //areaFilm->append("banana");
+    for (auto it=contenitore.begin(); it!= contenitore.end();++it) {
+        if (dynamic_cast<film*>(contenitore[it])){
+            //areaFilm->append("banana");
+            QString titolo = QString::fromStdString(contenitore[it]->getTitolo());
+            areaFilm->append(titolo);
+            std::cout<<contenitore[it]->getTitolo()<<" - ";
+        }
+    }
+    //caricaFilm();
 }
 
-
+/*
 void mainwindow::caricaFilm() {
+    int i=0;
     for (auto it = contenitore.begin(); it != contenitore.end(); ++it) {
-        int i=0;
         if (contenitore[it] && dynamic_cast<film*>(contenitore[it])) {
-            QString titolo = QString::fromStdString(contenitore[it]->getTitolo());
-            QString* ptr = &titolo;
-            listaFilm->addWidget(ptr);
+            std::cout<<i<<" ";
             ++i;
         }
     }
 }
 
+*/

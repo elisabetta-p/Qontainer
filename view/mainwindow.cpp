@@ -58,15 +58,15 @@ mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
     podcast->setText("Podcast");
     QLabel* serie = new QLabel;
     serie->setText("Serie");
-    QLabel* film = new QLabel;
-    film->setText("Film");
+    QLabel* filmLabel = new QLabel;
+    filmLabel->setText("Film");
 
 
 
     griglia = new QGridLayout;
     griglia->addWidget(cantanti, 0, 0, Qt::AlignCenter);
     griglia->addWidget(podcast, 0, 1, Qt::AlignCenter);
-    griglia->addWidget(film, 0, 2, Qt::AlignCenter);
+    griglia->addWidget(filmLabel, 0, 2, Qt::AlignCenter);
     griglia->addWidget(serie, 0, 3, Qt::AlignCenter);
 
     listaCantanti = new QVBoxLayout(this);
@@ -74,24 +74,51 @@ mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
     listaSerie = new QVBoxLayout(this);
     listaFilm = new QVBoxLayout(this);
 
-    griglia->addLayout(listaCantanti, 1, 0, Qt::AlignCenter);
-    griglia->addLayout(listaPodcast, 1, 1, Qt::AlignCenter);
-    griglia->addLayout(listaSerie, 1, 3, Qt::AlignCenter);
-    griglia->addLayout(listaFilm, 1, 4, Qt::AlignCenter);
 
 
-    layout->addLayout(griglia);
+
 
 
 
     /* aggiunta delle varie scroll bar nei 4 layout verticali*/
+    /*
+    QScrollArea* scrollAreaCantanti = new QScrollArea;
+    QScrollArea* scrollAreaPodcast = new QScrollArea;
+    QScrollArea* scrollAreaSerie = new QScrollArea;
+    QScrollArea* scrollAreaFilm = new QScrollArea;
+    //scrollAreaCantanti->setBackgroundRole(QPalette::Light);
+    scrollAreaCantanti->setLayout(listaCantanti);
+    scrollAreaPodcast->setLayout(listaPodcast);
+    scrollAreaSerie->setLayout(listaSerie);
+    scrollAreaFilm->setLayout(listaFilm);
 
-    QScrollArea* scrollArea = new QScrollArea;
-    scrollArea->setBackgroundRole(QPalette::Light);
-    scrollArea->setLayout(listaCantanti);
-    scrollArea->setLayout(listaPodcast);
-    scrollArea->setLayout(listaSerie);
-    scrollArea->setLayout(listaFilm);
+    griglia->addWidget(scrollAreaCantanti, 1, 0, Qt::AlignCenter);
+    griglia->addWidget(scrollAreaPodcast, 1, 1, Qt::AlignCenter);
+    griglia->addWidget(scrollAreaSerie, 1, 3, Qt::AlignCenter);
+    griglia->addWidget(scrollAreaFilm, 1, 2, Qt::AlignCenter);
+*/
+    QTextBrowser* areaCantanti = new QTextBrowser;
+    QTextBrowser* areaPodcast = new QTextBrowser;
+    QTextBrowser* areaSerie = new QTextBrowser;
+    QTextBrowser* areaFilm = new QTextBrowser;
+/*
+    areaCantanti->setLayout(listaCantanti);
+    areaPodcast->setLayout(listaPodcast);
+    areaSerie->setLayout(listaSerie);
+    areaFilm->setLayout(listaFilm);
+*/
+    griglia->addWidget(areaCantanti, 1,0,Qt::AlignCenter);
+    griglia->addWidget(areaPodcast, 1,1,Qt::AlignCenter);
+    griglia->addWidget(areaFilm, 1,2,Qt::AlignCenter);
+    griglia->addWidget(areaSerie, 1,3,Qt::AlignCenter);
+
+
+    areaCantanti->setVerticalScrollBar(new QScrollBar());
+    areaPodcast->setVerticalScrollBar(new QScrollBar());
+    areaSerie->setVerticalScrollBar(new QScrollBar());
+    areaFilm->setVerticalScrollBar(new QScrollBar());
+
+    layout->addLayout(griglia);
 
     /*
     CICLO CHE CARICA I CONTENUTI DA FILE DENTRO LE VARIE LISTE VERTICALMENTE
@@ -104,14 +131,24 @@ mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
 
     this->setLayout(layout);
 
+    //metto cose nel contenitore
+    ContenutoMultimediale* f1 = new film ("iron man", 126, "azione",1500.0,5,"Marvel", 2012,1080,"Joss Whedon","MCU");
+    ContenutoMultimediale* f2 = new film ("iron man 3", 127, "azione", 4585.5, 9, "Marvel", 1013, 1080, "Tizio", "MCU");
+    ContenutoMultimediale* c1 = new canzone ("Organs",3, "Indie", 3.5,8,"Of Monsters and Men", 2016, 125, "Beneath the skin", "nd");
+    contenitore.insert(f1);
+    contenitore.insert(f2);
+    contenitore.insert(c1);
+
+
+    caricaFilm();
 }
 
-/*
-void mainwindow::caricaFilm(container<ContenutoMultimediale*> c) {
-    for (container<ContenutoMultimediale*>::iterator it = &(c.getFirst()); it->next != nullptr; ++it) {
-        if (dynamic_cast<film*>(*it)) {
-            listaFilm->addItem();
+
+void mainwindow::caricaFilm() {
+    for (auto it = contenitore.begin(); it != contenitore.end(); ++it) {
+        if (dynamic_cast<film*>(contenitore[it])) {
+            areaFilm->append(QString("banana"));
         }
     }
 }
-*/
+

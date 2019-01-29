@@ -217,7 +217,7 @@ template <typename T>
 container<T>::~container<T>() {if (first) delete(first);}
 
 template <typename T>
-container<T>::container(const typename container<T>& c)/* : first(copia(c.first)) */{        std::cout << "here";}
+container<T>::container(const container<T>& c) : first(copia(c.first)) {}
 /*
 template <typename T>
 container<T>& container<T>::operator=(const container& c) {
@@ -284,7 +284,7 @@ void container<T>::insert(const T contenuto) {
     if(first->next)
         first->next->prev = first;
 
-    std::cout << "Il contenuto e' stato inserito!";
+    std::cout << "Il contenuto e' stato inserito!" << std::endl;
 }
 
 

@@ -12,13 +12,13 @@
 int main(int argc, char *argv[])
 {
 
-    /*
+
     QApplication app(argc, argv);
     qontainer window;
     window.show();
     return app.exec();
-    */
 
+    /*
     container<ContenutoMultimediale*> contenitore;
     ContenutoMultimediale* puntatoreFilm = new film("iron man", 126, "azione",1500.0,5,"Marvel", 2012,1080,"Joss Whedon","MCU");
         ContenutoMultimediale* puntatoreCanzone = new canzone("nd", 0, "nd", 0.0, 0, "nd", 0, 0, "nd", "nd");
@@ -42,12 +42,12 @@ int main(int argc, char *argv[])
             std::cout << "x " << (contenitore[it])->getAutore() << std::endl;
         }
 */
+    /*
         std::cout << contenitore.size() << std::endl;
         contenitore.remove(pf);
         std::cout << contenitore.size() << std::endl;
 
-        container<ContenutoMultimediale*> co = container<ContenutoMultimediale*>(contenitore);
-
+        //container<ContenutoMultimediale*> co = container<ContenutoMultimediale*>(contenitore);
 
     /*
     database d = database("/Users/elisabetta/Desktop/ProgettoP2/inserimento_dati.txt");

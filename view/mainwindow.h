@@ -15,12 +15,12 @@
 #include <QScrollBar>
 #include <QAction>
 #include <QScrollArea>
+#include <QTextBrowser>
 #include "../model/container.h"
 #include "../model/film.h"
 #include "../model/episodio.h"
 #include "../model/podcast.h"
 #include "../model/canzone.h"
-#include "../model/contenutomultimediale.h"
 
 class mainwindow: public QWidget {
     Q_OBJECT
@@ -30,10 +30,12 @@ private:
     QHBoxLayout* boxBottoni;
     QGridLayout* griglia;
     QVBoxLayout* listaCantanti, *listaPodcast, *listaSerie, *listaFilm;
+    QTextBrowser* areaCantanti, *areaPodcast, *areaSerie, *areaFilm;
+    container<ContenutoMultimediale*> contenitore;
 public:
     mainwindow(QWidget* =nullptr);
     ~mainwindow() = default;
-    void caricaFilm(container<ContenutoMultimediale*>);
+    void caricaFilm();
 };
 
 #endif // MAINWINDOW_H

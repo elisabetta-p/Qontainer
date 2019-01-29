@@ -143,16 +143,3 @@ mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
         }
     }
 }
-
-/*
-void mainwindow::caricaFilm() {
-    int i=0;
-    for (auto it = contenitore.begin(); it != contenitore.end(); ++it) {
-        if (contenitore[it] && dynamic_cast<film*>(contenitore[it])) {
-            std::cout<<i<<" ";
-            ++i;
-        }
-    }
-}
-
-*/

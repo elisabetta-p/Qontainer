@@ -33,12 +33,6 @@ mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
 
     layout->addLayout(boxBottoni);
 
-    //boxTitolo->setSizeConstraint(QLayout::SetMinimumSize);
-    //titoloGropuBox->setLayout(boxTitolo);
-    //titolo->setAlignment(Qt::AlignCenter);
-
-
-
     //etichetta "la tua libreria"
     QLabel* lib = new QLabel;
     lib->setMargin(10);
@@ -53,9 +47,9 @@ mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
 
     //QGroupBox* boxListe = new QGroupBox(this);
     QLabel* cantanti = new QLabel;
-    cantanti->setText("Cantanti");
-    QLabel* podcast = new QLabel;
-    podcast->setText("Podcast");
+    cantanti->setText("Canzoni");
+    QLabel* podcastLabel = new QLabel;
+    podcastLabel->setText("Podcast");
     QLabel* serie = new QLabel;
     serie->setText("Serie");
     QLabel* filmLabel = new QLabel;
@@ -65,7 +59,7 @@ mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
 
     griglia = new QGridLayout;
     griglia->addWidget(cantanti, 0, 0, Qt::AlignCenter);
-    griglia->addWidget(podcast, 0, 1, Qt::AlignCenter);
+    griglia->addWidget(podcastLabel, 0, 1, Qt::AlignCenter);
     griglia->addWidget(filmLabel, 0, 2, Qt::AlignCenter);
     griglia->addWidget(serie, 0, 3, Qt::AlignCenter);
 
@@ -73,12 +67,6 @@ mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
     listaPodcast = new QVBoxLayout(this);
     listaSerie = new QVBoxLayout(this);
     listaFilm = new QVBoxLayout(this);
-
-
-
-
-
-
 
     /* aggiunta delle varie scroll bar nei 4 layout verticali*/
 
@@ -100,10 +88,6 @@ mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
 
     layout->addLayout(griglia);
 
-    /*
-    CICLO CHE CARICA I CONTENUTI DA FILE DENTRO LE VARIE LISTE VERTICALMENTE
-    */
-
     //aggiunta dei due bottoni per la ricerca e per l'aggiunta di contenuto
 
     connect (ricerca, SIGNAL(clicked()), parent, SLOT(mostraRicerca()));
@@ -117,22 +101,45 @@ mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
     ContenutoMultimediale* c1 = new canzone ("Organs",3, "Indie", 3.5,8,"Of Monsters and Men", 2016, 125, "Beneath the skin", "nd");
     ContenutoMultimediale* f3 = new film ("iron man 2", 127, "azione", 4585.5, 9, "Marvel", 1013, 1080, "Tizio", "MCU");
     ContenutoMultimediale* f4 = new film ("iron man 4", 127, "azione", 4585.5, 9, "Marvel", 1013, 1080, "Tizio", "MCU");
+    ContenutoMultimediale* p1 = new podcast ("getting curious", 40, "info", 123, 9, "JVN", 2019, 450, "getting curious with jvn", "tizio");
+    ContenutoMultimediale* s1 = new episodio ("episodio 1", 40, "commedia", 400, 7, "Tizio", 2018, 789, "serie1", "netflix");
 
     contenitore.insert(f1);
     contenitore.insert(f2);
     contenitore.insert(c1);
     contenitore.insert(f3);
     contenitore.insert(f4);
+    contenitore.insert(p1);
+    contenitore.insert(s1);
 
-    for (auto it=contenitore.begin(); it!= contenitore.end();++it) {
-        if (dynamic_cast<film*>(contenitore[it])){
-            //areaFilm->append("banana");
+    //caricamento della musica
+    for (auto it=contenitore.begin(); it!=contenitore.end(); ++it) {
+        if (dynamic_cast<canzone*>(contenitore[it])){
             QString titolo = QString::fromStdString(contenitore[it]->getTitolo());
-            areaFilm->append(titolo);
-            std::cout<<contenitore[it]->getTitolo()<<" - ";
+            areaCantanti->append(titolo);
         }
     }
-    //caricaFilm();
+    //caricamento dei podcast
+    for (auto it=contenitore.begin(); it!=contenitore.end(); ++it) {
+        if (dynamic_cast<podcast*>(contenitore[it])){
+            QString titolo = QString::fromStdString(contenitore[it]->getTitolo());
+            areaPodcast->append(titolo);
+        }
+    }
+    //caricamento dei film
+    for (auto it=contenitore.begin(); it!= contenitore.end();++it) {
+        if (dynamic_cast<film*>(contenitore[it])){
+            QString titolo = QString::fromStdString(contenitore[it]->getTitolo());
+            areaFilm->append(titolo);
+        }
+    }
+    //caricamento degli episodi
+    for (auto it=contenitore.begin(); it!= contenitore.end();++it) {
+        if (dynamic_cast<episodio*>(contenitore[it])){
+            QString titolo = QString::fromStdString(contenitore[it]->getTitolo());
+            areaSerie->append(titolo);
+        }
+    }
 }
 
 /*

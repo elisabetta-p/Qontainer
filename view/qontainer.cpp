@@ -43,7 +43,8 @@ void qontainer::mostraAggiungi() {
 }
 
 //film ed episodi
-void qontainer::mostraRisultato(container<ContenutoMultimediale*> contenitore, string titolo, unsigned short int durata, string genere, double dim, unsigned short int val, string autore, unsigned short int data, unsigned int ris, string reg, string saga) {
+void qontainer::mostraRisultato(container<ContenutoMultimediale*> contenitore, string titolo, unsigned short int durata, string genere, double dim,
+                                unsigned short int val, string autore, unsigned short int data, unsigned int ris, string reg, string saga) {
     eliminaContenutoAttuale();
     risultatoricerca* newRisultato = new risultatoricerca(this);
     layoutQ->addWidget(newRisultato);
@@ -62,7 +63,8 @@ void qontainer::mostraRisultato(container<ContenutoMultimediale*> contenitore, s
 }
 
 //canzoni e podcast
-void qontainer::mostraRisultato(container<ContenutoMultimediale*> contenitore, string titolo, unsigned short int durata, string genere, double dim, unsigned short int val, string autore, unsigned short int data, unsigned short int qual, string album, string prod) {
+void qontainer::mostraRisultato(container<ContenutoMultimediale*> contenitore, string titolo, unsigned short int durata, string genere, double dim, unsigned short int val,
+                                string autore, unsigned short int data, unsigned short int qual, string album, string prod) {
     eliminaContenutoAttuale();
     risultatoricerca* newRisultato = new risultatoricerca(this);
     layoutQ->addWidget(newRisultato);

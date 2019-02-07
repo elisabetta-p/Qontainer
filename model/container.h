@@ -317,7 +317,7 @@ template <typename T>
 bool container<T>::search(T contenuto) const {
     nodo* n = first;
     while (n) {
-        if (n->info == contenuto)
+        if (*(n->info) == *(contenuto))
             return true;
         n = n->next;
     }

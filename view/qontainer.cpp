@@ -24,7 +24,7 @@ void qontainer::eliminaContenutoAttuale() {
 
 void qontainer::mostraMainWindow() {
     eliminaContenutoAttuale();
-    mainwindow* newMainWindow = new mainwindow(this);
+    mainwindow* newMainWindow = new mainwindow(&contenitore, this);
     layoutQ->addWidget(newMainWindow);
 }
 
@@ -68,6 +68,8 @@ void qontainer::mostraRisultato(container<ContenutoMultimediale*> contenitore, s
     eliminaContenutoAttuale();
     risultatoricerca* newRisultato = new risultatoricerca(this);
     layoutQ->addWidget(newRisultato);
+    ContenutoMultimediale* c0 = new canzone ("1", 1, "1",1,1,"1", 1,1,"1","1");
+    contenitore.insert(c0);
     ContenutoMultimediale* cercaAudio = new canzone(titolo, durata, genere, dim, val, autore, data, qual, album, prod);
     bool trovatoAudio = contenitore.search(cercaAudio);
     if (trovatoAudio)

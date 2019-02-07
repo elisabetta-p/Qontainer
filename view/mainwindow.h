@@ -30,10 +30,10 @@ private:
     QGridLayout* griglia;
     QVBoxLayout* listaCantanti, *listaPodcast, *listaSerie, *listaFilm;
     QTextBrowser* areaCantanti, *areaPodcast, *areaSerie, *areaFilm;
-
+    container<ContenutoMultimediale*>* cont;
 public:
     container<ContenutoMultimediale*> contenitore;
-    mainwindow(QWidget* =nullptr);
+    mainwindow(container<ContenutoMultimediale*>*, QWidget* =nullptr);
     ~mainwindow() = default;
 };
 

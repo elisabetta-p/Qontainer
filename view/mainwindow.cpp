@@ -2,7 +2,7 @@
 #include "ricercaavanzata.h"
 #include "aggiungi.h"
 
-mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
+mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget* parent ) : QWidget (parent), cont(p_contenitore) {
     setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);
     setGeometry(0,0, 600,600);

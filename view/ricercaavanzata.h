@@ -22,7 +22,7 @@ public:
     vector<QLineEdit*> vettoreOpzioni;
 private slots:
     void aggiungiInput(int);
-    void schiacciaProva(vector <QLineEdit*>);
+    void schiacciaProva(vector<QLineEdit*>);
 };
 
 #endif // RICERCAAVANZATA_H

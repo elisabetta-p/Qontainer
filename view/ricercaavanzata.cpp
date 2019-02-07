@@ -181,7 +181,7 @@ void ricercaavanzata::creaOpzione(QString etichetta, QString placeholder, int lu
     */
 }
 
-void schiacciaProva(vector<QLineEdit*> vettoreOpzioni) {
+void ricercaavanzata::schiacciaProva(vector<QLineEdit*> vettoreOpzioni) {
     for (unsigned long i=0; i!=vettoreOpzioni.size(); ++i) {
         cout << vettoreOpzioni[i]->text().toStdString() << std::endl;
     }

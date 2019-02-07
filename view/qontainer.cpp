@@ -1,4 +1,5 @@
 #include "qontainer.h"
+#include <iostream>
 
 
 qontainer::qontainer()  {
@@ -46,12 +47,18 @@ void qontainer::mostraRisultato(container<ContenutoMultimediale*> contenitore, s
     eliminaContenutoAttuale();
     risultatoricerca* newRisultato = new risultatoricerca(this);
     layoutQ->addWidget(newRisultato);
+    ContenutoMultimediale* f0 = new film ("1", 1, "1",1,1,"1", 1,1,"1","1");
+    contenitore.insert(f0);
     ContenutoMultimediale* cercaVideo = new film(titolo, durata, genere, dim, val, autore, data, ris, reg, saga);
+
+
     bool trovatoVideo = contenitore.search(cercaVideo);
+
     if (trovatoVideo)
         std::cout << "Video trovato" << std::endl;
     else
         std::cout << "Video non trovato" << std::endl;
+
 }
 
 //canzoni e podcast

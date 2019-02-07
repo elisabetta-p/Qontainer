@@ -19,6 +19,7 @@ class qontainer: public QWidget
 private:
     QVBoxLayout* layoutQ;
     void eliminaContenutoAttuale();
+    container<ContenutoMultimediale*> contenitore;
 public:
     qontainer();
 

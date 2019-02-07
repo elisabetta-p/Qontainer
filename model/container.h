@@ -193,7 +193,7 @@ typename container<T>::nodo* container<T>::copia(nodo* n) {
     }
     else {
         nodo* aux = new nodo (n->info, nullptr, copia (n->next));
-        std::cout << "here";
+        std::cout << "COPIA ";
         if (aux->next)
             aux->next->prev = aux;
         return aux;

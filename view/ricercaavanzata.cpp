@@ -1,6 +1,7 @@
 #include "ricercaavanzata.h"
 #include "mainwindow.h"
 #include "risultatoricerca.h"
+#include <iostream>
 
 
 ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
@@ -57,24 +58,61 @@ ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
    QPushButton* goBack = new QPushButton(this);
    goBack->setText("Torna alla schermata principale");
 
+
+   //BOTTONE DI PROVA PER LA RICERCA EFFETTIVA
+   QPushButton* provaB = new QPushButton(this);
+   provaB->setText("prova");
+
+
    QGridLayout* boxCerca = new QGridLayout;
    boxCerca->addWidget(cercaB,0,0, Qt::AlignCenter);
    boxCerca->addWidget(goBack,1,0, Qt::AlignCenter);
+
+
+   //BOTTONE DI PROVA NEL LAYOUT BOTTONI
+   boxCerca->addWidget(provaB,2,0,Qt::AlignCenter);
+
+
    boxCerca->setSizeConstraint(QLayout::SetMinimumSize);
    layout->addLayout(boxCerca);
 
    connect (cercaB, SIGNAL(clicked()), parent, SLOT(mostraRisultato()));
    connect (goBack, SIGNAL(clicked()), parent, SLOT(mostraMainWindow()));
 
+
+   //CONNECT DI PROVA COL BOTTONE DI PROVA
+   connect(provaB, SIGNAL(clicked()), parent, SLOT(schiacciaProva(vettoreOpzioni)));
+
+
    this->setLayout(layout);
+
+   //provo a fare la ricerca. intanto mi creo e mi riempio un contenitore
+   ContenutoMultimediale* f1 = new film ("iron man111", 126, "azione",1500.0,5,"Marvel", 2012,1080,"Joss Whedon","MCU");
+   ContenutoMultimediale* f2 = new film ("iron man 3", 127, "azione", 4585.5, 9, "Marvel", 1013, 1080, "Tizio", "MCU");
+   ContenutoMultimediale* c1 = new canzone ("Organs",3, "Indie", 3.5,8,"Of Monsters and Men", 2016, 125, "Beneath the skin", "nd");
+   ContenutoMultimediale* f3 = new film ("iron man 2", 127, "azione", 4585.5, 9, "Marvel", 1013, 1080, "Tizio", "MCU");
+   ContenutoMultimediale* f4 = new film ("iron man 4", 127, "azione", 4585.5, 9, "Marvel", 1013, 1080, "Tizio", "MCU");
+   ContenutoMultimediale* p1 = new podcast ("getting curious", 40, "info", 123, 9, "JVN", 2019, 450, "getting curious with jvn", "tizio");
+   ContenutoMultimediale* s1 = new episodio ("episodio 1", 40, "commedia", 400, 7, "Tizio", 2018, 789, "serie1", "netflix");
+
+   contenitore.insert(f1);
+   contenitore.insert(f2);
+   contenitore.insert(c1);
+   contenitore.insert(f3);
+   contenitore.insert(f4);
+   contenitore.insert(p1);
+   contenitore.insert(s1);
+
+   // metodo che dovrei usare ? QLineEdit->text().toStdString()
+   // per la combobox currentIntex()
+   // come accidenti mi prendo le stringhe dalle qlineedit se le ho create con una funzione???
+
 
 }
 
 
 
 void ricercaavanzata::aggiungiInput(int type) {
-
-
     //elimina tutti i qlabel e box di testo del tipo di dato precedente
     QLayoutItem* item;
     while((item = grigliaRicercaAvanzata->takeAt(0))) {
@@ -99,8 +137,6 @@ void ricercaavanzata::aggiungiInput(int type) {
             }
        }
     }
-
-
        if (type==1) { //film
             creaOpzione("Risoluzione:", "Inserisci la risoluzione", 250, grigliaRicercaAvanzata, 0);
             creaOpzione("Regista:", "Inserisci il regista", 250, grigliaRicercaAvanzata, 1);
@@ -121,20 +157,33 @@ void ricercaavanzata::aggiungiInput(int type) {
            creaOpzione("Raccolta:", "Inserisci la raccolta", 250, grigliaRicercaAvanzata, 1);
            creaOpzione("Ospite:", "Inserisci l'ospite", 250, grigliaRicercaAvanzata, 2);
        }
-
 }
 
 void ricercaavanzata::creaOpzione(QString etichetta, QString placeholder, int lunghezza, QGridLayout* griglia, int riga) {
-
     QLabel* label = new QLabel(this);
     label->setText(etichetta);
 
     QLineEdit* box = new QLineEdit(this);
     box->setFixedWidth(lunghezza);
     box->setPlaceholderText(placeholder);
+    //artista = box->text().toStdString();
 
     vettoreOpzioni.push_back(box);
+
+
     griglia->addWidget(label, riga, 0, Qt::AlignLeft);
     griglia->addWidget(box, riga, 1, Qt::AlignLeft);
 
+/*
+    for (unsigned long i = 0; i < vettoreOpzioni.size(); ++i) {
+        std::cout << vettoreTesti[i] << std::endl;
+    }
+    */
 }
+
+void schiacciaProva(vector<QLineEdit*> vettoreOpzioni) {
+    for (unsigned long i=0; i!=vettoreOpzioni.size(); ++i) {
+        cout << vettoreOpzioni[i]->text().toStdString() << std::endl;
+    }
+}
+

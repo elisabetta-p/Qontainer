@@ -1,6 +1,5 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include <QMainWindow>
 #include <QObject>
 #include <QWidget>
 #include <QLabel>
@@ -31,8 +30,9 @@ private:
     QGridLayout* griglia;
     QVBoxLayout* listaCantanti, *listaPodcast, *listaSerie, *listaFilm;
     QTextBrowser* areaCantanti, *areaPodcast, *areaSerie, *areaFilm;
-    container<ContenutoMultimediale*> contenitore;
+
 public:
+    container<ContenutoMultimediale*> contenitore;
     mainwindow(QWidget* =nullptr);
     ~mainwindow() = default;
 };

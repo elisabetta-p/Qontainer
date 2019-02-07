@@ -37,11 +37,11 @@ int main(int argc, char *argv[])
         std::cout << "x " << (contenitore[it])->getAutore() << std::endl;
         --it;
         std::cout << "x " << (contenitore[it])->getAutore() << std::endl;
-/*
+
         for(; it != contenitore.end(); it++) {
             std::cout << "x " << (contenitore[it])->getAutore() << std::endl;
         }
-*/
+    */
     /*
         std::cout << contenitore.size() << std::endl;
         contenitore.remove(pf);

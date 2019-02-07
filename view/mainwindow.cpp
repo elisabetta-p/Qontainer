@@ -142,4 +142,5 @@ mainwindow::mainwindow(QWidget* parent ) : QWidget (parent) {
             areaSerie->append(titolo);
         }
     }
+
 }

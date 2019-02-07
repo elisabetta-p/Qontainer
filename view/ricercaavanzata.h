@@ -1,9 +1,9 @@
 #ifndef RICERCAAVANZATA_H
 #define RICERCAAVANZATA_H
 #include "mainwindow.h"
+#include "../model/container.h"
 #include <QComboBox>
 #include <QLineEdit>
-#include <QGridLayout>
 #include <vector>
 using std::vector;
 
@@ -14,18 +14,15 @@ private:
     QGridLayout* grigliaRicercaAvanzata;
     QVBoxLayout* layout;
 
-    void lunghezzaFissaQLineEdit(QLineEdit*, int = 0);
-
-    vector<QLineEdit*> vettoreOpzioni;
-
     void creaOpzione(QString, QString, int, QGridLayout*, int);
-
 public:
     ricercaavanzata(QWidget* = nullptr);
     ~ricercaavanzata() = default;
+    container<ContenutoMultimediale*> contenitore;
+    vector<QLineEdit*> vettoreOpzioni;
 private slots:
     void aggiungiInput(int);
-
+    void schiacciaProva(vector <QLineEdit*>);
 };
 
 #endif // RICERCAAVANZATA_H

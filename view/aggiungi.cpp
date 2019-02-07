@@ -41,10 +41,13 @@ aggiungi::aggiungi(QWidget* parent) : QWidget(parent){
     //creazione dei campi dati e delle relative text box
 
     //Creazione dei vari campi e delle text box
-    creaOpzione("Autore:", "Inserisci l'autore", 250, griglia, 1);
-    creaOpzione("Titolo:", "Inserisci il titolo", 250, griglia, 2);
+    creaOpzione("Titolo:", "Inserisci il titolo", 250, griglia, 1);
+    creaOpzione("Durata:", "Inserisci la durata in minuti:", 250, griglia, 2);
     creaOpzione("Genere:", "Inserisci il genere", 250, griglia, 3);
-    creaOpzione("Anno di uscita:", "Inserisci l'anno", 250, griglia, 4);
+    creaOpzione("Dimensione:", "Inserisci la dimensione in MB", 250, griglia, 4);
+    creaOpzione("Valutazione:", "Inserisci la valutazione, da 0 a 10", 250, griglia, 5);
+    creaOpzione("Autore:", "Inserisci l'autore", 250, griglia, 6);
+    creaOpzione("Anno di uscita:", "Inserisci l'anno", 250, griglia, 7);
 
     connect(opzioni, SIGNAL(activated(int)), this, SLOT(aggiungiInput(int)));
 

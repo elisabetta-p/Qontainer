@@ -30,7 +30,7 @@ ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
    griglia->addWidget(menuTendina, 0,0,Qt::AlignLeft);
 
    //menu a tendina che andrà a destra
-   QComboBox *opzioni = new QComboBox(this);
+   opzioni = new QComboBox;
    opzioni->insertItem(0, tr("Scegli:"));
    opzioni->insertItem(1, tr("Film"));
    opzioni->insertItem(2, tr("Episodio"));
@@ -41,10 +41,13 @@ ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
 
 
     //Creazione dei vari campi e delle text box
-   creaOpzione("Autore:", "Inserisci l'autore", 250, griglia, 1);
-   creaOpzione("Titolo:", "Inserisci il titolo", 250, griglia, 2);
+   creaOpzione("Titolo:", "Inserisci il titolo", 250, griglia, 1);
+   creaOpzione("Durata:", "Inserisci la durata in minuti:", 250, griglia, 2);
    creaOpzione("Genere:", "Inserisci il genere", 250, griglia, 3);
-   creaOpzione("Anno di uscita:", "Inserisci l'anno", 250, griglia, 4);
+   creaOpzione("Dimensione:", "Inserisci la dimensione in MB", 250, griglia, 4);
+   creaOpzione("Valutazione:", "Inserisci la valutazione, da 0 a 10", 250, griglia, 5);
+   creaOpzione("Autore:", "Inserisci l'autore", 250, griglia, 6);
+   creaOpzione("Anno di uscita:", "Inserisci l'anno", 250, griglia, 7);
 
    connect(opzioni, SIGNAL(activated(int)), this, SLOT(aggiungiInput(int)));
 
@@ -77,7 +80,7 @@ ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
    boxCerca->setSizeConstraint(QLayout::SetMinimumSize);
    layout->addLayout(boxCerca);
 
-   connect (cercaB, SIGNAL(clicked()), parent, SLOT(mostraRisultato()));
+   //connect (cercaB, SIGNAL(clicked()), parent, SLOT(mostraRisultato(string)));
    connect (goBack, SIGNAL(clicked()), parent, SLOT(mostraMainWindow()));
 
 
@@ -108,8 +111,48 @@ ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
 
 
    //CONNECT DI PROVA COL BOTTONE DI PROVA
-   connect(provaB, SIGNAL(clicked()), this, SLOT(schiacciaProva()));
-   connect(this, SIGNAL(invioProva(int)), parent, SLOT(mostraProva(int)));
+   connect(provaB, SIGNAL(clicked()), this, SLOT(schiacciaRicerca()));
+   connect(this, SIGNAL(invioRicerca(container<ContenutoMultimediale*>,
+                                   string,
+                                   unsigned short int,
+                                   string,
+                                   double,
+                                   unsigned short int,
+                                   string,
+                                   unsigned short int,
+                                   unsigned int,
+                                   string,
+                                   string)), parent, SLOT(mostraRisultato(container<ContenutoMultimediale*>,
+                                                                          string,
+                                                                          unsigned short int,
+                                                                          string,
+                                                                          double,
+                                                                          unsigned short int,
+                                                                          string,
+                                                                          unsigned short int,
+                                                                          unsigned int,
+                                                                          string,
+                                                                          string)));
+   connect(this, SIGNAL(invioRicerca(container<ContenutoMultimediale*>,
+                                   string,
+                                   unsigned short int,
+                                   string,
+                                   double,
+                                   unsigned short int,
+                                   string,
+                                   unsigned short int,
+                                   unsigned short int,
+                                   string,
+                                   string)), parent, SLOT(mostraRisultato(container<ContenutoMultimediale*>,
+                                                                          string,
+                                                                          unsigned short int,
+                                                                          string,
+                                                                          double, unsigned short int,
+                                                                          string,
+                                                                          unsigned short int,
+                                                                          unsigned short int,
+                                                                          string,
+                                                                          string)));
 
 }
 
@@ -177,8 +220,47 @@ void ricercaavanzata::creaOpzione(QString etichetta, QString placeholder, int lu
     griglia->addWidget(box, riga, 1, Qt::AlignLeft);
 }
 
-void ricercaavanzata::schiacciaProva() {
-    int i = 44;
-    std::cout << "schiaccia: " << i << std::endl;
-    emit invioProva(i);
+void ricercaavanzata::schiacciaRicerca() {
+    string titolo, genere, autore;
+    double dim;
+    unsigned short int durata, val, data;
+    titolo = vettoreOpzioni[0]->text().toStdString();
+    durata = vettoreOpzioni[1]->text().toUShort();
+    genere = vettoreOpzioni[2]->text().toStdString();
+    dim = vettoreOpzioni[3]->text().toDouble();
+    val = vettoreOpzioni[4]->text().toUShort();
+    autore = vettoreOpzioni[5]->text().toStdString();
+    data = vettoreOpzioni[6]->text().toUShort();
+    //string s= "";
+    //std::cout << "schiaccia: " << s << std::endl;
+    if (opzioni->currentIndex()==1) { //film
+        unsigned int ris = vettoreOpzioni[7]->text().toUShort();
+        string reg, saga;
+        reg = vettoreOpzioni[8]->text().toStdString();
+        saga = vettoreOpzioni[9]->text().toStdString();
+        emit invioRicerca(contenitore, titolo, durata, genere, dim, val, autore, data, ris, reg, saga);
+    }
+    if (opzioni->currentIndex()==2) { //episodi
+        unsigned int ris = vettoreOpzioni[7]->text().toUShort();
+        string serie, canale;
+        serie = vettoreOpzioni[8]->text().toStdString();
+        canale = vettoreOpzioni[9]->text().toStdString();
+        emit invioRicerca(contenitore, titolo, durata, genere, dim, val, autore, data, ris, serie, canale);
+    }
+
+    if (opzioni->currentIndex()==3) { //canzoni
+        unsigned short int qual = vettoreOpzioni[7]->text().toUShort();
+        string album, prod;
+        album = vettoreOpzioni[8]->text().toStdString();
+        prod = vettoreOpzioni[9]->text().toStdString();
+        emit invioRicerca(contenitore, titolo, durata, genere, dim, val, autore, data, qual, album, prod);
+    }
+
+    if (opzioni->currentIndex()==4){ //podcast
+        unsigned short int qual = vettoreOpzioni[7]->text().toUShort();
+        string racc, osp;
+        racc = vettoreOpzioni[8]->text().toStdString();
+        osp = vettoreOpzioni[9]->text().toStdString();
+        emit invioRicerca(contenitore, titolo, durata, genere, dim, val, autore, data, qual, racc, osp);
+    }
 }

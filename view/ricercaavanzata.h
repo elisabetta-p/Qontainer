@@ -15,16 +15,19 @@ private:
     QVBoxLayout* layout;
     vector<QLineEdit*> vettoreOpzioni;
     void creaOpzione(QString, QString, int, QGridLayout*, int);
+    QComboBox* opzioni;
 public:
     ricercaavanzata(QWidget* = nullptr);
     ~ricercaavanzata() = default;
     container<ContenutoMultimediale*> contenitore;
 public slots:
     void aggiungiInput(int);
-    void schiacciaProva();
+    void schiacciaRicerca();
 
 signals:
-    void invioProva(int);
+    void invioRicerca(container<ContenutoMultimediale*>, string, unsigned short int, string, double, unsigned short int, string, unsigned short int, unsigned int, string, string); //per i film e gli episodi
+    void invioRicerca(container<ContenutoMultimediale*>, string, unsigned short int, string, double, unsigned short int, string, unsigned short int, unsigned short int, string, string);//per le canzoni e i podcast
+    //per i podcast
 };
 
 #endif // RICERCAAVANZATA_H

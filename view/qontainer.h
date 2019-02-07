@@ -5,13 +5,19 @@
 #include "aggiungi.h"
 #include "risultatoaggiunta.h"
 #include "risultatoricerca.h"
+#include "../model/contenutomultimediale.h"
+#include "../model/canzone.h"
+#include "../model/podcast.h"
+#include "../model/episodio.h"
+#include "../model/film.h"
+#include <iostream>
 
 class qontainer: public QWidget
 {
     Q_OBJECT
 
 private:
-    QVBoxLayout* layout;
+    QVBoxLayout* layoutQ;
     void eliminaContenutoAttuale();
 public:
     qontainer();

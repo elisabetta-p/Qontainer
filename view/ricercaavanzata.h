@@ -22,6 +22,8 @@ public:
 public slots:
     void aggiungiInput(int);
     void schiacciaProva();
+
+    void invioProva(int);
 };
 
 #endif // RICERCAAVANZATA_H

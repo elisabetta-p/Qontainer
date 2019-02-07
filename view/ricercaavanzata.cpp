@@ -108,7 +108,7 @@ ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
 
 
    //CONNECT DI PROVA COL BOTTONE DI PROVA
-   connect(provaB, SIGNAL(clicked()), this, SLOT(schiacciaProva()));
+   connect(this, SIGNAL(invioProva(int)), parent, SLOT(mostraProva()));
 
 }
 
@@ -168,7 +168,6 @@ void ricercaavanzata::creaOpzione(QString etichetta, QString placeholder, int lu
     QLineEdit* box = new QLineEdit(this);
     box->setFixedWidth(lunghezza);
     box->setPlaceholderText(placeholder);
-    //artista = box->text().toStdString();
 
     vettoreOpzioni.push_back(box);
 
@@ -178,8 +177,7 @@ void ricercaavanzata::creaOpzione(QString etichetta, QString placeholder, int lu
 }
 
 void ricercaavanzata::schiacciaProva() {
-    //std::cout << "banana1" ;
     int i = 44;
-    connect(this, signalsBlocked(), parent, SLOT(mostraProva(i)));
+    emit invioProva(i);
 }
 

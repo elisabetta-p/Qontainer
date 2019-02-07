@@ -181,3 +181,6 @@ void ricercaavanzata::schiacciaProva() {
     emit invioProva(i);
 }
 
+void ricercaavanzata::invioProva(int i) {
+    return;
+}

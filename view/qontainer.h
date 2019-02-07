@@ -18,6 +18,8 @@ public slots:
     void mostraAggiungi();
     void mostraRisultato();
     void mostraAggiuntaRiuscita();
+
+    void mostraProva(int i);
 };
 
 #endif // QONTAINER_H

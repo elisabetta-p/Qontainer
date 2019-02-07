@@ -2,7 +2,8 @@
 #include "mainwindow.h"
 #include "risultatoricerca.h"
 #include <iostream>
-
+#include "qontainer.h"
+#include <qobjectdefs.h>
 
 ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
     setFixedSize(600,600);
@@ -80,8 +81,6 @@ ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
    connect (goBack, SIGNAL(clicked()), parent, SLOT(mostraMainWindow()));
 
 
-   //CONNECT DI PROVA COL BOTTONE DI PROVA
-   connect(provaB, SIGNAL(clicked()), parent, SLOT(schiacciaProva(vettoreOpzioni)));
 
 
    this->setLayout(layout);
@@ -107,6 +106,9 @@ ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
    // per la combobox currentIntex()
    // come accidenti mi prendo le stringhe dalle qlineedit se le ho create con una funzione???
 
+
+   //CONNECT DI PROVA COL BOTTONE DI PROVA
+   connect(provaB, SIGNAL(clicked()), this, SLOT(schiacciaProva()));
 
 }
 
@@ -173,17 +175,11 @@ void ricercaavanzata::creaOpzione(QString etichetta, QString placeholder, int lu
 
     griglia->addWidget(label, riga, 0, Qt::AlignLeft);
     griglia->addWidget(box, riga, 1, Qt::AlignLeft);
-
-/*
-    for (unsigned long i = 0; i < vettoreOpzioni.size(); ++i) {
-        std::cout << vettoreTesti[i] << std::endl;
-    }
-    */
 }
 
-void ricercaavanzata::schiacciaProva(vector<QLineEdit*> vettoreOpzioni) {
-    for (unsigned long i=0; i!=vettoreOpzioni.size(); ++i) {
-        cout << vettoreOpzioni[i]->text().toStdString() << std::endl;
-    }
+void ricercaavanzata::schiacciaProva() {
+    //std::cout << "banana1" ;
+    int i = 44;
+    connect(this, signalsBlocked(), parent, SLOT(mostraProva(i)));
 }
 

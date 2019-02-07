@@ -13,16 +13,15 @@ private:
     QGridLayout* griglia;
     QGridLayout* grigliaRicercaAvanzata;
     QVBoxLayout* layout;
-
+    vector<QLineEdit*> vettoreOpzioni;
     void creaOpzione(QString, QString, int, QGridLayout*, int);
 public:
     ricercaavanzata(QWidget* = nullptr);
     ~ricercaavanzata() = default;
     container<ContenutoMultimediale*> contenitore;
-    vector<QLineEdit*> vettoreOpzioni;
-private slots:
+public slots:
     void aggiungiInput(int);
-    void schiacciaProva(vector<QLineEdit*>);
+    void schiacciaProva();
 };
 
 #endif // RICERCAAVANZATA_H

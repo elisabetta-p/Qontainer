@@ -54,3 +54,7 @@ void qontainer::mostraAggiuntaRiuscita() {
     risultatoaggiunta* newAggiunta = new risultatoaggiunta(this);
     layout->addWidget(newAggiunta);
 }
+
+void qontainer::mostraProva(int i) {
+    std::cout << i << std::endl;
+}

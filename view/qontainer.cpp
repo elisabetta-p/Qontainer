@@ -56,5 +56,5 @@ void qontainer::mostraAggiuntaRiuscita() {
 }
 
 void qontainer::mostraProva(int i) {
-    std::cout << i << std::endl;
+    std::cout << "mostra: " << i << std::endl;
 }

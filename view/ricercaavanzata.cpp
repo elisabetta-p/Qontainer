@@ -108,7 +108,8 @@ ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
 
 
    //CONNECT DI PROVA COL BOTTONE DI PROVA
-   connect(this, SIGNAL(invioProva(int)), parent, SLOT(mostraProva()));
+   connect(provaB, SIGNAL(clicked()), this, SLOT(schiacciaProva()));
+   connect(this, SIGNAL(invioProva(int)), parent, SLOT(mostraProva(int)));
 
 }
 
@@ -178,9 +179,6 @@ void ricercaavanzata::creaOpzione(QString etichetta, QString placeholder, int lu
 
 void ricercaavanzata::schiacciaProva() {
     int i = 44;
+    std::cout << "schiaccia: " << i << std::endl;
     emit invioProva(i);
-}
-
-void ricercaavanzata::invioProva(int i) {
-    return;
 }

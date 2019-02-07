@@ -23,6 +23,7 @@ public slots:
     void aggiungiInput(int);
     void schiacciaProva();
 
+signals:
     void invioProva(int);
 };
 

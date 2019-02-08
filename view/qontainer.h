@@ -22,7 +22,7 @@ private:
     container<ContenutoMultimediale*> contenitore;
 public:
     qontainer();
-    bool trovatoVideo, trovatoAudio;
+    vector<ContenutoMultimediale*> vettoreRisultatiRicerca;
 public slots:
     void mostraMainWindow();
     void mostraRicerca();

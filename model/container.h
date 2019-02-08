@@ -1,6 +1,10 @@
 #ifndef CONTAINER_H
 #define CONTAINER_H
 #include <iostream>
+#include <vector>
+#include <string>
+using std::string;
+using std::vector;
 
 template <class T>
 class container {
@@ -82,7 +86,8 @@ public:
 
     void insert(const T);
     void remove(T);
-    bool search(T parametro) const;
+    //bool search(T parametro) const;
+    vector<T> search (T parametro) const;
 
     // ALTRI METODI UTILI
 
@@ -312,7 +317,7 @@ void container<T>::remove(T contenuto) {
     }
 
 }
-
+/*
 template <typename T>
 bool container<T>::search(T contenuto) const {
     nodo* n = first;
@@ -322,6 +327,20 @@ bool container<T>::search(T contenuto) const {
         n = n->next;
     }
     return false;
+}
+*/
+
+template <typename T>
+vector<T> container<T>::search(T contenuto) const {
+    nodo* n = first;
+    vector<T> aux;
+    while (n) {
+        if (n->info->getTitolo().find(contenuto->getTitolo()) || n->info->getAutore().find(contenuto->getAutore()) || (n->info)->getDataUscita() == (contenuto)->getDataUscita())
+        //if ((n->info)->getTitolo() == (contenuto)->getTitolo() && (n->info)->getAutore() == (contenuto)->getAutore() &&)
+            aux.push_back(n->info);
+        n = n->next;
+    }
+    return aux;
 }
 
 template <typename T>

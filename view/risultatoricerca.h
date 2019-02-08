@@ -11,12 +11,13 @@
 class risultatoricerca: public QWidget {
     Q_OBJECT
 private:
-    QVBoxLayout* layout;
+    QVBoxLayout* layoutVerticale;
+    QHBoxLayout* layoutOrizzontale;
     QGridLayout* griglia;
     container<ContenutoMultimediale*>* cont;
-    bool trovato;
+    vector<ContenutoMultimediale*> vettoreRisultati;
 public:
-    risultatoricerca(container<ContenutoMultimediale*>*, bool, QWidget* = nullptr);
+    risultatoricerca(container<ContenutoMultimediale*>*, vector<ContenutoMultimediale*>, QWidget* = nullptr);
     ~risultatoricerca() = default;
 };
 

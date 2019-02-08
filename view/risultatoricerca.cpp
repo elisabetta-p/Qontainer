@@ -1,11 +1,12 @@
 #include "risultatoricerca.h"
 
-risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_container, bool found, QWidget* parent) : QWidget(parent), cont(p_container), trovato (found) {
+risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_container, vector<ContenutoMultimediale*> risultati, QWidget* parent) : QWidget(parent), cont(p_container), vettoreRisultati(risultati)
+{
     setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);
     setGeometry(0,0, 600,600);
 
-    layout = new QVBoxLayout(this);
+    layoutVerticale = new QVBoxLayout(this);
 
     //Creazione del titolo della pagina dei risultati delle ricerche
 
@@ -15,7 +16,8 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
     titoloFinestra->setAlignment(Qt::AlignHCenter);
     titoloFinestra->setStyleSheet("QLabel {color : #cc0066; }");
 
-    layout->addWidget(titoloFinestra);
+    layoutVerticale->addWidget(titoloFinestra);
+    layoutOrizzontale=new QHBoxLayout;
 
     /*
      * RISULTATI RICERCA:
@@ -23,16 +25,34 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
      * nella libreria
     */
 
-    QLabel* risultati = new QLabel(this);
+    /*
     if (trovato) {
-        risultati->setText("Il contenuto cercato è presente nella libreria!");
+        fileTrovati->setText("Il contenuto cercato è presente nella libreria!");
     }
     else {
-        risultati->setText("Il contenuto cercato non è presente nella libreria!");
+        fileTrovati->setText("Il contenuto cercato non è presente nella libreria!");
+    }
+    */
+    for (unsigned long i = 0 ; i != vettoreRisultati.size(); ++i ) {
+        QLabel* fileTitolo = new QLabel(this);
+        fileTitolo->setText(QString::fromStdString(vettoreRisultati[i]->getTitolo()));
+
+        QLabel* fileAutore = new QLabel(this);
+        fileAutore->setText(QString::fromStdString(vettoreRisultati[i]->getAutore()));
+
+        QLabel* fileAnno = new QLabel(this);
+        fileAnno->setText(QString::number(vettoreRisultati[i]->getDataUscita()));
+
+        fileTitolo->setAlignment(Qt::AlignHCenter);
+        fileAutore->setAlignment(Qt::AlignHCenter);
+        fileAnno->setAlignment(Qt::AlignHCenter);
+        layoutOrizzontale->addWidget(fileTitolo);
+        layoutOrizzontale->addWidget(fileAutore);
+        layoutOrizzontale->addWidget(fileAnno);
+
+        layoutVerticale->addLayout(layoutOrizzontale);
     }
 
-    risultati->setAlignment(Qt::AlignHCenter);
-    layout->addWidget(risultati);
 
 
     //bottoni per tornare alla ricerca, oppure per tornare alla schermata principale
@@ -44,9 +64,9 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
     griglia = new QGridLayout;
     griglia->addWidget(tornaRicercaAvanzata, 0, 0, Qt::AlignCenter);
     griglia->addWidget(tornaMainWindow, 1, 0, Qt::AlignCenter);
-    layout->addLayout(griglia);
+    layoutVerticale->addLayout(griglia);
 
     connect(tornaMainWindow, SIGNAL(clicked()), parent, SLOT(mostraMainWindow()));
     connect(tornaRicercaAvanzata, SIGNAL(clicked()), parent, SLOT(mostraRicerca()));
-    this->setLayout(layout);
+    this->setLayout(layoutVerticale);
 }

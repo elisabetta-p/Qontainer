@@ -16,8 +16,9 @@ private:
     vector<QLineEdit*> vettoreOpzioni;
     void creaOpzione(QString, QString, int, QGridLayout*, int);
     QComboBox* opzioni;
+    container<ContenutoMultimediale*>* cont;
 public:
-    ricercaavanzata(QWidget* = nullptr);
+    ricercaavanzata(container<ContenutoMultimediale*>*, QWidget* = nullptr);
     ~ricercaavanzata() = default;
     container<ContenutoMultimediale*> contenitore;
 public slots:

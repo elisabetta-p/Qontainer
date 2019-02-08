@@ -1,6 +1,6 @@
 #include "risultatoricerca.h"
 
-risultatoricerca::risultatoricerca(QWidget* parent) : QWidget(parent) {
+risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_container, QWidget* parent) : QWidget(parent), cont(p_container) {
     setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);
     setGeometry(0,0, 600,600);

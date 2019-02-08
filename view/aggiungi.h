@@ -19,9 +19,10 @@ private:
     vector<QLineEdit*> vettoreOpzioni;
 
     void creaOpzione(QString, QString, int, QGridLayout*, int);
+    container<ContenutoMultimediale*>* cont;
 
 public:
-    aggiungi(QWidget*);
+    aggiungi(container<ContenutoMultimediale*>*, QWidget* = nullptr);
     ~aggiungi() = default;
 private slots:
     void aggiungiInput(int);

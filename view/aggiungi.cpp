@@ -1,7 +1,7 @@
 #include "aggiungi.h"
 #include "mainwindow.h"
 
-aggiungi::aggiungi(QWidget* parent) : QWidget(parent){
+aggiungi::aggiungi(container<ContenutoMultimediale*>* p_contenitore, QWidget* parent) : QWidget(parent), cont(p_contenitore) {
     setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);
     setGeometry(0,0, 600,600);

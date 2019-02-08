@@ -33,7 +33,7 @@ private:
     container<ContenutoMultimediale*>* cont;
 public:
     container<ContenutoMultimediale*> contenitore;
-    mainwindow(container<ContenutoMultimediale*>*, QWidget* =nullptr);
+    mainwindow(container<ContenutoMultimediale*>*, QWidget* = nullptr);
     ~mainwindow() = default;
 };
 

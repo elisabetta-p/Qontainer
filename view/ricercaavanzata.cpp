@@ -5,7 +5,7 @@
 #include "qontainer.h"
 #include <qobjectdefs.h>
 
-ricercaavanzata::ricercaavanzata(QWidget* parent) : QWidget(parent) {
+ricercaavanzata::ricercaavanzata(container<ContenutoMultimediale*>* p_contenitore, QWidget* parent) : QWidget(parent), cont(p_contenitore) {
     setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);
     setGeometry(0,0, 600,600);

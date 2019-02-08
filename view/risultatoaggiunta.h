@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QBoxLayout>
+#include "mainwindow.h"
 
 
 class risultatoaggiunta: public QWidget {

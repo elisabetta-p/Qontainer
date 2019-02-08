@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QGridLayout>
+#include "mainwindow.h"
 
 
 class risultatoricerca: public QWidget {
@@ -12,8 +13,9 @@ class risultatoricerca: public QWidget {
 private:
     QVBoxLayout* layout;
     QGridLayout* griglia;
+    container<ContenutoMultimediale*>* cont;
 public:
-    risultatoricerca(QWidget* = nullptr);
+    risultatoricerca(container<ContenutoMultimediale*>*, QWidget* = nullptr);
     ~risultatoricerca() = default;
 };
 

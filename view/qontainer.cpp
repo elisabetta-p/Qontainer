@@ -30,15 +30,13 @@ void qontainer::mostraMainWindow() {
 
 void qontainer::mostraRicerca() {
     eliminaContenutoAttuale();
-    ricercaavanzata* newRicerca = new ricercaavanzata(this);
+    ricercaavanzata* newRicerca = new ricercaavanzata(&contenitore, this);
     layoutQ->addWidget(newRicerca);
 }
 
-
-
 void qontainer::mostraAggiungi() {
     eliminaContenutoAttuale();
-    aggiungi* newAggiungi = new aggiungi(this);
+    aggiungi* newAggiungi = new aggiungi(&contenitore, this);
     layoutQ->addWidget(newAggiungi);
 }
 
@@ -46,7 +44,7 @@ void qontainer::mostraAggiungi() {
 void qontainer::mostraRisultato(container<ContenutoMultimediale*> contenitore, string titolo, unsigned short int durata, string genere, double dim,
                                 unsigned short int val, string autore, unsigned short int data, unsigned int ris, string reg, string saga) {
     eliminaContenutoAttuale();
-    risultatoricerca* newRisultato = new risultatoricerca(this);
+    risultatoricerca* newRisultato = new risultatoricerca(&contenitore, this);
     layoutQ->addWidget(newRisultato);
     ContenutoMultimediale* f0 = new film ("1", 1, "1",1,1,"1", 1,1,"1","1");
     contenitore.insert(f0);
@@ -66,7 +64,7 @@ void qontainer::mostraRisultato(container<ContenutoMultimediale*> contenitore, s
 void qontainer::mostraRisultato(container<ContenutoMultimediale*> contenitore, string titolo, unsigned short int durata, string genere, double dim, unsigned short int val,
                                 string autore, unsigned short int data, unsigned short int qual, string album, string prod) {
     eliminaContenutoAttuale();
-    risultatoricerca* newRisultato = new risultatoricerca(this);
+    risultatoricerca* newRisultato = new risultatoricerca(&contenitore, this);
     layoutQ->addWidget(newRisultato);
     ContenutoMultimediale* c0 = new canzone ("1", 1, "1",1,1,"1", 1,1,"1","1");
     contenitore.insert(c0);

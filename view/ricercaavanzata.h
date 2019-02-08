@@ -20,7 +20,6 @@ private:
 public:
     ricercaavanzata(container<ContenutoMultimediale*>*, QWidget* = nullptr);
     ~ricercaavanzata() = default;
-    container<ContenutoMultimediale*> contenitore;
 public slots:
     void aggiungiInput(int);
     void schiacciaRicerca();
@@ -28,7 +27,6 @@ public slots:
 signals:
     void invioRicerca(string, unsigned short int, string, double, unsigned short int, string, unsigned short int, unsigned int, string, string); //per i film e gli episodi
     void invioRicerca(string, unsigned short int, string, double, unsigned short int, string, unsigned short int, unsigned short int, string, string);//per le canzoni e i podcast
-    //per i podcast
 };
 
 #endif // RICERCAAVANZATA_H

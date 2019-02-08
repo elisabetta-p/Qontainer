@@ -13,6 +13,7 @@ private:
     QGridLayout* griglia;
     QGridLayout* grigliaAggiuntaAvanzata;
     QVBoxLayout* layout;
+    QComboBox* opzioni;
 
     void lunghezzaFissaQLineEdit(QLineEdit*, int = 0);
 
@@ -24,8 +25,13 @@ private:
 public:
     aggiungi(container<ContenutoMultimediale*>*, QWidget* = nullptr);
     ~aggiungi() = default;
-private slots:
+public slots:
     void aggiungiInput(int);
+    void schiacciaAggiungi();
+signals:
+    void invioAggiunta(int, string, unsigned short int, string, double, unsigned short int, string, unsigned short int, unsigned int, string, string); //per i film e gli episodi
+    void invioAggiunta(int, string, unsigned short int, string, double, unsigned short int, string, unsigned short int, unsigned short int, string, string);//per le canzoni e i podcast
+    //per i podcast
 };
 
 #endif // AGGIUNGI_H

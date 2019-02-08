@@ -74,8 +74,8 @@ void qontainer::mostraRisultato(string titolo, unsigned short int durata, string
     else
         std::cout << "Video non trovato" << std::endl;
 
-    //risultatoricerca* newRisultato = new risultatoricerca(&contenitore, trovatoVideo, this);
-    //layoutQ->addWidget(newRisultato);
+    risultatoricerca* newRisultato = new risultatoricerca(&contenitore, trovatoVideo, this);
+    layoutQ->addWidget(newRisultato);
 
 }
 
@@ -95,10 +95,35 @@ void qontainer::mostraRisultato(string titolo, unsigned short int durata, string
     layoutQ->addWidget(newRisultato);
 }
 
-void qontainer::mostraAggiuntaRiuscita() {
+//film
+void qontainer::mostraAggiuntaRiuscita(int opzione, string titolo, unsigned short int durata, string genere, double dim,
+                                       unsigned short int val, string autore, unsigned short int data, unsigned int ris, string reg, string saga) {
     eliminaContenutoAttuale();
     risultatoaggiunta* newAggiunta = new risultatoaggiunta(this);
     layoutQ->addWidget(newAggiunta);
+
+    if (opzione==1){ //aggiungo un film
+       contenitore.insert(new film(titolo, durata, genere, dim, val, autore, data, ris, reg, saga));
+    }
+    else { //aggiungo un episodio
+        contenitore.insert(new episodio(titolo, durata, genere, dim, val, autore, data, ris, reg, saga));
+    }
+
+}
+
+//canzoni
+void qontainer::mostraAggiuntaRiuscita(int opzione, string titolo, unsigned short int durata, string genere, double dim, unsigned short int val,
+                                       string autore, unsigned short int data, unsigned short int qual, string album, string prod) {
+    eliminaContenutoAttuale();
+    risultatoaggiunta* newAggiunta = new risultatoaggiunta(this);
+    layoutQ->addWidget(newAggiunta);
+
+    if (opzione==3) {
+        contenitore.insert(new canzone(titolo, durata, genere, dim, val, autore, data, qual, album, prod));
+    }
+    else {
+        contenitore.insert(new podcast(titolo, durata, genere, dim, val, autore, data, qual, album, prod));
+    }
 }
 /*
 void qontainer::mostraProva(int i) {

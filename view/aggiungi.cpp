@@ -29,7 +29,7 @@ aggiungi::aggiungi(container<ContenutoMultimediale*>* p_contenitore, QWidget* pa
 
 
     //menu a tendina
-    QComboBox *opzioni = new QComboBox(this);
+    opzioni = new QComboBox(this);
     opzioni->insertItem(0, tr("Scegli:"));
     opzioni->insertItem(1, tr("Film"));
     opzioni->insertItem(2, tr("Episodio"));
@@ -72,7 +72,46 @@ aggiungi::aggiungi(container<ContenutoMultimediale*>* p_contenitore, QWidget* pa
 
 
     connect (goBack, SIGNAL(clicked()), parent, SLOT(mostraMainWindow()));
-    connect (agg, SIGNAL(clicked()), parent, SLOT(mostraAggiuntaRiuscita()));
+    //connect (agg, SIGNAL(clicked()), parent, SLOT(mostraAggiuntaRiuscita()));
+
+    connect(agg, SIGNAL(clicked()), this, SLOT(schiacciaAggiungi()));
+    connect(this, SIGNAL(invioAggiunta(int, string,
+                                    unsigned short int,
+                                    string,
+                                    double,
+                                    unsigned short int,
+                                    string,
+                                    unsigned short int,
+                                    unsigned int,
+                                    string,
+                                    string)), parent, SLOT(mostraAggiuntaRiuscita(int, string,
+                                                                           unsigned short int,
+                                                                           string,
+                                                                           double,
+                                                                           unsigned short int,
+                                                                           string,
+                                                                           unsigned short int,
+                                                                           unsigned int,
+                                                                           string,
+                                                                           string)));
+    connect(this, SIGNAL(invioAggiunta(int, string,
+                                    unsigned short int,
+                                    string,
+                                    double,
+                                    unsigned short int,
+                                    string,
+                                    unsigned short int,
+                                    unsigned short int,
+                                    string,
+                                    string)), parent, SLOT(mostraAggiuntaRiuscita(int, string,
+                                                                           unsigned short int,
+                                                                           string,
+                                                                           double, unsigned short int,
+                                                                           string,
+                                                                           unsigned short int,
+                                                                           unsigned short int,
+                                                                           string,
+                                                                           string)));
 
     this->setLayout(layout);
 }
@@ -138,3 +177,49 @@ void aggiungi::creaOpzione(QString etichetta, QString placeholder, int lunghezza
     griglia->addWidget(box, riga, 1, Qt::AlignLeft);
 
 }
+
+void aggiungi::schiacciaAggiungi() {
+    string titolo, genere, autore;
+    double dim;
+    unsigned short int durata, val, data;
+    titolo = vettoreOpzioni[0]->text().toStdString();
+    durata = vettoreOpzioni[1]->text().toUShort();
+    genere = vettoreOpzioni[2]->text().toStdString();
+    dim = vettoreOpzioni[3]->text().toDouble();
+    val = vettoreOpzioni[4]->text().toUShort();
+    autore = vettoreOpzioni[5]->text().toStdString();
+    data = vettoreOpzioni[6]->text().toUShort();
+    //string s= "";
+    //std::cout << "schiaccia: " << s << std::endl;
+    if (opzioni->currentIndex()==1) { //film
+        unsigned int ris = vettoreOpzioni[7]->text().toUShort();
+        string reg, saga;
+        reg = vettoreOpzioni[8]->text().toStdString();
+        saga = vettoreOpzioni[9]->text().toStdString();
+        emit invioAggiunta(opzioni->currentIndex(), titolo, durata, genere, dim, val, autore, data, ris, reg, saga);
+    }
+    if (opzioni->currentIndex()==2) { //episodi
+        unsigned int ris = vettoreOpzioni[7]->text().toUShort();
+        string serie, canale;
+        serie = vettoreOpzioni[8]->text().toStdString();
+        canale = vettoreOpzioni[9]->text().toStdString();
+        emit invioAggiunta(opzioni->currentIndex(),titolo, durata, genere, dim, val, autore, data, ris, serie, canale);
+    }
+
+    if (opzioni->currentIndex()==3) { //canzoni
+        unsigned short int qual = vettoreOpzioni[7]->text().toUShort();
+        string album, prod;
+        album = vettoreOpzioni[8]->text().toStdString();
+        prod = vettoreOpzioni[9]->text().toStdString();
+        emit invioAggiunta(opzioni->currentIndex(), titolo, durata, genere, dim, val, autore, data, qual, album, prod);
+    }
+
+    if (opzioni->currentIndex()==4){ //podcast
+        unsigned short int qual = vettoreOpzioni[7]->text().toUShort();
+        string racc, osp;
+        racc = vettoreOpzioni[8]->text().toStdString();
+        osp = vettoreOpzioni[9]->text().toStdString();
+        emit invioAggiunta(opzioni->currentIndex(), titolo, durata, genere, dim, val, autore, data, qual, racc, osp);
+    }
+}
+

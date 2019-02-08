@@ -12,7 +12,7 @@ class risultatoricerca: public QWidget {
     Q_OBJECT
 private:
     QVBoxLayout* layoutVerticale;
-    QHBoxLayout* layoutOrizzontale;
+    QGridLayout* layoutOrizzontale;
     QGridLayout* griglia;
     container<ContenutoMultimediale*>* cont;
     vector<ContenutoMultimediale*> vettoreRisultati;

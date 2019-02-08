@@ -17,7 +17,7 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
     titoloFinestra->setStyleSheet("QLabel {color : #cc0066; }");
 
     layoutVerticale->addWidget(titoloFinestra);
-    layoutOrizzontale=new QHBoxLayout;
+    layoutOrizzontale=new QGridLayout;
 
     /*
      * RISULTATI RICERCA:
@@ -46,9 +46,11 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
         fileTitolo->setAlignment(Qt::AlignHCenter);
         fileAutore->setAlignment(Qt::AlignHCenter);
         fileAnno->setAlignment(Qt::AlignHCenter);
-        layoutOrizzontale->addWidget(fileTitolo);
-        layoutOrizzontale->addWidget(fileAutore);
-        layoutOrizzontale->addWidget(fileAnno);
+
+        layoutOrizzontale->addWidget(fileTitolo, i, 0, Qt::AlignCenter);
+        layoutOrizzontale->addWidget(fileAutore, i, 1, Qt::AlignCenter);
+        layoutOrizzontale->addWidget(fileAnno, i, 2, Qt::AlignCenter);
+
 
         layoutVerticale->addLayout(layoutOrizzontale);
     }

@@ -119,7 +119,7 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
 
     //caricamento della musica
     for (auto it=c.begin(); it!=c.end(); ++it) {
-        cout << c[it]->getAutore() << " ";
+        cout << (*cont)[it]->getAutore() << " ";
         if (dynamic_cast<canzone*>(c[it])){
             QString titolo = QString::fromStdString(c[it]->getTitolo());
             areaCantanti->append(titolo);

@@ -74,8 +74,8 @@ void qontainer::mostraRisultato(string titolo, unsigned short int durata, string
     else
         std::cout << "Video non trovato" << std::endl;
 
-    risultatoricerca* newRisultato = new risultatoricerca(&contenitore, trovatoVideo, this);
-    layoutQ->addWidget(newRisultato);
+    //risultatoricerca* newRisultato = new risultatoricerca(&contenitore, trovatoVideo, this);
+    //layoutQ->addWidget(newRisultato);
 
 }
 

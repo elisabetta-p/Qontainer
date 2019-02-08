@@ -63,19 +63,9 @@ ricercaavanzata::ricercaavanzata(container<ContenutoMultimediale*>* p_contenitor
    goBack->setText("Torna alla schermata principale");
 
 
-   //BOTTONE DI PROVA PER LA RICERCA EFFETTIVA
-   QPushButton* provaB = new QPushButton(this);
-   provaB->setText("prova");
-
-
    QGridLayout* boxCerca = new QGridLayout;
    boxCerca->addWidget(cercaB,0,0, Qt::AlignCenter);
    boxCerca->addWidget(goBack,1,0, Qt::AlignCenter);
-
-
-   //BOTTONE DI PROVA NEL LAYOUT BOTTONI
-   boxCerca->addWidget(provaB,2,0,Qt::AlignCenter);
-
 
    boxCerca->setSizeConstraint(QLayout::SetMinimumSize);
    layout->addLayout(boxCerca);
@@ -83,41 +73,10 @@ ricercaavanzata::ricercaavanzata(container<ContenutoMultimediale*>* p_contenitor
    //connect (cercaB, SIGNAL(clicked()), parent, SLOT(mostraRisultato(string)));
    connect (goBack, SIGNAL(clicked()), parent, SLOT(mostraMainWindow()));
 
-
-
-
    this->setLayout(layout);
 
-   //provo a fare la ricerca. intanto mi creo e mi riempio un contenitore
-   /*
-   ContenutoMultimediale* f0 = new film ("1", 1, "1",1,1,"1", 1,1,"1","1");
-   ContenutoMultimediale* f1 = new film ("iron man111", 126, "azione",1500.0,5,"Marvel", 2012,1080,"Joss Whedon","MCU");
-   ContenutoMultimediale* f2 = new film ("iron man 3", 127, "azione", 4585.5, 9, "Marvel", 1013, 1080, "Tizio", "MCU");
-   ContenutoMultimediale* c1 = new canzone ("Organs",3, "Indie", 3.5,8,"Of Monsters and Men", 2016, 125, "Beneath the skin", "nd");
-   ContenutoMultimediale* f3 = new film ("iron man 2", 127, "azione", 4585.5, 9, "Marvel", 1013, 1080, "Tizio", "MCU");
-   ContenutoMultimediale* f4 = new film ("iron man 4", 127, "azione", 4585.5, 9, "Marvel", 1013, 1080, "Tizio", "MCU");
-   ContenutoMultimediale* p1 = new podcast ("getting curious", 40, "info", 123, 9, "JVN", 2019, 450, "getting curious with jvn", "tizio");
-   ContenutoMultimediale* s1 = new episodio ("episodio 1", 40, "commedia", 400, 7, "Tizio", 2018, 789, "serie1", "netflix");
-
-   contenitore.insert(f0);
-   contenitore.insert(f1);
-   contenitore.insert(f2);
-   contenitore.insert(c1);
-   contenitore.insert(f3);
-   contenitore.insert(f4);
-   contenitore.insert(p1);
-   contenitore.insert(s1);
-   */
-
-   // metodo che dovrei usare ? QLineEdit->text().toStdString()
-   // per la combobox currentIntex()
-   // come accidenti mi prendo le stringhe dalle qlineedit se le ho create con una funzione???
-
-
-   //CONNECT DI PROVA COL BOTTONE DI PROVA
-   connect(provaB, SIGNAL(clicked()), this, SLOT(schiacciaRicerca()));
-   connect(this, SIGNAL(invioRicerca(container<ContenutoMultimediale*>,
-                                   string,
+   connect(cercaB, SIGNAL(clicked()), this, SLOT(schiacciaRicerca()));
+   connect(this, SIGNAL(invioRicerca(string,
                                    unsigned short int,
                                    string,
                                    double,
@@ -126,8 +85,7 @@ ricercaavanzata::ricercaavanzata(container<ContenutoMultimediale*>* p_contenitor
                                    unsigned short int,
                                    unsigned int,
                                    string,
-                                   string)), parent, SLOT(mostraRisultato(container<ContenutoMultimediale*>,
-                                                                          string,
+                                   string)), parent, SLOT(mostraRisultato(string,
                                                                           unsigned short int,
                                                                           string,
                                                                           double,
@@ -137,8 +95,7 @@ ricercaavanzata::ricercaavanzata(container<ContenutoMultimediale*>* p_contenitor
                                                                           unsigned int,
                                                                           string,
                                                                           string)));
-   connect(this, SIGNAL(invioRicerca(container<ContenutoMultimediale*>,
-                                   string,
+   connect(this, SIGNAL(invioRicerca(string,
                                    unsigned short int,
                                    string,
                                    double,
@@ -147,8 +104,7 @@ ricercaavanzata::ricercaavanzata(container<ContenutoMultimediale*>* p_contenitor
                                    unsigned short int,
                                    unsigned short int,
                                    string,
-                                   string)), parent, SLOT(mostraRisultato(container<ContenutoMultimediale*>,
-                                                                          string,
+                                   string)), parent, SLOT(mostraRisultato(string,
                                                                           unsigned short int,
                                                                           string,
                                                                           double, unsigned short int,
@@ -242,14 +198,14 @@ void ricercaavanzata::schiacciaRicerca() {
         string reg, saga;
         reg = vettoreOpzioni[8]->text().toStdString();
         saga = vettoreOpzioni[9]->text().toStdString();
-        emit invioRicerca(contenitore, titolo, durata, genere, dim, val, autore, data, ris, reg, saga);
+        emit invioRicerca(titolo, durata, genere, dim, val, autore, data, ris, reg, saga);
     }
     if (opzioni->currentIndex()==2) { //episodi
         unsigned int ris = vettoreOpzioni[7]->text().toUShort();
         string serie, canale;
         serie = vettoreOpzioni[8]->text().toStdString();
         canale = vettoreOpzioni[9]->text().toStdString();
-        emit invioRicerca(contenitore, titolo, durata, genere, dim, val, autore, data, ris, serie, canale);
+        emit invioRicerca(titolo, durata, genere, dim, val, autore, data, ris, serie, canale);
     }
 
     if (opzioni->currentIndex()==3) { //canzoni
@@ -257,7 +213,7 @@ void ricercaavanzata::schiacciaRicerca() {
         string album, prod;
         album = vettoreOpzioni[8]->text().toStdString();
         prod = vettoreOpzioni[9]->text().toStdString();
-        emit invioRicerca(contenitore, titolo, durata, genere, dim, val, autore, data, qual, album, prod);
+        emit invioRicerca(titolo, durata, genere, dim, val, autore, data, qual, album, prod);
     }
 
     if (opzioni->currentIndex()==4){ //podcast
@@ -265,6 +221,6 @@ void ricercaavanzata::schiacciaRicerca() {
         string racc, osp;
         racc = vettoreOpzioni[8]->text().toStdString();
         osp = vettoreOpzioni[9]->text().toStdString();
-        emit invioRicerca(contenitore, titolo, durata, genere, dim, val, autore, data, qual, racc, osp);
+        emit invioRicerca(titolo, durata, genere, dim, val, autore, data, qual, racc, osp);
     }
 }

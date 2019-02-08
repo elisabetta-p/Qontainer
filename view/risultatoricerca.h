@@ -14,8 +14,9 @@ private:
     QVBoxLayout* layout;
     QGridLayout* griglia;
     container<ContenutoMultimediale*>* cont;
+    bool trovato;
 public:
-    risultatoricerca(container<ContenutoMultimediale*>*, QWidget* = nullptr);
+    risultatoricerca(container<ContenutoMultimediale*>*, bool, QWidget* = nullptr);
     ~risultatoricerca() = default;
 };
 

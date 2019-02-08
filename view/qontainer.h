@@ -22,13 +22,12 @@ private:
     container<ContenutoMultimediale*> contenitore;
 public:
     qontainer();
-
+    bool trovatoVideo, trovatoAudio;
 public slots:
     void mostraMainWindow();
     void mostraRicerca();
     void mostraAggiungi();
-    void mostraRisultato(container<ContenutoMultimediale*>,
-                         string,
+    void mostraRisultato(string,
                          unsigned short int,
                          string,
                          double,
@@ -38,8 +37,7 @@ public slots:
                          unsigned int,
                          string,
                          string);  //per i film e gli episodi
-    void mostraRisultato(container<ContenutoMultimediale*>,
-                         string,
+    void mostraRisultato(string,
                          unsigned short int,
                          string,
                          double, unsigned short int,

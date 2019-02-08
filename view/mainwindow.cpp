@@ -3,7 +3,6 @@
 #include "aggiungi.h"
 
 mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget* parent ) : QWidget (parent), cont(p_contenitore) {
-    //container<ContenutoMultimediale*> c = *cont;
 
     setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);

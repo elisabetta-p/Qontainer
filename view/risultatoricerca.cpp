@@ -1,6 +1,6 @@
 #include "risultatoricerca.h"
 
-risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_container, QWidget* parent) : QWidget(parent), cont(p_container) {
+risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_container, bool found, QWidget* parent) : QWidget(parent), cont(p_container), trovato (found) {
     setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);
     setGeometry(0,0, 600,600);
@@ -24,7 +24,13 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
     */
 
     QLabel* risultati = new QLabel(this);
-    risultati->setText("Qua ci saranno i risultati");
+    if (trovato) {
+        risultati->setText("Il contenuto cercato è presente nella libreria!");
+    }
+    else {
+        risultati->setText("Il contenuto cercato non è presente nella libreria!");
+    }
+
     risultati->setAlignment(Qt::AlignHCenter);
     layout->addWidget(risultati);
 

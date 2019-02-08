@@ -26,8 +26,8 @@ public slots:
     void schiacciaRicerca();
 
 signals:
-    void invioRicerca(container<ContenutoMultimediale*>, string, unsigned short int, string, double, unsigned short int, string, unsigned short int, unsigned int, string, string); //per i film e gli episodi
-    void invioRicerca(container<ContenutoMultimediale*>, string, unsigned short int, string, double, unsigned short int, string, unsigned short int, unsigned short int, string, string);//per le canzoni e i podcast
+    void invioRicerca(string, unsigned short int, string, double, unsigned short int, string, unsigned short int, unsigned int, string, string); //per i film e gli episodi
+    void invioRicerca(string, unsigned short int, string, double, unsigned short int, string, unsigned short int, unsigned short int, string, string);//per le canzoni e i podcast
     //per i podcast
 };
 

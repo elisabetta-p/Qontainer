@@ -3,7 +3,7 @@
 #include "aggiungi.h"
 
 mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget* parent ) : QWidget (parent), cont(p_contenitore) {
-    container<ContenutoMultimediale*> c = *cont;
+    //container<ContenutoMultimediale*> c = *cont;
 
     setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);
@@ -118,31 +118,31 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
 
 
     //caricamento della musica
-    for (auto it=c.begin(); it!=c.end(); ++it) {
+    for (auto it=(*cont).begin(); it!=(*cont).end(); ++it) {
         cout << (*cont)[it]->getAutore() << " ";
-        if (dynamic_cast<canzone*>(c[it])){
-            QString titolo = QString::fromStdString(c[it]->getTitolo());
+        if (dynamic_cast<canzone*>((*cont)[it])){
+            QString titolo = QString::fromStdString((*cont)[it]->getTitolo());
             areaCantanti->append(titolo);
         }
     }
     //caricamento dei podcast
-    for (auto it=c.begin(); it!=c.end(); ++it) {
-        if (dynamic_cast<podcast*>(c[it])){
-            QString titolo = QString::fromStdString(c[it]->getTitolo());
+    for (auto it=(*cont).begin(); it!=(*cont).end(); ++it) {
+        if (dynamic_cast<podcast*>((*cont)[it])){
+            QString titolo = QString::fromStdString((*cont)[it]->getTitolo());
             areaPodcast->append(titolo);
         }
     }
     //caricamento dei film
-    for (auto it=c.begin(); it!= c.end();++it) {
-        if (dynamic_cast<film*>(c[it])){
-            QString titolo = QString::fromStdString(c[it]->getTitolo());
+    for (auto it=(*cont).begin(); it!= (*cont).end();++it) {
+        if (dynamic_cast<film*>((*cont)[it])){
+            QString titolo = QString::fromStdString((*cont)[it]->getTitolo());
             areaFilm->append(titolo);
         }
     }
     //caricamento degli episodi
-    for (auto it=c.begin(); it!= c.end();++it) {
-        if (dynamic_cast<episodio*>(c[it])){
-            QString titolo = QString::fromStdString(c[it]->getTitolo());
+    for (auto it=(*cont).begin(); it!= (*cont).end();++it) {
+        if (dynamic_cast<episodio*>((*cont)[it])){
+            QString titolo = QString::fromStdString((*cont)[it]->getTitolo());
             areaSerie->append(titolo);
         }
     }

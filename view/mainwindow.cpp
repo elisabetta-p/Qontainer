@@ -3,6 +3,8 @@
 #include "aggiungi.h"
 
 mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget* parent ) : QWidget (parent), cont(p_contenitore) {
+    container<ContenutoMultimediale*> c = *cont;
+
     setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);
     setGeometry(0,0, 600,600);
@@ -96,6 +98,7 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
     this->setLayout(layout);
 
     //metto cose nel contenitore
+    /*
     ContenutoMultimediale* f1 = new film ("iron man111", 126, "azione",1500.0,5,"Marvel", 2012,1080,"Joss Whedon","MCU");
     ContenutoMultimediale* f2 = new film ("iron man 3", 127, "azione", 4585.5, 9, "Marvel", 1013, 1080, "Tizio", "MCU");
     ContenutoMultimediale* c1 = new canzone ("Organs",3, "Indie", 3.5,8,"Of Monsters and Men", 2016, 125, "Beneath the skin", "nd");
@@ -111,34 +114,35 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
     contenitore.insert(f4);
     contenitore.insert(p1);
     contenitore.insert(s1);
-
+    */
 
 
     //caricamento della musica
-    for (auto it=contenitore.begin(); it!=contenitore.end(); ++it) {
-        if (dynamic_cast<canzone*>(contenitore[it])){
-            QString titolo = QString::fromStdString(contenitore[it]->getTitolo());
+    for (auto it=c.begin(); it!=c.end(); ++it) {
+        cout << c[it]->getAutore() << " ";
+        if (dynamic_cast<canzone*>(c[it])){
+            QString titolo = QString::fromStdString(c[it]->getTitolo());
             areaCantanti->append(titolo);
         }
     }
     //caricamento dei podcast
-    for (auto it=contenitore.begin(); it!=contenitore.end(); ++it) {
-        if (dynamic_cast<podcast*>(contenitore[it])){
-            QString titolo = QString::fromStdString(contenitore[it]->getTitolo());
+    for (auto it=c.begin(); it!=c.end(); ++it) {
+        if (dynamic_cast<podcast*>(c[it])){
+            QString titolo = QString::fromStdString(c[it]->getTitolo());
             areaPodcast->append(titolo);
         }
     }
     //caricamento dei film
-    for (auto it=contenitore.begin(); it!= contenitore.end();++it) {
-        if (dynamic_cast<film*>(contenitore[it])){
-            QString titolo = QString::fromStdString(contenitore[it]->getTitolo());
+    for (auto it=c.begin(); it!= c.end();++it) {
+        if (dynamic_cast<film*>(c[it])){
+            QString titolo = QString::fromStdString(c[it]->getTitolo());
             areaFilm->append(titolo);
         }
     }
     //caricamento degli episodi
-    for (auto it=contenitore.begin(); it!= contenitore.end();++it) {
-        if (dynamic_cast<episodio*>(contenitore[it])){
-            QString titolo = QString::fromStdString(contenitore[it]->getTitolo());
+    for (auto it=c.begin(); it!= c.end();++it) {
+        if (dynamic_cast<episodio*>(c[it])){
+            QString titolo = QString::fromStdString(c[it]->getTitolo());
             areaSerie->append(titolo);
         }
     }

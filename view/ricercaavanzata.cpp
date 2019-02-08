@@ -89,6 +89,7 @@ ricercaavanzata::ricercaavanzata(container<ContenutoMultimediale*>* p_contenitor
    this->setLayout(layout);
 
    //provo a fare la ricerca. intanto mi creo e mi riempio un contenitore
+   /*
    ContenutoMultimediale* f0 = new film ("1", 1, "1",1,1,"1", 1,1,"1","1");
    ContenutoMultimediale* f1 = new film ("iron man111", 126, "azione",1500.0,5,"Marvel", 2012,1080,"Joss Whedon","MCU");
    ContenutoMultimediale* f2 = new film ("iron man 3", 127, "azione", 4585.5, 9, "Marvel", 1013, 1080, "Tizio", "MCU");
@@ -106,6 +107,7 @@ ricercaavanzata::ricercaavanzata(container<ContenutoMultimediale*>* p_contenitor
    contenitore.insert(f4);
    contenitore.insert(p1);
    contenitore.insert(s1);
+   */
 
    // metodo che dovrei usare ? QLineEdit->text().toStdString()
    // per la combobox currentIntex()

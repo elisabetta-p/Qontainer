@@ -26,14 +26,6 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
      * nella libreria
     */
 
-    /*
-    if (trovato) {
-        fileTrovati->setText("Il contenuto cercato è presente nella libreria!");
-    }
-    else {
-        fileTrovati->setText("Il contenuto cercato non è presente nella libreria!");
-    }
-    */
     for (unsigned long i = 0 ; i != vettoreRisultati.size(); ++i ) {
         QLabel* tipo = new QLabel(this);
         tipo->setText(QString::fromStdString(typeid(*(vettoreRisultati[i])).name()));

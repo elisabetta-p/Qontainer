@@ -96,7 +96,7 @@ public:
 
 //definizioni di nodo
 template <typename T>
-container<T>::nodo::nodo(T contenuto, nodo* p, nodo* n) : info(contenuto), next(n), prev(p) {}
+container<T>::nodo::nodo(T contenuto, nodo* p, nodo* n) : info(contenuto), prev(p), next(n) {}
 
 template<typename T>
 container<T>::nodo::~nodo() {if (info) delete info;}
@@ -328,7 +328,8 @@ vector<T> container<T>::search(T contenuto) const {
             aux.push_back(n->info);
             */
         //if(n->info->getTitolo().find(contenuto->getTitolo()) && n->info->getAutore().find(contenuto->getAutore()) && n->info->getDataUscita() == contenuto->getDataUscita() ) {
-        if ((n->info)->getTitolo() == (contenuto)->getTitolo() && (n->info)->getAutore() == (contenuto)->getAutore() && (n->info)->getDataUscita() == contenuto->getDataUscita()) {
+        //if ((n->info)->getTitolo() == (contenuto)->getTitolo() && (n->info)->getAutore() == (contenuto)->getAutore() && (n->info)->getDataUscita() == contenuto->getDataUscita()) {
+        if (n->info->getTitolo() >= contenuto->getTitolo() && n->info->getAutore() >= contenuto->getAutore() && n->info->getDataUscita() == contenuto->getDataUscita()) {
             std::cout << "contenuto trovato" << std::endl;
             aux.push_back(n->info);
 

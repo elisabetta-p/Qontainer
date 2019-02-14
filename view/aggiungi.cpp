@@ -72,7 +72,6 @@ aggiungi::aggiungi(container<ContenutoMultimediale*>* p_contenitore, QWidget* pa
 
 
     connect (goBack, SIGNAL(clicked()), parent, SLOT(mostraMainWindow()));
-    //connect (agg, SIGNAL(clicked()), parent, SLOT(mostraAggiuntaRiuscita()));
 
     connect(agg, SIGNAL(clicked()), this, SLOT(schiacciaAggiungi()));
     connect(this, SIGNAL(invioAggiunta(int, string,

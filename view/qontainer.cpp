@@ -30,6 +30,7 @@ qontainer::qontainer()  {
     contenitore.insert(s1);
     contenitore.insert(f5);
     contenitore.insert(f6);
+
 }
 
 void qontainer::eliminaContenutoAttuale() {
@@ -81,11 +82,16 @@ void qontainer::mostraAggiuntaRiuscita(int opzione, string titolo, unsigned shor
     risultatoaggiunta* newAggiunta = new risultatoaggiunta(this);
     layoutQ->addWidget(newAggiunta);
 
-    if (opzione==1){ //aggiungo un film
+    if (opzione == 1){ //aggiungo un film
+        std::cout <<"sto per inserire un film" <<std::endl;
        contenitore.insert(new film(titolo, durata, genere, dim, val, autore, data, ris, reg, saga));
+       std::cout << "contenuto inserito" <<std::endl;
+       // quest'ultimo cout lo fa quindi rida' il controllo a questa funzione
     }
-    else { //aggiungo un episodio
+    if (opzione == 2) { //aggiungo un episodio
+        std::cout <<"sto per inserire un episodio" <<std::endl;
         contenitore.insert(new episodio(titolo, durata, genere, dim, val, autore, data, ris, reg, saga));
+        std::cout << "contenuto inserito" <<std::endl;
     }
 
 }
@@ -97,10 +103,14 @@ void qontainer::mostraAggiuntaRiuscita(int opzione, string titolo, unsigned shor
     risultatoaggiunta* newAggiunta = new risultatoaggiunta(this);
     layoutQ->addWidget(newAggiunta);
 
-    if (opzione==3) {
+    if (opzione == 3) {
+        std::cout <<"sto per inserire una canzone" <<std::endl;
         contenitore.insert(new canzone(titolo, durata, genere, dim, val, autore, data, qual, album, prod));
+        std::cout << "contenuto inserito" <<std::endl;
     }
-    else {
+    if (opzione == 4){
+        std::cout <<"sto per inserire un podcast" <<std::endl;
         contenitore.insert(new podcast(titolo, durata, genere, dim, val, autore, data, qual, album, prod));
+        std::cout << "contenuto inserito" <<std::endl;
     }
 }

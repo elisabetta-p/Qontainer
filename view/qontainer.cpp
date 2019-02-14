@@ -17,8 +17,8 @@ qontainer::qontainer()  {
     ContenutoMultimediale* p1 = new podcast ("getting curious", 40, "info", 123, 9, "JVN", 2019, 450, "getting curious with jvn", "tizio");
     ContenutoMultimediale* s1 = new episodio ("episodio 1", 40, "commedia", 400, 7, "Tizio", 2018, 789, "serie1", "netflix");
     ContenutoMultimediale* c0 = new canzone ("1", 1, "1",1,1,"1", 1,1,"1","1");
-    ContenutoMultimediale* c2 = new canzone()
-    ContenutoMultimediale* f5 = new film();
+    //ContenutoMultimediale* c2 = new canzone()
+    //ContenutoMultimediale* f5 = new film();
 
 
     contenitore.insert(c0);
@@ -63,10 +63,9 @@ void qontainer::mostraAggiungi() {
 }
 
 //film ed episodi
-void qontainer::mostraRisultato(string titolo, unsigned short int durata, string genere, double dim,
-                                unsigned short int val, string autore, unsigned short int data, unsigned int ris, string reg, string saga) {
+void qontainer::mostraRisultato(string titolo, string autore, unsigned short int data) {
 
-    ContenutoMultimediale* cercaVideo = new film(titolo, durata, genere, dim, val, autore, data, ris, reg, saga);
+    ContenutoMultimediale* cercaVideo = new film(titolo, autore, data);
 
 
     vettoreRisultatiRicerca = contenitore.search(cercaVideo);
@@ -82,23 +81,25 @@ void qontainer::mostraRisultato(string titolo, unsigned short int durata, string
 
 }
 
+/*
 //canzoni e podcast
 void qontainer::mostraRisultato(string titolo, unsigned short int durata, string genere, double dim, unsigned short int val,
                                 string autore, unsigned short int data, unsigned short int qual, string album, string prod) {
 
     ContenutoMultimediale* cercaAudio = new canzone(titolo, durata, genere, dim, val, autore, data, qual, album, prod);
     vettoreRisultatiRicerca  = contenitore.search(cercaAudio);
-    /*
-     * if (trovatoAudio)
+
+      if (trovatoAudio)
         std::cout << "Audio trovato" << std::endl;
     else
         std::cout << "Audio non trovato" << std::endl;
-        */
+
 
     eliminaContenutoAttuale();
     risultatoricerca* newRisultato = new risultatoricerca(&contenitore, vettoreRisultatiRicerca, this);
     layoutQ->addWidget(newRisultato);
 }
+    */
 
 //film
 void qontainer::mostraAggiuntaRiuscita(int opzione, string titolo, unsigned short int durata, string genere, double dim,

@@ -21,6 +21,7 @@ private:
     unsigned short int dataUscita;
 public:
     ContenutoMultimediale(string = "nd", unsigned short int = 0, string = "nd", double = 0.0, unsigned short int = 0, string = "nd", unsigned short int = 0);
+    ContenutoMultimediale(string, string, unsigned short int);
     virtual ~ContenutoMultimediale() = default;
     virtual void riproduci() const =0;
     virtual void pausa() const =0;

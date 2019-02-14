@@ -42,14 +42,14 @@ ricercaavanzata::ricercaavanzata(container<ContenutoMultimediale*>* p_contenitor
 
     //Creazione dei vari campi e delle text box
    creaOpzione("Titolo:", "Inserisci il titolo", 250, griglia, 1);
-   creaOpzione("Durata:", "Inserisci la durata in minuti:", 250, griglia, 2);
-   creaOpzione("Genere:", "Inserisci il genere", 250, griglia, 3);
-   creaOpzione("Dimensione:", "Inserisci la dimensione in MB", 250, griglia, 4);
-   creaOpzione("Valutazione:", "Inserisci la valutazione, da 0 a 10", 250, griglia, 5);
+   //creaOpzione("Durata:", "Inserisci la durata in minuti:", 250, griglia, 2);
+   //creaOpzione("Genere:", "Inserisci il genere", 250, griglia, 3);
+   //creaOpzione("Dimensione:", "Inserisci la dimensione in MB", 250, griglia, 4);
+   //creaOpzione("Valutazione:", "Inserisci la valutazione, da 0 a 10", 250, griglia, 5);
    creaOpzione("Autore:", "Inserisci l'autore", 250, griglia, 6);
    creaOpzione("Anno di uscita:", "Inserisci l'anno", 250, griglia, 7);
 
-   connect(opzioni, SIGNAL(activated(int)), this, SLOT(aggiungiInput(int)));
+   //connect(opzioni, SIGNAL(activated(int)), this, SLOT(aggiungiInput(int)));
 
    layout->addLayout(griglia);
 
@@ -76,93 +76,12 @@ ricercaavanzata::ricercaavanzata(container<ContenutoMultimediale*>* p_contenitor
    this->setLayout(layout);
 
    connect(cercaB, SIGNAL(clicked()), this, SLOT(schiacciaRicerca()));
-   connect(this, SIGNAL(invioRicerca(string,
-                                   unsigned short int,
+   connect(this, SIGNAL(invioRicerca(string,                                   
                                    string,
-                                   double,
-                                   unsigned short int,
-                                   string,
-                                   unsigned short int,
-                                   unsigned int,
-                                   string,
-                                   string)), parent, SLOT(mostraRisultato(string,
-                                                                          unsigned short int,
+                                   unsigned short int)), parent, SLOT(mostraRisultato(string,
                                                                           string,
-                                                                          double,
-                                                                          unsigned short int,
-                                                                          string,
-                                                                          unsigned short int,
-                                                                          unsigned int,
-                                                                          string,
-                                                                          string)));
-   connect(this, SIGNAL(invioRicerca(string,
-                                   unsigned short int,
-                                   string,
-                                   double,
-                                   unsigned short int,
-                                   string,
-                                   unsigned short int,
-                                   unsigned short int,
-                                   string,
-                                   string)), parent, SLOT(mostraRisultato(string,
-                                                                          unsigned short int,
-                                                                          string,
-                                                                          double, unsigned short int,
-                                                                          string,
-                                                                          unsigned short int,
-                                                                          unsigned short int,
-                                                                          string,
-                                                                          string)));
-
-}
-
-
-
-void ricercaavanzata::aggiungiInput(int type) {
-    //elimina tutti i qlabel e box di testo del tipo di dato precedente
-    QLayoutItem* item;
-    while((item = grigliaRicercaAvanzata->takeAt(0))) {
-
-        if(dynamic_cast<QWidgetItem*>(item)) {
-            QWidget* widgetCorrente = static_cast<QWidget*>(item->widget());
-            widgetCorrente->hide();
-            grigliaRicercaAvanzata->removeWidget(widgetCorrente);
-
-            //se item è un QLineEdit lo devo rimuovere dal vettoreOpzioni e distruggerlo
-            if(dynamic_cast<QLineEdit*>(item->widget())) {
-                QLineEdit* lineEditCorrente = static_cast<QLineEdit*>(item->widget());
-                for(auto it = vettoreOpzioni.begin(); it != vettoreOpzioni.end(); ++it) {
-                    if(*it == lineEditCorrente) {
-                        vettoreOpzioni.erase(it);
-                        --it;
-                    }
-                }
-            }
-            else { //se non è un QLineEdit, item è un QLabel => lo distruggo manualmente
-                delete widgetCorrente;
-            }
-       }
-    }
-       if (type==1) { //film
-            creaOpzione("Risoluzione:", "Inserisci la risoluzione", 250, grigliaRicercaAvanzata, 0);
-            creaOpzione("Regista:", "Inserisci il regista", 250, grigliaRicercaAvanzata, 1);
-            creaOpzione("Saga:", "Inserisci la saga", 250, grigliaRicercaAvanzata, 2);
-       }
-       if (type==2) { //serie
-           creaOpzione("Risoluzione:", "Inserisci la risoluzione", 250, grigliaRicercaAvanzata, 0);
-           creaOpzione("Serie:", "Inserisci la serie", 250, grigliaRicercaAvanzata, 1);
-           creaOpzione("Canale:", "Inserisci il canale o servizio di streaming", 250, grigliaRicercaAvanzata, 2);
-       }
-       if (type==3) { //canzoni
-           creaOpzione("Qualità:", "Inserisci la qualità", 250, grigliaRicercaAvanzata, 0);
-           creaOpzione("Album:", "Inserisci l'album", 250, grigliaRicercaAvanzata, 1);
-           creaOpzione("Produttore:", "Inserisci il produttore", 250, grigliaRicercaAvanzata, 2);
-       }
-       if (type==4) { //podcast
-           creaOpzione("Qualità:", "Inserisci la qualità", 250, grigliaRicercaAvanzata, 0);
-           creaOpzione("Raccolta:", "Inserisci la raccolta", 250, grigliaRicercaAvanzata, 1);
-           creaOpzione("Ospite:", "Inserisci l'ospite", 250, grigliaRicercaAvanzata, 2);
-       }
+                                                                          unsigned short int
+                                                                          )));
 }
 
 void ricercaavanzata::creaOpzione(QString etichetta, QString placeholder, int lunghezza, QGridLayout* griglia, int riga) {
@@ -185,42 +104,7 @@ void ricercaavanzata::schiacciaRicerca() {
     double dim;
     unsigned short int durata, val, data;
     titolo = vettoreOpzioni[0]->text().toStdString();
-    durata = vettoreOpzioni[1]->text().toUShort();
-    genere = vettoreOpzioni[2]->text().toStdString();
-    dim = vettoreOpzioni[3]->text().toDouble();
-    val = vettoreOpzioni[4]->text().toUShort();
-    autore = vettoreOpzioni[5]->text().toStdString();
-    data = vettoreOpzioni[6]->text().toUShort();
-    //string s= "";
-    //std::cout << "schiaccia: " << s << std::endl;
-    if (opzioni->currentIndex()==1) { //film
-        unsigned int ris = vettoreOpzioni[7]->text().toUShort();
-        string reg, saga;
-        reg = vettoreOpzioni[8]->text().toStdString();
-        saga = vettoreOpzioni[9]->text().toStdString();
-        emit invioRicerca(titolo, durata, genere, dim, val, autore, data, ris, reg, saga);
-    }
-    if (opzioni->currentIndex()==2) { //episodi
-        unsigned int ris = vettoreOpzioni[7]->text().toUShort();
-        string serie, canale;
-        serie = vettoreOpzioni[8]->text().toStdString();
-        canale = vettoreOpzioni[9]->text().toStdString();
-        emit invioRicerca(titolo, durata, genere, dim, val, autore, data, ris, serie, canale);
-    }
-
-    if (opzioni->currentIndex()==3) { //canzoni
-        unsigned short int qual = vettoreOpzioni[7]->text().toUShort();
-        string album, prod;
-        album = vettoreOpzioni[8]->text().toStdString();
-        prod = vettoreOpzioni[9]->text().toStdString();
-        emit invioRicerca(titolo, durata, genere, dim, val, autore, data, qual, album, prod);
-    }
-
-    if (opzioni->currentIndex()==4){ //podcast
-        unsigned short int qual = vettoreOpzioni[7]->text().toUShort();
-        string racc, osp;
-        racc = vettoreOpzioni[8]->text().toStdString();
-        osp = vettoreOpzioni[9]->text().toStdString();
-        emit invioRicerca(titolo, durata, genere, dim, val, autore, data, qual, racc, osp);
-    }
+    autore = vettoreOpzioni[1]->text().toStdString();
+    data = vettoreOpzioni[2]->text().toUShort();
+    emit invioRicerca(titolo, autore, data);
 }

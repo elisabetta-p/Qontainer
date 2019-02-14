@@ -23,6 +23,8 @@ bool film::operator==(const film& file) const {
 
 film::film(string titol, unsigned short int dur, string gen, double dim, unsigned short int val, string aut, unsigned short int data, unsigned int risol, string reg, string sag) : video(titol, dur, gen, dim, val, aut, data, risol), regista (reg), saga(sag) {}
 
+film::film(string t, string a, unsigned short int d) : video(t, a, d) {}
+
 film::film(const film& file) : video(file), saga(file.saga) {}
 
 film& film::operator=(const film& file) {

@@ -28,24 +28,8 @@ public slots:
     void mostraRicerca();
     void mostraAggiungi();
     void mostraRisultato(string,
-                         unsigned short int,
                          string,
-                         double,
-                         unsigned short int,
-                         string,
-                         unsigned short int,
-                         unsigned int,
-                         string,
-                         string);  //per i film e gli episodi
-    void mostraRisultato(string,
-                         unsigned short int,
-                         string,
-                         double, unsigned short int,
-                         string,
-                         unsigned short int,
-                         unsigned short int,
-                         string,
-                         string); //per canzoni e podcast
+                         unsigned short int);
     void mostraAggiuntaRiuscita(int,
                                 string,
                                 unsigned short int,

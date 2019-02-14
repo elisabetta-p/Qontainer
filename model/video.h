@@ -8,6 +8,7 @@ private:
     unsigned int risoluzione;
 public:
     video(string, unsigned short int, string, double, unsigned short int, string, unsigned short int, unsigned int = 0);
+    video (string, string, unsigned short int);
     virtual bool operator==(const video&) const;
     virtual ~video() = default;
 

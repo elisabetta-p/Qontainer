@@ -7,6 +7,7 @@ private:
     string album, produttore;
 public:
     canzone(string, unsigned short int, string, double, unsigned short int, string, unsigned short int, unsigned short int, string = "nd", string = "nd");
+    canzone(string, string, unsigned short int);
     bool operator==(const canzone&) const;
     ~canzone() = default;
     canzone (const canzone&);

@@ -189,8 +189,7 @@ void aggiungi::schiacciaAggiungi() {
     val = vettoreOpzioni[4]->text().toUShort();
     autore = vettoreOpzioni[5]->text().toStdString();
     data = vettoreOpzioni[6]->text().toUShort();
-    //string s= "";
-    //std::cout << "schiaccia: " << s << std::endl;
+
     if (opzioni->currentIndex()==1) { //film
         unsigned int ris = vettoreOpzioni[7]->text().toUShort();
         string reg, saga;

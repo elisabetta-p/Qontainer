@@ -25,7 +25,7 @@ public slots:
     void schiacciaRicerca();
 
 signals:
-    void invioRicerca(string, string, unsigned short int);
+    void invioRicerca(int, string, string, unsigned short int);
 };
 
 #endif // RICERCAAVANZATA_H

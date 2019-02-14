@@ -76,9 +76,9 @@ ricercaavanzata::ricercaavanzata(container<ContenutoMultimediale*>* p_contenitor
    this->setLayout(layout);
 
    connect(cercaB, SIGNAL(clicked()), this, SLOT(schiacciaRicerca()));
-   connect(this, SIGNAL(invioRicerca(string,                                   
+   connect(this, SIGNAL(invioRicerca(int, string,
                                    string,
-                                   unsigned short int)), parent, SLOT(mostraRisultato(string,
+                                   unsigned short int)), parent, SLOT(mostraRisultato(int, string,
                                                                           string,
                                                                           unsigned short int
                                                                           )));
@@ -100,11 +100,12 @@ void ricercaavanzata::creaOpzione(QString etichetta, QString placeholder, int lu
 }
 
 void ricercaavanzata::schiacciaRicerca() {
-    string titolo, genere, autore;
-    double dim;
-    unsigned short int durata, val, data;
+    string titolo, autore;
+    unsigned short int data;
+    int tipo;
+    tipo = opzioni->currentIndex();
     titolo = vettoreOpzioni[0]->text().toStdString();
     autore = vettoreOpzioni[1]->text().toStdString();
     data = vettoreOpzioni[2]->text().toUShort();
-    emit invioRicerca(titolo, autore, data);
+    emit invioRicerca(tipo, titolo, autore, data);
 }

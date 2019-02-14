@@ -44,7 +44,11 @@ Non si verifica la situazione di ereditarità multipla. \\
 
 
 \section{Descrizione delle chiamate polimorfe}
-Le chiamate polimorfe vengono pesantemente utilizzate nelle operazioni di modifica e di rimozione degli elementi del contenitore, in quanto il contenitore viene istanziato a \texttt{<ContenutoMultimediale*>}, e tramite \texttt{dynamic\_cast} effettuato al Tipo desiderato, si eseguono le operazioni sui tipi desiderati dall'utente. 
+Le chiamate polimorfe vengono pesantemente utilizzate nelle operazioni di modifica, rimozione, ricerca e aggiunta degli elementi nel contenitore, in quanto il contenitore viene istanziato a \texttt{<ContenutoMultimediale*>}, e tramite \textit{downcasting} (via \texttt{dynamic\_cast}) effettuato al Tipo desiderato, si eseguono le operazioni sui tipi desiderati dall'utente. \\
+Il particolare, il \textit{downcasting} viene usato nella \textit{mainwindow} dell'applicazione, dove vengono elencati tutti i contenuti presenti nel contenitore: questa operazione è eseguita tramite downcasting da \texttt{ContenutoMultimediale*} al tipo target desiderato alla base della gerarchia.\\
+Le chiamate polimorfe vengono inoltre usate nelle finestre di aggiunta dei contenuti e di ricerca, all'interno della funzione \texttt{aggiungiInput()}, necessaria per caricare i box di testo e le rispettive etichette necessarie per il tipo di contenuto multimediale selezionato precedentemente nel menù a tendina.
+Un'altra chiamata polimorfa è presente dentro al file \texttt{qontainer.cpp}, necessario per il corretto caricamento di tutte le finestre, e dell'eliminazione della finestra corrente per far caricare correttamente la
+
 
 \section{Descrizione del formato del file di salvataggio e caricamento del contenitore}
 Per il caricamento dei file che compongono la libreria, e per il loro salvataggio, mi appoggio ad una classe esterna alla gerarchia, che ho chiamato \texttt{database}. Questa classe contiene i metodi \texttt{load()} e \texttt{save()}: 

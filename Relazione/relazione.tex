@@ -38,13 +38,17 @@ Ho scelto di implementare il contenitore come una lista linkata composta da nodi
 
 \section{Descrizione della gerarchia di classi}
 La classe base astratta da cui deriva tutta la gerarchia è \texttt{ContenutoMultimediale}, che verrà poi concretizzata tramite sue classi derivate. I metodi virtuali sono \texttt{riproduci()}, \texttt{pausa()}, \texttt{operator==} e il relativo distruttore; \texttt{riproduci()} e \texttt{pausa()} sono anche puri, poiché la loro implementazione è assegnata alle classi derivate. \\
-Da \texttt{contenutomultimediale} derivano immediatamente altre due classi: \texttt{audio} e \texttt{video}, che sono le due macrocategorie di appartenenza dei file che vengono memorizzati nella libreria. \\
+Da \texttt{ContenutoMultimediale} derivano immediatamente altre due classi: \texttt{audio} e \texttt{video}, che sono le due macrocategorie di appartenenza dei file che vengono memorizzati nella libreria. \\
 Da \texttt{video} derivano due classi: \texttt{film} e \texttt{episodio}, mentre da \texttt{audio} derivano altre due classi, \texttt{podcast} e \texttt{canzone}. \\
 Non si verifica la situazione di ereditarità multipla. \\
 
 
 \section{Descrizione delle chiamate polimorfe}
-Le chiamate polimorfe vengono pesantemente utilizzate nelle operazioni di modifica e di rimozione degli elementi del contenitore, in quanto il contenitore viene istanziato a \texttt{<ContenutoMultimediale*>}, e tramite \texttt{dynamic\_cast} effettuato al Tipo desiderato, si eseguono le operazioni sui tipi desiderati dall'utente. 
+Le chiamate polimorfe vengono pesantemente utilizzate nelle operazioni di modifica, rimozione, ricerca e aggiunta degli elementi nel contenitore, in quanto il contenitore viene istanziato a \texttt{<ContenutoMultimediale*>}, e tramite \textit{downcasting} (via \texttt{dynamic\_cast}) effettuato al Tipo desiderato, si eseguono le operazioni sui tipi desiderati dall'utente. \\
+Il particolare, il \textit{downcasting} viene usato nella \textit{mainwindow} dell'applicazione, dove vengono elencati tutti i contenuti presenti nel contenitore: questa operazione è eseguita tramite downcasting da \texttt{Contenuto Multimediale*} al tipo target desiderato alla base della gerarchia.\\
+Le chiamate polimorfe vengono inoltre usate nelle finestre di aggiunta dei contenuti e di ricerca, all'interno della funzione \texttt{aggiungiInput()}, necessaria per caricare i box di testo e le rispettive etichette necessarie per il tipo di contenuto multimediale selezionato precedentemente nel menù a tendina.
+Un'altra chiamata polimorfa è presente dentro al file \texttt{qontainer.cpp}, necessario per il corretto caricamento di tutte le finestre, e dell'eliminazione della finestra corrente per far caricare correttamente la finestra successiva: nella funzione \texttt{eliminaContenutoAttuale()} viene usato un \texttt{dynamic\_cast} necessario per la corretta eliminazione del \textit{layout} attuale, effettuando un \textit{downcast} a \texttt{QWidgetItem}.
+
 
 \section{Descrizione del formato del file di salvataggio e caricamento del contenitore}
 Per il caricamento dei file che compongono la libreria, e per il loro salvataggio, mi appoggio ad una classe esterna alla gerarchia, che ho chiamato \texttt{database}. Questa classe contiene i metodi \texttt{load()} e \texttt{save()}: 
@@ -60,19 +64,19 @@ Per il caricamento dei file che compongono la libreria, e per il loro salvataggi
  \hline
  \textbf{Ore} & \textbf{Fase}  \\ 
  \hline\hline
- 1 & Analisi preliminare del problema \\ 
+ 2 & Analisi preliminare del problema \\ 
  \hline
- 2 & Progettazione del modello \\
+ 1 & Progettazione del modello \\
  \hline
- 3 & Progettazione della GUI\\
+ 1 & Progettazione della GUI\\
  \hline
- 4 & Apprendimento libreria Qt \\
+ 10 & Apprendimento libreria Qt \\
  \hline
- 5 & Codifica modello e GUI\\ 
+ 30 & Codifica modello e GUI\\ 
  \hline
- 4 & Debugging \\
+ 10 & Debugging \\
  \hline
- 4 & Testing\\
+ 5 & Testing\\
  \hline
 \end{tabular}
 \end{center}

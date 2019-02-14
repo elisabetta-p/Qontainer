@@ -4,8 +4,7 @@
 
 class episodio: public video {
 private:
-    string serie;
-    string canale;
+    string serie, canale;
 public:
     ~episodio() = default;
     episodio(string, unsigned short int, string, double, unsigned short int, string, unsigned short int, unsigned int, string ="nd", string ="nd");

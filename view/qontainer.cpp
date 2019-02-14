@@ -17,6 +17,9 @@ qontainer::qontainer()  {
     ContenutoMultimediale* p1 = new podcast ("getting curious", 40, "info", 123, 9, "JVN", 2019, 450, "getting curious with jvn", "tizio");
     ContenutoMultimediale* s1 = new episodio ("episodio 1", 40, "commedia", 400, 7, "Tizio", 2018, 789, "serie1", "netflix");
     ContenutoMultimediale* c0 = new canzone ("1", 1, "1",1,1,"1", 1,1,"1","1");
+    ContenutoMultimediale* c2 = new canzone()
+    ContenutoMultimediale* f5 = new film();
+
 
     contenitore.insert(c0);
     contenitore.insert(f1);

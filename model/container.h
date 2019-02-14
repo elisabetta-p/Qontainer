@@ -317,18 +317,6 @@ void container<T>::remove(T contenuto) {
     }
 
 }
-/*
-template <typename T>
-bool container<T>::search(T contenuto) const {
-    nodo* n = first;
-    while (n) {
-        if (*(n->info) == *(contenuto))
-            return true;
-        n = n->next;
-    }
-    return false;
-}
-*/
 
 template <typename T>
 vector<T> container<T>::search(T contenuto) const {
@@ -339,7 +327,7 @@ vector<T> container<T>::search(T contenuto) const {
         if (*(n->info) == *(contenuto))
             aux.push_back(n->info);
             */
-        //if(n->info->getTitolo().find(contenuto->getTitolo()) && n->info->getAutore().find(contenuto->getAutore()) && (n->info)->getDataUscita() == (contenuto)->getDataUscita()) {
+        //if(n->info->getTitolo().find(contenuto->getTitolo()) && n->info->getAutore().find(contenuto->getAutore()) && n->info->getDataUscita() == contenuto->getDataUscita() ) {
         if ((n->info)->getTitolo() == (contenuto)->getTitolo() && (n->info)->getAutore() == (contenuto)->getAutore() && (n->info)->getDataUscita() == contenuto->getDataUscita()) {
             std::cout << "contenuto trovato" << std::endl;
             aux.push_back(n->info);

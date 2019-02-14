@@ -18,6 +18,7 @@ qontainer::qontainer()  {
     ContenutoMultimediale* s1 = new episodio ("episodio 1", 40, "commedia", 400, 7, "Tizio", 2018, 789, "serie1", "netflix");
     ContenutoMultimediale* c0 = new canzone ("1", 1, "1",1,1,"1", 1,1,"1","1");
     ContenutoMultimediale* f5 = new film ("1", 1, "1",1,1,"1", 1,1,"1","1");
+    ContenutoMultimediale* f6(f1);
 
     contenitore.insert(c0);
     contenitore.insert(f1);
@@ -28,6 +29,7 @@ qontainer::qontainer()  {
     contenitore.insert(p1);
     contenitore.insert(s1);
     contenitore.insert(f5);
+    contenitore.insert(f6);
 }
 
 void qontainer::eliminaContenutoAttuale() {
@@ -62,57 +64,15 @@ void qontainer::mostraAggiungi() {
 }
 
 //film ed episodi
-void qontainer::mostraRisultato(int tipo, string titolo, string autore, unsigned short int data) {
-    if (tipo == 1) { //film
-        ContenutoMultimediale* cercaFilm = new film(titolo, autore, data);
-        vettoreRisultatiRicerca = contenitore.search(cercaFilm);
-    }
-    if (tipo == 2) { //episodio
-        ContenutoMultimediale* cercaEpisodio = new episodio(titolo, autore, data);
-        vettoreRisultatiRicerca = contenitore.search(cercaEpisodio);
-    }
-    if (tipo == 3) { //canzoni
-        ContenutoMultimediale* cercaCanzone = new canzone(titolo, autore, data);
-        vettoreRisultatiRicerca = contenitore.search(cercaCanzone);
-    }
-    if (tipo == 4) { //podcast
-        ContenutoMultimediale* cercaPodcast = new podcast(titolo, autore, data);
-        vettoreRisultatiRicerca = contenitore.search(cercaPodcast);
-    }
+void qontainer::mostraRisultato(string titolo, string autore, unsigned short int data) {
+    ContenutoMultimediale* cercaContenuto = new film(titolo, autore, data);
+    vettoreRisultatiRicerca = contenitore.search(cercaContenuto);
 
-
-
-    /*
-    if (trovatoVideo)
-        std::cout << "Video trovato" << std::endl;
-    else
-        std::cout << "Video non trovato" << std::endl;
-    */
     eliminaContenutoAttuale();
     risultatoricerca* newRisultato = new risultatoricerca(&contenitore, vettoreRisultatiRicerca, this);
     layoutQ->addWidget(newRisultato);
 
 }
-
-/*
-//canzoni e podcast
-void qontainer::mostraRisultato(string titolo, unsigned short int durata, string genere, double dim, unsigned short int val,
-                                string autore, unsigned short int data, unsigned short int qual, string album, string prod) {
-
-    ContenutoMultimediale* cercaAudio = new canzone(titolo, durata, genere, dim, val, autore, data, qual, album, prod);
-    vettoreRisultatiRicerca  = contenitore.search(cercaAudio);
-
-      if (trovatoAudio)
-        std::cout << "Audio trovato" << std::endl;
-    else
-        std::cout << "Audio non trovato" << std::endl;
-
-
-    eliminaContenutoAttuale();
-    risultatoricerca* newRisultato = new risultatoricerca(&contenitore, vettoreRisultatiRicerca, this);
-    layoutQ->addWidget(newRisultato);
-}
-    */
 
 //film
 void qontainer::mostraAggiuntaRiuscita(int opzione, string titolo, unsigned short int durata, string genere, double dim,
@@ -144,8 +104,3 @@ void qontainer::mostraAggiuntaRiuscita(int opzione, string titolo, unsigned shor
         contenitore.insert(new podcast(titolo, durata, genere, dim, val, autore, data, qual, album, prod));
     }
 }
-/*
-void qontainer::mostraProva(int i) {
-    std::cout << "mostra: " << i << std::endl;
-}
-*/

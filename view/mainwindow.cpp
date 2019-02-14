@@ -64,11 +64,12 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
     griglia->addWidget(filmLabel, 0, 2, Qt::AlignCenter);
     griglia->addWidget(serie, 0, 3, Qt::AlignCenter);
 
+    /*
     listaCantanti = new QVBoxLayout(this);
     listaPodcast = new QVBoxLayout(this);
     listaSerie = new QVBoxLayout(this);
     listaFilm = new QVBoxLayout(this);
-
+    */
     /* aggiunta delle varie scroll bar nei 4 layout verticali*/
 
     QTextBrowser* areaCantanti = new QTextBrowser;
@@ -95,26 +96,6 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
     connect (aggiungi, SIGNAL(clicked()), parent, SLOT(mostraAggiungi()));
 
     this->setLayout(layout);
-
-    //metto cose nel contenitore
-    /*
-    ContenutoMultimediale* f1 = new film ("iron man111", 126, "azione",1500.0,5,"Marvel", 2012,1080,"Joss Whedon","MCU");
-    ContenutoMultimediale* f2 = new film ("iron man 3", 127, "azione", 4585.5, 9, "Marvel", 1013, 1080, "Tizio", "MCU");
-    ContenutoMultimediale* c1 = new canzone ("Organs",3, "Indie", 3.5,8,"Of Monsters and Men", 2016, 125, "Beneath the skin", "nd");
-    ContenutoMultimediale* f3 = new film ("iron man 2", 127, "azione", 4585.5, 9, "Marvel", 1013, 1080, "Tizio", "MCU");
-    ContenutoMultimediale* f4 = new film ("iron man 4", 127, "azione", 4585.5, 9, "Marvel", 1013, 1080, "Tizio", "MCU");
-    ContenutoMultimediale* p1 = new podcast ("getting curious", 40, "info", 123, 9, "JVN", 2019, 450, "getting curious with jvn", "tizio");
-    ContenutoMultimediale* s1 = new episodio ("episodio 1", 40, "commedia", 400, 7, "Tizio", 2018, 789, "serie1", "netflix");
-
-    contenitore.insert(f1);
-    contenitore.insert(f2);
-    contenitore.insert(c1);
-    contenitore.insert(f3);
-    contenitore.insert(f4);
-    contenitore.insert(p1);
-    contenitore.insert(s1);
-    */
-
 
     //caricamento della musica
     for (auto it=(*cont).begin(); it!=(*cont).end(); ++it) {

@@ -19,6 +19,7 @@ private:
 public:
     risultatoricerca(container<ContenutoMultimediale*>*, vector<ContenutoMultimediale*>, QWidget* = nullptr);
     ~risultatoricerca() = default;
+
 };
 
 #endif // RISULTATORICERCA_H

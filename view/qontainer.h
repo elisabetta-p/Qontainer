@@ -27,8 +27,7 @@ public slots:
     void mostraMainWindow();
     void mostraRicerca();
     void mostraAggiungi();
-    void mostraRisultato(int,
-                         string,
+    void mostraRisultato(string,
                          string,
                          unsigned short int);
     void mostraAggiuntaRiuscita(int,

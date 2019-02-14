@@ -1,4 +1,5 @@
 #include "risultatoricerca.h"
+#include <typeinfo>
 
 risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_container, vector<ContenutoMultimediale*> risultati, QWidget* parent) : QWidget(parent), cont(p_container), vettoreRisultati(risultati)
 {
@@ -34,6 +35,9 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
     }
     */
     for (unsigned long i = 0 ; i != vettoreRisultati.size(); ++i ) {
+        QLabel* tipo = new QLabel(this);
+        tipo->setText(QString::fromStdString(typeid(*(vettoreRisultati[i])).name()));
+
         QLabel* fileTitolo = new QLabel(this);
         fileTitolo->setText(QString::fromStdString(vettoreRisultati[i]->getTitolo()));
 
@@ -47,9 +51,11 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
         fileAutore->setAlignment(Qt::AlignHCenter);
         fileAnno->setAlignment(Qt::AlignHCenter);
 
+
         layoutOrizzontale->addWidget(fileTitolo, i, 0, Qt::AlignCenter);
         layoutOrizzontale->addWidget(fileAutore, i, 1, Qt::AlignCenter);
         layoutOrizzontale->addWidget(fileAnno, i, 2, Qt::AlignCenter);
+        layoutOrizzontale->addWidget(tipo, i, 3, Qt::AlignCenter);
 
 
         layoutVerticale->addLayout(layoutOrizzontale);

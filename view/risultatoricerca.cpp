@@ -19,46 +19,49 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
 
     layoutVerticale->addWidget(titoloFinestra);
     layoutOrizzontale=new QGridLayout;
+    if (!vettoreRisultati.empty()) {
+        for (unsigned long i = 0 ; i != vettoreRisultati.size(); ++i ) {
 
-    /*
-     * RISULTATI RICERCA:
-     * Se c'è stato un risultato, viene visualizzato qua. Altrimenti, esce messaggio "contenuto non presente
-     * nella libreria
-    */
+            QLabel* tipo = new QLabel(this);
+            //mi scrivo il tipo
+            if (dynamic_cast<film*>(vettoreRisultati[i]))
+                tipo->setText(QString("Film"));
+            if (dynamic_cast<episodio*>(vettoreRisultati[i]))
+                tipo->setText(QString("Episodio"));
+            if (dynamic_cast<canzone*>(vettoreRisultati[i]))
+                tipo->setText(QString("Canzone"));
+            if (dynamic_cast<podcast*>(vettoreRisultati[i]))
+                tipo->setText(QString("Podcast"));
 
-    for (unsigned long i = 0 ; i != vettoreRisultati.size(); ++i ) {
-        QLabel* tipo = new QLabel(this);
-        //mi scrivo il tipo
-        if (dynamic_cast<film*>(vettoreRisultati[i]))
-            tipo->setText(QString("Film"));
-        if (dynamic_cast<episodio*>(vettoreRisultati[i]))
-            tipo->setText(QString("Episodio"));
-        if (dynamic_cast<canzone*>(vettoreRisultati[i]))
-            tipo->setText(QString("Canzone"));
-        if (dynamic_cast<podcast*>(vettoreRisultati[i]))
-            tipo->setText(QString("Podcast"));
-        //tipo->setText(QString::fromStdString(typeid(*(vettoreRisultati[i])).name()));
+            QLabel* fileTitolo = new QLabel(this);
+            fileTitolo->setText(QString::fromStdString(vettoreRisultati[i]->getTitolo()));
 
-        QLabel* fileTitolo = new QLabel(this);
-        fileTitolo->setText(QString::fromStdString(vettoreRisultati[i]->getTitolo()));
+            QLabel* fileAutore = new QLabel(this);
+            fileAutore->setText(QString::fromStdString(vettoreRisultati[i]->getAutore()));
 
-        QLabel* fileAutore = new QLabel(this);
-        fileAutore->setText(QString::fromStdString(vettoreRisultati[i]->getAutore()));
+            QLabel* fileAnno = new QLabel(this);
+            fileAnno->setText(QString::number(vettoreRisultati[i]->getDataUscita()));
 
-        QLabel* fileAnno = new QLabel(this);
-        fileAnno->setText(QString::number(vettoreRisultati[i]->getDataUscita()));
-
-        fileTitolo->setAlignment(Qt::AlignHCenter);
-        fileAutore->setAlignment(Qt::AlignHCenter);
-        fileAnno->setAlignment(Qt::AlignHCenter);
+            fileTitolo->setAlignment(Qt::AlignHCenter);
+            fileAutore->setAlignment(Qt::AlignHCenter);
+            fileAnno->setAlignment(Qt::AlignHCenter);
 
 
-        layoutOrizzontale->addWidget(fileTitolo, i, 0, Qt::AlignCenter);
-        layoutOrizzontale->addWidget(fileAutore, i, 1, Qt::AlignCenter);
-        layoutOrizzontale->addWidget(fileAnno, i, 2, Qt::AlignCenter);
-        layoutOrizzontale->addWidget(tipo, i, 3, Qt::AlignCenter);
+            layoutOrizzontale->addWidget(fileTitolo, i, 0, Qt::AlignCenter);
+            layoutOrizzontale->addWidget(fileAutore, i, 1, Qt::AlignCenter);
+            layoutOrizzontale->addWidget(fileAnno, i, 2, Qt::AlignCenter);
+            layoutOrizzontale->addWidget(tipo, i, 3, Qt::AlignCenter);
+        }
 
 
+        layoutVerticale->addLayout(layoutOrizzontale);
+    }
+
+    if (vettoreRisultati.empty()){
+        QLabel* messaggio = new QLabel(this);
+        messaggio->setText(QString("Contenuto non presente nella libreria"));
+        messaggio->setAlignment(Qt::AlignCenter);
+        layoutOrizzontale->addWidget(messaggio, 0, 0, Qt::AlignCenter);
         layoutVerticale->addLayout(layoutOrizzontale);
     }
 

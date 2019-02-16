@@ -1,7 +1,9 @@
 #include "aggiungi.h"
 #include "mainwindow.h"
+#include "qontainer.h"
 
 aggiungi::aggiungi(container<ContenutoMultimediale*>* p_contenitore, QWidget* parent) : QWidget(parent), cont(p_contenitore) {
+
     setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);
     setGeometry(0,0, 600,600);
@@ -74,6 +76,8 @@ aggiungi::aggiungi(container<ContenutoMultimediale*>* p_contenitore, QWidget* pa
     connect (goBack, SIGNAL(clicked()), parent, SLOT(mostraMainWindow()));
 
     connect(agg, SIGNAL(clicked()), this, SLOT(schiacciaAggiungi()));
+    connect(this, SIGNAL(invioAggiunta()), parent, SLOT(mostraAggiuntaRiuscita()));
+    /*
     connect(this, SIGNAL(invioAggiunta(int, string,
                                     unsigned short int,
                                     string,
@@ -111,8 +115,10 @@ aggiungi::aggiungi(container<ContenutoMultimediale*>* p_contenitore, QWidget* pa
                                                                            unsigned short int,
                                                                            string,
                                                                            string)));
+    */
 
     this->setLayout(layout);
+
 }
 
 void aggiungi::aggiungiInput(int type) {
@@ -178,9 +184,11 @@ void aggiungi::creaOpzione(QString etichetta, QString placeholder, int lunghezza
 }
 
 void aggiungi::schiacciaAggiungi() {
+    /*
     string titolo, genere, autore;
     double dim;
     unsigned short int durata, val, data;
+
     titolo = vettoreOpzioni[0]->text().toStdString();
     durata = vettoreOpzioni[1]->text().toUShort();
     genere = vettoreOpzioni[2]->text().toStdString();
@@ -189,19 +197,27 @@ void aggiungi::schiacciaAggiungi() {
     autore = vettoreOpzioni[5]->text().toStdString();
     data = vettoreOpzioni[6]->text().toUShort();
 
-    if (opzioni->currentIndex()==1) { //film
+    int numero = opzioni->currentIndex();
+
+    if (numero==1) { //film
         unsigned int ris = vettoreOpzioni[7]->text().toUShort();
         string reg, saga;
         reg = vettoreOpzioni[8]->text().toStdString();
         saga = vettoreOpzioni[9]->text().toStdString();
-        emit invioAggiunta(opzioni->currentIndex(), titolo, durata, genere, dim, val, autore, data, ris, reg, saga);
+
+        ContenutoMultimediale* f = new film (titolo, durata, genere, dim, val, autore, data, ris, reg, saga);
+        cont->insert(f);
+        //emit invioAggiunta(opzioni->currentIndex(), titolo, durata, genere, dim, val, autore, data, ris, reg, saga);
     }
-    if (opzioni->currentIndex()==2) { //episodi
+    if (numero==2) { //episodi
         unsigned int ris = vettoreOpzioni[7]->text().toUShort();
         string serie, canale;
         serie = vettoreOpzioni[8]->text().toStdString();
         canale = vettoreOpzioni[9]->text().toStdString();
-        emit invioAggiunta(opzioni->currentIndex(),titolo, durata, genere, dim, val, autore, data, ris, serie, canale);
+        ContenutoMultimediale* e = new episodio (titolo, durata, genere, dim, val, autore, data, ris, serie, canale);
+        cont->insert(e);
+
+        //emit invioAggiunta(opzioni->currentIndex(),titolo, durata, genere, dim, val, autore, data, ris, serie, canale);
     }
 
     if (opzioni->currentIndex()==3) { //canzoni
@@ -209,7 +225,10 @@ void aggiungi::schiacciaAggiungi() {
         string album, prod;
         album = vettoreOpzioni[8]->text().toStdString();
         prod = vettoreOpzioni[9]->text().toStdString();
-        emit invioAggiunta(opzioni->currentIndex(), titolo, durata, genere, dim, val, autore, data, qual, album, prod);
+
+        ContenutoMultimediale* c = new canzone (titolo, durata, genere, dim, val, autore, data, qual, album, prod);
+        cont->insert(c);
+        //emit invioAggiunta(opzioni->currentIndex(), titolo, durata, genere, dim, val, autore, data, qual, album, prod);
     }
 
     if (opzioni->currentIndex()==4){ //podcast
@@ -217,7 +236,72 @@ void aggiungi::schiacciaAggiungi() {
         string racc, osp;
         racc = vettoreOpzioni[8]->text().toStdString();
         osp = vettoreOpzioni[9]->text().toStdString();
-        emit invioAggiunta(opzioni->currentIndex(), titolo, durata, genere, dim, val, autore, data, qual, racc, osp);
+
+        ContenutoMultimediale* p = new podcast (titolo, durata, genere, dim, val, autore, data, qual, racc, osp);
+        cont->insert(p);
+        //emit invioAggiunta(opzioni->currentIndex(), titolo, durata, genere, dim, val, autore, data, qual, racc, osp);
     }
+    */
+
+    aggiungiElemento();
+
 }
 
+void aggiungi::aggiungiElemento() {
+    string titolo, genere, autore;
+    double dim;
+    unsigned short int durata, val, data;
+
+    titolo = vettoreOpzioni[0]->text().toStdString();
+    durata = vettoreOpzioni[1]->text().toUShort();
+    genere = vettoreOpzioni[2]->text().toStdString();
+    dim = vettoreOpzioni[3]->text().toDouble();
+    val = vettoreOpzioni[4]->text().toUShort();
+    autore = vettoreOpzioni[5]->text().toStdString();
+    data = vettoreOpzioni[6]->text().toUShort();
+
+    int numero = opzioni->currentIndex();
+
+    if (numero==1) { //film
+        unsigned int ris = vettoreOpzioni[7]->text().toUShort();
+        string reg, saga;
+        reg = vettoreOpzioni[8]->text().toStdString();
+        saga = vettoreOpzioni[9]->text().toStdString();
+
+        ContenutoMultimediale* f = new film (titolo, durata, genere, dim, val, autore, data, ris, reg, saga);
+        cont->insert(f);
+        emit invioAggiunta();
+    }
+    if (numero==2) { //episodi
+        unsigned int ris = vettoreOpzioni[7]->text().toUShort();
+        string serie, canale;
+        serie = vettoreOpzioni[8]->text().toStdString();
+        canale = vettoreOpzioni[9]->text().toStdString();
+        ContenutoMultimediale* e = new episodio (titolo, durata, genere, dim, val, autore, data, ris, serie, canale);
+        cont->insert(e);
+
+        emit invioAggiunta();
+    }
+
+    if (opzioni->currentIndex()==3) { //canzoni
+        unsigned short int qual = vettoreOpzioni[7]->text().toUShort();
+        string album, prod;
+        album = vettoreOpzioni[8]->text().toStdString();
+        prod = vettoreOpzioni[9]->text().toStdString();
+
+        ContenutoMultimediale* c = new canzone (titolo, durata, genere, dim, val, autore, data, qual, album, prod);
+        cont->insert(c);
+        emit invioAggiunta();
+    }
+
+    if (opzioni->currentIndex()==4){ //podcast
+        unsigned short int qual = vettoreOpzioni[7]->text().toUShort();
+        string racc, osp;
+        racc = vettoreOpzioni[8]->text().toStdString();
+        osp = vettoreOpzioni[9]->text().toStdString();
+
+        ContenutoMultimediale* p = new podcast (titolo, durata, genere, dim, val, autore, data, qual, racc, osp);
+        cont->insert(p);
+        emit invioAggiunta();
+    }
+}

@@ -30,6 +30,8 @@ public slots:
     void mostraRisultato(string,
                          string,
                          unsigned short int);
+    void mostraAggiuntaRiuscita();
+    /*
     void mostraAggiuntaRiuscita(int,
                                 string,
                                 unsigned short int,
@@ -51,7 +53,7 @@ public slots:
                          unsigned short int,
                          string,
                          string); //per canzoni e podcast
-    //void mostraProva(int i);
+    */
 };
 
 #endif // QONTAINER_H

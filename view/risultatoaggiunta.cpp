@@ -1,6 +1,7 @@
 #include "risultatoaggiunta.h"
 
 risultatoaggiunta::risultatoaggiunta(QWidget* parent) : QWidget(parent) {
+
     setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);
     setGeometry(0,0, 600,600);
@@ -39,4 +40,5 @@ risultatoaggiunta::risultatoaggiunta(QWidget* parent) : QWidget(parent) {
     connect(tornaMainWindow, SIGNAL(clicked()), parent, SLOT(mostraMainWindow()));
     connect(tornaAggiungi, SIGNAL(clicked()), parent, SLOT(mostraAggiungi()));
     this->setLayout(layout);
+
 }

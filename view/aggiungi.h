@@ -27,11 +27,13 @@ public:
     ~aggiungi() = default;
 public slots:
     void aggiungiInput(int);
+private slots:
     void schiacciaAggiungi();
+    void aggiungiElemento();
+    //void aggiuntaEffettiva();
 signals:
-    void invioAggiunta(int, string, unsigned short int, string, double, unsigned short int, string, unsigned short int, unsigned int, string, string); //per i film e gli episodi
-    void invioAggiunta(int, string, unsigned short int, string, double, unsigned short int, string, unsigned short int, unsigned short int, string, string);//per le canzoni e i podcast
-    //per i podcast
+    void invioAggiunta();
+
 };
 
 #endif // AGGIUNGI_H

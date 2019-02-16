@@ -28,7 +28,16 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
 
     for (unsigned long i = 0 ; i != vettoreRisultati.size(); ++i ) {
         QLabel* tipo = new QLabel(this);
-        tipo->setText(QString::fromStdString(typeid(*(vettoreRisultati[i])).name()));
+        //mi scrivo il tipo
+        if (dynamic_cast<film*>(vettoreRisultati[i]))
+            tipo->setText(QString("Film"));
+        if (dynamic_cast<episodio*>(vettoreRisultati[i]))
+            tipo->setText(QString("Episodio"));
+        if (dynamic_cast<canzone*>(vettoreRisultati[i]))
+            tipo->setText(QString("Canzone"));
+        if (dynamic_cast<podcast*>(vettoreRisultati[i]))
+            tipo->setText(QString("Podcast"));
+        //tipo->setText(QString::fromStdString(typeid(*(vettoreRisultati[i])).name()));
 
         QLabel* fileTitolo = new QLabel(this);
         fileTitolo->setText(QString::fromStdString(vettoreRisultati[i]->getTitolo()));

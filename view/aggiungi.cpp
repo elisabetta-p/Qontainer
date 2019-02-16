@@ -77,46 +77,6 @@ aggiungi::aggiungi(container<ContenutoMultimediale*>* p_contenitore, QWidget* pa
 
     connect(agg, SIGNAL(clicked()), this, SLOT(schiacciaAggiungi()));
     connect(this, SIGNAL(invioAggiunta()), parent, SLOT(mostraAggiuntaRiuscita()));
-    /*
-    connect(this, SIGNAL(invioAggiunta(int, string,
-                                    unsigned short int,
-                                    string,
-                                    double,
-                                    unsigned short int,
-                                    string,
-                                    unsigned short int,
-                                    unsigned int,
-                                    string,
-                                    string)), parent, SLOT(mostraAggiuntaRiuscita(int, string,
-                                                                           unsigned short int,
-                                                                           string,
-                                                                           double,
-                                                                           unsigned short int,
-                                                                           string,
-                                                                           unsigned short int,
-                                                                           unsigned int,
-                                                                           string,
-                                                                           string)));
-    connect(this, SIGNAL(invioAggiunta(int, string,
-                                    unsigned short int,
-                                    string,
-                                    double,
-                                    unsigned short int,
-                                    string,
-                                    unsigned short int,
-                                    unsigned short int,
-                                    string,
-                                    string)), parent, SLOT(mostraAggiuntaRiuscita(int, string,
-                                                                           unsigned short int,
-                                                                           string,
-                                                                           double, unsigned short int,
-                                                                           string,
-                                                                           unsigned short int,
-                                                                           unsigned short int,
-                                                                           string,
-                                                                           string)));
-    */
-
     this->setLayout(layout);
 
 }
@@ -201,9 +161,7 @@ void aggiungi::aggiungiElemento() {
     autore = vettoreOpzioni[5]->text().toStdString();
     data = vettoreOpzioni[6]->text().toUShort();
 
-    int numero = opzioni->currentIndex();
-
-    if (numero==1) { //film
+    if (opzioni->currentIndex()==1) { //film
         unsigned int ris = vettoreOpzioni[7]->text().toUShort();
         string reg, saga;
         reg = vettoreOpzioni[8]->text().toStdString();
@@ -211,17 +169,14 @@ void aggiungi::aggiungiElemento() {
 
         ContenutoMultimediale* f = new film (titolo, durata, genere, dim, val, autore, data, ris, reg, saga);
         cont->insert(f);
-        //emit invioAggiunta();
     }
-    if (numero==2) { //episodi
+    if (opzioni->currentIndex()==2) { //episodi
         unsigned int ris = vettoreOpzioni[7]->text().toUShort();
         string serie, canale;
         serie = vettoreOpzioni[8]->text().toStdString();
         canale = vettoreOpzioni[9]->text().toStdString();
         ContenutoMultimediale* e = new episodio (titolo, durata, genere, dim, val, autore, data, ris, serie, canale);
         cont->insert(e);
-
-        //emit invioAggiunta();
     }
 
     if (opzioni->currentIndex()==3) { //canzoni
@@ -232,7 +187,6 @@ void aggiungi::aggiungiElemento() {
 
         ContenutoMultimediale* c = new canzone (titolo, durata, genere, dim, val, autore, data, qual, album, prod);
         cont->insert(c);
-        //emit invioAggiunta();
     }
 
     if (opzioni->currentIndex()==4){ //podcast
@@ -243,6 +197,5 @@ void aggiungi::aggiungiElemento() {
 
         ContenutoMultimediale* p = new podcast (titolo, durata, genere, dim, val, autore, data, qual, racc, osp);
         cont->insert(p);
-        //emit invioAggiunta();
     }
 }

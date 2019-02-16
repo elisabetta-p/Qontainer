@@ -17,6 +17,7 @@ private:
     void creaOpzione(QString, QString, int, QGridLayout*, int);
     QComboBox* opzioni;
     container<ContenutoMultimediale*>* cont;
+
 public:
     ricercaavanzata(container<ContenutoMultimediale*>*, QWidget* = nullptr);
     ~ricercaavanzata() = default;

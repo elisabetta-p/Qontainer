@@ -14,7 +14,8 @@ private:
     QVBoxLayout* layoutVerticale;
     QGridLayout* layoutOrizzontale;
     QGridLayout* griglia;
-    QScrollArea* scrollArea;
+    //QScrollArea* scrollArea;
+    QTextBrowser* scrollArea;
     container<ContenutoMultimediale*>* cont;
     vector<ContenutoMultimediale*> vettoreRisultati;
 public:

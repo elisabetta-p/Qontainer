@@ -19,7 +19,8 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
 
     layoutVerticale->addWidget(titoloFinestra);
     layoutOrizzontale=new QGridLayout;
-    scrollArea=new QScrollArea;
+    scrollArea =new QTextBrowser;
+
     if (!vettoreRisultati.empty()) {
         for (unsigned long i = 0 ; i != vettoreRisultati.size(); ++i ) {
 
@@ -77,9 +78,12 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
             layoutOrizzontale->addWidget(fileAutore, i+1, 1, Qt::AlignCenter);
             layoutOrizzontale->addWidget(fileAnno, i+1, 2, Qt::AlignCenter);
             layoutOrizzontale->addWidget(tipo, i+1, 3, Qt::AlignCenter);
+
+
+
         }
-        //layoutVerticale->addLayout(layoutOrizzontale);
         scrollArea->setLayout(layoutOrizzontale);
+        //layoutVerticale->addLayout(layoutOrizzontale);
 
     }
 
@@ -92,8 +96,10 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
         scrollArea->setLayout(layoutOrizzontale);
 
     }
+
+
     layoutVerticale->addWidget(scrollArea);
-    scrollArea->setVerticalScrollBar(new QScrollBar);
+    scrollArea->setVerticalScrollBar(new QScrollBar());
     //bottoni per tornare alla ricerca, oppure per tornare alla schermata principale
     QPushButton* tornaRicercaAvanzata = new QPushButton(this);
     tornaRicercaAvanzata->setText("Ritorna alla pagina di ricerca avanzata");

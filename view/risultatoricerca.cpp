@@ -46,14 +46,37 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
             fileAutore->setAlignment(Qt::AlignHCenter);
             fileAnno->setAlignment(Qt::AlignHCenter);
 
+            QLabel* labelTitolo = new QLabel(this);
+            QLabel* labelAutore = new QLabel(this);
+            QLabel* labelAnno = new QLabel(this);
+            QLabel* labelTipo = new QLabel(this);
+            labelTitolo->setText(QString("Titolo"));
+            labelAutore->setText(QString("Autore"));
+            labelAnno->setText(QString("Anno di uscita"));
+            labelTipo->setText(QString("Tipo"));
 
-            layoutOrizzontale->addWidget(fileTitolo, i, 0, Qt::AlignCenter);
-            layoutOrizzontale->addWidget(fileAutore, i, 1, Qt::AlignCenter);
-            layoutOrizzontale->addWidget(fileAnno, i, 2, Qt::AlignCenter);
-            layoutOrizzontale->addWidget(tipo, i, 3, Qt::AlignCenter);
+            layoutOrizzontale->addWidget(labelTitolo, 0, 0, Qt::AlignCenter);
+            layoutOrizzontale->addWidget(labelAutore, 0, 1, Qt::AlignCenter);
+            layoutOrizzontale->addWidget(labelAnno, 0, 2, Qt::AlignCenter);
+            layoutOrizzontale->addWidget(labelTipo, 0, 3, Qt::AlignCenter);
+            labelTitolo->setStyleSheet("QLabel {color : #cc0066; }");
+            labelAnno->setStyleSheet("QLabel {color : #cc0066; }");
+            labelTipo->setStyleSheet("QLabel {color : #cc0066; }");
+            labelAutore->setStyleSheet("QLabel {color : #cc0066; }");
+            labelTitolo->setFont(QFont("Times", 16, QFont::StyleItalic));
+            labelAutore->setFont(QFont("Times", 16, QFont::StyleItalic));
+            labelAnno->setFont(QFont("Times", 16, QFont::StyleItalic));
+            labelTipo->setFont(QFont("Times", 16, QFont::StyleItalic));
+
+
+
+
+
+            layoutOrizzontale->addWidget(fileTitolo, i+1, 0, Qt::AlignCenter);
+            layoutOrizzontale->addWidget(fileAutore, i+1, 1, Qt::AlignCenter);
+            layoutOrizzontale->addWidget(fileAnno, i+1, 2, Qt::AlignCenter);
+            layoutOrizzontale->addWidget(tipo, i+1, 3, Qt::AlignCenter);
         }
-
-
         layoutVerticale->addLayout(layoutOrizzontale);
     }
 
@@ -64,8 +87,6 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
         layoutOrizzontale->addWidget(messaggio, 0, 0, Qt::AlignCenter);
         layoutVerticale->addLayout(layoutOrizzontale);
     }
-
-
 
     //bottoni per tornare alla ricerca, oppure per tornare alla schermata principale
     QPushButton* tornaRicercaAvanzata = new QPushButton(this);

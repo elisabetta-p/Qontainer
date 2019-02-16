@@ -33,6 +33,9 @@ qontainer::qontainer()  {
 
 }
 
+/*
+segfault aggiunta: non entra in eliminaContenutoAttuale() DOPO che ha aggiunto i contenuti nella libreria!
+*/
 void qontainer::eliminaContenutoAttuale() {
     if(layoutQ) {
         QLayoutItem* item;
@@ -40,9 +43,13 @@ void qontainer::eliminaContenutoAttuale() {
             if(dynamic_cast<QWidgetItem*>(item)) {
                 QWidget* widgetCorrente = static_cast<QWidget*>(item->widget());
                 delete widgetCorrente;
+                std::cout <<"elimina contenuto attuale 1" << std::endl;
             }
+            std::cout <<"elimina contenuto attuale 2" << std::endl;
         }
+        std::cout <<"elimina contenuto attuale 3" << std::endl;
     }
+    std::cout <<"elimina contenuto attuale 4" << std::endl;
 }
 
 
@@ -78,39 +85,47 @@ void qontainer::mostraRisultato(string titolo, string autore, unsigned short int
 //film
 void qontainer::mostraAggiuntaRiuscita(int opzione, string titolo, unsigned short int durata, string genere, double dim,
                                        unsigned short int val, string autore, unsigned short int data, unsigned int ris, string reg, string saga) {
+
     eliminaContenutoAttuale();
     risultatoaggiunta* newAggiunta = new risultatoaggiunta(this);
-    layoutQ->addWidget(newAggiunta);
 
     if (opzione == 1){ //aggiungo un film
         std::cout <<"sto per inserire un film" <<std::endl;
        contenitore.insert(new film(titolo, durata, genere, dim, val, autore, data, ris, reg, saga));
        std::cout << "contenuto inserito" <<std::endl;
+       std::cout <<"*************************" << std::endl;
        // quest'ultimo cout lo fa quindi rida' il controllo a questa funzione
     }
     if (opzione == 2) { //aggiungo un episodio
         std::cout <<"sto per inserire un episodio" <<std::endl;
         contenitore.insert(new episodio(titolo, durata, genere, dim, val, autore, data, ris, reg, saga));
         std::cout << "contenuto inserito" <<std::endl;
+        std::cout <<"*************************" << std::endl;
     }
+
+    layoutQ->addWidget(newAggiunta);
 
 }
 
 //canzoni
 void qontainer::mostraAggiuntaRiuscita(int opzione, string titolo, unsigned short int durata, string genere, double dim, unsigned short int val,
                                        string autore, unsigned short int data, unsigned short int qual, string album, string prod) {
+
     eliminaContenutoAttuale();
     risultatoaggiunta* newAggiunta = new risultatoaggiunta(this);
-    layoutQ->addWidget(newAggiunta);
 
     if (opzione == 3) {
         std::cout <<"sto per inserire una canzone" <<std::endl;
         contenitore.insert(new canzone(titolo, durata, genere, dim, val, autore, data, qual, album, prod));
         std::cout << "contenuto inserito" <<std::endl;
+        std::cout <<"*************************" << std::endl;
     }
     if (opzione == 4){
         std::cout <<"sto per inserire un podcast" <<std::endl;
         contenitore.insert(new podcast(titolo, durata, genere, dim, val, autore, data, qual, album, prod));
         std::cout << "contenuto inserito" <<std::endl;
+        std::cout <<"*************************" << std::endl;
     }
+
+    layoutQ->addWidget(newAggiunta);
 }

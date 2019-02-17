@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.25)  14 FEB 2019 09:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.25)  17 FEB 2019 10:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -229,28 +229,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--44
 [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2] (./relazione.aux) ) 
+Overfull \hbox (0.52516pt too wide) in paragraph at lines 54--55
+\T1/cmr/m/n/10 l'in-ter-no del fi-le \T1/cmtt/m/n/10 aggiungi.cpp\T1/cmr/m/n/10
+ , l'ag-giun-ta vie-ne ese-gui-ta tra-mi-te un pun-ta-to-re di ti-po sta-ti-co 
+\T1/cmtt/m/n/10 Contenuto
+ []
+
+[2] [3] (./relazione.aux) ) 
 Here is how much of TeX's memory you used:
  2807 strings out of 492649
  36418 string characters out of 6129621
- 117026 words of memory out of 5000000
+ 118026 words of memory out of 5000000
  6665 multiletter control sequences out of 15000+600000
  15597 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 25i,10n,43p,795b,201s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/cm-s
-uper/cm-super-t1.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-
-super/sfbx1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-su
-per/sfbx1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-supe
-r/sfrm1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/
-sfrm1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sf
-rm1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfti
-1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt10
-00.pfb>
-Output written on relazione.pdf (2 pages, 136193 bytes).
+ 25i,10n,43p,795b,249s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/
+cm-super/cm-super-t1.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public
+/cm-super/sfbx1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/c
+m-super/sfbx1440.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-
+super/sfrm1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-su
+per/sfrm1200.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-supe
+r/sfrm1728.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/
+sfti1000.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sf
+tt1000.pfb>
+Output written on relazione.pdf (3 pages, 137312 bytes).
 PDF statistics:
- 40 PDF objects out of 1000 (max. 8388607)
- 28 compressed objects within 1 object stream
+ 43 PDF objects out of 1000 (max. 8388607)
+ 30 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

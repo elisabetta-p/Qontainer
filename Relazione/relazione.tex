@@ -44,10 +44,16 @@ Non si verifica la situazione di ereditarità multipla. \\
 
 
 \section{Descrizione delle chiamate polimorfe}
-Le chiamate polimorfe vengono pesantemente utilizzate nelle operazioni di modifica, rimozione, ricerca e aggiunta degli elementi nel contenitore, in quanto il contenitore viene istanziato a \texttt{<ContenutoMultimediale*>}, e tramite \textit{downcasting} (via \texttt{dynamic\_cast}) effettuato al Tipo desiderato, si eseguono le operazioni sui tipi desiderati dall'utente. \\
-Il particolare, il \textit{downcasting} viene usato nella \textit{mainwindow} dell'applicazione, dove vengono elencati tutti i contenuti presenti nel contenitore: questa operazione è eseguita tramite downcasting da \texttt{Contenuto Multimediale*} al tipo target desiderato alla base della gerarchia.\\
-Le chiamate polimorfe vengono inoltre usate nelle finestre di aggiunta dei contenuti e di ricerca, all'interno della funzione \texttt{aggiungiInput()}, necessaria per caricare i box di testo e le rispettive etichette necessarie per il tipo di contenuto multimediale selezionato precedentemente nel menù a tendina.
-Un'altra chiamata polimorfa è presente dentro al file \texttt{qontainer.cpp}, necessario per il corretto caricamento di tutte le finestre, e dell'eliminazione della finestra corrente per far caricare correttamente la finestra successiva: nella funzione \texttt{eliminaContenutoAttuale()} viene usato un \texttt{dynamic\_cast} necessario per la corretta eliminazione del \textit{layout} attuale, effettuando un \textit{downcast} a \texttt{QWidgetItem}.
+Le chiamate polimorfe vengono pesantemente utilizzate nelle operazioni di modifica, rimozione, ricerca e aggiunta degli elementi nel contenitore, in quanto il contenitore viene istanziato a \texttt{<ContenutoMultimediale*>}, e tramite \textit{downcasting} (via \texttt{dynamic\_cast}) effettuato al Tipo desiderato, si eseguono le operazioni necessarie sui tipi.\\
+Le chiamate polimorfe presenti nel progetto sono le seguenti:
+\begin{enumerate}
+\item[-] nella \textit{mainwindow} dell'applicazione, dove vengono elencati tutti i contenuti presenti nel contenitore: questa operazione è eseguita tramite downcasting da \texttt{ContenutoMultimediale*} al tipo target desiderato alla base della gerarchia.
+\item[-] nelle finestre di aggiunta dei contenuti e di ricerca, all'interno della funzione \texttt{aggiungiInput()}, necessaria per caricare i box di testo e le rispettive etichette necessarie per il tipo di contenuto multimediale selezionato precedentemente nel menù a tendina.
+\item[-] dentro al file \texttt{qontainer.cpp}, necessario per il corretto caricamento di tutte le finestre e dell'eliminazione della finestra corrente per far caricare correttamente la finestra successiva: nella funzione \texttt{eliminaContenutoAttuale()} viene usato un \texttt{dynamic\_cast} necessario per la corretta eliminazione del \textit{layout} attuale, effettuando un \textit{downcast} a \texttt{QWidgetItem}.
+\item[-] dentro al file \texttt{risultatoricerca.cpp} viene usato il \textit{downcasting} per visualizzare a schermo il tipo dinamico dei puntatori ad oggetti contenuti nel contenitore che è stato ritornato come risultato dalla funzione \texttt{search(ContenutoMultimediale*)}.
+\item[-] nell'aggiunta di contenuto nel contenitore tramite GUI, attraverso la funzione \texttt{aggiungiElemento()} all'interno del file \texttt{aggiungi.cpp}, l'aggiunta viene eseguita tramite un puntatore di tipo statico \texttt{Contenuto Multimediale*}, ma tipo dinamico differente a seconda del tipo di file che si vuole aggiungere nel contenitore.
+\end{enumerate}
+
 
 
 \section{Descrizione del formato del file di salvataggio e caricamento del contenitore}

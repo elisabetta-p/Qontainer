@@ -19,17 +19,6 @@ qontainer::qontainer()  {
     ContenutoMultimediale* c0 = new canzone ("1", 1, "1",1,1,"1", 1,1,"1","1");
     ContenutoMultimediale* f5 = new film ("1", 1, "1",1,1,"1", 1,1,"1","1");
     ContenutoMultimediale* f6(f1);
-    ContenutoMultimediale* f8 = new film ("iron man 111", 126, "azione",1500.0,5,"Marvel", 0,1080,"Joss Whedon","MCU");
-    ContenutoMultimediale* f7 = new film ("iron man 111", 126, "azione",1500.0,5,"Marvel", 0,1080,"Joss Whedon","MCU");
-    ContenutoMultimediale* f9 = new film ("iron man 111", 126, "azione",1500.0,5,"Marvel", 0,1080,"Joss Whedon","MCU");
-    ContenutoMultimediale* f10 = new film ("iron man 111", 126, "azione",1500.0,5,"Marvel", 0,1080,"Joss Whedon","MCU");
-    ContenutoMultimediale* f11 = new film ("iron man 111", 126, "azione",1500.0,5,"Marvel", 0,1080,"Joss Whedon","MCU");
-    ContenutoMultimediale* f12 = new film ("iron man 111", 126, "azione",1500.0,5,"Marvel", 0,1080,"Joss Whedon","MCU");
-    ContenutoMultimediale* f13 = new film ("iron man 111", 126, "azione",1500.0,5,"Marvel", 0,1080,"Joss Whedon","MCU");
-    ContenutoMultimediale* f14 = new film ("iron man 111", 126, "azione",1500.0,5,"Marvel", 0,1080,"Joss Whedon","MCU");
-    ContenutoMultimediale* f15 = new film ("iron man 111", 126, "azione",1500.0,5,"Marvel", 0,1080,"Joss Whedon","MCU");
-    ContenutoMultimediale* f16 = new film ("iron man 111", 126, "azione",1500.0,5,"Marvel", 0,1080,"Joss Whedon","MCU");
-
 
 
 
@@ -45,27 +34,6 @@ qontainer::qontainer()  {
     contenitore.insert(s1);
     contenitore.insert(f5);
     contenitore.insert(f6);
-    contenitore.insert(f7);
-    contenitore.insert(f8);
-    contenitore.insert(f9);
-    contenitore.insert(f10);
-    contenitore.insert(f11);
-    contenitore.insert(f12);
-    contenitore.insert(f13);
-    contenitore.insert(f14);
-    contenitore.insert(f15);
-    contenitore.insert(f16);
-    contenitore.insert(f16);
-    contenitore.insert(f16);
-    contenitore.insert(f16);
-    contenitore.insert(f16);
-    contenitore.insert(f16);
-    contenitore.insert(f16);
-    contenitore.insert(f16);
-    contenitore.insert(f16);
-    contenitore.insert(f16);
-
-
 
 }
 

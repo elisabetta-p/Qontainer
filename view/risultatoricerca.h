@@ -6,6 +6,8 @@
 #include <QPushButton>
 #include <QGridLayout>
 #include "mainwindow.h"
+#include <QScrollArea>
+#include <QFrame>
 
 
 class risultatoricerca: public QWidget {
@@ -15,9 +17,11 @@ private:
     QGridLayout* layoutOrizzontale;
     QGridLayout* griglia;
     //QScrollArea* scrollArea;
-    QTextBrowser* scrollArea;
+    //QTextBrowser* scrollAreaTitolo, *scrollAreaAutore, *scrollAreaAnno, *scrollAreaTipo;
+    QScrollArea* scrollArea;
     container<ContenutoMultimediale*>* cont;
     vector<ContenutoMultimediale*> vettoreRisultati;
+    QFrame* inner;
 public:
     risultatoricerca(container<ContenutoMultimediale*>*, vector<ContenutoMultimediale*>, QWidget* = nullptr);
     ~risultatoricerca() = default;

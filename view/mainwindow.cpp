@@ -88,14 +88,7 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
     areaSerie->setVerticalScrollBar(new QScrollBar());
     areaFilm->setVerticalScrollBar(new QScrollBar());
 
-    layout->addLayout(griglia);
 
-    //aggiunta dei due bottoni per la ricerca e per l'aggiunta di contenuto
-
-    connect (ricerca, SIGNAL(clicked()), parent, SLOT(mostraRicerca()));
-    connect (aggiungi, SIGNAL(clicked()), parent, SLOT(mostraAggiungi()));
-
-    this->setLayout(layout);
 
     //caricamento della musica
     for (auto it=(*cont).begin(); it!=(*cont).end(); ++it) {
@@ -125,5 +118,14 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
             areaSerie->append(titolo);
         }
     }
+
+    layout->addLayout(griglia);
+
+    //aggiunta dei due bottoni per la ricerca e per l'aggiunta di contenuto
+
+    connect (ricerca, SIGNAL(clicked()), parent, SLOT(mostraRicerca()));
+    connect (aggiungi, SIGNAL(clicked()), parent, SLOT(mostraAggiungi()));
+
+    this->setLayout(layout);
 
 }

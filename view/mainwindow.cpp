@@ -10,7 +10,7 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
 
     layout = new QVBoxLayout(this);
 
-     //Creazione del titolo Qontainer
+    //Creazione del titolo Qontainer
     //QGroupBox* titoloGropuBox = new QGroupBox(this);
 
     QLabel* titoloFinestra = new QLabel(this);
@@ -64,12 +64,6 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
     griglia->addWidget(filmLabel, 0, 2, Qt::AlignCenter);
     griglia->addWidget(serie, 0, 3, Qt::AlignCenter);
 
-    /*
-    listaCantanti = new QVBoxLayout(this);
-    listaPodcast = new QVBoxLayout(this);
-    listaSerie = new QVBoxLayout(this);
-    listaFilm = new QVBoxLayout(this);
-    */
     /* aggiunta delle varie scroll bar nei 4 layout verticali*/
 
     QTextBrowser* areaCantanti = new QTextBrowser;

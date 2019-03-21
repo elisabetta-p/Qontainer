@@ -24,20 +24,11 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
     scrollArea = new QScrollArea();
     scrollArea->setWidgetResizable(true);
     scrollArea->setFrameShape(QFrame::NoFrame);
+
+
     scrollArea->setWidget(contenitoreRisultati);
 
-    /*
-    scrollAreaTitolo =new QTextBrowser();
-    scrollAreaAutore =new QTextBrowser();
-    scrollAreaAnno =new QTextBrowser();
-    scrollAreaTipo =new QTextBrowser();
 
-
-    inner = new QFrame(scrollArea);
-    inner->setLayout(layoutOrizzontale);
-
-    scrollArea->setWidget(inner);
-    */
 
 
 
@@ -95,27 +86,7 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
             labelAnno->setFont(QFont("Times", 16, QFont::StyleItalic));
             labelTipo->setFont(QFont("Times", 16, QFont::StyleItalic));
 
-            /*
-            scrollAreaTitolo->append(QString::fromStdString(vettoreRisultati[i]->getTitolo()));
-            scrollAreaAutore->append(QString::fromStdString(vettoreRisultati[i]->getAutore()));
-            scrollAreaAnno->append(QString::number(vettoreRisultati[i]->getDataUscita()));
-            if (dynamic_cast<film*>(vettoreRisultati[i]))
-                scrollAreaTipo->append(QString("Film"));
-            if (dynamic_cast<episodio*>(vettoreRisultati[i]))
-                scrollAreaTipo->append(QString("Episodio"));
-            if (dynamic_cast<canzone*>(vettoreRisultati[i]))
-                scrollAreaTipo->append(QString("Canzone"));
-            if (dynamic_cast<podcast*>(vettoreRisultati[i]))
-                scrollAreaTipo->append(QString("Podcast"));
 
-
-
-            layoutOrizzontale->addWidget(scrollAreaTitolo, i+1, 0, Qt::AlignCenter);
-            layoutOrizzontale->addWidget(scrollAreaAutore, i+1, 1, Qt::AlignCenter);
-            layoutOrizzontale->addWidget(scrollAreaAnno, i+1, 2, Qt::AlignCenter);
-
-            layoutOrizzontale->addWidget(scrollAreaTipo, i+1, 3, Qt::AlignCenter);
-            */
 
             layoutOrizzontale->addWidget(fileTitolo, i+1, 0, Qt::AlignCenter);
             layoutOrizzontale->addWidget(fileAutore, i+1, 1, Qt::AlignCenter);
@@ -123,14 +94,10 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
 
             layoutOrizzontale->addWidget(tipo, i+1, 3, Qt::AlignCenter);
 
-            /*
-            inner->setLayout(layoutOrizzontale);
-            scrollArea->setVerticalScrollBar(new QScrollBar());
-            */
+
 
         }
 
-        //layoutVerticale->addLayout(layoutOrizzontale);
 
         layoutVerticale->addWidget(scrollArea);
 
@@ -146,22 +113,7 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
         layoutVerticale->addLayout(layoutOrizzontale);
     }
 
-    /*
-    scrollAreaTitolo->setLayout(layoutOrizzontale);
-    scrollAreaAutore->setLayout(layoutOrizzontale);
-    scrollAreaAnno->setLayout(layoutOrizzontale);
-    scrollAreaTipo->setLayout(layoutOrizzontale);
 
-    scrollAreaTitolo->setVerticalScrollBar(new QScrollBar(Qt::Orientation::Vertical));
-    scrollAreaAutore->setVerticalScrollBar(new QScrollBar(Qt::Orientation::Vertical));
-    scrollAreaAnno->setVerticalScrollBar(new QScrollBar(Qt::Orientation::Vertical));
-    scrollAreaTipo->setVerticalScrollBar(new QScrollBar(Qt::Orientation::Vertical));
-
-    layoutVerticale->addWidget(scrollAreaTitolo);
-    layoutVerticale->addWidget(scrollAreaAutore);
-    layoutVerticale->addWidget(scrollAreaAnno);
-    layoutVerticale->addWidget(scrollAreaTipo);
-    */
 
     //bottoni per tornare alla ricerca, oppure per tornare alla schermata principale
     QPushButton* tornaRicercaAvanzata = new QPushButton(this);

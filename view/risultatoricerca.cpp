@@ -19,6 +19,13 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
 
     layoutVerticale->addWidget(titoloFinestra);
     layoutOrizzontale=new QGridLayout;
+
+    QWidget* contenitoreRisultati = new QWidget();
+    scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);
+    scrollArea->setFrameShape(QFrame::NoFrame);
+    scrollArea->setWidget(contenitoreRisultati);
+
     /*
     scrollAreaTitolo =new QTextBrowser();
     scrollAreaAutore =new QTextBrowser();
@@ -26,7 +33,6 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
     scrollAreaTipo =new QTextBrowser();
 
 
-    scrollArea = new QScrollArea();
     inner = new QFrame(scrollArea);
     inner->setLayout(layoutOrizzontale);
 
@@ -121,11 +127,16 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
             inner->setLayout(layoutOrizzontale);
             scrollArea->setVerticalScrollBar(new QScrollBar());
             */
+
         }
 
-        layoutVerticale->addLayout(layoutOrizzontale);
+        //layoutVerticale->addLayout(layoutOrizzontale);
+
+        layoutVerticale->addWidget(scrollArea);
 
     }
+
+    contenitoreRisultati->setLayout(layoutOrizzontale);
 
     if (vettoreRisultati.empty()){
         QLabel* messaggio = new QLabel(this);

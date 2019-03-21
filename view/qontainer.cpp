@@ -23,6 +23,7 @@ qontainer::qontainer()  {
 
     for (int i = 0 ; i <50 ; i++) {
         contenitore.insert(f1);
+        contenitore.insert(c0);
     }
 
 

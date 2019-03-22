@@ -63,7 +63,7 @@ public:
 
     ~container();
     container (const container&);
-    //container& operator=(const container& c);
+    container& operator=(const container& c);
 
     bool vuota() const;
 
@@ -86,12 +86,13 @@ public:
 
     void insert(const T);
     void remove(T);
-    //bool search(T parametro) const;
+    void edit(nodo*, string, string, unsigned int);
     vector<T> search (T parametro) const;
 
     // ALTRI METODI UTILI
 
     unsigned int size() const;
+
 };
 
 //definizioni di nodo
@@ -223,7 +224,7 @@ container<T>::~container<T>() {if (first) delete(first);}
 
 template <typename T>
 container<T>::container(const container<T>& c) : first(copia(c.first)) {}
-/*
+
 template <typename T>
 container<T>& container<T>::operator=(const container& c) {
     if (c != *this) {
@@ -232,7 +233,7 @@ container<T>& container<T>::operator=(const container& c) {
     }
     return *this;
 }
-*/
+
 template <typename T>
 bool container<T>::vuota() const {return first==nullptr;}
 
@@ -339,6 +340,12 @@ vector<T> container<T>::search(T contenuto) const {
         n = n->next;
     }
     return aux;
+}
+
+//posso modificare solo i tre campi autore, titolo e anno
+template <typename T>
+void container<T>::edit(nodo* n, string autore, string titolo, unsigned int anno) {
+
 }
 
 template <typename T>

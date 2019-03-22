@@ -344,8 +344,13 @@ vector<T> container<T>::search(T contenuto) const {
 
 //posso modificare solo i tre campi autore, titolo e anno
 template <typename T>
-void container<T>::edit(nodo* n, string autore, string titolo, unsigned int anno) {
-
+void container<T>::edit(nodo* n, string autoreMod, string titoloMod, unsigned int annoMod) {
+    if (autoreMod != "")
+        n->setAutore(autoreMod);
+    if(titoloMod != "")
+        n->setTitolo(titoloMod);
+    if (annoMod)
+        n->setDataUscita(annoMod);
 }
 
 template <typename T>

@@ -323,14 +323,7 @@ template <typename T>
 vector<T> container<T>::search(T contenuto) const {
     nodo* n = first;
     vector<T> aux;
-    while (n) {
-        /*
-        if (*(n->info) == *(contenuto))
-            aux.push_back(n->info);
-        */
-        //if(n->info->getTitolo().find(contenuto->getTitolo()) && n->info->getAutore().find(contenuto->getAutore()) && n->info->getDataUscita() == contenuto->getDataUscita() ) {
-        //if ((n->info)->getTitolo() == (contenuto)->getTitolo() && (n->info)->getAutore() == (contenuto)->getAutore() && (n->info)->getDataUscita() == contenuto->getDataUscita()) {
-
+    while (n) {     
         if ( (n->info->getTitolo().find(contenuto->getTitolo())!=std::string::npos) &&
              (n->info->getAutore().find(contenuto->getAutore())!=std::string::npos) &&
              (n->info->getDataUscita() == contenuto->getDataUscita() || contenuto->getDataUscita() == 0) )/*contenuto->getTitolo() && n->info->getAutore() >= contenuto->getAutore() && n->info->getDataUscita() == contenuto->getDataUscita()*/ {

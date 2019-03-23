@@ -10,7 +10,7 @@ risultatoeliminazione::risultatoeliminazione(QWidget* parent) : QWidget(parent) 
     //Creazione del titolo della pagina dei risultati delle ricerche
 
     QLabel* titoloFinestra = new QLabel(this);
-    titoloFinestra->setText(tr("Aggiunta dei contenuti"));
+    titoloFinestra->setText(tr("Conferma eliminazione"));
     titoloFinestra->setFont(QFont("Times", 36, QFont::Bold));
     titoloFinestra->setAlignment(Qt::AlignHCenter);
     titoloFinestra->setStyleSheet("QLabel {color : #cc0066; }");

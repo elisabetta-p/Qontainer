@@ -91,7 +91,7 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
             layoutOrizzontale->addWidget(elimina, i+1, 5, Qt::AlignCenter);
 
             connect(elimina, SIGNAL(clicked()), this, SLOT(schiacciaElimina()));
-//            connect(this, SIGNAL(inviaEliminazione()), parent, SLOT(mostraEliminazioneRiuscita()));
+            connect(this, SIGNAL(inviaEliminazione()), parent, SLOT(mostraEliminazioneRiuscita()));
 
         }
 
@@ -129,17 +129,14 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
 }
 
 void risultatoricerca::schiacciaElimina(){
-  QPushButton* bottoneElimina = dynamic_cast<QPushButton*>(sender());
-
-  if(bottoneElimina) {
-    int indiceContenutoDaEliminare = bottoneElimina->objectName().toInt() - 1;
-    cont->remove(vettoreRisultati[indiceContenutoDaEliminare]);
-    //bottoneElimina->setText(bottoneElimina->objectName());
-  }
-
+  eliminaElemento();
+  emit inviaEliminazione();
 }
 
-/*
-2 bottoni locali al ciclo for
-connect associata al bottone locale craeto in quel ciclo
- */
+void risultatoricerca::eliminaElemento(){
+    QPushButton* bottoneElimina = dynamic_cast<QPushButton*>(sender());
+    if(bottoneElimina) {
+      int indiceContenutoDaEliminare = bottoneElimina->objectName().toInt() - 1;
+      cont->remove(vettoreRisultati[indiceContenutoDaEliminare]);
+    }
+}

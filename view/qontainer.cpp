@@ -18,18 +18,7 @@ qontainer::qontainer()  {
     ContenutoMultimediale* s1 = new episodio ("episodio 1", 40, "commedia", 400, 7, "Tizio", 2018, 789, "serie1", "netflix");
     ContenutoMultimediale* c0 = new canzone ("1", 1, "1",1,1,"1", 1,1,"1","1");
     ContenutoMultimediale* f5 = new film ("1", 1, "1",1,1,"1", 1,1,"1","1");
-    ContenutoMultimediale* f6(f1);
 
-
-    for (int i = 0 ; i <50 ; i++) {
-        contenitore.insert(f1);
-        contenitore.insert(c0);
-    }
-
-
-
-
-/*
     contenitore.insert(c0);
     contenitore.insert(f1);
     contenitore.insert(f2);
@@ -39,8 +28,6 @@ qontainer::qontainer()  {
     contenitore.insert(p1);
     contenitore.insert(s1);
     contenitore.insert(f5);
-    //contenitore.insert(f6);
-*/
 }
 
 void qontainer::eliminaContenutoAttuale() {
@@ -90,10 +77,10 @@ void qontainer::mostraAggiuntaRiuscita() {
     risultatoaggiunta* newAggiunta = new risultatoaggiunta(this);
     layoutQ->addWidget(newAggiunta);
 }
-/*
+
 void qontainer::mostraEliminazioneRiuscita() {
     eliminaContenutoAttuale();
     risultatoeliminazione* newEliminazione = new risultatoeliminazione(this);
     layoutQ->addWidget(newEliminazione);
 }
-*/
+

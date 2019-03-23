@@ -10,6 +10,7 @@
 #include "../model/podcast.h"
 #include "../model/episodio.h"
 #include "../model/film.h"
+#include "risultatoeliminazione.h"
 #include <iostream>
 
 class qontainer: public QWidget
@@ -31,29 +32,7 @@ public slots:
                          string,
                          unsigned short int);
     void mostraAggiuntaRiuscita();
-    /*
-    void mostraAggiuntaRiuscita(int,
-                                string,
-                                unsigned short int,
-                                string,
-                                double,
-                                unsigned short int,
-                                string,
-                                unsigned short int,
-                                unsigned int,
-                                string,
-                                string);//per i film e gli episodi
-    void mostraAggiuntaRiuscita(int,
-                                string,
-                         unsigned short int,
-                         string,
-                         double, unsigned short int,
-                         string,
-                         unsigned short int,
-                         unsigned short int,
-                         string,
-                         string); //per canzoni e podcast
-    */
+    void mostraEliminazioneRiuscita();
 };
 
 #endif // QONTAINER_H

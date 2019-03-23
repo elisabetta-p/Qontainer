@@ -30,7 +30,6 @@ public slots:
 private slots:
     void schiacciaAggiungi();
     void aggiungiElemento();
-    //void aggiuntaEffettiva();
 signals:
     void invioAggiunta();
 

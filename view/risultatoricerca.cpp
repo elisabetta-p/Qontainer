@@ -32,7 +32,6 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
     if (!vettoreRisultati.empty()) {
         for (unsigned long i = 0 ; i != vettoreRisultati.size(); ++i ) {
 
-
             QLabel* tipo = new QLabel(this);
             //mi scrivo il tipo
             if (dynamic_cast<film*>(vettoreRisultati[i]))
@@ -43,22 +42,15 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
                 tipo->setText(QString("Canzone"));
             if (dynamic_cast<podcast*>(vettoreRisultati[i]))
                 tipo->setText(QString("Podcast"));
-
-
             QLabel* fileTitolo = new QLabel(this);
             fileTitolo->setText(QString::fromStdString(vettoreRisultati[i]->getTitolo()));
-
             QLabel* fileAutore = new QLabel(this);
             fileAutore->setText(QString::fromStdString(vettoreRisultati[i]->getAutore()));
-
             QLabel* fileAnno = new QLabel(this);
             fileAnno->setText(QString::number(vettoreRisultati[i]->getDataUscita()));
-
-
             fileTitolo->setAlignment(Qt::AlignHCenter);
             fileAutore->setAlignment(Qt::AlignHCenter);
             fileAnno->setAlignment(Qt::AlignHCenter);
-
 
             QLabel* labelTitolo = new QLabel(this);
             QLabel* labelAutore = new QLabel(this);
@@ -68,7 +60,6 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
             labelAutore->setText(QString("Autore"));
             labelAnno->setText(QString("Anno di uscita"));
             labelTipo->setText(QString("Tipo"));
-
 
             layoutOrizzontale->addWidget(labelTitolo, 0, 0, Qt::AlignCenter);
             layoutOrizzontale->addWidget(labelAutore, 0, 1, Qt::AlignCenter);
@@ -83,12 +74,11 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
             labelAnno->setFont(QFont("Times", 16, QFont::StyleItalic));
             labelTipo->setFont(QFont("Times", 16, QFont::StyleItalic));
 
-            modifica = new QPushButton();
+            QPushButton* modifica = new QPushButton();
             modifica->setText(QString("Modifica"));
 
-            elimina = new QPushButton();
+            QPushButton* elimina = new QPushButton();
             elimina->setText(QString("Elimina"));
-
 
             layoutOrizzontale->addWidget(fileTitolo, i+1, 0, Qt::AlignCenter);
             layoutOrizzontale->addWidget(fileAutore, i+1, 1, Qt::AlignCenter);
@@ -99,7 +89,8 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
             layoutOrizzontale->addWidget(modifica, i+1, 4, Qt::AlignCenter);
             layoutOrizzontale->addWidget(elimina, i+1, 5, Qt::AlignCenter);
 
-            connect(elimina, SIGNAL(clicked(vector<ContenutoMultimediale*>, int)), this, SLOT(eliminaContenutoMultimediale(vector<ContenutoMultimediale*>, int)));
+            connect(elimina, SIGNAL(clicked()), this, SLOT(schiacciaElimina()));
+            connect(this, SIGNAL(inviaEliminazione()), parent, SLOT(mostraEliminazioneRiuscita()));
 
         }
 
@@ -135,7 +126,13 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
     connect(tornaRicercaAvanzata, SIGNAL(clicked()), parent, SLOT(mostraRicerca()));
     this->setLayout(layoutVerticale);
 }
+/*
+void schiacciaElimina(){
 
-void eliminaContenutoMultimediale(vector<ContenutoMultimediale*> vettoreRisultati, int i) {
-    delete[] vettoreRisultati[i];
 }
+*/
+
+/*
+2 bottoni locali al ciclo for
+connect associata al bottone locale craeto in quel ciclo
+ */

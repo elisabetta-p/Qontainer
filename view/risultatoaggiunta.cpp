@@ -26,7 +26,7 @@ risultatoaggiunta::risultatoaggiunta(QWidget* parent) : QWidget(parent) {
     layout->addWidget(messaggioDiConferma);
 
 
-    //bottoni per tornare alla ricerca, oppure per tornare alla schermata principale
+    //bottoni per tornare alla pagina di aggiunta contenuti, oppure per tornare alla schermata principale
     QPushButton* tornaAggiungi = new QPushButton(this);
     tornaAggiungi->setText("Ritorna alla pagina di aggiunta contenuti");
     QPushButton* tornaMainWindow = new QPushButton(this);

@@ -21,12 +21,15 @@ private:
     container<ContenutoMultimediale*>* cont;
     vector<ContenutoMultimediale*> vettoreRisultati;
     QFrame* inner;
-    QPushButton* modifica, *elimina;
 public:
     risultatoricerca(container<ContenutoMultimediale*>*, vector<ContenutoMultimediale*>, QWidget* = nullptr);
     ~risultatoricerca() = default;
 private slots:
-    void eliminaContenutoMultimediale(vector<ContenutoMultimediale*>, int);
+    //void schiacciaModifica();
+    //void schiacciaElimina();
+    //void eliminaElemento();
+signals:
+    //void inviaEliminazione();
 };
 
 #endif // RISULTATORICERCA_H

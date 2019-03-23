@@ -79,6 +79,7 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
 
             QPushButton* elimina = new QPushButton();
             elimina->setText(QString("Elimina"));
+            elimina->setObjectName(QString::number(i+1));
 
             layoutOrizzontale->addWidget(fileTitolo, i+1, 0, Qt::AlignCenter);
             layoutOrizzontale->addWidget(fileAutore, i+1, 1, Qt::AlignCenter);
@@ -90,7 +91,7 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
             layoutOrizzontale->addWidget(elimina, i+1, 5, Qt::AlignCenter);
 
             connect(elimina, SIGNAL(clicked()), this, SLOT(schiacciaElimina()));
-            connect(this, SIGNAL(inviaEliminazione()), parent, SLOT(mostraEliminazioneRiuscita()));
+//            connect(this, SIGNAL(inviaEliminazione()), parent, SLOT(mostraEliminazioneRiuscita()));
 
         }
 
@@ -126,11 +127,17 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
     connect(tornaRicercaAvanzata, SIGNAL(clicked()), parent, SLOT(mostraRicerca()));
     this->setLayout(layoutVerticale);
 }
-/*
-void schiacciaElimina(){
+
+void risultatoricerca::schiacciaElimina(){
+  QPushButton* bottoneElimina = dynamic_cast<QPushButton*>(sender());
+
+  if(bottoneElimina) {
+    int indiceContenutoDaEliminare = bottoneElimina->objectName().toInt() - 1;
+    vettoreRisultati.erase(vettoreRisultati.begin() + indiceContenutoDaEliminare);
+    //bottoneElimina->setText(bottoneElimina->objectName());
+  }
 
 }
-*/
 
 /*
 2 bottoni locali al ciclo for

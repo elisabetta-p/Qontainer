@@ -28,9 +28,9 @@ public:
 private slots:
 /*
     void schiacciaModifica();
-    void schiacciaElimina();
     void eliminaElemento();
 */
+    void schiacciaElimina();
 signals:
     void inviaEliminazione();
 };

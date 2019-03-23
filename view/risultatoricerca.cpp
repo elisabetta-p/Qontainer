@@ -133,7 +133,7 @@ void risultatoricerca::schiacciaElimina(){
 
   if(bottoneElimina) {
     int indiceContenutoDaEliminare = bottoneElimina->objectName().toInt() - 1;
-    vettoreRisultati.erase(vettoreRisultati.begin() + indiceContenutoDaEliminare);
+    cont->remove(vettoreRisultati[indiceContenutoDaEliminare]);
     //bottoneElimina->setText(bottoneElimina->objectName());
   }
 

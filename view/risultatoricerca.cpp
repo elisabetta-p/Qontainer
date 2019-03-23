@@ -99,6 +99,7 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
             layoutOrizzontale->addWidget(modifica, i+1, 4, Qt::AlignCenter);
             layoutOrizzontale->addWidget(elimina, i+1, 5, Qt::AlignCenter);
 
+            connect(elimina, SIGNAL(clicked(vector<ContenutoMultimediale*>, int)), this, SLOT(eliminaContenutoMultimediale(vector<ContenutoMultimediale*>, int)));
 
         }
 
@@ -133,4 +134,8 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
     connect(tornaMainWindow, SIGNAL(clicked()), parent, SLOT(mostraMainWindow()));
     connect(tornaRicercaAvanzata, SIGNAL(clicked()), parent, SLOT(mostraRicerca()));
     this->setLayout(layoutVerticale);
+}
+
+void eliminaContenutoMultimediale(vector<ContenutoMultimediale*> vettoreRisultati, int i) {
+    delete[] vettoreRisultati[i];
 }

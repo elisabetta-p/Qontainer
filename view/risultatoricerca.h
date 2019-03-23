@@ -26,9 +26,11 @@ public:
     risultatoricerca(container<ContenutoMultimediale*>*, vector<ContenutoMultimediale*>, QWidget* = nullptr);
     ~risultatoricerca() = default;
 private slots:
+/*
     void schiacciaModifica();
     void schiacciaElimina();
     void eliminaElemento();
+*/
 signals:
     void inviaEliminazione();
 };

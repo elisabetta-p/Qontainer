@@ -90,9 +90,10 @@ void qontainer::mostraAggiuntaRiuscita() {
     risultatoaggiunta* newAggiunta = new risultatoaggiunta(this);
     layoutQ->addWidget(newAggiunta);
 }
-
+/*
 void qontainer::mostraEliminazioneRiuscita() {
     eliminaContenutoAttuale();
     risultatoeliminazione* newEliminazione = new risultatoeliminazione(this);
     layoutQ->addWidget(newEliminazione);
 }
+*/

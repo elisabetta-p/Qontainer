@@ -30,8 +30,7 @@ SOURCES += \
     view/aggiungi.cpp \
     view/qontainer.cpp \
     view/risultatoricerca.cpp \
-    view/risultatoaggiunta.cpp \
-    view/risultatoeliminazione.cpp
+    view/risultatoaggiunta.cpp
 
 RESOURCES += qml.qrc
 
@@ -61,8 +60,7 @@ HEADERS += \
     view/aggiungi.h \
     view/qontainer.h \
     view/risultatoricerca.h \
-    view/risultatoaggiunta.h \
-    view/risultatoeliminazione.h
+    view/risultatoaggiunta.h
 
 
 

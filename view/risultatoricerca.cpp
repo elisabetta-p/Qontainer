@@ -29,9 +29,6 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
     scrollArea->setWidget(contenitoreRisultati);
 
 
-
-
-
     if (!vettoreRisultati.empty()) {
         for (unsigned long i = 0 ; i != vettoreRisultati.size(); ++i ) {
 
@@ -86,6 +83,11 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
             labelAnno->setFont(QFont("Times", 16, QFont::StyleItalic));
             labelTipo->setFont(QFont("Times", 16, QFont::StyleItalic));
 
+            modifica = new QPushButton();
+            modifica->setText(QString("Modifica"));
+
+            elimina = new QPushButton();
+            elimina->setText(QString("Elimina"));
 
 
             layoutOrizzontale->addWidget(fileTitolo, i+1, 0, Qt::AlignCenter);
@@ -94,6 +96,8 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
 
             layoutOrizzontale->addWidget(tipo, i+1, 3, Qt::AlignCenter);
 
+            layoutOrizzontale->addWidget(modifica, i+1, 4, Qt::AlignCenter);
+            layoutOrizzontale->addWidget(elimina, i+1, 5, Qt::AlignCenter);
 
 
         }

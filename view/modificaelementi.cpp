@@ -93,7 +93,46 @@ void modificaelementi::caricaCampiDaModificare() {
 
 }
 
+//toStdString
+//toDouble
+//toUShort
+
+void modificaelementi::modificaElemento() {
+    multimedia->setTitolo(vettoreModifiche[0]->text().toStdString());
+    multimedia->setDurata(vettoreModifiche[1]->text().toUShort());
+    multimedia->setGenere(vettoreModifiche[2]->text().toStdString());
+    multimedia->setDimensione(vettoreModifiche[3]->text().toUShort());
+    //multimedia->setValutazione(vettoreModifiche[4]->text().toUShort());
+    multimedia->setAutore(vettoreModifiche[5]->text().toStdString());
+    multimedia->setDataUscita(vettoreModifiche[6]->text().toUShort());
+    film* f = dynamic_cast<film*>(multimedia);
+    if (f) {
+        f->setRisoluzione(vettoreModifiche[7]->text().toUInt());
+        f->setRegista(vettoreModifiche[8]->text().toStdString());
+        f->setSaga(vettoreModifiche[9]->text().toStdString());
+    }
+    episodio* e = dynamic_cast<episodio*>(multimedia);
+    if (e) {
+        e->setRisoluzione(vettoreModifiche[7]->text().toUInt());
+        e->setSerie(vettoreModifiche[8]->text().toStdString());
+        e->setCanale(vettoreModifiche[9]->text().toStdString());
+    }
+    podcast* p = dynamic_cast<podcast*>(multimedia);
+    if (p) {
+        p->setQualita(vettoreModifiche[7]->text().toUInt());
+        p->setRaccolta(vettoreModifiche[8]->text().toStdString());
+        p->setOspite(vettoreModifiche[9]->text().toStdString());
+    }
+    canzone* c = dynamic_cast<canzone*>(multimedia);
+    if (c) {
+        c->setQualita(vettoreModifiche[7]->text().toUInt());
+        c->setAlbum(vettoreModifiche[8]->text().toStdString());
+        c->setProduttore(vettoreModifiche[9]->text().toStdString());
+    }
+}
+
 void modificaelementi::schiacciaModifica() {
+    modificaElemento();
     emit inviaModifica();
 }
 

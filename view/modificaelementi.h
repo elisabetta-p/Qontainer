@@ -25,7 +25,7 @@ public:
 
 private slots:
     void schiacciaModifica();
-    //void modificaElemento();
+    void modificaElemento();
 signals:
     void inviaModifica();
 

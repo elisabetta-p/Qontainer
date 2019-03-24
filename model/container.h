@@ -86,7 +86,6 @@ public:
 
     void insert(const T);
     void remove(T);
-    void edit(nodo*, string, string, unsigned int);
     vector<T> search (T parametro) const;
 
     // ALTRI METODI UTILI
@@ -333,17 +332,6 @@ vector<T> container<T>::search(T contenuto) const {
         n = n->next;
     }
     return aux;
-}
-
-//posso modificare solo i tre campi autore, titolo e anno
-template <typename T>
-void container<T>::edit(nodo* n, string autoreMod, string titoloMod, unsigned int annoMod) {
-    if (autoreMod != "")
-        n->setAutore(autoreMod);
-    if(titoloMod != "")
-        n->setTitolo(titoloMod);
-    if (annoMod)
-        n->setDataUscita(annoMod);
 }
 
 template <typename T>

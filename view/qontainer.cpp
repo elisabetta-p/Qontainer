@@ -92,6 +92,6 @@ void qontainer::mostraModificaElementi(ContenutoMultimediale* m) {
 
 void qontainer::mostraModificaRiuscita() {
     eliminaContenutoAttuale();
-    risultatomodifica* newRisultatoModifica = new risultatomodifica();
+    risultatomodifica* newRisultatoModifica = new risultatomodifica(this);
     layoutQ->addWidget(newRisultatoModifica);
 }

@@ -97,7 +97,7 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
 
 
             connect(modifica, SIGNAL(clicked()), this, SLOT(schiacciaModifica()));
-            connect(this, SIGNAL(inviaModifica(int, vector<ContenutoMultimediale*>)), parent, SLOT(mostraModificaElementi(int, vector<ContenutoMultimediale*>)));
+            connect(this, SIGNAL(inviaModifica(ContenutoMultimediale*)), parent, SLOT(mostraModificaElementi(ContenutoMultimediale*)));
 
 
         }
@@ -143,7 +143,7 @@ void risultatoricerca::schiacciaModifica() {
     QPushButton* bottoneModifica = dynamic_cast<QPushButton*>(sender());
     if(bottoneModifica) {
         int indiceContenutoDaModificare = bottoneModifica->objectName().toInt();
-        emit inviaModifica(indiceContenutoDaModificare, vettoreRisultati);
+        emit inviaModifica(vettoreRisultati[indiceContenutoDaModificare]);
     }
 }
 

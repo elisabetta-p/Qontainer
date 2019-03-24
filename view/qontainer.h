@@ -34,7 +34,7 @@ public slots:
                          unsigned short int);
     void mostraAggiuntaRiuscita();
     void mostraEliminazioneRiuscita();
-    void mostraModificaElementi(int, vector<ContenutoMultimediale*>);
+    void mostraModificaElementi(ContenutoMultimediale*);
 };
 
 #endif // QONTAINER_H

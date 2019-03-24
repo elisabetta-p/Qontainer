@@ -31,7 +31,7 @@ private slots:
     void schiacciaModifica();
 signals:
     void inviaEliminazione();
-    void inviaModifica(int, vector<ContenutoMultimediale*>);
+    void inviaModifica(ContenutoMultimediale*);
 };
 
 #endif // RISULTATORICERCA_H

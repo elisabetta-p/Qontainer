@@ -11,6 +11,8 @@ public:
     bool operator==(const audio&) const;
     virtual ~audio() = default;
     audio* create(std::istream) const;
+    unsigned short int getQualita() const;
+    void setQualita(unsigned short int);
 };
 
 #endif // AUDIO_H

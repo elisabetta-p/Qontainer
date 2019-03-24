@@ -40,6 +40,8 @@ public:
     string getAutore() const;
     void setDataUscita(unsigned short int);
     unsigned short int getDataUscita() const;
+    void setDimensione(double);
+    double getDimensione() const;
 
     //serializzazione/deserializzazione
      void serialize(std::ostream&) const; //questa scrive su file

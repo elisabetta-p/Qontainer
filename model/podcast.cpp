@@ -12,6 +12,14 @@ string podcast::getOspite() const{
     return ospite;
 }
 
+void podcast::setRaccolta(string r) {
+    raccolta = r;
+}
+
+void podcast::setOspite(string o) {
+    ospite = o;
+}
+
 void podcast::riproduci() const {
     std::cout << "Stai riproducendo l'episodio " << getTitolo() << " del podcast " <<getRaccolta();
 }

@@ -16,9 +16,9 @@ public:
     void riproduci() const;
     void pausa() const;
 
-    void setRaccolta();
+    void setRaccolta(string);
     string getRaccolta() const;
-    void setOspite();
+    void setOspite(string);
     string getOspite() const;
 };
 

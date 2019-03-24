@@ -31,7 +31,15 @@ void ContenutoMultimediale::setDataUscita(unsigned short int data) {
     dataUscita = data;
 }
 
+void ContenutoMultimediale::setDimensione(double d) {
+    dimensione = d;
+}
+
 // METODI GET
+
+double ContenutoMultimediale::getDimensione() const {
+    return dimensione;
+}
 
 string ContenutoMultimediale::getTitolo() const {
     return titolo;

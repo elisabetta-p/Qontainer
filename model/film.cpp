@@ -40,6 +40,14 @@ void film::setSaga(string s) {
 string film::getSaga() const {
     return saga;
 }
+
+void film::setRegista(string r) {
+    regista = r;
+}
+
+string film::getRegista() const{
+    return regista;
+}
 /*
 container<film*> film::deserializza(const std::ifstream& file) {
     container<film*> contenitore;

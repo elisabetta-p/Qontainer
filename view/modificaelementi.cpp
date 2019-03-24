@@ -51,7 +51,7 @@ void modificaelementi::creaOpzione(QString etichetta, QString valoreCorrente, in
     box->setFixedWidth(lunghezza);
     box->setText(valoreCorrente);
 
-    //vettoreOpzioni.push_back(box);
+    vettoreModifiche.push_back(box);
     griglia->addWidget(label, riga, 0, Qt::AlignLeft);
     griglia->addWidget(box, riga, 1, Qt::AlignLeft);
 }
@@ -61,35 +61,35 @@ void modificaelementi::caricaCampiDaModificare() {
     creaOpzione("Titolo:", QString::fromStdString(multimedia->getTitolo()), 250, griglia, 1);
     creaOpzione("Durata:", QString::number(multimedia->getDurata()), 250, griglia, 2);
     creaOpzione("Genere:", QString::fromStdString(multimedia->getGenere()), 250, griglia, 3);
-    creaOpzione("Dimensione:", "Inserisci la dimensione in MB", 250, griglia, 4);
+    creaOpzione("Dimensione:", QString::number(multimedia->getDimensione()), 250, griglia, 4);
     creaOpzione("Valutazione:", QString::number(multimedia->getValutazione()), 250, griglia, 5);
     creaOpzione("Autore:", QString::fromStdString(multimedia->getAutore()), 250, griglia, 6);
-    creaOpzione("Anno di uscita:", "Inserisci l'anno", 250, griglia, 7);
+    creaOpzione("Anno di uscita:", QString::number(multimedia->getDataUscita()), 250, griglia, 7);
 
 
     film* f = dynamic_cast<film*>(multimedia);
     if (f) {
-        creaOpzione("Risoluzione:", "Inserisci la risoluzione", 250, griglia, 8);
-        creaOpzione("Regista:", "Inserisci il regista", 250, griglia, 9);
-        creaOpzione("Saga:", "Inserisci la saga", 250, griglia, 10);
+        creaOpzione("Risoluzione:", QString::number(f->getRisoluzione()), 250, griglia, 8);
+        creaOpzione("Regista:",  QString::fromStdString(f->getRegista()), 250, griglia, 9);
+        creaOpzione("Saga:", QString::fromStdString(f->getSaga()), 250, griglia, 10);
     }
     episodio* e = dynamic_cast<episodio*>(multimedia);
     if (e) {
-        creaOpzione("Risoluzione:", "Inserisci la risoluzione", 250, griglia, 8);
-        creaOpzione("Serie:", "Inserisci la serie", 250, griglia, 9);
-        creaOpzione("Canale:", "Inserisci il canale o servizio di streaming", 250, griglia, 10);
+        creaOpzione("Risoluzione:", QString::number(e->getRisoluzione()), 250, griglia, 8);
+        creaOpzione("Serie:", QString::fromStdString(e->getSerie()), 250, griglia, 9);
+        creaOpzione("Canale:", QString::fromStdString(e->getCanale()), 250, griglia, 10);
     }
     podcast* p = dynamic_cast<podcast*>(multimedia);
     if (p) {
-        creaOpzione("Qualità:", "Inserisci la qualità", 250, griglia, 8);
-        creaOpzione("Album:", "Inserisci l'album", 250, griglia, 9);
-        creaOpzione("Produttore:", "Inserisci il produttore", 250, griglia, 10);
+        creaOpzione("Qualità:", QString::number(p->getQualita()), 250, griglia, 8);
+        creaOpzione("Raccolta:", QString::fromStdString(p->getRaccolta()), 250, griglia, 9);
+        creaOpzione("Ospite:", QString::fromStdString(p->getOspite()), 250, griglia, 10);
     }
     canzone* c = dynamic_cast<canzone*>(multimedia);
     if (c) {
-        creaOpzione("Qualità:", "Inserisci la qualità", 250, griglia, 8);
-        creaOpzione("Raccolta:", "Inserisci la raccolta", 250, griglia, 9);
-        creaOpzione("Ospite:", "Inserisci l'ospite", 250, griglia, 10);
+        creaOpzione("Qualità:", QString::number(c->getQualita()), 250, griglia, 8);
+        creaOpzione("Album:", QString::fromStdString(c->getAlbum()), 250, griglia, 9);
+        creaOpzione("Produttore:", QString::fromStdString(c->getProduttore()), 250, griglia, 10);
     }
 
 }

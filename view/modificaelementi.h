@@ -14,7 +14,7 @@ private:
 
     void lunghezzaFissaQLineEdit(QLineEdit*, int = 0);
 
-    vector<QLineEdit*> vettoreOpzioni;
+    vector<QLineEdit*> vettoreModifiche;
 
     void creaOpzione(QString, QString, int, QGridLayout*, int);
     void caricaCampiDaModificare();

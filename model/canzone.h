@@ -16,9 +16,9 @@ public:
     virtual void riproduci() const;
     virtual void pausa() const;
 
-    void setAlbum();
+    void setAlbum(string);
     string getAlbum() const;
-    void setProduttore();
+    void setProduttore(string);
     string getProduttore() const;
 
     /*void serialize(std::ostream&) const;

@@ -23,6 +23,8 @@ public:
 
     void setSaga(string);
     string getSaga() const;
+    void setRegista(string);
+    string getRegista() const;
 
     //virtual void serialize(std::ostream) const;
     //virtual film* create(std::istream) const;

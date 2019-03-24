@@ -9,7 +9,7 @@ class modificaelementi: public QWidget{
     Q_OBJECT
 private:
     QGridLayout* griglia;
-    QGridLayout* grigliaAggiuntaAvanzata;
+    QGridLayout* grigliaModificaAvanzata;
     QVBoxLayout* layout;
     QComboBox* opzioni;
 

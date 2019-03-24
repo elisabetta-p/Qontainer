@@ -80,7 +80,7 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
 
             QPushButton* elimina = new QPushButton();
             elimina->setText(QString("Elimina"));
-            elimina->setObjectName(QString::number(i+1));
+            elimina->setObjectName(QString::number(i));
 
             layoutOrizzontale->addWidget(fileTitolo, i+1, 0, Qt::AlignCenter);
             layoutOrizzontale->addWidget(fileAutore, i+1, 1, Qt::AlignCenter);
@@ -150,7 +150,7 @@ void risultatoricerca::schiacciaModifica() {
 void risultatoricerca::eliminaElemento(){
     QPushButton* bottoneElimina = dynamic_cast<QPushButton*>(sender());
     if(bottoneElimina) {
-      int indiceContenutoDaEliminare = bottoneElimina->objectName().toInt() - 1;
+      int indiceContenutoDaEliminare = bottoneElimina->objectName().toInt();
       cont->remove(vettoreRisultati[indiceContenutoDaEliminare]);
     }
 }

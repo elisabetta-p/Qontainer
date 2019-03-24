@@ -9,7 +9,6 @@ class modificaelementi: public QWidget{
     Q_OBJECT
 private:
     QGridLayout* griglia;
-    QGridLayout* grigliaModificaAvanzata;
     QVBoxLayout* layout;
     QComboBox* opzioni;
 
@@ -18,12 +17,10 @@ private:
     vector<QLineEdit*> vettoreOpzioni;
 
     void creaOpzione(QString, QString, int, QGridLayout*, int);
-    container<ContenutoMultimediale*>* cont;
     void caricaCampiDaModificare();
-    int indice;
-    vector<ContenutoMultimediale*> vettRisultati;
+    ContenutoMultimediale* multimedia;
 public:
-    modificaelementi(container<ContenutoMultimediale*>*, int, vector<ContenutoMultimediale*>, QWidget* = nullptr);
+    modificaelementi(ContenutoMultimediale*, QWidget* = nullptr);
     ~modificaelementi() = default;
 /*
 public slots:

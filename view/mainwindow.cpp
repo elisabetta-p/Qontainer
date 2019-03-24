@@ -16,6 +16,7 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
     titoloFinestra->setScaledContents(true);
     titoloFinestra->setBackgroundRole(QPalette::Dark);
 
+    // Fix the absolute path
     QPixmap logo("/Users/elisabetta/Desktop/ProgettoP2/view/logo3.png");
     titoloFinestra->setPixmap(logo);
     /*

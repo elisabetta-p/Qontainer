@@ -12,12 +12,11 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
 
     //Creazione del titolo Qontainer
 
-    //QImage logo("logo.png");
     QLabel* titoloFinestra = new QLabel();
     titoloFinestra->setScaledContents(true);
     titoloFinestra->setBackgroundRole(QPalette::Dark);
 
-    QPixmap logo("/logo1.png");
+    QPixmap logo(":/logo1.png");
     titoloFinestra->setPixmap(logo);
     /*
     titoloFinestra->setMinimumSize(this->width(), 50);
@@ -27,7 +26,7 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
     titoloFinestra->setStyleSheet("QLabel {color : #cc0066; }");
     */
 
-    //titoloFinestra->setAlignment((Qt::AlignHCenter));
+    titoloFinestra->setAlignment((Qt::AlignHCenter));
 
     layout->addWidget(titoloFinestra);
 

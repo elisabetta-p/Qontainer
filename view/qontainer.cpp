@@ -84,3 +84,8 @@ void qontainer::mostraEliminazioneRiuscita() {
     layoutQ->addWidget(newEliminazione);
 }
 
+void qontainer::mostraModificaElementi(int i, vector<ContenutoMultimediale*> v) {
+    eliminaContenutoAttuale();
+    modificaelementi* newModificaElementi = new modificaelementi(&contenitore, i, v, this);
+    layoutQ->addWidget(newModificaElementi);
+}

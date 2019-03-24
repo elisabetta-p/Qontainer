@@ -76,6 +76,7 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
 
             QPushButton* modifica = new QPushButton();
             modifica->setText(QString("Modifica"));
+            modifica->setObjectName(QString::number(i+1));
 
             QPushButton* elimina = new QPushButton();
             elimina->setText(QString("Elimina"));
@@ -90,8 +91,14 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
             layoutOrizzontale->addWidget(modifica, i+1, 4, Qt::AlignCenter);
             layoutOrizzontale->addWidget(elimina, i+1, 5, Qt::AlignCenter);
 
+
             connect(elimina, SIGNAL(clicked()), this, SLOT(schiacciaElimina()));
             connect(this, SIGNAL(inviaEliminazione()), parent, SLOT(mostraEliminazioneRiuscita()));
+
+
+            connect(modifica, SIGNAL(clicked()), this, SLOT(schiacciaModifica()));
+            connect(this, SIGNAL(inviaModifica(int, vector<ContenutoMultimediale*>)), parent, SLOT(mostraModificaElementi(int, vector<ContenutoMultimediale*>)));
+
 
         }
 
@@ -129,6 +136,15 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
 void risultatoricerca::schiacciaElimina(){
   eliminaElemento();
   emit inviaEliminazione();
+}
+
+
+void risultatoricerca::schiacciaModifica() {
+    QPushButton* bottoneModifica = dynamic_cast<QPushButton*>(sender());
+    if(bottoneModifica) {
+        int indiceContenutoDaModificare = bottoneModifica->objectName().toInt() - 1;
+        emit inviaModifica(indiceContenutoDaModificare, vettoreRisultati);
+    }
 }
 
 void risultatoricerca::eliminaElemento(){

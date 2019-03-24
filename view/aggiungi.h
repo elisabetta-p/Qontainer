@@ -21,7 +21,6 @@ private:
 
     void creaOpzione(QString, QString, int, QGridLayout*, int);
     container<ContenutoMultimediale*>* cont;
-
 public:
     aggiungi(container<ContenutoMultimediale*>*, QWidget* = nullptr);
     ~aggiungi() = default;

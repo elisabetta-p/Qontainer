@@ -28,8 +28,10 @@ public:
 private slots:
     void eliminaElemento();
     void schiacciaElimina();
+    void schiacciaModifica();
 signals:
     void inviaEliminazione();
+    void inviaModifica(int, vector<ContenutoMultimediale*>);
 };
 
 #endif // RISULTATORICERCA_H

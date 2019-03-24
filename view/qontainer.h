@@ -10,6 +10,7 @@
 #include "../model/podcast.h"
 #include "../model/episodio.h"
 #include "../model/film.h"
+#include "modificaelementi.h"
 #include "risultatoeliminazione.h"
 #include <iostream>
 
@@ -32,7 +33,8 @@ public slots:
                          string,
                          unsigned short int);
     void mostraAggiuntaRiuscita();
-   void mostraEliminazioneRiuscita();
+    void mostraEliminazioneRiuscita();
+    void mostraModificaElementi(int, vector<ContenutoMultimediale*>);
 };
 
 #endif // QONTAINER_H

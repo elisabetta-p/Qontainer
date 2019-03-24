@@ -35,6 +35,7 @@ modificaelementi::modificaelementi(ContenutoMultimediale* m, QWidget* parent) : 
 
     connect(confermaModifica, SIGNAL(clicked()), this, SLOT(schiacciaModifica()));
     connect(this, SIGNAL(inviaModifica()), parent, SLOT(mostraModificaRiuscita()));
+
     connect (goBack, SIGNAL(clicked()), parent, SLOT(mostraMainWindow()));
 
     this->setLayout(layout);
@@ -90,5 +91,9 @@ void modificaelementi::caricaCampiDaModificare() {
         creaOpzione("Produttore:", QString::fromStdString(c->getProduttore()), 250, griglia, 10);
     }
 
+}
+
+void modificaelementi::schiacciaModifica() {
+    emit inviaModifica();
 }
 

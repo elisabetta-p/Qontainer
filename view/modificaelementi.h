@@ -22,16 +22,13 @@ private:
 public:
     modificaelementi(ContenutoMultimediale*, QWidget* = nullptr);
     ~modificaelementi() = default;
-/*
-public slots:
-    void modificaInput(int);
+
 private slots:
     void schiacciaModifica();
-    void modificaElemento();
-
+    //void modificaElemento();
 signals:
     void inviaModifica();
-*/
+
 };
 
 #endif // MODIFICAELEMENTI_H

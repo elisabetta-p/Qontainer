@@ -16,7 +16,11 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
     titoloFinestra->setScaledContents(true);
     titoloFinestra->setBackgroundRole(QPalette::Dark);
 
+<<<<<<< HEAD
     QPixmap logo(":/logo1.png");
+=======
+    QPixmap logo("view/logo1.png");
+>>>>>>> 745dce99254f9ed40053a5ec80a3ff505daa7596
     titoloFinestra->setPixmap(logo);
     /*
     titoloFinestra->setMinimumSize(this->width(), 50);

@@ -12,6 +12,7 @@
 #include "../model/film.h"
 #include "modificaelementi.h"
 #include "risultatoeliminazione.h"
+#include "risultatomodifica.h"
 #include <iostream>
 
 class qontainer: public QWidget
@@ -35,6 +36,7 @@ public slots:
     void mostraAggiuntaRiuscita();
     void mostraEliminazioneRiuscita();
     void mostraModificaElementi(ContenutoMultimediale*);
+    void mostraModificaRiuscita();
 };
 
 #endif // QONTAINER_H

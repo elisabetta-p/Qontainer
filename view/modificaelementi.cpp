@@ -20,9 +20,6 @@ modificaelementi::modificaelementi(ContenutoMultimediale* m, QWidget* parent) : 
 
     layout->addLayout(griglia);
 
-//    grigliaModificaAvanzata = new QGridLayout;
- //   layout->addLayout(grigliaModificaAvanzata);
-
     //aggiunta del bottone di conferma e del bottone torna indietro
 
     QPushButton* confermaModifica = new QPushButton(this);
@@ -36,7 +33,8 @@ modificaelementi::modificaelementi(ContenutoMultimediale* m, QWidget* parent) : 
     boxModifica->setSizeConstraint(QLayout::SetMinimumSize);
     layout->addLayout(boxModifica);
 
-
+    connect(confermaModifica, SIGNAL(clicked()), this, SLOT(schiacciaModifica()));
+    connect(this, SIGNAL(inviaModifica()), parent, SLOT(mostraModificaRiuscita()));
     connect (goBack, SIGNAL(clicked()), parent, SLOT(mostraMainWindow()));
 
     this->setLayout(layout);

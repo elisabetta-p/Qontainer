@@ -32,7 +32,8 @@ SOURCES += \
     view/risultatoricerca.cpp \
     view/risultatoaggiunta.cpp \
     view/risultatoeliminazione.cpp \
-    view/modificaelementi.cpp
+    view/modificaelementi.cpp \
+    view/risultatomodifica.cpp
 
 RESOURCES += qml.qrc
 
@@ -64,7 +65,8 @@ HEADERS += \
     view/risultatoricerca.h \
     view/risultatoaggiunta.h \
     view/risultatoeliminazione.h \
-    view/modificaelementi.h
+    view/modificaelementi.h \
+    view/risultatomodifica.h
 
 
 

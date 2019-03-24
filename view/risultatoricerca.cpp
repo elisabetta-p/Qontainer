@@ -76,7 +76,7 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
 
             QPushButton* modifica = new QPushButton();
             modifica->setText(QString("Modifica"));
-            modifica->setObjectName(QString::number(i+1));
+            modifica->setObjectName(QString::number(i));
 
             QPushButton* elimina = new QPushButton();
             elimina->setText(QString("Elimina"));
@@ -142,7 +142,7 @@ void risultatoricerca::schiacciaElimina(){
 void risultatoricerca::schiacciaModifica() {
     QPushButton* bottoneModifica = dynamic_cast<QPushButton*>(sender());
     if(bottoneModifica) {
-        int indiceContenutoDaModificare = bottoneModifica->objectName().toInt() - 1;
+        int indiceContenutoDaModificare = bottoneModifica->objectName().toInt();
         emit inviaModifica(indiceContenutoDaModificare, vettoreRisultati);
     }
 }

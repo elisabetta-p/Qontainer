@@ -59,14 +59,14 @@ void modificaelementi::creaOpzione(QString etichetta, QString placeholder, int l
 
 void modificaelementi::caricaCampiDaModificare() {
     creaOpzione("Titolo:", "Inserisci il titolo", 250, griglia, 1);
-    creaOpzione("Durata:", "Inserisci la durata in minuti:", 250, griglia, 2);
+    creaOpzione("Durata:", "Inserisci la durata in minuti", 250, griglia, 2);
     creaOpzione("Genere:", "Inserisci il genere", 250, griglia, 3);
     creaOpzione("Dimensione:", "Inserisci la dimensione in MB", 250, griglia, 4);
     creaOpzione("Valutazione:", "Inserisci la valutazione, da 0 a 10", 250, griglia, 5);
     creaOpzione("Autore:", "Inserisci l'autore", 250, griglia, 6);
     creaOpzione("Anno di uscita:", "Inserisci l'anno", 250, griglia, 7);
 
-    /*
+
     ContenutoMultimediale* checkFilm = dynamic_cast<film*>(vettRisultati[indice]);
     if (checkFilm) {
         creaOpzione("Risoluzione:", "Inserisci la risoluzione", 250, grigliaModificaAvanzata, 0);
@@ -91,6 +91,6 @@ void modificaelementi::caricaCampiDaModificare() {
         creaOpzione("Raccolta:", "Inserisci la raccolta", 250, grigliaModificaAvanzata, 1);
         creaOpzione("Ospite:", "Inserisci l'ospite", 250, grigliaModificaAvanzata, 2);
     }
-    */
+
 }
 

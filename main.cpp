@@ -11,8 +11,6 @@
 
 int main(int argc, char *argv[])
 {
-
-
     QApplication app(argc, argv);
     qontainer window;
     window.show();

@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ricercaavanzata.h"
 #include "aggiungi.h"
-
+#include <QImage>
 mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget* parent ) : QWidget (parent), cont(p_contenitore) {
 
     setFixedSize(600,600);
@@ -11,17 +11,26 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
     layout = new QVBoxLayout(this);
 
     //Creazione del titolo Qontainer
-    //QGroupBox* titoloGropuBox = new QGroupBox(this);
 
-    QLabel* titoloFinestra = new QLabel(this);
+    //QImage logo("logo.png");
+    QLabel* titoloFinestra = new QLabel();
+    titoloFinestra->setScaledContents(true);
+    titoloFinestra->setBackgroundRole(QPalette::Dark);
+
+    QPixmap logo("/logo.png");
+    titoloFinestra->setPixmap(logo);
+    /*
     titoloFinestra->setMinimumSize(this->width(), 50);
     titoloFinestra->setText(tr("Qontainer"));
     titoloFinestra->setFont(QFont("Times", 36, QFont::Bold));
     titoloFinestra->setAlignment((Qt::AlignHCenter));
     titoloFinestra->setStyleSheet("QLabel {color : #cc0066; }");
+    */
+    titoloFinestra->setPixmap(QPixmap("./logo.png"));
+
+    //titoloFinestra->setAlignment((Qt::AlignHCenter));
 
     layout->addWidget(titoloFinestra);
-
 
     QHBoxLayout* boxBottoni = new QHBoxLayout;
     QPushButton* ricerca = new QPushButton(this);

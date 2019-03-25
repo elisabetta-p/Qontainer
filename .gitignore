@@ -4,3 +4,9 @@ ProgettoP2.pro.user
 ProgettoP2.pro.user.becd88b.4.8-pre1
 ProgettoP2.pro.user
 compiling_error.txt
+*.o
+moc_*
+Makefile
+.DS_Store
+.qmake.stash
+qrc_qml.cpp

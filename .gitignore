@@ -10,3 +10,4 @@ Makefile
 .DS_Store
 .qmake.stash
 qrc_qml.cpp
+build.sh

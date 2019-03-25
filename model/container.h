@@ -39,6 +39,8 @@ public:
         iterator operator++(int); //operator++ postfisso
         iterator& operator--(); //operatore postfisso
         iterator operator--(int); //operatore prefisso
+        T& operator*() const;
+        nodo* operator->() const;
     };                          // !!!!!!!!! fine classe ITERATOR !!!!!!!!!
 
 
@@ -50,10 +52,12 @@ public:
     public:
         bool operator==(const_iterator const_it) const;
         bool operator!= (const_iterator const_it) const;
-        const_iterator& operator++() const; //operatore postfisso
-        const_iterator operator++(int) const; //operatore prefisso
-        const_iterator& operator--() const; //operatore postfisso
-        const_iterator operator--(int) const;//operatore prefisso
+        const_iterator& operator++() ; //operatore postfisso
+        const_iterator operator++(int) ; //operatore prefisso
+        const_iterator& operator--() ; //operatore postfisso
+        const_iterator operator--(int) ;//operatore prefisso
+        T& operator*();
+        nodo* operator->() const;
 
     };                          // !!!!!!!!! fine classe CONST_ITERATOR !!!!!!!!!
 
@@ -77,7 +81,7 @@ public:
 
     // Overloading di * e []
 
-    //T& operator*() const;
+
 
     T operator[] (const iterator& it) const;
     T operator[] (const const_iterator& const_it) const;
@@ -92,7 +96,10 @@ public:
 
     unsigned int size() const;
 
+    void save() const;
+
 };
+
 
 //definizioni di nodo
 template <typename T>
@@ -158,20 +165,20 @@ bool container<T>::const_iterator::operator!=(const_iterator const_it) const {
 }
 
 template <typename T>
-typename container<T>::const_iterator& container<T>::const_iterator::operator++() const {
+typename container<T>::const_iterator& container<T>::const_iterator::operator++()  {
     if (punt) punt = punt->next;
     return *this;
 }
 
 template <typename T>
-typename container<T>::const_iterator container<T>::const_iterator::operator++(int)  const {
+typename container<T>::const_iterator container<T>::const_iterator::operator++(int)  {
     iterator aux = *this;
     if (punt) punt = punt->next;
     return aux;
 }
 
 template <typename T>
-typename container<T>::const_iterator& container<T>::const_iterator::operator--() const {
+typename container<T>::const_iterator& container<T>::const_iterator::operator--()  {
     if (punt->prev)
         punt = punt->prev;
     else
@@ -180,7 +187,7 @@ typename container<T>::const_iterator& container<T>::const_iterator::operator--(
 }
 
 template <typename T>
-typename container<T>::const_iterator container<T>::const_iterator::operator--(int) const {
+typename container<T>::const_iterator container<T>::const_iterator::operator--(int)  {
     iterator aux;
     aux.punt = punt;
     if (punt->prev)
@@ -264,13 +271,29 @@ typename container<T>::const_iterator container<T>::end() const {
     aux.punt = nullptr;
     return aux;
 }
-/*
+
 //overloading di * e []
 template <typename T>
-T& container<T>::operator*() const {
-    return this->info;
+T& container<T>::iterator::operator*() const {
+    return  punt->info;
 }
-*/
+
+template <typename T>
+typename container<T>::nodo* container<T>::iterator::operator->() const {
+    return punt->info;
+}
+
+template <typename T>
+T& container<T>::const_iterator::operator*(){
+    return  punt->info;
+}
+
+template <typename T>
+typename container<T>::nodo* container<T>::const_iterator::operator->() const {
+    return punt->info;
+}
+
+
 template <typename T>
 T container<T>::operator[](const iterator& it) const {
     return (it.punt)->info;
@@ -346,6 +369,16 @@ unsigned int container<T>::size() const {
         return contatore;
     }
     else return 0;
+}
+
+
+template <typename T>
+void container<T>::save() const {
+    vector<string> aux;
+    for (auto it = begin(); it != end(); ++it) {
+        T tmp = *it;
+        std::cout << tmp->getAutore() << std::endl;
+    }
 }
 
 #endif // CONTAINER_H

@@ -29,6 +29,8 @@ qontainer::qontainer()  {
     contenitore.insert(s1);
     contenitore.insert(f5);
 
+    contenitore.save();
+
     mostraMainWindow();
 }
 

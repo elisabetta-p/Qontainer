@@ -11,6 +11,14 @@
 
 int main(int argc, char *argv[])
 {
+
+    database d = database("db.txt");
+    vector<string> s;
+    s.push_back("Film1, jfdkkm, 45");
+    s.push_back("Film2, ciao, 4");
+
+    d.save(s);
+
     QApplication app(argc, argv);
     qontainer window;
     window.show();

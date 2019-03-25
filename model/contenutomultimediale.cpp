@@ -64,3 +64,9 @@ string ContenutoMultimediale::getAutore() const {
 unsigned short int ContenutoMultimediale::getDataUscita() const {
     return dataUscita;
 }
+
+
+//serializzazione
+string ContenutoMultimediale::serializza() const {
+    return titolo + "," + std::to_string(durata) + "," + genere;
+}

@@ -18,3 +18,14 @@ void database::load() {
     }
 
 }
+
+void database::save(vector<string> content) {
+    std::ofstream file;
+    file.open(path, std::ios_base::app);
+
+    for(auto it = content.begin(); it < content.end(); ++it) {
+        file << *it << std::endl;
+    }
+}
+
+

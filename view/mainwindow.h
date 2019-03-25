@@ -15,6 +15,8 @@
 #include <QAction>
 #include <QScrollArea>
 #include <QTextBrowser>
+#include <QPalette>
+
 #include <QPixmap>
 #include "../model/container.h"
 #include "../model/film.h"

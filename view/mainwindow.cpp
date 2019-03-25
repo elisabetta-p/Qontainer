@@ -7,6 +7,8 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
     setFixedSize(600,600);
     setFocusPolicy(Qt::StrongFocus);
     setGeometry(0,0, 600,600);
+    QPalette pal = palette();
+    setBackgroundRole(QPalette::Light);
 
     layout = new QVBoxLayout(this);
 
@@ -14,11 +16,13 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
 
     QLabel* titoloFinestra = new QLabel();
     titoloFinestra->setScaledContents(true);
-    titoloFinestra->setBackgroundRole(QPalette::Dark);
+    //titoloFinestra->setBackgroundRole();
 
     // Fix the absolute path
-    QPixmap logo("/home/studente/Desktop/ProgettoP2/view/logo3.png");
+
+    QPixmap logo("view/logo3.png");
     titoloFinestra->setPixmap(logo);
+
     /*
     titoloFinestra->setMinimumSize(this->width(), 50);
     titoloFinestra->setText(tr("Qontainer"));

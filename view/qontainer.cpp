@@ -6,7 +6,7 @@ qontainer::qontainer()  {
     layoutQ = new QVBoxLayout;
     this->setLayout(layoutQ);
     this->setWindowTitle("Qontainer - Elisabetta Piombin");
-    mostraMainWindow();
+
 
     //genero il contenitore nel costruttore?
     ContenutoMultimediale* f1 = new film ("iron man 1", 126, "azione",1500.0,5,"Marvel", 0,1080,"Joss Whedon","MCU");
@@ -28,6 +28,8 @@ qontainer::qontainer()  {
     contenitore.insert(p1);
     contenitore.insert(s1);
     contenitore.insert(f5);
+
+    mostraMainWindow();
 }
 
 void qontainer::eliminaContenutoAttuale() {

@@ -57,16 +57,16 @@ void database::load(container<ContenutoMultimediale*>& contenitore) {
             values.erase(values.begin());
 
 
-            if(typeContenutoMultimediale == "C")
+            //if(typeContenutoMultimediale == "C")
                 //contenitore.insert(film::deserializza(values));
 
-            if(typeContenutoMultimediale == "E")
+            //if(typeContenutoMultimediale == "E")
                 //contenitore.insert(film::deserializza(values));
 
             if(typeContenutoMultimediale == "F")
                 contenitore.insert(film::deserializza(values));
 
-            if(typeContenutoMultimediale == "P")
+            //if(typeContenutoMultimediale == "P")
                 //contenitore.insert(film::deserializza(values));
 
         }

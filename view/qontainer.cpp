@@ -8,8 +8,8 @@ qontainer::qontainer()  {
     this->setWindowTitle("Qontainer - Elisabetta Piombin");
 
     db = new database("/Users/elisabetta/Desktop/ProgettoP2/db.cvs.txt");
-    db->load();
-);
+    db->load(contenitore);
+
 
     /*
     //genero il contenitore nel costruttore?

@@ -46,3 +46,15 @@ string episodio::getCanale() const {
 }
 
 
+episodio* episodio::deserializza(const vector<string> & values) {
+    return new episodio(values[0],
+                        std::stoul(values[1]),
+                        values[2],
+                        std::stod(values[3]),
+                        std::stoul(values[4]),
+                        values[5],
+                        std::stoul(values[6]),
+                        std::stoul(values[7]),
+                        values[8],
+                        values[9]);
+}

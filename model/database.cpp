@@ -3,6 +3,9 @@
 #include <sstream>
 #include <iostream>
 #include "film.h"
+#include "episodio.h"
+#include "podcast.h"
+#include "canzone.h"
 
 database::database(string s) : path(s) {}
 
@@ -49,7 +52,6 @@ void database::load(container<ContenutoMultimediale*>& contenitore) {
              *  E -> Episodio
              *  F -> Film
              *  P -> Podcast
-             *
              */
 
             // Elimino il carattere \n dalla prima stringa della riga
@@ -58,17 +60,17 @@ void database::load(container<ContenutoMultimediale*>& contenitore) {
 
 
 
-            //if(typeContenutoMultimediale == "C")
-                //contenitore.insert(film::deserializza(values));
+            if(typeContenutoMultimediale == "C")
+                contenitore.insert(canzone::deserializza(values));
 
-            //if(typeContenutoMultimediale == "E")
-                //contenitore.insert(film::deserializza(values));
+            if(typeContenutoMultimediale == "E")
+                contenitore.insert(episodio::deserializza(values));
 
             if(typeContenutoMultimediale == "F")
                 contenitore.insert(film::deserializza(values));
 
-            //if(typeContenutoMultimediale == "P")
-                //contenitore.insert(film::deserializza(values));
+            if(typeContenutoMultimediale == "P")
+                contenitore.insert(podcast::deserializza(values));
 
         }
 

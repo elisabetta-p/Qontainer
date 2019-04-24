@@ -27,3 +27,17 @@ void podcast::riproduci() const {
 void podcast::pausa() const {
     std::cout << "Hai messo il podcast " <<getTitolo() << " della raccolta" << getRaccolta() << "in pausa";
 }
+
+podcast* podcast::deserializza(const vector<string> & values) {
+    return new podcast(values[0],
+                    std::stoul(values[1]),
+                    values[2],
+                    std::stod(values[3]),
+                    std::stoul(values[4]),
+                    values[5],
+                    std::stoul(values[6]),
+                    std::stoul(values[7]),
+                    values[8],
+                    values[9]
+                    );
+}

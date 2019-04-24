@@ -19,6 +19,8 @@ public:
     string getSerie() const;
     void setCanale(string);
     string getCanale() const;
+
+    static episodio* deserializza(const vector<string>&);
 };
 
 #endif // EPISODIO_H

@@ -31,7 +31,19 @@ void canzone::pausa() const {
     std::cout << "Hai messo la canzone " <<getTitolo() << " in pausa";
 }
 
-
+canzone* canzone::deserializza (const vector<string>& values) {
+    return new canzone(values[0],
+                    std::stoul(values[1]),
+                    values[2],
+                    std::stod(values[3]),
+                    std::stoul(values[4]),
+                    values[5],
+                    std::stoul(values[6]),
+                    std::stoul(values[7]),
+                    values[8],
+                    values[9]
+                    );
+}
 /*canzone* canzone::create(std::istream istr) const {
     return new canzone(istr);
 }*/

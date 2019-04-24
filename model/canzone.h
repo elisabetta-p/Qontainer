@@ -24,6 +24,7 @@ public:
     /*void serialize(std::ostream&) const;
     canzone* create(std::istream) const;
     canzone* unserialize(std::istream) const; */
+    static canzone* deserializza (const vector<string>&);
 };
 
 #endif // CANZONE_H

@@ -49,6 +49,11 @@ string film::getRegista() const{
     return regista;
 }
 
+
+string film::serializza(char delimiter) const {
+    return "F|" + video::serializza(delimiter) + delimiter + regista + delimiter + saga + ";";
+}
+
 film* film::deserializza(const vector<string>& values) {
 
     return new film(values[0],

@@ -67,6 +67,12 @@ unsigned short int ContenutoMultimediale::getDataUscita() const {
 
 
 //serializzazione
-string ContenutoMultimediale::serializza() const {
-    return titolo + "," + std::to_string(durata) + "," + genere;
+string ContenutoMultimediale::serializza(char delimiter) const {
+
+    string strDimensione = std::to_string(dimensione);
+    std::replace(strDimensione.begin(), strDimensione.end(), ',', '.');
+
+    return titolo + delimiter + std::to_string(durata) + delimiter + genere + delimiter +
+           strDimensione + delimiter + std::to_string(valutazione) + delimiter +
+           autore + delimiter + std::to_string(dataUscita);
 }

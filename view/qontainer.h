@@ -15,6 +15,7 @@
 #include "risultatoeliminazione.h"
 #include "risultatomodifica.h"
 #include <iostream>
+#include <QCloseEvent>
 
 class qontainer: public QWidget
 {
@@ -25,6 +26,10 @@ private:
     void eliminaContenutoAttuale();
     container<ContenutoMultimediale*> contenitore;
     database* db;
+
+protected:
+    // Override del metodo closeEvent di QWidget
+    void closeEvent(QCloseEvent*) override;
 public:
     qontainer();
     vector<ContenutoMultimediale*> vettoreRisultatiRicerca;

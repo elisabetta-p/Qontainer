@@ -11,10 +11,11 @@ using std::vector;
 class database {
 private:
     string path;
+    char delimiter;
 public:
-    database(string ="0");
+    database(string = "0", char = ',');
     void load(container<ContenutoMultimediale*>&);
-    void save(vector<string>);
+    void save(container<ContenutoMultimediale*>&);
 };
 
 #endif // DATABASE_H

@@ -16,6 +16,8 @@ public:
     void setRisoluzione(unsigned int);
     unsigned int getRisoluzione() const;
 
+    string serializza(char) const;
+
 
 };
 

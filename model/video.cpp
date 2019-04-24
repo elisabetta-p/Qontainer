@@ -15,3 +15,7 @@ void video::setRisoluzione(unsigned int ris) {
 unsigned int video::getRisoluzione() const {
     return risoluzione;
 }
+
+string video::serializza(char delimiter) const {
+    return ContenutoMultimediale::serializza(delimiter) + delimiter + std::to_string(risoluzione);
+}

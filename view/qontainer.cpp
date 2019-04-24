@@ -1,18 +1,19 @@
 #include "qontainer.h"
 #include <iostream>
 
+// Implementazione metodo protetto closeEvent
+void qontainer::closeEvent(QCloseEvent* event) {
+    db->save(contenitore);
+    event->accept();
+}
 
 qontainer::qontainer()  {
     layoutQ = new QVBoxLayout;
     this->setLayout(layoutQ);
     this->setWindowTitle("Qontainer - Elisabetta Piombin");
 
-    db = new database("/Users/elisabetta/Desktop/ProgettoP2/db.cvs.txt");
+    db = new database("/Users/elisabetta/Desktop/ProgettoP2/db.cvs", '|');
     db->load(contenitore);
-
-
-
-
     /*
     //genero il contenitore nel costruttore?
     ContenutoMultimediale* f1 = new film ("iron man 1", 126, "azione",1500.0,5,"Marvel", 0,1080,"Joss Whedon","MCU");

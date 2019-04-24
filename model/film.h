@@ -26,8 +26,7 @@ public:
     void setRegista(string);
     string getRegista() const;
 
-    //virtual void serialize(std::ostream) const;
-    //virtual film* create(std::istream) const;
+    virtual string serializza(char) const;
     static film* deserializza(const vector<string>&);
 
     //friend std::istream& operator>>(std::istream&, film&);

@@ -21,8 +21,8 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
     qontainer window;
-   // window.show();
-   // return app.exec();
+    window.show();
+    return app.exec();
 
     /*
     container<ContenutoMultimediale*> contenitore;

@@ -57,6 +57,7 @@ void database::load(container<ContenutoMultimediale*>& contenitore) {
             values.erase(values.begin());
 
 
+
             //if(typeContenutoMultimediale == "C")
                 //contenitore.insert(film::deserializza(values));
 

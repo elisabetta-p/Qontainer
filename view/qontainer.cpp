@@ -11,6 +11,8 @@ qontainer::qontainer()  {
     db->load(contenitore);
 
 
+
+
     /*
     //genero il contenitore nel costruttore?
     ContenutoMultimediale* f1 = new film ("iron man 1", 126, "azione",1500.0,5,"Marvel", 0,1080,"Joss Whedon","MCU");

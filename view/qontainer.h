@@ -10,6 +10,7 @@
 #include "../model/podcast.h"
 #include "../model/episodio.h"
 #include "../model/film.h"
+#include "../model/database.h"
 #include "modificaelementi.h"
 #include "risultatoeliminazione.h"
 #include "risultatomodifica.h"
@@ -23,6 +24,7 @@ private:
     QVBoxLayout* layoutQ;
     void eliminaContenutoAttuale();
     container<ContenutoMultimediale*> contenitore;
+    database* db;
 public:
     qontainer();
     vector<ContenutoMultimediale*> vettoreRisultatiRicerca;

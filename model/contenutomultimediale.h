@@ -3,9 +3,10 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 
-
+using std::vector;
 using std::string;
 using std::cout;
 using std::endl;

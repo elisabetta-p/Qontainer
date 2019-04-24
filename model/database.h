@@ -2,6 +2,9 @@
 #define DATABASE_H
 #include <string>
 #include <vector>
+#include "container.h"
+#include "contenutomultimediale.h"
+
 using std::string;
 using std::vector;
 
@@ -10,7 +13,7 @@ private:
     string path;
 public:
     database(string ="0");
-    void load();
+    void load(container<ContenutoMultimediale*>&);
     void save(vector<string>);
 };
 

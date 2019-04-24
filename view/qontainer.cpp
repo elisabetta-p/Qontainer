@@ -7,7 +7,11 @@ qontainer::qontainer()  {
     this->setLayout(layoutQ);
     this->setWindowTitle("Qontainer - Elisabetta Piombin");
 
+    db = new database("/Users/elisabetta/Desktop/ProgettoP2/db.cvs.txt");
+    db->load();
+);
 
+    /*
     //genero il contenitore nel costruttore?
     ContenutoMultimediale* f1 = new film ("iron man 1", 126, "azione",1500.0,5,"Marvel", 0,1080,"Joss Whedon","MCU");
     ContenutoMultimediale* f2 = new film ("iron man 3", 127, "azione", 4585.5, 9, "Marvel", 0, 1080, "Tizio", "MCU");
@@ -30,7 +34,7 @@ qontainer::qontainer()  {
     contenitore.insert(f5);
 
     //contenitore.save();
-
+    */
     mostraMainWindow();
 }
 

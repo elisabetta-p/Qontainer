@@ -23,7 +23,7 @@ private:
     QFrame* inner;
     int elementoDaEliminare;
 public:
-    risultatoricerca(container<ContenutoMultimediale*>*, vector<ContenutoMultimediale*>, QWidget* = nullptr);
+    risultatoricerca(container<ContenutoMultimediale*>*, vector<ContenutoMultimediale*>&, QWidget* = nullptr);
     ~risultatoricerca() = default;
 private slots:
     void eliminaElemento();

@@ -45,6 +45,9 @@ string episodio::getCanale() const {
     return canale;
 }
 
+string episodio::serializza(char delimiter) const {
+    return "E|" + video::serializza(delimiter) + delimiter + serie + delimiter + canale + ";";
+}
 
 episodio* episodio::deserializza(const vector<string> & values) {
     return new episodio(values[0],

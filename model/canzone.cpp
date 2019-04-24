@@ -31,6 +31,10 @@ void canzone::pausa() const {
     std::cout << "Hai messo la canzone " <<getTitolo() << " in pausa";
 }
 
+string canzone::serializza(char delimiter) const {
+    return "C|" + audio::serializza(delimiter) + delimiter + album + delimiter + produttore + ";";
+}
+
 canzone* canzone::deserializza (const vector<string>& values) {
     return new canzone(values[0],
                     std::stoul(values[1]),

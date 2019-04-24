@@ -28,6 +28,10 @@ void podcast::pausa() const {
     std::cout << "Hai messo il podcast " <<getTitolo() << " della raccolta" << getRaccolta() << "in pausa";
 }
 
+string podcast::serializza(char delimiter) const {
+    return "P|" + audio::serializza(delimiter) + delimiter + raccolta + delimiter + ospite + ";";
+}
+
 podcast* podcast::deserializza(const vector<string> & values) {
     return new podcast(values[0],
                     std::stoul(values[1]),

@@ -13,6 +13,7 @@ public:
     audio* create(std::istream) const;
     unsigned short int getQualita() const;
     void setQualita(unsigned short int);
+    string serializza(char) const;
 };
 
 #endif // AUDIO_H

@@ -20,7 +20,7 @@ public:
     string getRaccolta() const;
     void setOspite(string);
     string getOspite() const;
-
+    string serializza(char) const;
     static podcast* deserializza(const vector<string>&);
 };
 

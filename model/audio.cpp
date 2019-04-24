@@ -15,3 +15,6 @@ bool audio::operator==(const audio& file) const {
     return (ContenutoMultimediale::operator==(file) && qualita == file.qualita);
 }
 
+string audio::serializza(char delimiter) const {
+    return ContenutoMultimediale::serializza(delimiter) + delimiter + std::to_string(qualita);
+}

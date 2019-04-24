@@ -95,9 +95,6 @@ public:
     // ALTRI METODI UTILI
 
     unsigned int size() const;
-
-    //void save() const;
-
 };
 
 
@@ -371,16 +368,6 @@ unsigned int container<T>::size() const {
     else return 0;
 }
 
-/*
-template <typename T>
-void container<T>::save() const {
-    vector<string> aux;
-    for (auto it = begin(); it != end(); ++it) {
-        T tmp = *it;
-        std::cout << tmp->getAutore() << std::endl;
-    }
-}
-*/
 #endif // CONTAINER_H
 
 

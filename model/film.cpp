@@ -48,13 +48,63 @@ void film::setRegista(string r) {
 string film::getRegista() const{
     return regista;
 }
-/*
-container<film*> film::deserializza(const std::ifstream& file) {
+
+container<film*> film::deserializza(std::ifstream& file) {
+
     container<film*> contenitore;
     //std::ifstream file;
     //file.open(path, std::ios::in);
 
     if (file.is_open()) {
+
+        string currentLine;
+
+        // Ignora la prima riga d'intestazione
+        std::getline(file, currentLine, ';');
+
+        while(std::getline(file, currentLine, ';')) {
+            std::stringstream buffer(currentLine);
+
+            std::vector<string> values;
+            string currentValue;
+
+            while(std::getline(buffer, currentValue, ','))
+                values.push_back(currentValue);
+
+
+            contenitore.insert(new film(values[0].substr(1, string::npos),
+                                        std::stoul(values[1]),
+                                        values[2],
+                                        std::stod(values[3]),
+                                        std::stoul(values[4]),
+                                        values[5],
+                                        std::stoul(values[6]),
+                                        std::stoul(values[7]),
+                                        values[8],
+                                        values[9]
+                                   ));
+            /*
+            std::cout << "Titolo " << values[0].substr(1, string::npos) << std::endl;
+            std::cout << "Durata " << std::stoul(values[1]) << std::endl;
+            std::cout << "Genere " << values[2] << std::endl;
+            std::cout << "Dimensione " << std::stod(values[3]) << std::endl;
+            std::cout << "Valutazione " << std::stoul(values[4]) << std::endl;
+            std::cout << "Autore " << values[5] << std::endl;
+            std::cout << "Data uscita " << std::stoul(values[6]) << std::endl;
+            std::cout << "Risoluzione " << std::stoul(values[7]) << std::endl;
+            std::cout << "Regista " << values[8] << std::endl;
+            std::cout << "Saga " << values[9] << std::endl << std::endl << std::endl;
+            */
+
+
+
+
+        }
+
+    for(auto it = contenitore.begin(); it != contenitore.end(); ++it) {
+        std::cout << (*it)->getTitolo() << std::endl;
+    }
+        /*
         while (!file.eof()){
             string riga="";
             //getline(file, riga, ';');
@@ -95,8 +145,8 @@ container<film*> film::deserializza(const std::ifstream& file) {
             //catch(std::invalid_argument e){ std::cout << e.what();}
 
         }
-
+*/
     }
     return contenitore;
 }
-*/
+

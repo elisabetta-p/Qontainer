@@ -28,7 +28,7 @@ public:
 
     //virtual void serialize(std::ostream) const;
     //virtual film* create(std::istream) const;
-    //static container<film*> deserializza(const std::ifstream&);
+    static container<film*> deserializza(std::ifstream&);
 
     //friend std::istream& operator>>(std::istream&, film&);
 

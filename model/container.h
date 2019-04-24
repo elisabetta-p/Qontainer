@@ -96,7 +96,7 @@ public:
 
     unsigned int size() const;
 
-    void save() const;
+    //void save() const;
 
 };
 
@@ -282,12 +282,12 @@ template <typename T>
 typename container<T>::nodo* container<T>::iterator::operator->() const {
     return punt->info;
 }
-
+/*
 template <typename T>
 T& container<T>::const_iterator::operator*(){
     return  punt->info;
 }
-
+*/
 template <typename T>
 typename container<T>::nodo* container<T>::const_iterator::operator->() const {
     return punt->info;
@@ -371,7 +371,7 @@ unsigned int container<T>::size() const {
     else return 0;
 }
 
-
+/*
 template <typename T>
 void container<T>::save() const {
     vector<string> aux;
@@ -380,7 +380,7 @@ void container<T>::save() const {
         std::cout << tmp->getAutore() << std::endl;
     }
 }
-
+*/
 #endif // CONTAINER_H
 
 

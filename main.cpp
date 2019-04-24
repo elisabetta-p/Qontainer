@@ -12,17 +12,17 @@
 int main(int argc, char *argv[])
 {
 
-    database d = database("db.txt");
+    //database d = database("db.txt");
     vector<string> s;
     s.push_back("Film1, jfdkkm, 45");
     s.push_back("Film2, ciao, 4");
 
-    d.save(s);
+    //d.save(s);
 
     QApplication app(argc, argv);
     qontainer window;
-    window.show();
-    return app.exec();
+   // window.show();
+   // return app.exec();
 
     /*
     container<ContenutoMultimediale*> contenitore;
@@ -47,20 +47,16 @@ int main(int argc, char *argv[])
         for(; it != contenitore.end(); it++) {
             std::cout << "x " << (contenitore[it])->getAutore() << std::endl;
         }
-    */
-    /*
+
         std::cout << contenitore.size() << std::endl;
         contenitore.remove(pf);
         std::cout << contenitore.size() << std::endl;
 
         //container<ContenutoMultimediale*> co = container<ContenutoMultimediale*>(contenitore);
-
+     */
     
-    database d = database("/Users/elisabetta/Desktop/ProgettoP2/inserimento_dati.txt");
+    database d = database("/Users/elisabetta/Desktop/ProgettoP2/inserimento_film.txt");
     d.load();
-    std::string ciao = "44";
-    unsigned short int x = static_cast<unsigned short int>(std::stoul(ciao));
-    film::deserializza("/Users/elisabetta/Desktop/ProgettoP2/inserimento_dati.txt");
-    */
+    //film::deserializza("/Users/elisabetta/Desktop/ProgettoP2/inserimento_dati.txt");
 
 }

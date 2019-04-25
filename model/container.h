@@ -8,7 +8,6 @@ using std::vector;
 
 template <class T>
 class container {
-    friend class iteratore;
 private:
 
     class nodo {                // !!!!!!!!! inizio classe NODO !!!!!!!!!
@@ -277,17 +276,17 @@ T& container<T>::iterator::operator*() const {
 
 template <typename T>
 typename container<T>::nodo* container<T>::iterator::operator->() const {
-    return punt->info;
+    return punt;
 }
-/*
+
 template <typename T>
 T& container<T>::const_iterator::operator*(){
     return  punt->info;
 }
-*/
+
 template <typename T>
 typename container<T>::nodo* container<T>::const_iterator::operator->() const {
-    return punt->info;
+    return punt;
 }
 
 
@@ -305,37 +304,34 @@ T container<T>::operator[](const const_iterator& const_it) const {
 template <typename T>
 void container<T>::insert(const T contenuto) {
     first = new nodo(contenuto, nullptr, first);
-
     if(first->next)
         first->next->prev = first;
-
-    std::cout << "Il contenuto e' stato inserito!" << std::endl;
 }
 
 
 template <typename T>
 void container<T>::remove(T contenuto) {
-    nodo* n = first;
+    nodo* n = first;    
     while (n && !(n->info == contenuto)) {
         n = n->next;
     }
-
-    if (n) {
-        if (!n->prev) {
-            first = n -> next;
-            first -> prev = nullptr;
+    if(n) {
+        //si deve eliminare il primo nodo
+        if(!n->prev) {
+          first = n->next;
+          // Esiste il secondo nodo del container
+          if(first)
+            first->prev = nullptr;
         }
-        else if(!n->next){
-            n -> prev -> next = nullptr;
-        }
+        //si deve eliminare un nodo in mezzo alla lista o l'ultimo
         else {
-            n -> prev -> next = n -> next;
-            n -> next -> prev = n -> prev;
+          n->prev->next = n->next;
+          //esiste il nodo successivo a quello da eliminare 
+          if(n->next)
+            n->next->prev = n->prev;
         }
         delete n;
-
-    }
-
+  }
 }
 
 template <typename T>
@@ -346,7 +342,6 @@ vector<T> container<T>::search(T contenuto) const {
         if ( (n->info->getTitolo().find(contenuto->getTitolo())!=std::string::npos) &&
              (n->info->getAutore().find(contenuto->getAutore())!=std::string::npos) &&
              (n->info->getDataUscita() == contenuto->getDataUscita() || contenuto->getDataUscita() == 0) )/*contenuto->getTitolo() && n->info->getAutore() >= contenuto->getAutore() && n->info->getDataUscita() == contenuto->getDataUscita()*/ {
-            std::cout << "contenuto trovato" << std::endl;
             aux.push_back(n->info);
         }
         n = n->next;

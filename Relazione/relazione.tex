@@ -9,7 +9,11 @@
 \usepackage{tabularx}
 \inputencoding{utf8}
 \usepackage{fancyhdr}
+\usepackage{graphicx}
 \pagestyle{fancy}
+\renewcommand{\topfraction}{.9}
+\renewcommand{\bottomfraction}{.9}
+\renewcommand{\textfraction}{.1}
 \fancyhf{}
 \lfoot{Qontainer - Elisabetta Piombin - 1142189}
 
@@ -20,8 +24,9 @@
 \date{}
 
 \maketitle
-
+\clearpage
 \tableofcontents
+\clearpage\mbox{}
 
 \section{Abstract}
 \textbf{Qontainer} è un progetto realizzzato al fine di fornire un contenitore che gestisca una libreria di contenuti multimediali: file audio e file video, che si dividono a loro volta in canzoni, podcast, serie tv e film. \\
@@ -41,7 +46,11 @@ La classe base astratta da cui deriva tutta la gerarchia è \texttt{ContenutoMul
 Da \texttt{ContenutoMultimediale} derivano immediatamente altre due classi: \texttt{audio} e \texttt{video}, che sono le due macrocategorie di appartenenza dei file che vengono memorizzati nella libreria. \\
 Da \texttt{video} derivano due classi: \texttt{film} e \texttt{episodio}, mentre da \texttt{audio} derivano altre due classi, \texttt{podcast} e \texttt{canzone}. \\
 Non si verifica la situazione di ereditarità multipla. \\
-
+\begin{figure}[!htb]
+	\center{\includegraphics[width=\textwidth]
+		{uml.jpg}}
+	\caption{\label{fig:my-label} Diagramma delle classi del modello}
+\end{figure}
 
 \section{Descrizione delle chiamate polimorfe}
 Le chiamate polimorfe vengono pesantemente utilizzate nelle operazioni di modifica, rimozione, ricerca e aggiunta degli elementi nel contenitore, in quanto il contenitore viene istanziato a \texttt{<ContenutoMultimediale*>}, e tramite \textit{downcasting} (via \texttt{dynamic\_cast}) effettuato al Tipo desiderato, si eseguono le operazioni necessarie sui tipi.\\

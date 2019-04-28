@@ -10,7 +10,6 @@ public:
     audio (string = "nd", string = "nd", unsigned short int = 0);
     bool operator==(const audio&) const;
     virtual ~audio() = default;
-    audio* create(std::istream) const;
     unsigned short int getQualita() const;
     void setQualita(unsigned short int);
     string serializza(char) const;

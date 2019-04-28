@@ -20,10 +20,7 @@ public:
     string getAlbum() const;
     void setProduttore(string);
     string getProduttore() const;
-
-    /*void serialize(std::ostream&) const;
-    canzone* create(std::istream) const;
-    canzone* unserialize(std::istream) const; */
+    
     string serializza(char) const;
     static canzone* deserializza (const vector<string>&);
 };

@@ -46,7 +46,7 @@ public:
 
     //serializzazione/deserializzazione
     virtual string serializza(char) const; //questa scrive su file
-     ContenutoMultimediale* create(std::istream) const; //questa crea l'oggetto
+    ContenutoMultimediale* create(std::istream) const; //questa crea l'oggetto
 };
 
 #endif // CONTENUTOMULTIMEDIALE_H

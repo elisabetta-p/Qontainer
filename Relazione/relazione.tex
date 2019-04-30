@@ -8,6 +8,7 @@
 \usepackage[english, italian]{babel}
 \usepackage{tabularx}
 \inputencoding{utf8}
+\usepackage{float}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
 \pagestyle{fancy}
@@ -39,16 +40,19 @@ Per farlo, la classe templatizzata \texttt{container} a sua volta fa uso di altr
 Vista l'assenza di puntatori ad altre classi nella gerarchia, è stata ritenuta superflua l'implementazione di una classe per un eventuale \textit{smart pointer}.\\
 Ho scelto di implementare il contenitore come una lista linkata composta da nodi perché offro la possibilità di rimuovere contenuti all'interno della libreria in posizioni arbitrarie, e questo mi porta alla necessità di scegliere l'implementazione sotto forma di lista, che rende tale operazione di rimozione più efficiente (viene operata in tempo costante) rispetto alla scelta di implementare tale contenitore come un vettore di elementi.
 
+
 \section{Compilazione ed esecuzione} 
 
 \section{Descrizione della gerarchia di classi}
+
 La classe base astratta da cui deriva tutta la gerarchia è \texttt{ContenutoMultimediale}, che verrà poi concretizzata tramite sue classi derivate. I metodi virtuali sono \texttt{riproduci()}, \texttt{pausa()}, \texttt{operator==} e il relativo distruttore; \texttt{riproduci()} e \texttt{pausa()} sono anche puri, poiché la loro implementazione è assegnata alle classi derivate. \\
 Da \texttt{ContenutoMultimediale} derivano immediatamente altre due classi: \texttt{audio} e \texttt{video}, che sono le due macrocategorie di appartenenza dei file che vengono memorizzati nella libreria. \\
 Da \texttt{video} derivano due classi: \texttt{film} e \texttt{episodio}, mentre da \texttt{audio} derivano altre due classi, \texttt{podcast} e \texttt{canzone}. \\
 Non si verifica la situazione di ereditarità multipla. \\
-\begin{figure}[!htb]
-	\center{\includegraphics[width=\textwidth]
-		{uml.jpg}}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{uml.jpg}
+	\end{center}
 	\caption{\label{fig:my-label} Diagramma delle classi del modello}
 \end{figure}
 

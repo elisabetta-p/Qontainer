@@ -34,6 +34,7 @@ private:
     QVBoxLayout* listaCantanti, *listaPodcast, *listaSerie, *listaFilm;
     QTextBrowser* areaCantanti, *areaPodcast, *areaSerie, *areaFilm;
     container<ContenutoMultimediale*>* cont;
+    QLabel* lib;
 public:
     mainwindow(container<ContenutoMultimediale*>*, QWidget* = nullptr);
     ~mainwindow() = default;

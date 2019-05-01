@@ -47,7 +47,7 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
     layout->addLayout(boxBottoni);
 
     //etichetta "la tua libreria"
-    QLabel* lib = new QLabel;
+    lib = new QLabel;
     lib->setMargin(10);
     lib->setText(tr("La tua libreria:"));
     lib->setFont(QFont("Times", 24));

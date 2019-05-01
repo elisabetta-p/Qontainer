@@ -1,8 +1,14 @@
 .QPushButton {
 	background-color: white;
-	border-style: 2px solid black;
+	border: none;
+	width: 220%;
 }
 
-mainwindow {
-	background-color: pink;
+.QPushButton:hover {
+	background-color: #ededed;
+	border: 1px solid black;
+}
+
+.QTextBrowser {
+	border:none;
 }

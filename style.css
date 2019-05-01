@@ -1,0 +1,8 @@
+.QPushButton {
+	background-color: white;
+	border-style: 2px solid black;
+}
+
+mainwindow {
+	background-color: pink;
+}

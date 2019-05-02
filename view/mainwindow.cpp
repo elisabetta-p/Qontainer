@@ -11,6 +11,7 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
     setBackgroundRole(QPalette::Light);
 
     layout = new QVBoxLayout(this);
+    layout->setObjectName("layout");
 
     //Creazione del titolo Qontainer
 
@@ -47,7 +48,9 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
     layout->addLayout(boxBottoni);
 
     //etichetta "la tua libreria"
+
     lib = new QLabel;
+    lib->setObjectName("lib");
     lib->setMargin(10);
     lib->setText(tr("La tua libreria:"));
     lib->setFont(QFont("Times", 24));

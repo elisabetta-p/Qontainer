@@ -28,7 +28,7 @@ risultatoaggiunta::risultatoaggiunta(QWidget* parent) : QWidget(parent) {
 
     //bottoni per tornare alla pagina di aggiunta contenuti, oppure per tornare alla schermata principale
     QPushButton* tornaAggiungi = new QPushButton(this);
-    tornaAggiungi->setText("Ritorna alla pagina di aggiunta contenuti");
+    tornaAggiungi->setText("Ritorna alla pagina di  \n aggiunta contenuti");
     QPushButton* tornaMainWindow = new QPushButton(this);
     tornaMainWindow->setText("Torna alla pagina principale");
 

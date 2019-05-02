@@ -1,14 +1,20 @@
 .QPushButton {
 	background-color: white;
 	border: none;
-	width: 220%;
+	width: 250%;
 }
 
 .QPushButton:hover {
+	/*background-color: #ededed;*/
 	background-color: #ededed;
-	border: 1px solid black;
+	border: 1px solid #d8d8d8;
 }
 
 .QTextBrowser {
 	border:none;
+}
+
+QVBoxLayout#layout {
+	text-align: center;
+	background-color: black;
 }

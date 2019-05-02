@@ -119,7 +119,7 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
 
     //bottoni per tornare alla ricerca, oppure per tornare alla schermata principale
     QPushButton* tornaRicercaAvanzata = new QPushButton(this);
-    tornaRicercaAvanzata->setText("Ritorna alla pagina di ricerca avanzata");
+    tornaRicercaAvanzata->setText("Ritorna alla pagina  \n di ricerca avanzata");
     QPushButton* tornaMainWindow = new QPushButton(this);
     tornaMainWindow->setText("Torna alla pagina principale");
 

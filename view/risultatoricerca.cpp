@@ -111,10 +111,11 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
 
     if (vettoreRisultati.empty() == true){
         QLabel* messaggio = new QLabel(this);
+        messaggio->setFont(QFont("Times", 18));
+        messaggio->setStyleSheet("QLabel{color:#3f1b35;}");
         messaggio->setText(QString("Contenuto non presente nella libreria"));
         messaggio->setAlignment(Qt::AlignCenter);
-        layoutOrizzontale->addWidget(messaggio, 0, 0, Qt::AlignCenter);
-        layoutVerticale->addLayout(layoutOrizzontale);
+        layoutVerticale->addWidget(messaggio);
     }
 
     //bottoni per tornare alla ricerca, oppure per tornare alla schermata principale

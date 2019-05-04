@@ -68,4 +68,3 @@ film* film::deserializza(const vector<string>& values) {
                     values[9]
                     );
 }
-

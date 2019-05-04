@@ -1,7 +1,7 @@
 .QPushButton {
 	background-color: white;
 	border: none;
-	width: 250%;
+	font-size: 14px;
 }
 
 .QPushButton:hover {
@@ -14,7 +14,8 @@
 	border:none;
 }
 
-QVBoxLayout#layout {
+QLabel#lib {
 	text-align: center;
-	background-color: black;
+	margin-left: auto;
+	margin-right: auto;
 }

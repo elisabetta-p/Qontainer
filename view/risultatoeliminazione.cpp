@@ -13,14 +13,14 @@ risultatoeliminazione::risultatoeliminazione(QWidget* parent) : QWidget(parent) 
     titoloFinestra->setText(tr("Conferma eliminazione"));
     titoloFinestra->setFont(QFont("Times", 36, QFont::Bold));
     titoloFinestra->setAlignment(Qt::AlignHCenter);
-    titoloFinestra->setStyleSheet("QLabel {color : #cc0066; }");
+    titoloFinestra->setStyleSheet("QLabel {color : #560f32; }");
 
     layout->addWidget(titoloFinestra);
 
     QLabel* messaggioDiConferma = new QLabel(this);
     messaggioDiConferma->setFont(QFont("Times", 18));
     messaggioDiConferma->setText("Il contenuto e' stato eliminato con successo!");
-    messaggioDiConferma->setStyleSheet("QLabel{color:#660029;}");
+    messaggioDiConferma->setStyleSheet("QLabel{color:#3f1b35;}");
     messaggioDiConferma->setAlignment(Qt::AlignHCenter);
     layout->addWidget(messaggioDiConferma);
 

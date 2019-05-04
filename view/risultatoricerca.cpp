@@ -15,7 +15,7 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
     titoloFinestra->setText(tr("Risultato ricerca"));
     titoloFinestra->setFont(QFont("Times", 36, QFont::Bold));
     titoloFinestra->setAlignment(Qt::AlignHCenter);
-    titoloFinestra->setStyleSheet("QLabel {color : #cc0066; }");
+    titoloFinestra->setStyleSheet("QLabel {color : #560f32; }");
 
     layoutVerticale->addWidget(titoloFinestra);
     layoutOrizzontale=new QGridLayout;
@@ -65,10 +65,10 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
             layoutOrizzontale->addWidget(labelAutore, 0, 1, Qt::AlignCenter);
             layoutOrizzontale->addWidget(labelAnno, 0, 2, Qt::AlignCenter);
             layoutOrizzontale->addWidget(labelTipo, 0, 3, Qt::AlignCenter);
-            labelTitolo->setStyleSheet("QLabel {color : #cc0066; }");
-            labelAnno->setStyleSheet("QLabel {color : #cc0066; }");
-            labelTipo->setStyleSheet("QLabel {color : #cc0066; }");
-            labelAutore->setStyleSheet("QLabel {color : #cc0066; }");
+            labelTitolo->setStyleSheet("QLabel {color : #560f32; }");
+            labelAnno->setStyleSheet("QLabel {color : #560f32; }");
+            labelTipo->setStyleSheet("QLabel {color : #560f32; }");
+            labelAutore->setStyleSheet("QLabel {color : #560f32; }");
             labelTitolo->setFont(QFont("Times", 16, QFont::StyleItalic));
             labelAutore->setFont(QFont("Times", 16, QFont::StyleItalic));
             labelAnno->setFont(QFont("Times", 16, QFont::StyleItalic));
@@ -109,7 +109,7 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
 
     contenitoreRisultati->setLayout(layoutOrizzontale);
 
-    if (vettoreRisultati.empty()){
+    if (vettoreRisultati.empty() == true){
         QLabel* messaggio = new QLabel(this);
         messaggio->setText(QString("Contenuto non presente nella libreria"));
         messaggio->setAlignment(Qt::AlignCenter);

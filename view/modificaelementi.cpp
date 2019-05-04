@@ -12,7 +12,7 @@ modificaelementi::modificaelementi(ContenutoMultimediale* m, QWidget* parent) : 
     titoloFinestra->setText(tr("Modifica Contenuti"));
     titoloFinestra->setFont(QFont("Times", 36, QFont::Bold));
     titoloFinestra->setAlignment(Qt::AlignHCenter);
-    titoloFinestra->setStyleSheet("QLabel {color : #cc0066; }");
+    titoloFinestra->setStyleSheet("QLabel {color : #560f32; }");
     layout->addWidget(titoloFinestra);
 
     griglia = new QGridLayout;
@@ -135,4 +135,3 @@ void modificaelementi::schiacciaModifica() {
     modificaElemento();
     emit inviaModifica();
 }
-

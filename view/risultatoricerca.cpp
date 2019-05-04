@@ -15,7 +15,7 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
     titoloFinestra->setText(tr("Risultato ricerca"));
     titoloFinestra->setFont(QFont("Times", 36, QFont::Bold));
     titoloFinestra->setAlignment(Qt::AlignHCenter);
-    titoloFinestra->setStyleSheet("QLabel {color : #560f32; }");
+    titoloFinestra->setStyleSheet("QLabel {color : #5a0c31; }");
 
     layoutVerticale->addWidget(titoloFinestra);
     layoutOrizzontale=new QGridLayout;

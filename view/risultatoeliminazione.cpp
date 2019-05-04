@@ -13,7 +13,7 @@ risultatoeliminazione::risultatoeliminazione(QWidget* parent) : QWidget(parent) 
     titoloFinestra->setText(tr("Conferma eliminazione"));
     titoloFinestra->setFont(QFont("Times", 36, QFont::Bold));
     titoloFinestra->setAlignment(Qt::AlignHCenter);
-    titoloFinestra->setStyleSheet("QLabel {color : #560f32; }");
+    titoloFinestra->setStyleSheet("QLabel {color : #5a0c31; }");
 
     layout->addWidget(titoloFinestra);
 

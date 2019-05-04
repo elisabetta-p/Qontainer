@@ -18,7 +18,7 @@ ricercaavanzata::ricercaavanzata(container<ContenutoMultimediale*>* p_contenitor
    titoloFinestra->setText(tr("Ricerca Avanzata"));
    titoloFinestra->setFont(QFont("Times", 36, QFont::Bold));
    titoloFinestra->setAlignment(Qt::AlignHCenter);
-   titoloFinestra->setStyleSheet("QLabel {color : #560f32; }");
+   titoloFinestra->setStyleSheet("QLabel {color : #5a0c31; }");
 
    layout->addWidget(titoloFinestra);
 

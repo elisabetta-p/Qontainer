@@ -21,6 +21,9 @@ private:
 
     void creaOpzione(QString, QString, int, QGridLayout*, int);
     container<ContenutoMultimediale*>* cont;
+
+    vector<QLineEdit*> vettoreBox;
+
 public:
     aggiungi(container<ContenutoMultimediale*>*, QWidget* = nullptr);
     ~aggiungi() = default;

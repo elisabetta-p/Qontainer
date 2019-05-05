@@ -21,7 +21,7 @@ private:
 
     // dentro container
     nodo* first ;
-
+    size_t findCaseInsensitive(string, string, size_t =0);
 
     static nodo* copia(nodo*);
     static void distruggi(nodo*);
@@ -89,7 +89,7 @@ public:
 
     void insert(const T);
     void remove(T);
-    vector<T> search (T parametro) const;
+    vector<T> search (T parametro);
 
     // ALTRI METODI UTILI
 
@@ -194,6 +194,23 @@ typename container<T>::const_iterator container<T>::const_iterator::operator--(i
 }
 
 //definizioni di container
+
+template <typename T>
+size_t container<T>::findCaseInsensitive(string data, string daCercare, size_t pos) {
+    /*
+    * trasforma l'intera stringa in minuscolo
+    */
+    std::transform(data.begin(), data.end(), data.begin(), [](unsigned char c)->unsigned char {return std::tolower(c);});
+    /*
+    * trasforma una sottostringa data in minuscolo
+    */
+    std::transform(daCercare.begin(), daCercare.end(), daCercare.begin(), [](unsigned char c)->unsigned char {return std::tolower(c);});
+    /*
+    * trova la sottostringa nella stringa data
+    */
+    return data.find(daCercare, pos);
+}
+
 template <typename T>
 typename container<T>::nodo* container<T>::copia(nodo* n) {
     if (!n)  {
@@ -311,7 +328,7 @@ void container<T>::insert(const T contenuto) {
 
 template <typename T>
 void container<T>::remove(T contenuto) {
-    nodo* n = first;    
+    nodo* n = first;
     while (n && !(n->info == contenuto)) {
         n = n->next;
     }
@@ -326,7 +343,7 @@ void container<T>::remove(T contenuto) {
         //si deve eliminare un nodo in mezzo alla lista o l'ultimo
         else {
           n->prev->next = n->next;
-          //esiste il nodo successivo a quello da eliminare 
+          //esiste il nodo successivo a quello da eliminare
           if(n->next)
             n->next->prev = n->prev;
         }
@@ -335,20 +352,37 @@ void container<T>::remove(T contenuto) {
 }
 
 template <typename T>
+vector<T> container<T>::search(T contenuto) {
+    nodo* n = first;
+    vector<T> aux;
+    while (n) {
+        if(
+            (findCaseInsensitive(contenuto->getTitolo(), n->info->getTitolo())) != std::string::npos &&
+            (findCaseInsensitive(contenuto->getAutore(), n->info->getAutore())) != std::string::npos &&
+            (n->info->getDataUscita() == contenuto->getDataUscita() || contenuto->getDataUscita() == 0)
+          ) {
+          aux.push_back(n->info);
+        }
+        n=n->next;
+    }
+    return aux;
+}
+/*
+template <typename T>
 vector<T> container<T>::search(T contenuto) const {
     nodo* n = first;
     vector<T> aux;
-    while (n) {     
+    while (n) {
         if ( (n->info->getTitolo().find(contenuto->getTitolo())!=std::string::npos) &&
              (n->info->getAutore().find(contenuto->getAutore())!=std::string::npos) &&
-             (n->info->getDataUscita() == contenuto->getDataUscita() || contenuto->getDataUscita() == 0) )/*contenuto->getTitolo() && n->info->getAutore() >= contenuto->getAutore() && n->info->getDataUscita() == contenuto->getDataUscita()*/ {
+             (n->info->getDataUscita() == contenuto->getDataUscita() || contenuto->getDataUscita() == 0) )
             aux.push_back(n->info);
         }
         n = n->next;
     }
     return aux;
 }
-
+*/
 template <typename T>
 unsigned int container<T>::size() const {
     if (first) {
@@ -364,6 +398,3 @@ unsigned int container<T>::size() const {
 }
 
 #endif // CONTAINER_H
-
-
-

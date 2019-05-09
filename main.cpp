@@ -18,8 +18,7 @@ int main(int argc, char *argv[]) {
 	QFile css("style.css");
 	css.open(QFile::ReadOnly);
     app.setStyleSheet(css.readAll());
-    
+
     window.show();
     return app.exec();
-
 }

@@ -14,6 +14,7 @@
 #include "modificaelementi.h"
 #include "risultatoeliminazione.h"
 #include "risultatomodifica.h"
+#include "visualizzaelementi.h"
 #include <iostream>
 #include <QCloseEvent>
 
@@ -44,6 +45,7 @@ public slots:
     void mostraEliminazioneRiuscita();
     void mostraModificaElementi(ContenutoMultimediale*);
     void mostraModificaRiuscita();
+    void mostraVisualizzazione(ContenutoMultimediale*);
 };
 
 #endif // QONTAINER_H

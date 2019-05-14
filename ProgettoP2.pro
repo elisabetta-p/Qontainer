@@ -35,7 +35,8 @@ HEADERS += model/audio.h \
            view/risultatoaggiunta.h \
            view/risultatoeliminazione.h \
            view/risultatomodifica.h \
-           view/risultatoricerca.h
+           view/risultatoricerca.h \
+           view/visualizzaelementi.h
 SOURCES += main.cpp \
            model/audio.cpp \
            model/canzone.cpp \
@@ -53,7 +54,8 @@ SOURCES += main.cpp \
            view/risultatoaggiunta.cpp \
            view/risultatoeliminazione.cpp \
            view/risultatomodifica.cpp \
-           view/risultatoricerca.cpp
+           view/risultatoricerca.cpp \
+           view/visualizzaelementi.cpp
 RESOURCES += qml.qrc
 
 DISTFILES +=

@@ -29,9 +29,11 @@ private slots:
     void eliminaElemento();
     void schiacciaElimina();
     void schiacciaModifica();
+    void schiacciaVisualizza();
 signals:
     void inviaEliminazione();
     void inviaModifica(ContenutoMultimediale*);
+    void inviaVisualizza(ContenutoMultimediale*);
 };
 
 #endif // RISULTATORICERCA_H

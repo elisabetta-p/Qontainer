@@ -74,6 +74,10 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
             labelAnno->setFont(QFont("Times", 16, QFont::StyleItalic));
             labelTipo->setFont(QFont("Times", 16, QFont::StyleItalic));
 
+            QPushButton* visualizza = new QPushButton();
+            visualizza->setText(QString("Visualizza"));
+            visualizza->setObjectName(QString::number(i));
+
             QPushButton* modifica = new QPushButton();
             modifica->setText(QString("Modifica"));
             modifica->setObjectName(QString::number(i));
@@ -88,9 +92,9 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
 
             layoutOrizzontale->addWidget(tipo, i+1, 3, Qt::AlignCenter);
 
-            layoutOrizzontale->addWidget(modifica, i+1, 4, Qt::AlignCenter);
-            layoutOrizzontale->addWidget(elimina, i+1, 5, Qt::AlignCenter);
-
+            layoutOrizzontale->addWidget(visualizza, i+1, 4, Qt::AlignCenter);
+            layoutOrizzontale->addWidget(modifica, i+1, 5, Qt::AlignCenter);
+            layoutOrizzontale->addWidget(elimina, i+1, 6, Qt::AlignCenter);
 
             connect(elimina, SIGNAL(clicked()), this, SLOT(schiacciaElimina()));
             connect(this, SIGNAL(inviaEliminazione()), parent, SLOT(mostraEliminazioneRiuscita()));
@@ -99,7 +103,8 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
             connect(modifica, SIGNAL(clicked()), this, SLOT(schiacciaModifica()));
             connect(this, SIGNAL(inviaModifica(ContenutoMultimediale*)), parent, SLOT(mostraModificaElementi(ContenutoMultimediale*)));
 
-
+            connect(visualizza, SIGNAL(clicked()), this, SLOT(schiacciaVisualizza()));
+            connect(this, SIGNAL(inviaVisualizza(ContenutoMultimediale*)), parent, SLOT(mostraVisualizzazione(ContenutoMultimediale*)));
         }
 
 
@@ -139,6 +144,13 @@ void risultatoricerca::schiacciaElimina(){
   emit inviaEliminazione();
 }
 
+void risultatoricerca::schiacciaVisualizza() {
+    QPushButton* bottoneVisualizza = dynamic_cast<QPushButton*>(sender());
+    if (bottoneVisualizza) {
+        int indiceContenutoDaVisualizzare = bottoneVisualizza->objectName().toInt();
+        emit inviaVisualizza(vettoreRisultati[indiceContenutoDaVisualizzare]);
+    }
+}
 
 void risultatoricerca::schiacciaModifica() {
     QPushButton* bottoneModifica = dynamic_cast<QPushButton*>(sender());

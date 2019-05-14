@@ -351,7 +351,6 @@ size_t container<T>::findCaseInsensitive(string data, string daCercare, size_t p
     return data.find(daCercare, pos);
 }
 
-
 template <typename T>
 vector<T> container<T>::search(T contenuto) {
     nodo* n = first;
@@ -366,22 +365,7 @@ vector<T> container<T>::search(T contenuto) {
     }
     return aux;
 }
-/*
-template <typename T>
-vector<T> container<T>::search(T contenuto) const {
-    nodo* n = first;
-    vector<T> aux;
-    while (n) {
-        if ( (n->info->getTitolo().find(contenuto->getTitolo())!=std::string::npos) &&
-             (n->info->getAutore().find(contenuto->getAutore())!=std::string::npos) &&
-             (n->info->getDataUscita() == contenuto->getDataUscita() || contenuto->getDataUscita() == 0) )
-            aux.push_back(n->info);
-        }
-        n = n->next;
-    }
-    return aux;
-}
-*/
+
 template <typename T>
 unsigned int container<T>::size() const {
     if (first) {

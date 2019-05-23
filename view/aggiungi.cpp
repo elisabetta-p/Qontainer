@@ -1,7 +1,7 @@
 #include "aggiungi.h"
 #include "mainwindow.h"
 #include "qontainer.h"
-#include <iostream>
+
 
 aggiungi::aggiungi(container<ContenutoMultimediale*>* p_contenitore, QWidget* parent) : QWidget(parent), cont(p_contenitore) {
 

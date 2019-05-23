@@ -80,13 +80,13 @@ void modificaelementi::caricaCampiDaModificare() {
     }
     podcast* p = dynamic_cast<podcast*>(multimedia);
     if (p) {
-        creaOpzione("Qualità:", QString::number(p->getQualita()), 250, griglia, 8);
+        creaOpzione("Bitrate:", QString::number(p->getBitrate()), 250, griglia, 8);
         creaOpzione("Raccolta:", QString::fromStdString(p->getRaccolta()), 250, griglia, 9);
         creaOpzione("Ospite:", QString::fromStdString(p->getOspite()), 250, griglia, 10);
     }
     canzone* c = dynamic_cast<canzone*>(multimedia);
     if (c) {
-        creaOpzione("Qualità:", QString::number(c->getQualita()), 250, griglia, 8);
+        creaOpzione("Bitrate:", QString::number(c->getBitrate()), 250, griglia, 8);
         creaOpzione("Album:", QString::fromStdString(c->getAlbum()), 250, griglia, 9);
         creaOpzione("Produttore:", QString::fromStdString(c->getProduttore()), 250, griglia, 10);
     }
@@ -119,13 +119,13 @@ void modificaelementi::modificaElemento() {
     }
     podcast* p = dynamic_cast<podcast*>(multimedia);
     if (p) {
-        p->setQualita(vettoreModifiche[7]->text().toUInt());
+        p->setBitrate(vettoreModifiche[7]->text().toUInt());
         p->setRaccolta(vettoreModifiche[8]->text().toStdString());
         p->setOspite(vettoreModifiche[9]->text().toStdString());
     }
     canzone* c = dynamic_cast<canzone*>(multimedia);
     if (c) {
-        c->setQualita(vettoreModifiche[7]->text().toUInt());
+        c->setBitrate(vettoreModifiche[7]->text().toUInt());
         c->setAlbum(vettoreModifiche[8]->text().toStdString());
         c->setProduttore(vettoreModifiche[9]->text().toStdString());
     }

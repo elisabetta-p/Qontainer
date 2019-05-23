@@ -28,9 +28,6 @@ public:
 
     virtual string serializza(char) const;
     static film* deserializza(const vector<string>&);
-
-    //friend std::istream& operator>>(std::istream&, film&);
-
 };
 
 

@@ -125,12 +125,12 @@ void aggiungi::aggiungiInput(int type) {
          creaOpzione("Canale:", "Inserisci il canale o servizio di streaming", 250, grigliaAggiuntaAvanzata, 2);
      }
      if (type==3) { //canzoni
-         creaOpzione("Qualità:", "Inserisci la qualità", 250, grigliaAggiuntaAvanzata, 0);
+         creaOpzione("Bitrate:", "Inserisci il bitrate", 250, grigliaAggiuntaAvanzata, 0);
          creaOpzione("Album:", "Inserisci l'album", 250, grigliaAggiuntaAvanzata, 1);
          creaOpzione("Produttore:", "Inserisci il produttore", 250, grigliaAggiuntaAvanzata, 2);
      }
      if (type==4) { //podcast
-         creaOpzione("Qualità:", "Inserisci la qualità", 250, grigliaAggiuntaAvanzata, 0);
+         creaOpzione("Bitrate:", "Inserisci il bitrate", 250, grigliaAggiuntaAvanzata, 0);
          creaOpzione("Raccolta:", "Inserisci la raccolta", 250, grigliaAggiuntaAvanzata, 1);
          creaOpzione("Ospite:", "Inserisci l'ospite", 250, grigliaAggiuntaAvanzata, 2);
      }

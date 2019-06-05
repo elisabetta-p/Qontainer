@@ -2,6 +2,7 @@
 #include "mainwindow.h"
 #include "qontainer.h"
 
+
 aggiungi::aggiungi(container<ContenutoMultimediale*>* p_contenitore, QWidget* parent) : QWidget(parent), cont(p_contenitore) {
 
     setFixedSize(600,600);
@@ -124,15 +125,18 @@ void aggiungi::aggiungiInput(int type) {
          creaOpzione("Canale:", "Inserisci il canale o servizio di streaming", 250, grigliaAggiuntaAvanzata, 2);
      }
      if (type==3) { //canzoni
-         creaOpzione("Qualità:", "Inserisci la qualità", 250, grigliaAggiuntaAvanzata, 0);
+         creaOpzione("Bitrate:", "Inserisci il bitrate", 250, grigliaAggiuntaAvanzata, 0);
          creaOpzione("Album:", "Inserisci l'album", 250, grigliaAggiuntaAvanzata, 1);
          creaOpzione("Produttore:", "Inserisci il produttore", 250, grigliaAggiuntaAvanzata, 2);
      }
      if (type==4) { //podcast
-         creaOpzione("Qualità:", "Inserisci la qualità", 250, grigliaAggiuntaAvanzata, 0);
+         creaOpzione("Bitrate:", "Inserisci il bitrate", 250, grigliaAggiuntaAvanzata, 0);
          creaOpzione("Raccolta:", "Inserisci la raccolta", 250, grigliaAggiuntaAvanzata, 1);
          creaOpzione("Ospite:", "Inserisci l'ospite", 250, grigliaAggiuntaAvanzata, 2);
      }
+	setTabOrder(vettoreOpzioni[6], vettoreOpzioni[7]);
+        setTabOrder(vettoreOpzioni[7], vettoreOpzioni[8]);
+        setTabOrder(vettoreOpzioni[8], vettoreOpzioni[9]);
 }
 
 void aggiungi::creaOpzione(QString etichetta, QString placeholder, int lunghezza, QGridLayout* griglia, int riga) {
@@ -157,6 +161,7 @@ void aggiungi::schiacciaAggiungi() {
 }
 
 void aggiungi::aggiungiElemento() {
+
     string titolo, genere, autore;
     double dim;
     unsigned short int durata, val, data;
@@ -175,10 +180,6 @@ void aggiungi::aggiungiElemento() {
         reg = vettoreOpzioni[8]->text().toStdString();
         saga = vettoreOpzioni[9]->text().toStdString();
 
-        setTabOrder(vettoreOpzioni[6], vettoreOpzioni[7]);
-        setTabOrder(vettoreOpzioni[7], vettoreOpzioni[8]);
-        setTabOrder(vettoreOpzioni[8], vettoreOpzioni[9]);
-
         ContenutoMultimediale* f = new film (titolo, durata, genere, dim, val, autore, data, ris, reg, saga);
         cont->insert(f);
     }
@@ -187,10 +188,6 @@ void aggiungi::aggiungiElemento() {
         string serie, canale;
         serie = vettoreOpzioni[8]->text().toStdString();
         canale = vettoreOpzioni[9]->text().toStdString();
-
-        setTabOrder(vettoreOpzioni[6], vettoreOpzioni[7]);
-        setTabOrder(vettoreOpzioni[7], vettoreOpzioni[8]);
-        setTabOrder(vettoreOpzioni[8], vettoreOpzioni[9]);
 
         ContenutoMultimediale* e = new episodio (titolo, durata, genere, dim, val, autore, data, ris, serie, canale);
         cont->insert(e);
@@ -202,10 +199,6 @@ void aggiungi::aggiungiElemento() {
         album = vettoreOpzioni[8]->text().toStdString();
         prod = vettoreOpzioni[9]->text().toStdString();
 
-        setTabOrder(vettoreOpzioni[6], vettoreOpzioni[7]);
-        setTabOrder(vettoreOpzioni[7], vettoreOpzioni[8]);
-        setTabOrder(vettoreOpzioni[8], vettoreOpzioni[9]);
-
         ContenutoMultimediale* c = new canzone (titolo, durata, genere, dim, val, autore, data, qual, album, prod);
         cont->insert(c);
     }
@@ -215,10 +208,6 @@ void aggiungi::aggiungiElemento() {
         string racc, osp;
         racc = vettoreOpzioni[8]->text().toStdString();
         osp = vettoreOpzioni[9]->text().toStdString();
-
-        setTabOrder(vettoreOpzioni[6], vettoreOpzioni[7]);
-        setTabOrder(vettoreOpzioni[7], vettoreOpzioni[8]);
-        setTabOrder(vettoreOpzioni[8], vettoreOpzioni[9]);
 
         ContenutoMultimediale* p = new podcast (titolo, durata, genere, dim, val, autore, data, qual, racc, osp);
         cont->insert(p);

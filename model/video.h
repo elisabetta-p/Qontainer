@@ -11,6 +11,7 @@ public:
     video (string, string, unsigned short int);
     virtual bool operator==(const video&) const;
     virtual ~video() = default;
+    
 
     //metodi set e get
     void setRisoluzione(unsigned int);
@@ -18,6 +19,7 @@ public:
 
     string serializza(char) const;
 
+    virtual string qualita() const;
 
 };
 

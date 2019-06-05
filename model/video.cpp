@@ -19,3 +19,14 @@ unsigned int video::getRisoluzione() const {
 string video::serializza(char delimiter) const {
     return ContenutoMultimediale::serializza(delimiter) + delimiter + std::to_string(risoluzione);
 }
+
+string video::qualita() const { //la dimensione dei file video e' espressa in GB, e la loro durata in minuti
+    double ratio = getDimensione() / getDurata();
+    if (ratio >= 0.017) { //un GB per ora di video
+        return "Alta";
+    }
+    if (ratio >= 0.012) {
+        return "Media";
+    }    
+    return "Bassa";
+}

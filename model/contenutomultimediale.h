@@ -14,9 +14,9 @@ using std::endl;
 class ContenutoMultimediale {
 private:
     string titolo;
-    unsigned short int durata;
+    unsigned short int durata; //in minuti
     string genere;
-    double dimensione;
+    double dimensione; //in
     unsigned short int valutazione;
     string autore;
     unsigned short int dataUscita;
@@ -43,9 +43,11 @@ public:
     void setDimensione(double);
     double getDimensione() const;
 
-    //serializzazione
+    virtual string qualita() const =0;
+
+    //serializzazione/deserializzazione
     virtual string serializza(char) const; //questa scrive su file
-    ContenutoMultimediale* create(std::istream) const; 
+    ContenutoMultimediale* create(std::istream) const;
 };
 
 #endif // CONTENUTOMULTIMEDIALE_H

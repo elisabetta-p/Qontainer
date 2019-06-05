@@ -57,28 +57,29 @@ void visualizzaelementi::caricaCampiDaVisualizzare() {
     creaOpzioneVisualizzazione("Valutazione:", QString::number(multimedia->getValutazione()), 250, griglia, 5);
     creaOpzioneVisualizzazione("Autore:", QString::fromStdString(multimedia->getAutore()), 250, griglia, 6);
     creaOpzioneVisualizzazione("Anno di uscita:", QString::number(multimedia->getDataUscita()), 250, griglia, 7);
+    creaOpzioneVisualizzazione("Qualità:", QString::fromStdString(multimedia->qualita()), 250, griglia, 8);
     film* f = dynamic_cast<film*>(multimedia);
     if (f) {
-        creaOpzioneVisualizzazione("Risoluzione:", QString::number(f->getRisoluzione()), 250, griglia, 8);
-        creaOpzioneVisualizzazione("Regista:",  QString::fromStdString(f->getRegista()), 250, griglia, 9);
-        creaOpzioneVisualizzazione("Saga:", QString::fromStdString(f->getSaga()), 250, griglia, 10);
+        creaOpzioneVisualizzazione("Risoluzione:", QString::number(f->getRisoluzione()), 250, griglia, 9);
+        creaOpzioneVisualizzazione("Regista:",  QString::fromStdString(f->getRegista()), 250, griglia, 10);
+        creaOpzioneVisualizzazione("Saga:", QString::fromStdString(f->getSaga()), 250, griglia, 11);
     }
     episodio* e = dynamic_cast<episodio*>(multimedia);
     if (e) {
-        creaOpzioneVisualizzazione("Risoluzione:", QString::number(e->getRisoluzione()), 250, griglia, 8);
-        creaOpzioneVisualizzazione("Serie:", QString::fromStdString(e->getSerie()), 250, griglia, 9);
-        creaOpzioneVisualizzazione("Canale:", QString::fromStdString(e->getCanale()), 250, griglia, 10);
+        creaOpzioneVisualizzazione("Risoluzione:", QString::number(e->getRisoluzione()), 250, griglia, 9);
+        creaOpzioneVisualizzazione("Serie:", QString::fromStdString(e->getSerie()), 250, griglia, 10);
+        creaOpzioneVisualizzazione("Canale:", QString::fromStdString(e->getCanale()), 250, griglia, 11);
     }
     podcast* p = dynamic_cast<podcast*>(multimedia);
     if (p) {
-        creaOpzioneVisualizzazione("Qualità:", QString::number(p->getQualita()), 250, griglia, 8);
-        creaOpzioneVisualizzazione("Raccolta:", QString::fromStdString(p->getRaccolta()), 250, griglia, 9);
-        creaOpzioneVisualizzazione("Ospite:", QString::fromStdString(p->getOspite()), 250, griglia, 10);
+        creaOpzioneVisualizzazione("Bitrate:", QString::number(p->getBitrate()), 250, griglia, 9);
+        creaOpzioneVisualizzazione("Raccolta:", QString::fromStdString(p->getRaccolta()), 250, griglia, 10);
+        creaOpzioneVisualizzazione("Ospite:", QString::fromStdString(p->getOspite()), 250, griglia, 11);
     }
     canzone* c = dynamic_cast<canzone*>(multimedia);
     if (c) {
-        creaOpzioneVisualizzazione("Qualità:", QString::number(c->getQualita()), 250, griglia, 8);
-        creaOpzioneVisualizzazione("Album:", QString::fromStdString(c->getAlbum()), 250, griglia, 9);
-        creaOpzioneVisualizzazione("Produttore:", QString::fromStdString(c->getProduttore()), 250, griglia, 10);
+        creaOpzioneVisualizzazione("Bitrate:", QString::number(c->getBitrate()), 250, griglia, 9);
+        creaOpzioneVisualizzazione("Album:", QString::fromStdString(c->getAlbum()), 250, griglia, 10);
+        creaOpzioneVisualizzazione("Produttore:", QString::fromStdString(c->getProduttore()), 250, griglia, 11);
     }
 }

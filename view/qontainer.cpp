@@ -12,7 +12,7 @@ qontainer::qontainer()  {
     this->setLayout(layoutQ);
     this->setWindowTitle("Qontainer - Elisabetta Piombin");
 
-    db = new database("./db.cvs", '|');
+    db = new database("./db.txt", '|');
     db->load(contenitore);
     mostraMainWindow();
 }

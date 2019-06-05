@@ -53,23 +53,20 @@ Non si verifica la situazione di ereditarità multipla. \\
 
 
 \section{Descrizione delle chiamate polimorfe}
-Le chiamate polimorfe vengono pesantemente utilizzate nelle operazioni di modifica, rimozione, ricerca e aggiunta degli elementi nel contenitore, in quanto il contenitore viene istanziato a \texttt{<ContenutoMultimediale*>}, e tramite \textit{downcasting} (via \texttt{dynamic\_cast}) effettuato al Tipo desiderato, si eseguono le operazioni necessarie sui tipi.\\
-Le chiamate polimorfe presenti nel progetto sono le seguenti:
+Sono presenti tre metodi virtuali nella gerarchia, i metodi di \texttt{serializza(char)}, l'overloading dell'operatore di confronto \texttt{operator==(const T\&)}, e il metodo \texttt{qualita()}, che è puro.
 \begin{enumerate}
-\item[-] nella \textit{mainwindow} dell'applicazione, dove vengono elencati tutti i contenuti presenti nel contenitore: questa operazione è eseguita tramite downcasting da \texttt{ContenutoMultimediale*} al tipo target desiderato alla base della gerarchia.
-\item[-] nelle finestre di aggiunta dei contenuti e di ricerca, all'interno della funzione \texttt{aggiungiInput()}, necessaria per caricare i box di testo e le rispettive etichette necessarie per il tipo di contenuto multimediale selezionato precedentemente nel menù a tendina.
-\item[-] dentro al file \texttt{qontainer.cpp}, necessario per il corretto caricamento di tutte le finestre e dell'eliminazione della finestra corrente per far caricare correttamente la finestra successiva: nella funzione \texttt{eliminaContenutoAttuale()} viene usato un \texttt{dynamic\_cast} necessario per la corretta eliminazione del \textit{layout} attuale, effettuando un \textit{downcast} a \texttt{QWidgetItem}.
-\item[-] dentro al file \texttt{risultatoricerca.cpp} viene usato il \textit{downcasting} per visualizzare a schermo il tipo dinamico dei puntatori ad oggetti contenuti nel contenitore che è stato ritornato come risultato dalla funzione \texttt{search(ContenutoMultimediale*)}.
-\item[-] nell'aggiunta di contenuto nel contenitore tramite GUI, attraverso la funzione \texttt{aggiungiElemento()} all'interno del file \texttt{aggiungi.cpp}, l'aggiunta viene eseguita tramite un puntatore di tipo statico \texttt{Contenuto Multimediale*}, ma tipo dinamico differente a seconda del tipo di file che si vuole aggiungere nel contenitore.
+	\item [-] \texttt{string serializza(char)}: definito virtuale all'interno di \texttt{contenutomultimediale}, viene implementato diversamente per i campi dati specifici di ogni classe derivata. Viene richiamata all'interno della classe \texttt{database}, all'interno della funzione \texttt{void save(container<T>\&)}, in quanto questa è la funzione che si occupa del salvataggio su file degli oggetti inseriti dentro al \texttt{container}.
+	\item [-] \texttt{bool operator== (const T\&)} è usato nella funzione \texttt{void remove(T)} all'interno di \texttt{contenutomultimediale}, e viene usata in \texttt{risultatoricerca} (nella GUI) per rimuovere un elemento dal contenitore. 
+	\item [-] \texttt{string qualita() const}, metodo virtuale puro in \texttt{contenutomultimediale}, utilizzato in \texttt{visualizzaelemento} per dare la possibilità all'utente per vedere se il file che si sta visualizzando è di qualità media, alta o bassa. Ha diverse implementazioni in \texttt{audio} e in \texttt{video}.
 \end{enumerate}
 
 
 
 \section{Descrizione del formato del file di salvataggio e caricamento del contenitore}
-Per il caricamento dei file che compongono la libreria, e per il loro salvataggio, mi appoggio ad una classe esterna alla gerarchia, che ho chiamato \texttt{database}. Questa classe contiene i metodi \texttt{load()} e \texttt{save()}: 
+Per il caricamento dei file che compongono la libreria, e per il loro salvataggio, mi appoggio ad una classe esterna alla gerarchia, che ho chiamato \texttt{database}. Questa classe contiene i metodi \texttt{load()} e \texttt{save()}. La classe \texttt{database} non è un template perché dipende strettamente da \texttt{ContenutoMultimediale}. 
 \begin{enumerate}
-\item[-] \texttt{load()}, tramite un'operazione di deserializzazione implementata ad hoc in ogni classe derivata concreta della gerarchia, permette la lettura del contenuto in ogni file \texttt{.txt}. C'è un file \texttt{.txt} per ognuna delle classi \texttt{film}, \texttt{episodio}, \texttt{canzone} e \texttt{podcast}, con relativa funzione di deserializzazione, che trasforma ogni riga contenuta in quei file in oggetto della relativa classe. Database si occupa di caricare questi oggetti nella libreria, in modo che possano essere gestiti dal contenitore templetizzato.
-\item[-] \texttt{save()} invece si occupa del salvataggio di eventuali modifiche apportate tramite GUI ai file \texttt{.txt} sovramenzionati, tramite le relative operazioni di serializzazione, contenute nelle relative classi. 
+\item[-] \texttt{void load(container<ContenutoMultimediale*>\&)}, tramite un'operazione di deserializzazione implementata ad hoc in ogni classe derivata concreta della gerarchia, permette la lettura del contenuto in ogni file \texttt{.txt}. Esiste un unico file \texttt{.txt}, in cui sono scritti tutti gli oggetti che verranno caricati nel \texttt{container}.  Database si occupa di caricare questi oggetti nella libreria tramite \texttt{static film* film::deserializza(const vector<string>\&), static episodio* episodio::deserializza(const vector<string>\&), static podcast* podcast::deserializza(const vector<string>\&)} e \texttt{static canzone* canzone::deserializza(const vector<string>\&)}, in modo che possano essere gestiti dal contenitore templetizzato.
+\item[-] \texttt{void save(container<ContenutoMultimediale*>\&)} si occupa di memorizzare sul file \texttt{.txt} i caratteri corrispondenti agli oggetti contenuti in \texttt{container}, invocando il metodo \texttt{serializza(char)} corretto, che è definito come virtuale.
 \end{enumerate}
 
 \section{Tempistiche}

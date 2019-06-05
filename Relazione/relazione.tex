@@ -17,7 +17,7 @@
 \renewcommand{\textfraction}{.1}
 \fancyhf{}
 \lfoot{Qontainer - Elisabetta Piombin - 1142189}
-
+\pagestyle{plain}
 
 \begin{document}
 \title {Relazione del progetto di Programmazione ad Oggetti: Qontainer}
@@ -39,26 +39,39 @@ Per farlo, la classe templatizzata \texttt{container} a sua volta fa uso di altr
 \end{enumerate}
 Vista l'assenza di puntatori ad altre classi nella gerarchia, è stata ritenuta superflua l'implementazione di una classe per un eventuale \textit{smart pointer}.\\
 Ho scelto di implementare il contenitore come una lista linkata composta da nodi perché offro la possibilità di rimuovere contenuti all'interno della libreria in posizioni arbitrarie, e questo mi porta alla necessità di scegliere l'implementazione sotto forma di lista, che rende tale operazione di rimozione più efficiente (viene operata in tempo costante) rispetto alla scelta di implementare tale contenitore come un vettore di elementi.
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{MainWIndow.png}
+	\end{center}
+	\caption{\label{fig:my-label} Finestra principale del progetto}
+\end{figure}
 
 
 \section{Compilazione ed esecuzione}
-La compilazione si esegue tramite i comandi \texttt{qmake} e \texttt{make}. 
+La compilazione si esegue tramite i comandi \texttt{qmake} e in seguito \texttt{make}. 
 
 \section{Descrizione della gerarchia di classi}
 
-La classe base astratta da cui deriva tutta la gerarchia è \texttt{ContenutoMultimediale}, che verrà poi concretizzata tramite sue classi derivate. I metodi virtuali sono \texttt{riproduci()}, \texttt{pausa()}, \texttt{operator==} e il relativo distruttore; \texttt{riproduci()} e \texttt{pausa()} sono anche puri, poiché la loro implementazione è assegnata alle classi derivate. \\
+La classe base astratta da cui deriva tutta la gerarchia è \texttt{ContenutoMultimediale}, che verrà poi concretizzata tramite sue classi derivate.
 Da \texttt{ContenutoMultimediale} derivano immediatamente altre due classi: \texttt{audio} e \texttt{video}, che sono le due macrocategorie di appartenenza dei file che vengono memorizzati nella libreria. \\
 Da \texttt{video} derivano due classi: \texttt{film} e \texttt{episodio}, mentre da \texttt{audio} derivano altre due classi, \texttt{podcast} e \texttt{canzone}. \\
 Non si verifica la situazione di ereditarità multipla. \\
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{classi.pdf}
+	\end{center}
+	\caption{\label{fig:my-label} Gerarchia delle classi}
+\end{figure}
 
 
 \section{Descrizione delle chiamate polimorfe}
 Sono presenti tre metodi virtuali nella gerarchia, i metodi di \texttt{serializza(char)}, l'overloading dell'operatore di confronto \texttt{operator==(const T\&)}, e il metodo \texttt{qualita()}, che è puro.
 \begin{enumerate}
-	\item [-] \texttt{string serializza(char)}: definito virtuale all'interno di \texttt{contenutomultimediale}, viene implementato diversamente per i campi dati specifici di ogni classe derivata. Viene richiamata all'interno della classe \texttt{database}, all'interno della funzione \texttt{void save(container<T>\&)}, in quanto questa è la funzione che si occupa del salvataggio su file degli oggetti inseriti dentro al \texttt{container}.
-	\item [-] \texttt{bool operator== (const T\&)} è usato nella funzione \texttt{void remove(T)} all'interno di \texttt{contenutomultimediale}, e viene usata in \texttt{risultatoricerca} (nella GUI) per rimuovere un elemento dal contenitore. 
-	\item [-] \texttt{string qualita() const}, metodo virtuale puro in \texttt{contenutomultimediale}, utilizzato in \texttt{visualizzaelemento} per dare la possibilità all'utente per vedere se il file che si sta visualizzando è di qualità media, alta o bassa. Ha diverse implementazioni in \texttt{audio} e in \texttt{video}.
+	\item [-] \texttt{string serializza(char)}: definito virtuale all'interno di \texttt{ContenutoMultimediale}, viene implementato diversamente per i campi dati specifici di ogni classe derivata. Viene richiamata all'interno della classe \texttt{database}, all'interno della funzione \texttt{void save(container<T>\&)}, in quanto questa è la funzione che si occupa del salvataggio su file degli oggetti inseriti dentro al \texttt{container}.
+	\item [-] \texttt{bool operator== (const T\&)} è usato nella funzione \texttt{void remove(T)} all'interno di \texttt{ContenutoMultimediale}, e viene usata in \texttt{risultatoricerca} (nella GUI) per rimuovere un elemento dal contenitore. 
+	\item [-] \texttt{string qualita() const}, metodo virtuale puro in \texttt{ContenutoMultimediale}, utilizzato in \texttt{visualizzaelemento} per dare la possibilità all'utente per vedere se il file che si sta visualizzando è di qualità media, alta o bassa. Ha diverse implementazioni in \texttt{audio} e in \texttt{video}.
 \end{enumerate}
+Nella classe base \texttt{ContenutoMultimediale} è presente il distruttore virtuale di default.
 
 
 

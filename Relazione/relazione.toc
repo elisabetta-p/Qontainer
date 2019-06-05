@@ -3,6 +3,6 @@
 \contentsline {section}{\numberline {1}Abstract}{3}
 \contentsline {section}{\numberline {2}Compilazione ed esecuzione}{3}
 \contentsline {section}{\numberline {3}Descrizione della gerarchia di classi}{3}
-\contentsline {section}{\numberline {4}Descrizione delle chiamate polimorfe}{4}
-\contentsline {section}{\numberline {5}Descrizione del formato del file di salvataggio e caricamento del contenitore}{5}
-\contentsline {section}{\numberline {6}Tempistiche}{5}
+\contentsline {section}{\numberline {4}Descrizione delle chiamate polimorfe}{3}
+\contentsline {section}{\numberline {5}Descrizione del formato del file di salvataggio e caricamento del contenitore}{4}
+\contentsline {section}{\numberline {6}Tempistiche}{4}

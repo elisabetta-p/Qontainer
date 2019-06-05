@@ -24,8 +24,7 @@ public:
     ContenutoMultimediale(string = "nd", unsigned short int = 0, string = "nd", double = 0.0, unsigned short int = 0, string = "nd", unsigned short int = 0);
     ContenutoMultimediale(string, string, unsigned short int);
     virtual ~ContenutoMultimediale() = default;
-    virtual void riproduci() const =0;
-    virtual void pausa() const =0;
+
     virtual bool operator==(const ContenutoMultimediale&) const;
 
     //METODI SET E GET
@@ -44,9 +43,9 @@ public:
     void setDimensione(double);
     double getDimensione() const;
 
-    //serializzazione/deserializzazione
+    //serializzazione
     virtual string serializza(char) const; //questa scrive su file
-    ContenutoMultimediale* create(std::istream) const; //questa crea l'oggetto
+    ContenutoMultimediale* create(std::istream) const; 
 };
 
 #endif // CONTENUTOMULTIMEDIALE_H

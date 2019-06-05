@@ -11,16 +11,15 @@ template <class T>
 class container {
 private:
 
-    class nodo {                // !!!!!!!!! inizio classe NODO !!!!!!!!!
+    class nodo {
     public:
         T info;
         nodo* prev, *next;
         nodo (T, nodo*, nodo*);
         ~nodo();
-    };                          // !!!!!!!!! fine classe NODO !!!!!!!!!
+    };
 
 
-    // dentro container
     nodo* first ;
     size_t findCaseInsensitive(string, string, size_t =0);
 
@@ -28,7 +27,7 @@ private:
     static void distruggi(nodo*);
 public:
 
-    class iterator {           // !!!!!!!!! inizio classe ITERATOR => dentro container<T> !!!!!!!!!
+    class iterator {
         friend class container;
     private:
         container::nodo* punt;
@@ -41,14 +40,14 @@ public:
         iterator operator--(int); //operatore prefisso
         T& operator*() const;
         nodo* operator->() const;
-    };                          // !!!!!!!!! fine classe ITERATOR !!!!!!!!!
+    };
 
 
 
-    class const_iterator {      // !!!!!!!!! inizio classe CONST_ITERATOR !!!!!!!!!
+    class const_iterator {
         friend class container;
     private:
-        const container::nodo* punt; //Definizione del puntatore come costante: non posso modificare il valore contenuto nell'indirizzo a cui punta tramite dereferenziazione
+        const container::nodo* punt;
     public:
         bool operator==(const_iterator const_it) const;
         bool operator!= (const_iterator const_it) const;
@@ -59,10 +58,8 @@ public:
         T& operator*();
         nodo* operator->() const;
 
-    };                          // !!!!!!!!! fine classe CONST_ITERATOR !!!!!!!!!
+    };
 
-
-    //                              !!!!!!! dentro CONTAINER !!!!!!!!
     container(nodo* = nullptr);
 
     ~container();
@@ -78,10 +75,6 @@ public:
     //metodi del contenitore invocati su iteratori non costanti
     iterator begin();
     iterator end();
-
-    // Overloading di * e []
-
-
 
     T operator[] (const iterator& it) const;
     T operator[] (const const_iterator& const_it) const;

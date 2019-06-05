@@ -13,9 +13,6 @@ public:
     bool operator==(const podcast&) const;
     podcast& operator=(const podcast&);
 
-    void riproduci() const;
-    void pausa() const;
-
     void setRaccolta(string);
     string getRaccolta() const;
     void setOspite(string);

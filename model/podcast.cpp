@@ -20,14 +20,6 @@ void podcast::setOspite(string o) {
     ospite = o;
 }
 
-void podcast::riproduci() const {
-    std::cout << "Stai riproducendo l'episodio " << getTitolo() << " del podcast " <<getRaccolta();
-}
-
-void podcast::pausa() const {
-    std::cout << "Hai messo il podcast " <<getTitolo() << " della raccolta" << getRaccolta() << "in pausa";
-}
-
 string podcast::serializza(char delimiter) const {
     return "P|" + audio::serializza(delimiter) + delimiter + raccolta + delimiter + ospite + ";";
 }

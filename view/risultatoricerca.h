@@ -17,7 +17,6 @@ private:
     QGridLayout* layoutOrizzontale;
     QGridLayout* griglia;
     QScrollArea* scrollArea;
-    //QTextBrowser* scrollAreaTitolo, *scrollAreaAutore, *scrollAreaAnno, *scrollAreaTipo;
     container<ContenutoMultimediale*>* cont;
     vector<ContenutoMultimediale*> vettoreRisultati;
     QFrame* inner;

@@ -12,8 +12,6 @@ public:
     episodio(const episodio&);
     episodio& operator=(const episodio&);
     bool operator==(const episodio&) const;
-    void riproduci() const;
-    void pausa() const;
 
     void setSerie(string);
     string getSerie() const;

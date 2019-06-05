@@ -17,20 +17,9 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
 
     QLabel* titoloFinestra = new QLabel();
     titoloFinestra->setScaledContents(true);
-    //titoloFinestra->setBackgroundRole();
-
-    // Fix the absolute path
 
     QPixmap logo("view/logo3.png");
     titoloFinestra->setPixmap(logo);
-
-    /*
-    titoloFinestra->setMinimumSize(this->width(), 50);
-    titoloFinestra->setText(tr("Qontainer"));
-    titoloFinestra->setFont(QFont("Times", 36, QFont::Bold));
-    titoloFinestra->setAlignment((Qt::AlignHCenter));
-    titoloFinestra->setStyleSheet("QLabel {color : #cc0066; }");
-    */
 
     titoloFinestra->setAlignment((Qt::AlignHCenter));
 
@@ -56,12 +45,6 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
     lib->setFont(QFont("Times", 24));
     layout->addWidget(lib);
 
-
-    //creazione della griglia:
-    //quattro QLabel, per i titoli, e poi quattro QListBox per la lista di elementi
-    //che verranno inseriti
-
-    //QGroupBox* boxListe = new QGroupBox(this);
     QLabel* cantanti = new QLabel;
     cantanti->setText("Canzoni");
     QLabel* podcastLabel = new QLabel;
@@ -70,8 +53,6 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
     serie->setText("Serie");
     QLabel* filmLabel = new QLabel;
     filmLabel->setText("Film");
-
-
 
     griglia = new QGridLayout;
     griglia->addWidget(cantanti, 0, 0, Qt::AlignCenter);
@@ -129,8 +110,6 @@ mainwindow::mainwindow(container<ContenutoMultimediale*>* p_contenitore, QWidget
     }
 
     layout->addLayout(griglia);
-
-    //aggiunta dei due bottoni per la ricerca e per l'aggiunta di contenuto
 
     connect (ricerca, SIGNAL(clicked()), parent, SLOT(mostraRicerca()));
     connect (aggiungi, SIGNAL(clicked()), parent, SLOT(mostraAggiungi()));

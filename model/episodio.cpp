@@ -16,19 +16,6 @@ bool episodio::operator==(const episodio& file) const {
     return (video::operator==(file) && serie == file.serie && canale == file.canale);
 }
 
-void episodio::riproduci() const {
-    if (serie != "nd") {
-        cout << "Stai riproducendo l'episodio: " << getTitolo()  << " della serie " << getSerie()<< endl;
-    }
-    else {
-        cout << "Stai riproducendo l'episodio: " << getTitolo()  << endl;
-    }
-}
-
-void episodio::pausa() const {
-    cout << "Hai messo in pausa l'episodio!" << endl;
-}
-
 void episodio::setSerie(string s) {
     serie = s;
 }

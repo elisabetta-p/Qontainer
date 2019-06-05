@@ -9,8 +9,6 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
 
     layoutVerticale = new QVBoxLayout(this);
 
-    //Creazione del titolo della pagina dei risultati delle ricerche
-
     QLabel* titoloFinestra = new QLabel(this);
     titoloFinestra->setText(tr("Risultato ricerca"));
     titoloFinestra->setFont(QFont("Times", 36, QFont::Bold));
@@ -25,15 +23,12 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
     scrollArea->setWidgetResizable(true);
     scrollArea->setFrameShape(QFrame::NoFrame);
 
-
     scrollArea->setWidget(contenitoreRisultati);
-
 
     if (!vettoreRisultati.empty()) {
         for (unsigned long i = 0 ; i != vettoreRisultati.size(); ++i ) {
 
             QLabel* tipo = new QLabel(this);
-            //mi scrivo il tipo
             if (dynamic_cast<film*>(vettoreRisultati[i]))
                 tipo->setText(QString("Film"));
             if (dynamic_cast<episodio*>(vettoreRisultati[i]))
@@ -123,7 +118,6 @@ risultatoricerca::risultatoricerca(container<ContenutoMultimediale*>* p_containe
         layoutVerticale->addWidget(messaggio);
     }
 
-    //bottoni per tornare alla ricerca, oppure per tornare alla schermata principale
     QPushButton* tornaRicercaAvanzata = new QPushButton(this);
     tornaRicercaAvanzata->setText("Ritorna alla pagina  \n di ricerca avanzata");
     QPushButton* tornaMainWindow = new QPushButton(this);

@@ -8,8 +8,6 @@ risultatoaggiunta::risultatoaggiunta(QWidget* parent) : QWidget(parent) {
 
     layout = new QVBoxLayout(this);
 
-    //Creazione del titolo della pagina dei risultati delle ricerche
-
     QLabel* titoloFinestra = new QLabel(this);
     titoloFinestra->setText(tr("Aggiunta dei contenuti"));
     titoloFinestra->setFont(QFont("Times", 36, QFont::Bold));
@@ -25,8 +23,6 @@ risultatoaggiunta::risultatoaggiunta(QWidget* parent) : QWidget(parent) {
     messaggioDiConferma->setAlignment(Qt::AlignHCenter);
     layout->addWidget(messaggioDiConferma);
 
-
-    //bottoni per tornare alla pagina di aggiunta contenuti, oppure per tornare alla schermata principale
     QPushButton* tornaAggiungi = new QPushButton(this);
     tornaAggiungi->setText("Ritorna alla pagina di  \n aggiunta contenuti");
     QPushButton* tornaMainWindow = new QPushButton(this);

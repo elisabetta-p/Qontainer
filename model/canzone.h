@@ -13,14 +13,11 @@ public:
     canzone (const canzone&);
     canzone& operator=(const canzone&);
 
-    virtual void riproduci() const;
-    virtual void pausa() const;
-
     void setAlbum(string);
     string getAlbum() const;
     void setProduttore(string);
     string getProduttore() const;
-    
+
     string serializza(char) const;
     static canzone* deserializza (const vector<string>&);
 };

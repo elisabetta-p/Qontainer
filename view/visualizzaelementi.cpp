@@ -7,7 +7,6 @@ visualizzaelementi::visualizzaelementi(ContenutoMultimediale* m, QWidget* parent
 
     layout = new QVBoxLayout(this);
 
-    //Creazione del titolo della pagina
     QLabel* titoloFinestra = new QLabel(this);
     titoloFinestra->setText(tr("Visualizza i Contenuti"));
     titoloFinestra->setFont(QFont("Times", 36, QFont::Bold));
@@ -44,7 +43,6 @@ void visualizzaelementi::creaOpzioneVisualizzazione(QString etichetta, QString v
     box->setFixedWidth(lunghezza);
     box->setText(valore);
 
-    //vettoreModifiche.push_back(box);
     griglia->addWidget(label, riga, 0, Qt::AlignLeft);
     griglia->addWidget(box, riga, 1, Qt::AlignLeft);
 }

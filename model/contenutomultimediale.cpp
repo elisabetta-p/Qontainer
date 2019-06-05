@@ -2,7 +2,6 @@
 
 
 ContenutoMultimediale::ContenutoMultimediale(string titolo, unsigned short int dur, string gen, double dim, unsigned short int val, string aut, unsigned short int data) : titolo(titolo), durata(dur), genere(gen), dimensione(dim), valutazione(val), autore(aut), dataUscita(data) {}
-/*ContenutoMultimediale::~ContenutoMultimediale() {}*/
 
 ContenutoMultimediale::ContenutoMultimediale(string t, string a, unsigned short int d) : titolo(t), autore(a), dataUscita(d) {}
 

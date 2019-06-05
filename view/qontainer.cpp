@@ -1,7 +1,6 @@
 #include "qontainer.h"
 #include <iostream>
 
-// Implementazione metodo protetto closeEvent
 void qontainer::closeEvent(QCloseEvent* event) {
     db->save(contenitore);
     event->accept();

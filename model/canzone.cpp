@@ -23,14 +23,6 @@ bool canzone::operator==(const canzone & file) const {
     return (audio::operator==(file) && album == file.album && produttore == file.produttore);
 }
 
-void canzone::riproduci() const {
-    std::cout << "Stai riproducendo la canzone " << getTitolo();
-}
-
-void canzone::pausa() const {
-    std::cout << "Hai messo la canzone " <<getTitolo() << " in pausa";
-}
-
 string canzone::serializza(char delimiter) const {
     return "C|" + audio::serializza(delimiter) + delimiter + album + delimiter + produttore + ";";
 }

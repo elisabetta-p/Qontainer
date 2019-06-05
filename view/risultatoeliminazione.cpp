@@ -7,8 +7,6 @@ risultatoeliminazione::risultatoeliminazione(QWidget* parent) : QWidget(parent) 
 
     layout = new QVBoxLayout(this);
 
-    //Creazione del titolo della pagina dei risultati delle ricerche
-
     QLabel* titoloFinestra = new QLabel(this);
     titoloFinestra->setText(tr("Conferma eliminazione"));
     titoloFinestra->setFont(QFont("Times", 36, QFont::Bold));
@@ -24,8 +22,6 @@ risultatoeliminazione::risultatoeliminazione(QWidget* parent) : QWidget(parent) 
     messaggioDiConferma->setAlignment(Qt::AlignHCenter);
     layout->addWidget(messaggioDiConferma);
 
-
-    //bottoni per tornare alla ricerca, oppure per tornare alla schermata principale
     QPushButton* tornaRicerca = new QPushButton(this);
     tornaRicerca->setText("Ritorna alla pagina di ricerca avanzata");
     QPushButton* tornaMainWindow = new QPushButton(this);

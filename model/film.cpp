@@ -8,15 +8,6 @@
 using std::ifstream;
 using std::string;
 
-void film::riproduci() const {
-    cout << "Stai riproducendo il film: " << getTitolo() << endl;
-}
-
-void film::pausa() const {
-    cout <<"Hai messo in pausa il film: " << getTitolo() << endl;
-}
-
-
 bool film::operator==(const film& file) const {
     return (video::operator==(file) && saga == file.saga);
 }

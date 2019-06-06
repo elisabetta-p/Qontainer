@@ -11,3 +11,11 @@ Makefile
 .qmake.stash
 qrc_qml.cpp
 build.sh
+*.aux
+*.dvi
+*.log
+*.gz
+*.bak
+*.toc
+*.png
+*.jpg

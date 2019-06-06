@@ -4,6 +4,7 @@ QMAKE_CXXFLAGS += -std=c++11
 CONFIG+=sdk_no_version_check
 QT += widgets
 QT += gui
+TARGET = Qontainer
 
 # The following define makes your compiler warn you if you use any
 # feature of Qt which has been marked as deprecated (the exact warnings

@@ -25,7 +25,6 @@
 \date{}
 
 \maketitle
-\clearpage
 \tableofcontents
 \clearpage\mbox{}
 
@@ -39,14 +38,62 @@ Per farlo, la classe templatizzata \texttt{container} a sua volta fa uso di altr
 \end{enumerate}
 Vista l'assenza di puntatori ad altre classi nella gerarchia, è stata ritenuta superflua l'implementazione di una classe per un eventuale \textit{smart pointer}.\\
 Ho scelto di implementare il contenitore come una lista linkata composta da nodi perché offro la possibilità di rimuovere contenuti all'interno della libreria in posizioni arbitrarie, e questo mi porta alla necessità di scegliere l'implementazione sotto forma di lista, che rende tale operazione di rimozione più efficiente (viene operata in tempo costante) rispetto alla scelta di implementare tale contenitore come un vettore di elementi.
+\section{Manuale utente}
+In questa sezione vengono descritte le varie schermate della GUI.\\
+\subsection{Finestra principale}
+
 \begin{figure}[H]
 	\begin{center}
-		\includegraphics[width=\textwidth,keepaspectratio]{MainWIndow.png}
+		\includegraphics[width=\textwidth,keepaspectratio]{immagini/MainWindow.png}
 	\end{center}
 	\caption{\label{fig:my-label} Finestra principale del progetto}
+\end{figure} 
+
+Da qui si ha un'\textit{overview} dell'intera applicazione, con tutti i contenuti in essa inseriti dall'utente, suddivisi per \textbf{Canzoni}, \textbf{Podcast}, \textbf{Film} e \textbf{Serie}. Tramite la finestra principale si da' all'utente la possibilit\`a di cercare o di aggiungere contenuto.\\
+\subsection{Aggiunta di contenuto}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{immagini/AggiungiContenuti.png}
+	\end{center}
+	\caption{\label{fig:my-label} Finestra base di aggiunta contenuti}
+\end{figure}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{immagini/AggiungiContenuti2.png}
+	\end{center}
+	\caption{\label{fig:my-label} Finestra specifica di aggiunta contenuti}
+\end{figure}
+Nella schermata di aggiunta dei contenuti l'utente deve scegliere il tipo di contenuto che vuolei inserire, e a seconda della scelta compariranno i campi dati specifici di quella classe.
+
+\subsection{Ricerca del Contenuto}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{immagini/RicercaAvanzata.png}
+	\end{center}
+	\caption{\label{fig:my-label} Prima finestra di ricerca}
+\end{figure}
+All'utente viene data la possibilit\`a di modificare i contenuti esistenti, e la ricerca per la modifica \`e imlementata in modo che accetti sia stringhe incomplete che \textit{upper} o \textit{lower case}. All'utente viene data solamente la possibilit\`a di inserire i campi dati che \`e pi\`u probabile vengano ricordati a memoria, per avere una ricerca realistica: sarebbe impossibile che l'utente si ricordi il valore di ogni singolo campo dato di ogni oggetto inserito nell'applicazione.\\
+Una volta inserito anche solo un campo dati parziali (nell'esempio ho inserito solamente "iron" nel campo del titolo), l'utente si ritrova con tutti i match trovati all'interno dell'applicazione:
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{immagini/RisultatoRicerca.png}
+	\end{center}
+	\caption{\label{fig:my-label} Risultato della ricerca}
+\end{figure}
+Una volta aperta la finestra dei risultati, all'utente viene data la possibilit\`a di \textbf{visualizzare} nel dettaglio, \textbf{modificare} oppure \textbf{eliminare} del contenuto.
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{immagini/VisualizzaContenuti.png}
+	\end{center}
+	\caption{\label{fig:my-label} Visualizzazione dettaglio contenuti}
 \end{figure}
 
-
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=\textwidth,keepaspectratio]{immagini/ModificaContenuti.png}
+	\end{center}
+	\caption{\label{fig:my-label} Modifica dei contenuti}
+\end{figure}
 \section{Compilazione ed esecuzione}
 La compilazione si esegue tramite i comandi \texttt{qmake} e in seguito \texttt{make}. 
 
@@ -56,12 +103,12 @@ La classe base astratta da cui deriva tutta la gerarchia è \texttt{ContenutoMul
 Da \texttt{ContenutoMultimediale} derivano immediatamente altre due classi: \texttt{audio} e \texttt{video}, che sono le due macrocategorie di appartenenza dei file che vengono memorizzati nella libreria. \\
 Da \texttt{video} derivano due classi: \texttt{film} e \texttt{episodio}, mentre da \texttt{audio} derivano altre due classi, \texttt{podcast} e \texttt{canzone}. \\
 Non si verifica la situazione di ereditarità multipla. \\
-\begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=\textwidth,keepaspectratio]{classi.pdf}
-	\end{center}
-	\caption{\label{fig:my-label} Gerarchia delle classi}
-\end{figure}
+%\begin{figure}[H]
+%	\begin{center}
+%		\includegraphics[width=\textwidth,keepaspectratio]{classi.pdf}
+%	\end{center}
+%	\caption{\label{fig:my-label} Gerarchia delle classi}
+%\end{figure}
 
 
 
